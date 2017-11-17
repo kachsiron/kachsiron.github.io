@@ -22,6 +22,7 @@ var wrap = document.createElement('DIV');
 var but = document.createElement('BUTTON');
 var but2 = document.createElement('BUTTON');
 listSearch.placeholder = 'Фильтр по ингредиенту';
+listSearch.type = 'text';
 winv.id='winv';
 wbut.id='wbut';
 div.className='inv';
