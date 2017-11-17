@@ -1,5 +1,5 @@
 @keyframes fade{from{opacity:0}to{opacity:1}}
-body{background-color:black;color:#70b8ff}
+body{background-color:black;color:#70b8ff;font-family:Verdana}
 #wrap{display:flex;flex-flow:row wrap;align-items:flex-start;justify-content:flex-start}
 #winv{}
 #wbut{text-align:center}
