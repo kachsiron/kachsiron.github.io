@@ -33,6 +33,7 @@ function listSearchReset(type) {
 	resultData[type].forEach(e => { e.element.style.display = '' });
 }
 function listSearching() {
+	listSearch.disabled = (resultData[curkedah].length === 0);
 	let value = listSearch.value;
 	if(value === '') listSearchReset(curkedah);
 	else {
@@ -169,6 +170,7 @@ but2.textContent = 'Л А Б';
 but.onclick=butik.bind({'type':'cooker'})
 but2.onclick=butik.bind({'type':'lab'})
 butik.call({'type':'cooker'});
+listSearching();
 list.appendChild(listSearch);
 list.appendChild(listRes);
 wbut.appendChild(but);
