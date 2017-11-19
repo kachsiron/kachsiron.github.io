@@ -38,6 +38,7 @@ function listSearchReset(type) {
 }
 function listSearching() {
 	listSearch.disabled = (resultData[curkedah].length === 0);
+	selecd[curkedah].disabled = (resultData[curkedah].length === 0);
 	let value = listSearch.value;
 	if(value === '') listSearchReset(curkedah);
 	else {
