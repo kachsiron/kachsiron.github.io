@@ -369,7 +369,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/b/b6/75px-Exotic_Proteins.png/revision/latest?cb=20150329044156"
 		}]
 	}, {
-		"desc": "Skill: Biotech 75. Effect: +50 food, +1 Move &amp; boosts health regeneration by 200% for 100 turns",
+		"desc": "Skill: Biotech 75. Effect: +50 food, +1 Move & boosts health regeneration by 200% for 100 turns",
 		"items": [{
 				"title": "Energy Drink",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/a/a1/75px-Energy_Drink.png/revision/latest?cb=20150329044100"
