@@ -1062,7 +1062,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/8/8b/75px-Hiver_Cheese.png/revision/latest?cb=20141205221434"
 		}]
 	}, {
-		"desc": "Skill: 95. Effect: +230 food (60 over ingredients)",
+		"desc": "Skill: 95. Effect: +230 food (+60 over ingredients)",
 		"items": [{
 				"title": "Unspeakable Hoagie",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/4/45/75px-Unspeakable_Hoagie.png/revision/latest?cb=20150420110324"
