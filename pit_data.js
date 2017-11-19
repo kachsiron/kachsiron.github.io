@@ -474,7 +474,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/e/e0/75px-Stale_Bread.png/revision/latest?cb=20150411200947"
 		}]
 	}, {
-		"desc": "Effect: +35 food per pellet (70 food in total, +55 over ingredients)",
+		"desc": "Skill: Biotech 75. Effect: +35 food per pellet (70 food in total, +55 over ingredients)",
 		"items": [{
 				"title": "Food Pellet",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/7/7f/75px-Food_Pellet.png/revision/latest?cb=20150421004159"
@@ -1062,7 +1062,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/8/8b/75px-Hiver_Cheese.png/revision/latest?cb=20141205221434"
 		}]
 	}, {
-		"desc": "Skill: 95. Effect: +230 food (+60 over ingredients)",
+		"desc": "Skill: Biotech 95. Effect: +230 food (+60 over ingredients)",
 		"items": [{
 				"title": "Unspeakable Hoagie",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/4/45/75px-Unspeakable_Hoagie.png/revision/latest?cb=20150420110324"
@@ -1525,7 +1525,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/1/17/75px-Energy_Cell.png/revision/latest?cb=20141202035152"
 		}]
 	}, {
-		"desc": "Skill: Computers 65. Effect: Identifies a single random Bio mods. One use.",
+		"desc": "Skill: Computer 65. Effect: Identifies a single random Bio mods. One use.",
 		"items": [{
 				"title": "Diagnostic Chip",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/6/6e/75px-Diagnostic_Chip.png/revision/latest?cb=20150420105132"
@@ -2158,7 +2158,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/8/87/75px-Shotgun_Shells.png/revision/latest?cb=20141202035456"
 		}]
 	}, {
-		"desc": "Effect: Armor. 50 armor, 60 durability. Reduces Blunt and Balistic damage. Wearable by Humans, Hiver, Tarka and Zuul.",
+		"desc": "Skill: Engineering ?. Effect: Armor. 50 armor, 60 durability. Reduces Blunt and Balistic damage. Wearable by Humans, Hiver, Tarka and Zuul.",
 		"items": [{
 				"title": "Impact Armor",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/0/0f/75px-Impact_Armor.png/revision/latest?cb=20160322151256"
@@ -2686,7 +2686,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/1/17/75px-Energy_Cell.png/revision/latest?cb=20141202035152"
 		}]
 	}, {
-		"desc": "Skill: Engineering",
+		"desc": "Skill: Engineering. Effect: ",
 		"items": [{
 				"title": "Seismic Boots",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/2/29/75px-Seismic_Boots.png/revision/latest?cb=20150420110003"
