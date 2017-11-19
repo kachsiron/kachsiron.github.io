@@ -135,7 +135,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/8/82/75px-Morrigi_Flavor_Oils.png/revision/latest?cb=20150411200217"
 		}]
 	}, {
-		"desc": "Skill: Biotech 75. Effect:  +120 food (+40 over ingredients) ",
+		"desc": "Skill: Biotech 75. Effect: +120 food (+40 over ingredients) ",
 		"items": [{
 				"title": "Blandwich",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/e/e3/75px-Blandwich.png/revision/latest?cb=20150420104939"
@@ -339,7 +339,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/b/b6/75px-Exotic_Proteins.png/revision/latest?cb=20150329044156"
 		}]
 	}, {
-		"desc": "Skill: Biotech. Effect:  +75 food (same as ingredients), boosts next Disease check",
+		"desc": "Skill: Biotech. Effect: +75 food (same as ingredients), boosts next Disease check",
 		"items": [{
 				"title": "Dried Fruit",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/6/61/75px-Dried_Fruit.png/revision/latest?cb=20150411195441"
@@ -354,7 +354,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/c/c3/75px-Bh%27azhnazh_Fruit.png/revision/latest?cb=20141202050448"
 		}]
 	}, {
-		"desc": "Skill: Biotech 80. Effect: +180 Food per Egg Nog, +360 food total  (+310 over ingredients)",
+		"desc": "Skill: Biotech 80. Effect: +180 Food per Egg Nog, +360 food total (+310 over ingredients)",
 		"items": [{
 				"title": "Egg Nog",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/a/a2/75px-Egg_Nog.png/revision/latest?cb=20150412101658"
@@ -384,7 +384,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/c/c9/75px-Primordial_Soup.png/revision/latest?cb=20150329044448"
 		}]
 	}, {
-		"desc": "Skill: Biotech 140. Effect:   +450 food (+210 over base ingredients, or +50 over Sots + bacon), +15 food capacity",
+		"desc": "Skill: Biotech 140. Effect: +450 food (+210 over base ingredients, or +50 over Sots + bacon), +15 food capacity",
 		"items": [{
 				"title": "Epic Bacon Sotswich",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/d/d1/75px-Epic_Bacon_Sotswich.png/revision/latest?cb=20150411195500"
@@ -456,7 +456,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/e/e1/75px-Melosian_Chocolate.png/revision/latest?cb=20141203125928"
 		}]
 	}, {
-		"desc": "Skill: Biotech 80. Effect:   +160 food (+40 over ingredients), restores 25 health",
+		"desc": "Skill: Biotech 80. Effect: +160 food (+40 over ingredients), restores 25 health",
 		"items": [{
 				"title": "Fondue",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/a/ab/75px-Fondue.png/revision/latest?cb=20150411195601"
@@ -501,7 +501,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/e/e0/75px-Stale_Bread.png/revision/latest?cb=20150411200947"
 		}]
 	}, {
-		"desc": "Skill: Biotech 75. Effect:  +90 food (+10 over ingredients)",
+		"desc": "Skill: Biotech 75. Effect: +90 food (+10 over ingredients)",
 		"items": [{
 				"title": "Grilled Cheese",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/1/1c/75px-Grilled_Cheese.png/revision/latest?cb=20141201175924"
@@ -513,7 +513,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/b/b6/75px-Safe_Cheese.png/revision/latest?cb=20150420105849"
 		}]
 	}, {
-		"desc": "Skill: Biotech ?. Effect:  ",
+		"desc": "Skill: Biotech ?. Effect: ",
 		"items": [{
 				"title": "Gronch Heart Elixir",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/1/17/75px-Gronch_Heart_Elixir.png/revision/latest?cb=20150429140957"
@@ -528,7 +528,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/2/2d/75px-Scent_Gland.png/revision/latest?cb=20150420120244"
 		}]
 	}, {
-		"desc": "Skill: Biotech 85. Effect:  regenerates 10 health per turn for 20 turns.",
+		"desc": "Skill: Biotech 85. Effect: regenerates 10 health per turn for 20 turns.",
 		"items": [{
 				"title": "Healing Salve",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/0/08/75px-Healing_Salve.png/revision/latest?cb=20141203125852"
@@ -540,7 +540,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/a/a9/75px-Edible_Roots.png/revision/latest?cb=20141205220752"
 		}]
 	}, {
-		"desc": "Skill: Biotech 60. Effect:   +300 food (+110 over ingredients)",
+		"desc": "Skill: Biotech 60. Effect: +300 food (+110 over ingredients)",
 		"items": [{
 				"title": "Hero Sotswich",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/7/7d/75px-Hero_Sotswich.png/revision/latest?cb=20150420105312"
@@ -579,7 +579,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/f/fb/75px-Sonic_Nodule.png/revision/latest?cb=20150411200839"
 		}]
 	}, {
-		"desc": "Skill: Biotech 110. Effect:  +35 food (-60 below ingredients), cures ALL statuses (Poison, Disease, Fear etc)",
+		"desc": "Skill: Biotech 110. Effect: +35 food (-60 below ingredients), cures ALL statuses (Poison, Disease, Fear etc)",
 		"items": [{
 				"title": "Icedream Bar",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/8/85/75px-Icedream_Bar.png/revision/latest?cb=20141203121242"
@@ -597,7 +597,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/6/6b/75px-Bone_Slivers.png/revision/latest?cb=20141203175133"
 		}]
 	}, {
-		"desc": "Skill: Biotech 80. Effect:  +200 food (+95 over ingredients), +1 might to Tarka male",
+		"desc": "Skill: Biotech 80. Effect: +200 food (+95 over ingredients), +1 might to Tarka male",
 		"items": [{
 				"title": "Imperial Special",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/e/ed/75px-Imperial_Special.png/revision/latest?cb=20141201175149"
@@ -702,7 +702,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/2/2d/75px-Scent_Gland.png/revision/latest?cb=20150420120244"
 		}]
 	}, {
-		"desc": "Skill: Biotech 105. Effect:  +300 food (+145 over ingredients), +1 to random stat (might/finesse/power/brain), can cause Lvl 6 Poison",
+		"desc": "Skill: Biotech 105. Effect: +300 food (+145 over ingredients), +1 to random stat (might/finesse/power/brain), can cause Lvl 6 Poison",
 		"items": [{
 				"title": "Pit Stew",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/e/e1/75px-Pit_Stew.png/revision/latest?cb=20150411200353"
@@ -756,7 +756,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/b/b6/75px-Exotic_Proteins.png/revision/latest?cb=20150329044156"
 		}]
 	}, {
-		"desc": "Skill: Biotech 40. Effect:  +60 food (+30 over ingredients)",
+		"desc": "Skill: Biotech 40. Effect: +60 food (+30 over ingredients)",
 		"items": [{
 				"title": "Pungent Meat",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/b/bc/75px-Pungent_Meat.png/revision/latest?cb=20150420105712"
@@ -780,7 +780,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/c/cb/75px-Burnt_Ribs.png/revision/latest?cb=20150411195232"
 		}]
 	}, {
-		"desc": "Skill: Biotech 90. Effect:  +220 food (+130 over ingredients)",
+		"desc": "Skill: Biotech 90. Effect: +220 food (+130 over ingredients)",
 		"items": [{
 				"title": "Roast Beast",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/2/2a/75px-Roast_Beast.png/revision/latest?cb=20141205224102"
@@ -825,7 +825,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/e/e7/75px-Baked_Avian.png/revision/latest?cb=20141202041926"
 		}]
 	}, {
-		"desc": "Skill: Biotech 75. Effect:  +200 food, (+70 over ingredients), cures 150 Radiation and 3 levels of Poison.",
+		"desc": "Skill: Biotech 75. Effect: +200 food, (+70 over ingredients), cures 150 Radiation and 3 levels of Poison.",
 		"items": [{
 				"title": "Seafood Platter",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/9/91/75px-Seafood_Platter.png/revision/latest?cb=20150420105946"
@@ -840,7 +840,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/5/52/75px-Wuuna_Sea_Cucumber.png/revision/latest?cb=20150411201228"
 		}]
 	}, {
-		"desc": "Skill: Biotech 85Effect:  +180 (-110 below ingredients), restores 20 health and 20 psi",
+		"desc": "Skill: Biotech 85. Effect: +180 (-110 below ingredients), restores 20 health and 20 psi",
 		"items": [{
 				"title": "Sks",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/7/7c/75px-Sks.png/revision/latest?cb=20150420110041"
@@ -867,7 +867,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/9/99/75px-Tarka_Warbread.png/revision/latest?cb=20141205224303"
 		}]
 	}, {
-		"desc": "Skill: Biotech 90. Effect:  +125 food (+15 over ingredients), cures up to 5 levels of Poison, Disease and Radiation",
+		"desc": "Skill: Biotech 90. Effect: +125 food (+15 over ingredients), cures up to 5 levels of Poison, Disease and Radiation",
 		"items": [{
 				"title": "Spider Pie",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/3/3a/75px-Spider_Pie.png/revision/latest?cb=20141201175206"
@@ -933,7 +933,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/c/c9/75px-Primordial_Soup.png/revision/latest?cb=20150329044448"
 		}]
 	}, {
-		"desc": "Skill: Biotech 80. Effect:  +150 food (+90 over ingredients)",
+		"desc": "Skill: Biotech 80. Effect: +150 food (+90 over ingredients)",
 		"items": [{
 				"title": "Steak N Shrooms",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/f/f0/75px-Steak_N_Shrooms.png/revision/latest?cb=20150420110131"
@@ -987,7 +987,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/e/ed/75px-Chemo_Slugs.png/revision/latest?cb=20150411195344"
 		}]
 	}, {
-		"desc": "Skill: Biotech 75. Effect:  +150 food (+20 over ingredients), cures Confusion and Stun",
+		"desc": "Skill: Biotech 75. Effect: +150 food (+20 over ingredients), cures Confusion and Stun",
 		"items": [{
 				"title": "Stinkwich",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/9/9c/75px-Stinkwich.png/revision/latest?cb=20150420121946"
@@ -1002,7 +1002,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/e/ec/75px-Chozanti_Brie.png/revision/latest?cb=20150412101540"
 		}]
 	}, {
-		"desc": "Skill: Biotech 80. Effect:  +100 food (+30 over ingredients)",
+		"desc": "Skill: Biotech 80. Effect: +100 food (+30 over ingredients)",
 		"items": [{
 				"title": "Stuffed Mushrooms",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/0/05/75px-Stuffed_Mushrooms.png/revision/latest?cb=20141201172432"
@@ -1279,7 +1279,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/e/e8/75px-Scaleskin.png/revision/latest?cb=20141201181607"
 		}]
 	}, {
-		"desc": "Skill: Mechanical 110. Effect:  Rifle Weapon. 3-6 damage (0 vs mecha), 40 penetration, 30 durability. Inflicts lvl 9 Poison. Uses Poison Darts as ammo.",
+		"desc": "Skill: Mechanical 110. Effect: Rifle Weapon. 3-6 damage (0 vs mecha), 40 penetration, 30 durability. Inflicts lvl 9 Poison. Uses Poison Darts as ammo.",
 		"items": [{
 				"title": "Blowdart Rifle",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/3/3d/75px-Blowdart_Rifle.png/revision/latest?cb=20150419134214"
@@ -1465,7 +1465,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/2/23/75px-Welding_Goo.png/revision/latest?cb=20141208180248"
 		}]
 	}, {
-		"desc": "Skill: Mechanical ??. Effect:  -10 Penetration, -1 Bio-Mod slot, consumes 1 ammo per 2 shots.",
+		"desc": "Skill: Mechanical ??. Effect: -10 Penetration, -1 Bio-Mod slot, consumes 1 ammo per 2 shots.",
 		"items": [{
 				"title": "Cleaver Mag Pistol",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/9/98/75px-Mag_Pistol.png/revision/latest?cb=20150420105536"
@@ -1495,7 +1495,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/2/23/75px-Welding_Goo.png/revision/latest?cb=20141208180248"
 		}]
 	}, {
-		"desc": "Skill: Mechanical ??. Effect:  -2 Damage, -10 Penetration, -1 Bio-Mod slot, consumes 5 ammo per 3 shot volley.",
+		"desc": "Skill: Mechanical ??. Effect: -2 Damage, -10 Penetration, -1 Bio-Mod slot, consumes 5 ammo per 3 shot volley.",
 		"items": [{
 				"title": "Cleaver Scattergun",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/f/f6/75px-Scattergun.png/revision/latest?cb=20150425182651"
@@ -1525,7 +1525,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/1/17/75px-Energy_Cell.png/revision/latest?cb=20141202035152"
 		}]
 	}, {
-		"desc": "Skill: Computers 65. Effect:  Identifies a single random Bio mods. One use.",
+		"desc": "Skill: Computers 65. Effect: Identifies a single random Bio mods. One use.",
 		"items": [{
 				"title": "Diagnostic Chip",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/6/6e/75px-Diagnostic_Chip.png/revision/latest?cb=20150420105132"
@@ -1558,7 +1558,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/e/e3/75px-Duct_Tape.png/revision/latest?cb=20150420113715"
 		}]
 	}, {
-		"desc": "Skill: Mechanical 60. Effect:  Use next to doors to cause large damage to them.",
+		"desc": "Skill: Mechanical 60. Effect: Use next to doors to cause large damage to them.",
 		"items": [{
 				"title": "Door Spike",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/7/7c/75px-Door_Spike.png/revision/latest?cb=20150419134352"
@@ -1678,7 +1678,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/1/17/75px-Energy_Cell.png/revision/latest?cb=20141202035152"
 		}]
 	}, {
-		"desc": "Skill: Mechanical 75. Effect:  Repairs non-melee energy Weapons.",
+		"desc": "Skill: Mechanical 75. Effect: Repairs non-melee energy Weapons.",
 		"items": [{
 				"title": "Energy System Tuner",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/6/61/75px-Energy_System_Tuner.png/revision/latest?cb=20150412101718"
@@ -1714,7 +1714,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/f/fb/75px-Sonic_Nodule.png/revision/latest?cb=20150411200839"
 		}]
 	}, {
-		"desc": "Skill: Electronics (failed on 36). Effect:  Lets you register as a lab specimen to security elements for 10 turns or until the player attacks.",
+		"desc": "Skill: Electronics (failed on 36). Effect: Lets you register as a lab specimen to security elements for 10 turns or until the player attacks.",
 		"items": [{
 				"title": "Faux Tag",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/e/ec/75px-Faux_Tag.png/revision/latest?cb=20150329044212"
@@ -1819,7 +1819,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/7/77/75px-Giant_Mitochondria.png/revision/latest?cb=20141203180120"
 		}]
 	}, {
-		"desc": "Skill: Electronics. Effect:  Can walk over detected floor Traps and will not trigger undetected ones.",
+		"desc": "Skill: Electronics. Effect: Can walk over detected floor Traps and will not trigger undetected ones.",
 		"items": [{
 				"title": "Grav Boots",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/2/2c/75px-Grav_Boots.png/revision/latest?cb=20150411195653"
@@ -1840,7 +1840,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/a/af/75px-Superconductors.png/revision/latest?cb=20150412102018"
 		}]
 	}, {
-		"desc": "Skill: Mechanical 85. Effect:  Standard grenade. Can be converted into a Mine Trap.",
+		"desc": "Skill: Mechanical 85. Effect: Standard grenade. Can be converted into a Mine Trap.",
 		"items": [{
 				"title": "Grenade",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/c/cd/75px-Grenade.png/revision/latest?cb=20141201074802"
@@ -1861,7 +1861,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/c/c7/75px-Sparker.png/revision/latest?cb=20150420110057"
 		}]
 	}, {
-		"desc": "Skill: Electronics 90. Effect:  Pistol weapon with Stun AoE.",
+		"desc": "Skill: Electronics 90. Effect: Pistol weapon with Stun AoE.",
 		"items": [{
 				"title": "Hand Stunner",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/1/15/75px-Hand_Stunner.png/revision/latest?cb=20150411195711"
@@ -1957,7 +1957,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/2/20/75px-Vibranite.png/revision/latest?cb=20150419134822"
 		}]
 	}, {
-		"desc": "Skill: Mechanical 70. Effect:  Assault Weapon. Uses crafted ammo.",
+		"desc": "Skill: Mechanical 70. Effect: Assault Weapon. Uses crafted ammo.",
 		"items": [{
 				"title": "Heavy Slug-thrower",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/0/09/75px-Heavy_Slug-thrower.png/revision/latest?cb=20150411195747"
@@ -1975,7 +1975,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/a/af/75px-Superconductors.png/revision/latest?cb=20150412102018"
 		}]
 	}, {
-		"desc": "Skill: Mechanical 85. Effect:  Reloads Heavy Slug Thrower.",
+		"desc": "Skill: Mechanical 85. Effect: Reloads Heavy Slug Thrower.",
 		"items": [{
 				"title": "Heavy Slugs",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/b/be/75px-Heavy_Slugs.png/revision/latest?cb=20141202035334"
@@ -2212,7 +2212,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/9/9c/75px-Razorteeth.png/revision/latest?cb=20150329044606"
 		}]
 	}, {
-		"desc": "Skill: Medical 75. Effect:  Similar to the standard Terran Med-Kit, restores health depending on your Medical skill.",
+		"desc": "Skill: Medical 75. Effect: Similar to the standard Terran Med-Kit, restores health depending on your Medical skill.",
 		"items": [{
 				"title": "Improvised Med-Kit",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/a/a1/75px-Improvised_Med-Kit.png/revision/latest?cb=20150420105428"
@@ -2269,7 +2269,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/a/af/75px-Superconductors.png/revision/latest?cb=20150412102018"
 		}]
 	}, {
-		"desc": "Skill: Electronics 100. Effect:  +12 inventory. Only 1 Lifter pack can be equipped, but it does not take any equipment slot.",
+		"desc": "Skill: Electronics 100. Effect: +12 inventory. Only 1 Lifter pack can be equipped, but it does not take any equipment slot.",
 		"items": [{
 				"title": "Lifter Pack",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/b/b1/75px-Lifter_Pack.png/revision/latest?cb=20150329044306"
@@ -2347,7 +2347,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/e/e3/75px-Duct_Tape.png/revision/latest?cb=20150420113715"
 		}]
 	}, {
-		"desc": "Skill: Engineering ??. Effect:  +30 Durability, -2 Bio Mod Slots, +5 Damage, +60 Penetration. Using same shotgun ammo, but usable only with Brawler PBA or similar armours allowing usage of heavy weapons. Also has a knockback chance. Doesn't work in Gold Edition",
+		"desc": "Skill: Engineering ??. Effect: +30 Durability, -2 Bio Mod Slots, +5 Damage, +60 Penetration. Using same shotgun ammo, but usable only with Brawler PBA or similar armours allowing usage of heavy weapons. Also has a knockback chance. Doesn't work in Gold Edition",
 		"items": [{
 				"title": "Neutronium Stormer",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/f/fc/75px-Auto-shotgun.png/revision/latest?cb=20141208180048"
@@ -2488,7 +2488,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/a/af/75px-Superconductors.png/revision/latest?cb=20150412102018"
 		}]
 	}, {
-		"desc": "Skill: Mechanical 85. Effect:  Purifies basic food (see below). Used to craft Star Bacon.",
+		"desc": "Skill: Mechanical 85. Effect: Purifies basic food (see below). Used to craft Star Bacon.",
 		"items": [{
 				"title": "Purifier",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/7/72/75px-Purifier.png/revision/latest?cb=20150329044526"
@@ -2503,7 +2503,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/c/c7/75px-Sparker.png/revision/latest?cb=20150420110057"
 		}]
 	}, {
-		"desc": "Skill: Electronics 105. Effect:  Helmet. Permanently (360 degree) see through everything (except invisibility) in your maximum sight range (12 tiles).",
+		"desc": "Skill: Electronics 105. Effect: Helmet. Permanently (360 degree) see through everything (except invisibility) in your maximum sight range (12 tiles).",
 		"items": [{
 				"title": "Quantum Scan Helmet",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/9/9f/75px-Quantum_Scan_Helmet.png/revision/latest?cb=20150411200508"
@@ -2557,7 +2557,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/6/6b/75px-Bone_Slivers.png/revision/latest?cb=20141203175133"
 		}]
 	}, {
-		"desc": "Skill: Electronics 100. Effect:  Single target Rifle Weapon which causes Berserk.Tip: Good source for Energy Backpacks. Save up ingredients. (Cyborg Hiver Queen can provide you with more rifle parts than you know what to do with if you let it spawn  Hiver Workers). Craft when electronics is sufficiently high. Unload weapon and you have your Energy Backpack.",
+		"desc": "Skill: Electronics 100. Effect: Single target Rifle Weapon which causes Berserk.Tip: Good source for Energy Backpacks. Save up ingredients. (Cyborg Hiver Queen can provide you with more rifle parts than you know what to do with if you let it spawn Hiver Workers). Craft when electronics is sufficiently high. Unload weapon and you have your Energy Backpack.",
 		"items": [{
 				"title": "Rage Beam",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/5/50/75px-Rage_Beam.png/revision/latest?cb=20150420105754"
@@ -3031,7 +3031,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/0/03/75px-Myomer_Bundles.png/revision/latest?cb=20141201181537"
 		}]
 	}, {
-		"desc": "Skill: Mechanical (99% at 80 Mechanical). Effect:  Rifle Weapon, allows a regular Rifle to tackle higher armor creatures.",
+		"desc": "Skill: Mechanical (99% at 80 Mechanical). Effect: Rifle Weapon, allows a regular Rifle to tackle higher armor creatures.",
 		"items": [{
 				"title": "Sniper Rifle",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/3/3e/75px-Sniper_Rifle.png/revision/latest?cb=20150412101940"
@@ -3046,7 +3046,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/0/00/75px-Optics.png/revision/latest?cb=20150411200254"
 		}]
 	}, {
-		"desc": "Skill: Mechanical (Failed at 55). Effect:  Knife. Chance to inflict Spores",
+		"desc": "Skill: Mechanical (Failed at 55). Effect: Knife. Chance to inflict Spores",
 		"items": [{
 				"title": "Spore Dagger",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/f/f5/75px-Spore_Dagger.png/revision/latest?cb=20150420110115"
@@ -3100,7 +3100,7 @@ var R = {
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/4/45/75px-Darts.png/revision/latest?cb=20141202040739"
 		}]
 	}, {
-		"desc": "Skill: Electronics 95. Effect:  Helmet. +15 bonus to pistol, rifle, assault weapon and heavy weapon skills.",
+		"desc": "Skill: Electronics 95. Effect: Helmet. +15 bonus to pistol, rifle, assault weapon and heavy weapon skills.",
 		"items": [{
 				"title": "Targeting Helm",
 				"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/d/d3/75px-Targeting_Helm.png/revision/latest?cb=20150411201129"
@@ -3453,4 +3453,4 @@ var I = {
 		"Shotgun Shells": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/8/87/75px-Shotgun_Shells.png/revision/latest?cb=20141202035456",
 		"Rifle Rounds": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/5/55/75px-Rifle_Rounds.png/revision/latest?cb=20141202035437"
 	}
-}
+};
