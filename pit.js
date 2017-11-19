@@ -1,11 +1,3 @@
-/*var jopa = {};
-for(let i in R.cooker) {
-	for(let j = 1, l = R.cooker[i].items.length; j < l; j++) {
-		if(R.cooker[i].items[j].title in I.cooker)continue;
-		jopa[R.cooker[i].items[j].title] = R.cooker[i].items[j].src
-	}
-}
-window.prompt('',JSON.stringify(jopa))*/
 var myinv = {'cooker': [], 'lab': []};
 var curkedah = 'cooker';
 var allitems = {'cooker': [], 'lab': []};
@@ -21,6 +13,18 @@ var listRes = document.createElement('DIV');
 var wrap = document.createElement('DIV');
 var but = document.createElement('BUTTON');
 var but2 = document.createElement('BUTTON');
+var selecd = { 'cooker': document.createElement('SELECT'), 'lab': document.createElement('SELECT') }, selectd_opt = { 'cooker': ['','Biotech','Medical','Necro Tech'], 'lab': ['','Medical','Computer','Biotech','Traps','Electronics','Necro Tech','Engineering','Mechanical'] };
+
+for(let i in selecd) {
+	selecd[i].setAttribute('size', 1);
+	selecd[i].onchange = function() { resetList(); calcu(curkedah) }
+	for(let j = 0, l = selectd_opt[i].length; j < l; j++) {
+		let o = document.createElement('OPTION');
+		o.textContent = (selectd_opt[i][j] === '' ? 'Фильтр по навыку' : selectd_opt[i][j]);
+		o.value = (selectd_opt[i][j] === '' ? 'none' : selectd_opt[i][j])
+		selecd[i].appendChild(o)
+	}
+}
 listSearch.placeholder = 'Фильтр по ингредиенту';
 listSearch.type = 'text';
 winv.id='winv';
@@ -82,16 +86,17 @@ function calcu(type) {
 	resultData[type] = [];
 	let result = [];
 	for(let r in R[type]) {
-		let b = 0, n = [];
-		for(let i = 1, l = R[type][r].items.length; i < l; i++) {
-			if(myinv[type].indexOf(R[type][r].items[i].title) !== -1) {
+		let b = 0, n = [], rt = R[type][r];
+		if(selecd[type].value !== 'none' && selecd[type].value !== rt.skill) continue;
+		for(let i = 1, l = rt.items.length; i < l; i++) {
+			if(myinv[type].indexOf(rt.items[i].title) !== -1) {
 				b++;
 				n[i] = true;
 			}
 			else n[i] = false
 		}
 		if(b === 0) continue;
-		result.push({ 'b': b / R[type][r].items.length, 'n': n, 'r': r, 'a': b === (R[type][r].items.length - 1) });
+		result.push({ 'b': b / rt.items.length, 'n': n, 'r': r, 'a': b === (rt.items.length - 1) });
 	}
 	result.sort((a,b)=>{return b.b-a.b});
 	for(let i = 0, l = result.length, d, rd, r, e; i < l; i++) {
@@ -150,14 +155,16 @@ function butik() {
 		//resultData[this.type] = [];
 		for(let o = 0, l = allitems[this.type].length; o<l; o++) allitems[this.type][o].classList.remove('active');
 	}
-	div.style.display = div2.style.display='none';
+	selecd.cooker.style.display = selecd.lab.style.display = div.style.display = div2.style.display='none';
 	if(this.type === 'cooker'){
 		div.style.display='';
+		selecd.cooker.style.display='';
 		but.classList.add('active_button');
 		but2.classList.remove('active_button')
 	}
 	else {
 		div2.style.display='';
+		selecd.lab.style.display='';
 		but2.classList.add('active_button');
 		but.classList.remove('active_button')
 	}
@@ -172,6 +179,8 @@ but2.onclick=butik.bind({'type':'lab'})
 butik.call({'type':'cooker'});
 listSearching();
 list.appendChild(listSearch);
+list.appendChild(selecd.cooker);
+list.appendChild(selecd.lab);
 list.appendChild(listRes);
 wbut.appendChild(but);
 wbut.appendChild(but2);
