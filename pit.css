@@ -1,10 +1,10 @@
 @keyframes fade{from{opacity:0}to{opacity:1}}
 body{background-color:black;color:#70b8ff;font-family:Verdana}
-#wrap{min-width:1359px;display:flex;flex-flow:row wrap;align-items:flex-start;justify-content:flex-start}
+#wrap{display:flex;flex-flow:row wrap;align-items:flex-start;justify-content:flex-start}
 #winv{}
 #wbut{text-align:center}
 button{width:100px;font-family:monospace;font-weight:bold}
-input{width:200px;font-family:monospace}
+input,select,option{width:200px;font-family:monospace}
 .inv{width:750px;display:flex;flex-flow:row wrap;align-items:center;justify-content:center}
 .recept{animation:fade 333ms 1 linear;animation-fill-mode:forwards;display:flex;flex-flow:row wrap;align-items:center;justify-content:flex-start}
 .icon{width:50px;height:50px}
@@ -18,4 +18,3 @@ input{width:200px;font-family:monospace}
 .active_button{color:red}
 .inactive_item{opacity:0.5}
 .good{background-color:#783e48}
-
