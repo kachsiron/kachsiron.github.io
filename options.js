@@ -3645,6 +3645,5 @@ document.addEventListener('DOMContentLoaded',()=>{
 	getCookie();
 	cMan.getcl();
 	cMan.launch();
-	OPOV.serv('xxx',0);
 	//ACAPELA.init()
 });
