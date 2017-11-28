@@ -1901,7 +1901,7 @@ function mChats(){
 	this.sencolors=[0,0.0125,0.025,0.0375,0.05,0.0625,0.075,0.0875,0.1,0.1125,0.125,0.1375,0.15,0.1625,0.175,0.1875,0.2,0.2125,0.225,0.2375,0.25],
 //this.colorCodes=[[255,0,0],[255,165,0],[255,255,0],[0,255,0],[0,255,255],[0,0,255],[255,0,255]],
 	this.colorCodes=[[255,0,0],[0,255,0],[0,0,255]],
-	this.acolorCodes=[[-255,0,0],[0,-255,0],[0,0,-255]],
+	this.acolorCodes=[[-127.5,0,0],[0,-127.5,0],[0,0,-127.5]],
 	this.creep=function(wid,z){
 		if(wid.messageDiv.scrollTop>0||z){
 			wid.scrl.yy=this.tHeight+wid.HHeight/((wid.messageDiv.scrollHeight-wid.mHeight)/wid.messageDiv.scrollTop);
@@ -2559,7 +2559,7 @@ function mChats(){
 						l=this.colorCodes[(l+r)%3];
 					}
 					else{
-						er--;
+						er-=0.5;
 						l=this.acolorCodes[(l+f)%3];
 						if(++f===3)f=0;
 					}
