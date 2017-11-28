@@ -1901,6 +1901,7 @@ function mChats(){
 	this.sencolors=[0,0.0125,0.025,0.0375,0.05,0.0625,0.075,0.0875,0.1,0.1125,0.125,0.1375,0.15,0.1625,0.175,0.1875,0.2,0.2125,0.225,0.2375,0.25],
 //this.colorCodes=[[255,0,0],[255,165,0],[255,255,0],[0,255,0],[0,255,255],[0,0,255],[255,0,255]],
 	this.colorCodes=[[255,0,0],[0,255,0],[0,0,255]],
+	this.acolorCodes=[[-255,0,0],[0,-255,0],[0,0,-255]],
 	this.creep=function(wid,z){
 		if(wid.messageDiv.scrollTop>0||z){
 			wid.scrl.yy=this.tHeight+wid.HHeight/((wid.messageDiv.scrollHeight-wid.mHeight)/wid.messageDiv.scrollTop);
@@ -2545,26 +2546,36 @@ function mChats(){
 		let c;
 		if(chat.nickColors.hasOwnProperty(n))c=chat.nickColors[n];
 		else{
-			let l,e=n.length,r=0;
+			let l,er=0,r=0,f=0;
 			c=[0,0,0];
 			for(let i in n){
 				//l=letterColor.indexOf(n[i].toLowerCase());
 				//if(l===-1)l=[0,0,0];
 				l=this.letterColor[n[i].toLowerCase()];
 				//if(l===void 0)l=[0,0,0];
-				if(l===void 0)l=[0,0,0];
-				else l=this.colorCodes[(l+r)%3];
+				if(l!==void 0){
+					if(r<3){
+						er++;
+						l=this.colorCodes[(l+r)%3];
+					}
+					else{
+						er--;
+						l=this.acolorCodes[(l+f)%3];
+						if(++f===3)f=0;
+					}
+				}
+				else continue;
 				for(let j=0;j<3;j++)c[j]+=l[j];
-				if(++r===3)r=0;
+				if(++r===4)r=0;
 			}
-			for(let i=0;i<3;i++)c[i]/=e;
-			e=c[0]+c[1]+c[2];
+			for(let i=0;i<3;i++)c[i]/=er;
+			let e=c[0]+c[1]+c[2];
 			if(e<382){
 				e=(382-e)/3;
-				for(let i=0;i<3;i++)c[i]+=e
-			}
-			for(let i=0;i<3;i++){
-				if(c[i]>255)c[i]=255
+				for(let i=0;i<3;i++){
+					c[i]+=e;
+					if(c[i]>255)c[i]=255
+				}
 			}
 			c='rgb('+Math.round(c[0])+','+Math.round(c[1])+','+Math.round(c[2])+')';
 			chat.nickColors[n]=c
