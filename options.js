@@ -2540,7 +2540,13 @@ function mChats(){
 		'н','о','п','р','l','m','n','o','5','-',',',
 		'с','т','у','ф','p','q','r','6','7','_',']',
 		'х','ц','ч','ш','щ','s','t','u','v','8',')',
-		'ъ','ы','ь','э','ю','я','w','x','y','z','9'
+		'ъ','ы','ь','э','ю','я','w','x','y','z','9',
+		'А','Б','В','Г','Д','Е','A','B','C','D','E',
+		'Ё','Ж','З','И','Й','К','F','G','H','I','J',
+		'Л','М','Н','О','П','Р','K','L','M','N','O',
+		'С','Т','У','Ф','Р','Х','Q','R','S','T','U',
+		'Ц','Ч','Ш','Щ','Ъ','Ы','V','W','X','Y','Z',
+		'Ь','Э','Ю','Я'
 	],
 	this.setColorOfNick=function(chat,bb,n){
 		let c;
@@ -2551,7 +2557,7 @@ function mChats(){
 			for(let i in n){
 				//l=letterColor.indexOf(n[i].toLowerCase());
 				//if(l===-1)l=[0,0,0];
-				l=this.letterColor[n[i].toLowerCase()];
+				l=this.letterColor[n[i]];
 				//if(l===void 0)l=[0,0,0];
 				if(l!==void 0){
 					if(r<3){
@@ -2564,7 +2570,7 @@ function mChats(){
 						if(++f===3)f=0;
 					}
 				}
-				else continue;
+				else { alert('Цвета ника буква' + n[i]); continue }
 				for(let j=0;j<3;j++)c[j]+=l[j];
 				if(++r===4)r=0;
 			}
