@@ -2699,7 +2699,7 @@ function mChats(){
 				bs.onclick=respMessFun.bind({i:chat.id,n:bnick,t:chat.wsChat,uid:null});
 				bb.className='mc_nick3';
 				if(chat.light.hasOwnProperty(bnick2))bs.ondblclick=this.creeper.bind(this,chat,chat.light[bnick2][0])
-				if(!cf)this.setColorOfNick(chat,bs,bnick2)
+				if(!cf)this.setColorOfNick(chat,bs,bnick)
 				//bs.ondblclick=this.creeper.bind(this,chat,bnick2||bnick.toLowerCase())
 			}
 			this.igno.tie(this,chat,dd,n)
