@@ -2682,6 +2682,7 @@ function mChats(){
 			this.setBorderColor(bb,2,iv,n,chat.nick);
 			if(e.sub==='1')bb.style.borderLeft='2px solid deepskyblue';
 			this.igno.check(chat,dd,bb,b,n);
+			console.log(chat.nick,n)
 			if(bnick!==null){
 				bnick=bnick[1]||bnick[2];
 				bnick2=bnick.toLowerCase();
