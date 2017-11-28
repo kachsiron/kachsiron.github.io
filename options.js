@@ -556,7 +556,7 @@ var cMan={
 		this.intervals.info=setInterval(()=>{this.sock.send('2')},30000);
 		this.intervals.timeout=setInterval(i=>{
 			if((new Date()).getTime()-this.timeout>40000){
-				console.log('list',(new Date()).getTime()-this.timeout);
+//			console.log('list',(new Date()).getTime()-this.timeout);
 				this.recon()
 			}
 		},45000)
@@ -2679,10 +2679,9 @@ function mChats(){
 			iv=iv.replace(rgxpChatTwitch[8],this.sm_replacer.bind(this));
 			bnick=iv.match(rgxpChatTwitch[1]);
 			dt=e.timestamp.getHours().totwo()+':'+e.timestamp.getMinutes().totwo();
-			this.setBorderColor(bb,2,iv,n,chat.nick);
+			this.setBorderColor(bb,2,iv,n.toLowerCase(),chat.nick);
 			if(e.sub==='1')bb.style.borderLeft='2px solid deepskyblue';
 			this.igno.check(chat,dd,bb,b,n);
-			console.log(chat.nick,n)
 			if(bnick!==null){
 				bnick=bnick[1]||bnick[2];
 				bnick2=bnick.toLowerCase();
