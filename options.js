@@ -2570,7 +2570,7 @@ function mChats(){
 						if(++f===3)f=0;
 					}
 				}
-				else { alert('Цвета ника буква' + n[i]); continue }
+				else continue;
 				for(let j=0;j<3;j++)c[j]+=l[j];
 				if(++r===4)r=0;
 			}
