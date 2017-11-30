@@ -886,7 +886,7 @@ var R = {
 					"title": "Seafood Platter",
 					"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/9/91/75px-Seafood_Platter.png/revision/latest?cb=20150420105946"
 			}, {
-					"title": "Ku'sulto Lobstercake",
+					"title": "Ku'Sulto Lobstercake",
 					"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/8/80/75px-Ku%27sulto_Lobstercake.png/revision/latest?cb=20141205221656"
 			}, {
 					"title": "Soylent Vines",
