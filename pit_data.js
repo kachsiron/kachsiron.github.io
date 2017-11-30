@@ -2133,10 +2133,10 @@ var R = {
 			"desc": "Skill: Mechanical ??. Effect: +10 Clip Size, -5 Accuracy",
 			"items": [{
 					"title": "Heavymag Auto Pistol",
-					"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/f/fe/75px-Machine_Pistol.png/revision/latest?cb=20150428130517"
+					"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/c/c5/75px-Auto_Pistol.png/revision/latest?cb=20141208013621"
 			}, {
 					"title": "Auto Pistol",
-					"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/f/fe/75px-Machine_Pistol.png/revision/latest?cb=20150428130517"
+					"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/c/c5/75px-Auto_Pistol.png/revision/latest?cb=20141208013621"
 			}, {
 					"title": "Casing Fragments",
 					"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/0/06/75px-Casing_Fragments.png/revision/latest?cb=20150411195318"
