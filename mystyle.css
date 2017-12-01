@@ -1,0 +1,87 @@
+body{margin:0;background-color:black;color:white;font-family:"Andale Mono", monospace;font-size:12px}
+#nonsel{-moz-user-select:none}
+ul{padding:0 0 10px 0}a{color:rgb(100,155,255)}a:visited{color:purple}
+.P a,.P1 a,.P2 a{color:dodgerblue}h2{margin:0}
+aside{font-size:80%;width:555px;border-bottom:1px solid #444}
+.cn{position:relative;z-index:1;margin-right:2px;background-color:black;padding:0 2px;border-width:0 1px 1px;border-style:solid;border-color:#444;cursor:pointer}
+.smimg{height:13px;vertical-align:middle}
+.chat-smile{height:13px;width:13px;vertical-align:text-bottom}
+.mc_nick,.mc_nick2,.mc_nick3,.limenu,nobr{cursor:pointer}
+.mc_nick,.mc_nick2{margin-right:2px}
+.mc_nick,.mc_nick2,.mc_nick3{white-space:nowrap}
+.mc_nick2{font-style:italic}
+.mc_nick3:after{content:"╏";color:white;font-weight:normal}
+.limenu:hover{color:dodgerblue;text-shadow:1px 1px 3px gray}
+.tablespan:hover{background-color:#222;text-shadow:2px 1px 0 black}
+.ifr{border:2px solid #222;overflow:hidden}
+.ifrdiv{position:absolute;width:737px;bottom:0;left:0;font-size:83.3%;padding-left:5px;background-color:black;border:1px solid gray;overflow:hidden;height:10px;font-weight:bold}
+.scpdiv{z-index:1;height:437px;width:744px;display:none;background-color:black;position:fixed;right:0;bottom:0}
+.player{height:437px;background-color:black;position:absolute;top:0;left:0}
+.cn:hover{background-color:#444}
+.lmess{height:12px;overflow:hidden;font-size:83.3%;border-top:1px dotted gray;color:orange}
+.lmess .smimg{height:10px}
+.cd{z-index:0;background-color:black;font-size:58.3%;color:#AAA;position:absolute;top:0;right:0}
+.link{color:black;letter-spacing:-1px;text-decoration:none}
+.link:visited{color:maroon}
+.mainTableSpan,.tablespan{display:flex;flex-flow:row nowrap}
+.mainTableSpan{order:1;border-bottom:2px solid gray}
+.mainTableSpan>div,.tablespan>div,.tablespan>a{flex-shrink:0}
+.tablespan>div:nth-child(1),.tablespan>div:nth-child(3),.tablespan>div:nth-child(4),.tablespan>div:nth-child(5){border-right:2px solid gray}
+.mainTableSpan>div:nth-child(1){width:74px}
+.mainTableSpan>div:nth-child(2){width:94px}
+.mainTableSpan>div:nth-child(3){width:30px;font-weight:bold}
+.mainTableSpan>div:nth-child(4){width:22px}
+.tablespan{height:12px;overflow:hidden}
+.tablespan>div{overflow:hidden}
+.tablespan>div,.tablespan>a{vertical-align:top}
+.tablespan>div:nth-child(1):hover,.tablespan>div:nth-child(5):hover{background-color:rgba(255,165,0,0.25)}
+.tablespan>div:nth-child(4):hover{background-color:rgba(0,255,0,0.25)}
+.tablespan>div:nth-child(1){width:36px}
+.tablespan>div:nth-child(2){width:7px}
+.tablespan>div:nth-child(3){width:8px}
+.tablespan>div:nth-child(4){width:82px}
+.tablespan>div:nth-child(5){width:30px}
+.tablespan>div:nth-child(6){width:30px;font-weight:bold;overflow:visible}
+.tablespan>div:nth-child(n):nth-child(-n+7),.tablespan>div:nth-child(11){cursor:pointer}
+.tablespan>div:nth-child(7){color:green;width:22px}
+.tablespan>div:nth-child(8){color:greenyellow}
+.tablespan>a{display:block;text-decoration:none;color:dodgerblue;line-height:14px}
+.pm{position:relative;background-color:black;border-bottom:1px solid #444;border-top:1px solid #444;overflow:hidden}
+.tom{position:relative;z-index:1;word-wrap:break-word}
+.smilepad{overflow-y:scroll;overflow-x:hidden;border-bottom:1px solid yellow}
+.cd2{top:0;line-height:6px}
+hr{clear:both}
+.mc_windowDiv{overflow:hidden;border:1px solid rosybrown;background-color:black;color:white;font-family:Calibri,Verdana;position:fixed}
+.mc_titleDiv{font-weight:bold;cursor:pointer;border-bottom:3px solid rosybrown;height:11px;font-size:80%;text-align:center;overflow:hidden}
+.mc_button{padding:0;cursor:pointer;position:absolute;width:12px;font-size:66.6%;line-height:0px;background-color:black;color:white}
+.mc_messageDiv{overflow-y:scroll;overflow-x:hidden}
+.mc_messageBoat{display:flex;align-content:flex-start;flex-direction:row;flex-wrap:wrap}
+.mc_messageBoat>div{flex:1 0 auto;border-left:1px solid #444}
+.mc_messageBoat>div:first-child{border-left:none}
+.mc_message{border-bottom:1px solid #444;word-wrap:break-word;line-height:1}
+.mc_message>span{text-shadow:1px 1px 0px black}
+.mc_message>sup{color:gray;letter-spacing:-1px;white-space:nowrap}
+.mc_notice{right:0;width:100px;cursor:pointer;display:none;position:absolute;padding-left:3px;background-color:black;color:white;border:1px solid yellow;font-size:75%}
+.link>span{text-shadow:none}
+.mc_listUserDiv{justify-content:space-around;align-content:flex-start;flex-direction:row;flex-wrap:wrap;display:none;overflow-x:hidden;font-size:75%}
+.mc_listUserDiv div:nth-child(1),.mc_listUserDiv div:nth-child(2){width:100%;font-weight:bold;text-align:center;font-size:100%}
+.mc_listUserDiv div{width:80px;overflow:hidden;white-space:nowrap;cursor:pointer}
+.mc_jq{cursor:pointer}
+.bb222{border-bottom:1px solid #222}
+#player_mark_div{position:absolute;bottom:11px;z-index:3;height:9px;font-size:66.6%}
+.pmd{border-right:3px solid gray;float:left;background-color:black}
+.pmd_span:hover,.pmd_close:hover{background-color:#444}
+.pmd_span,.pmd_close{cursor:pointer;padding:0 2px}
+.pmd_close{padding-right:4px;color:maroon}
+.lay{z-index:1;left:0;position:absolute;display:none}
+.msc,.rail{z-index:1;position:absolute;opacity:0.2;background-color:white;cursor:pointer;}
+.msc{left:0;width:100%;height:10px}
+.rail{width:15px}
+.nlawka{text-align:center;font-weight:bold;background-color:#444}
+.protocol{color:black;cursor:pointer;text-shadow:none;background-color:white;padding-right:1px;border-radius:3px;font-size:75%}
+.prehost{background-color:yellow;padding-left:1px;border-radius:3px 0 0 3px}
+.host{background-color:#FFA500;padding:0 1px;letter-spacing:0;border-radius:0 3px 3px 0}
+.request{font-size:75%;padding:0 2px 0 1px;background-color:#999;border-radius:3px}
+.linker_div{white-space:nowrap;font-size:75%;bottom:0;right:0;position:fixed;color:#AAA;background-color:black;width:350px;height:250px;zIndex:100;border-width:1px 0 0 1px;border-style:solid;border-color:white;overflow-y:scroll;overflow-x:hidden}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.fadeup{animation:fade 500ms 1 linear;animation-fill-mode:forwards}
