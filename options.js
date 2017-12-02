@@ -1617,7 +1617,7 @@ function ScPlayer(){
 			plr.fly2.mis=this.minsize3;
 			plr.fly2.sck=this.socket3;
 		}
-		n=this[plr.fly2.tp].indexOf(0);
+		n=plr.fly2.tp.indexOf(0);
 		if(!plr.fly2.act&&n===-1)return;
 		if(!plr.fly2.act){
 			plr.fly2.tp[n]=i;
