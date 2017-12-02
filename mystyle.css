@@ -1688,11 +1688,14 @@ function ScPlayer(){
 	this.chanSwitch=function(alt){
 		if(alt===this.plr)return;
 		let h;
+		console.log(this.players.has(this.plr))
 		if(this.players.has(this.plr)){
 			h=this.players.get(this.plr);
+			console.log(h,h.fly2.act)
 			if(!h.fly2.act)h.div.style.zIndex=0
 		}
 		h=this.players.get(alt);
+		console.log(h,h.fly2.act)
 		if(!h.fly2.act)h.div.style.zIndex=1;
 		this.plr=alt;
 		this.remakeMark()
