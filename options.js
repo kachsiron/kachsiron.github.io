@@ -1639,9 +1639,9 @@ function ScPlayer(){
 			plr.widget.style.height=this.playerSize.y+'px'
 		}
 	}
-	this.toFly2To=function(p,n){
-		p.widget.style.left=plr.fly2.mis[0]*plr.fly2.sck[n][0]+(n<2?2:0)+'px';
-		p.widget.style.top=plr.fly2.mis[1]*plr.fly2.sck[n][1]+'px'
+	this.toFly2To=function(plr,n){
+		plr.widget.style.left=plr.fly2.mis[0]*plr.fly2.sck[n][0]+(n<2?2:0)+'px';
+		plr.widget.style.top=plr.fly2.mis[1]*plr.fly2.sck[n][1]+'px'
 	}
 	this.toFly=function(){
 		if(this.plr==='-1')return;
