@@ -2574,7 +2574,10 @@ function mChats(){
 				for(let j=0;j<3;j++)c[j]+=l[j];
 				if(++r===4)r=0;
 			}
-			for(let i=0;i<3;i++)c[i]/=er;
+			for(let i=0;i<3;i++){
+				if(c[i]<0)c[i]=0;
+				else c[i]/=er;
+			}
 			let e=c[0]+c[1]+c[2];
 			if(e<383){
 				e=(383-e)/3;
