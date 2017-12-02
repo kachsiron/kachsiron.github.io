@@ -295,7 +295,7 @@ var grBut2={
 				scp.div.style.right=scp.div.style.bottom='';
 				scp.div.style.top=scp.div.style.left=0;
 				divLog2.style.right=window.innerWidth-730+'px';
-				D.body.style.overflow='hidden';//cMan.div1.style.fontSize='83.3%';
+				D.body.style.overflow='hidden';
 				divLog2.style.top=cMan.checkbox.style.top=mch.fctDiv.style.top=cMan.fctDiv.div.style.top=cMan.nadDiv.div.style.top=D.body.style.paddingTop='436px';
 				this.status=1;
 				with(cMan.div1.style){width='742px';overflowX='hidden';overflowY='scroll'}
@@ -1901,7 +1901,7 @@ function mChats(){
 	this.sencolors=[0,0.0125,0.025,0.0375,0.05,0.0625,0.075,0.0875,0.1,0.1125,0.125,0.1375,0.15,0.1625,0.175,0.1875,0.2,0.2125,0.225,0.2375,0.25],
 //this.colorCodes=[[255,0,0],[255,165,0],[255,255,0],[0,255,0],[0,255,255],[0,0,255],[255,0,255]],
 	this.colorCodes=[[255,0,0],[0,255,0],[0,0,255]],
-	this.acolorCodes=[[-127.5,0,0],[0,-127.5,0],[0,0,-127.5]],
+	this.acolorCodes=[[-255,0,0],[0,-255,0],[0,0,-255]],
 	this.creep=function(wid,z){
 		if(wid.messageDiv.scrollTop>0||z){
 			wid.scrl.yy=this.tHeight+wid.HHeight/((wid.messageDiv.scrollHeight-wid.mHeight)/wid.messageDiv.scrollTop);
@@ -2565,7 +2565,7 @@ function mChats(){
 						l=this.colorCodes[(l+r)%3];
 					}
 					else{
-						er-=0.5;
+						er--;
 						l=this.acolorCodes[(l+f)%3];
 						if(++f===3)f=0;
 					}
@@ -3436,11 +3436,11 @@ messtochat.MSG.onkeypress=function(e){
 					return
 				}
 				//else if(m==='t'||m==='е')Toganash();
-				else if(m==='с'||m==='c')makeCnv();
-				else if(m==='l'||m==='д')cMan.linker(true);
-				else if(m==='т'||m==='n')recentNews();
+				//else if(m==='с'||m==='c')makeCnv();
+				//else if(m==='l'||m==='д')cMan.linker(true);
+				//else if(m==='т'||m==='n')recentNews();
 				else if(m==='ф'||m==='a')FORMELA.filter(true,w);
-				else if(m==='куки')getCookie();
+				//else if(m==='куки')getCookie();
 				else if(m==='tfav'){
 					w=w.toLowerCase();
 					if(!TFAV.hasOwnProperty(w)){
@@ -3449,11 +3449,11 @@ messtochat.MSG.onkeypress=function(e){
 						localStorage.tfav=JSON.stringify(TFAV)
 					}
 				}
-				else if(m==='скрыть'||m==='crhsnm'){
-					messtochat.MSG.value=deleteFromList2(w);
-					for(let i in cMan.chn)cMan.setFavHid(cMan.chn[i]);
-					return
-				}
+				//else if(m==='скрыть'||m==='crhsnm'){
+				//	messtochat.MSG.value=deleteFromList2(w);
+				//	for(let i in cMan.chn)cMan.setFavHid(cMan.chn[i]);
+				//	return
+				//}
 				else if(m==='шрифт'&&w!==void 0)D.body.style.fontSize=w+'px';
 				else if((m==='ггчат'||m==='uuxfn')&&w!==void 0)mch.addChat('g_'+w,Number.parseInt(w));
 				else if((m==='ггс'||m==='uuc')&&w!==void 0)GGLISTAMOUNT=Number.parseInt(w);
@@ -3488,8 +3488,8 @@ messtochat.MSG.onkeypress=function(e){
 				}
 				else if(m==='imp')scp.importing(w);//добавить твитч канал по нику
 //else if(m==='st')STEAM.get();
-				else if(m==='sta'&&w!==void 0)STEAM.add(w);
-				else if(m==='s'||m==='ы')saveHid();
+//else if(m==='sta'&&w!==void 0)STEAM.add(w);
+//else if(m==='s'||m==='ы')saveHid();
 				else if((m==='я'||m==='z')&&w!==void 0)browser.tabs.setZoom(Number.parseFloat(w));
 				else if(m==='eval'&&w!==void 0)eval(w);
 				else if(m==='api'&&w!==void 0){
@@ -3504,16 +3504,16 @@ messtochat.MSG.onkeypress=function(e){
 					})(w);
 				}
 				else if(m==='tw'&&w!==void 0)tw_list(w);//список стримов по категории
-				/*else if(m==='gdv'&&w!==void 0){
+				else if(m==='gdv'&&w!==void 0){
 					if(w === 'str') GodVille.grun();
 					else if(w === 'stp') GodVille.gstop();
-				}*/
+				}
 				else if(m==='фав'&&w!==void 0){
 					deleteFromList('-1',w,2);
 					let c=cMan.getIdByName(w);
 					if(c!==null)cMan.setFavHid(c)
 				}
-				else if(m==='q'||m==='й'){messtochat.MSG.value=scp.getPlayerCode();return}
+//else if(m==='q'||m==='й'){messtochat.MSG.value=scp.getPlayerCode();return}
 				else if(m==='r'||m==='к'){
 					let p=scp.players.get(scp.plr),ser=p.service,par=p.param;
 					scp.cls(p.id);
@@ -3526,8 +3526,8 @@ messtochat.MSG.onkeypress=function(e){
 						for(let i in JSON.parse(requ.target.responseText))scp.mkpGG('g_'+i,i,w)
 					}catch(e){OPOV.serv('Не удалось загрузить плеер '+w,0);console.log(e)}}})
 				}
-				else if(m==='п'&&w!==void 0){messtochat.MSG.value='идёт перевод...';perevodchik(cmd[2],'ru-en');return}
-				else if(m==='g'&&w!==void 0){messtochat.MSG.value='идёт перевод...';perevodchik(cmd[2],'en-ru');return}
+//else if(m==='п'&&w!==void 0){messtochat.MSG.value='идёт перевод...';perevodchik(cmd[2],'ru-en');return}
+//else if(m==='g'&&w!==void 0){messtochat.MSG.value='идёт перевод...';perevodchik(cmd[2],'en-ru');return}
 				messtochat.MSG.value=''
 			}
 			else if(id!==''){
@@ -3575,7 +3575,7 @@ function rand(min,max){return Math.floor(Math.random()*(max-min+1))+min}
 window.onunload=saveHid;
 
 // G O D V I L L E
-/*var GodVille = {
+var GodVille = {
 	'sounds': [C('audio'),C('source'),C('audio'),C('source'),C('audio'),C('source')],
 	'h_notice': true,
 	'g_notice': true,
@@ -3617,7 +3617,7 @@ GodVille.sounds[5].setAttribute('preload','preload');GodVille.sounds[5].type='au
 GodVille.sounds[0].appendChild(GodVille.sounds[1]);B(GodVille.sounds[0]);
 GodVille.sounds[2].appendChild(GodVille.sounds[3]);B(GodVille.sounds[2]);
 GodVille.sounds[4].appendChild(GodVille.sounds[5]);B(GodVille.sounds[4]);
-GodVille.grun();*/
+//GodVille.grun();
 
 //Д О Б А В Л Е Н И Е   Н А   С Т Р А Н И Ц У
 B(vasya.div); B(grBut);
