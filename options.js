@@ -1483,11 +1483,14 @@ var scMenu={
 function ScPlayer(){
 	this.nest=[0,0,0];
 	this.nest2=[0,0,0,0];
+	this.nest3=[0,0];
 	this.socket=[0,204,-204];
 	this.socket2=[[0,0],[1,0],[0,1],[1,1]];
-	this.playerSize={x:740,y:416};//width:740px;height:423px;
+	this.socket3=[[0,0],[1,0]];
+	this.playerSize={x:740,y:416};
 	this.minsize=[355,204];
 	this.minsize2=[362,208];
+	this.minsize3=[960,540];
 	this.div=C('DIV');
 	this.div.className='scpdiv';
 	B(this.div);
@@ -1582,9 +1585,9 @@ function ScPlayer(){
 		else this.popup(i)
 	}
 	this.aP=function(i,gg,s,p){
-		return this.players.set(i,{'id':i,'service':s,'param':p,'gg':gg,'ggid':-1,'twid':'','fly':false,'fly2':false,'c':0,'strms':[],'div':C('DIV'),'widget':C('DIV'),'title':C('DIV')}).get(i)
+		return this.players.set(i,{'id':i,'service':s,'param':p,'gg':gg,'ggid':-1,'twid':'','fly':false,'fly2':{'act':false,'tp':null,'mis':null},'c':0,'strms':[],'div':C('DIV'),'widget':C('DIV'),'title':C('DIV')}).get(i)
 	}
-	this.toFly2=function(){
+	this.toFly2=function(ctrl){
 		if(this.plr==='-1')return;
 		let i=this.plr,plr=this.players.get(i),n;
 		if(plr.fly){
@@ -1604,21 +1607,31 @@ function ScPlayer(){
 			}
 			return
 		}
-		n=this.nest2.indexOf(0);
-		if(!plr.fly2&&n===-1)return;
-		if(!plr.fly2){
-			this.nest2[n]=i;
-			plr.fly2=true;
+		if(!ctrl){
+			plr.fly2.tp=this.nest2;
+			plr.fly2.mis=this.minsize2;
+			plr.fly2.sck=this.socket2;
+		}
+		else{
+			plr.fly2.tp=this.nest3;
+			plr.fly2.mis=this.minsize3;
+			plr.fly2.sck=this.socket3;
+		}
+		n=this[plr.fly2.tp].indexOf(0);
+		if(!plr.fly2.act&&n===-1)return;
+		if(!plr.fly2.act){
+			plr.fly2.tp[n]=i;
+			plr.fly2.act=true;
 			plr.div.style.zIndex=2;
 			plr.widget.style.position='absolute';
 			this.toFly2To(plr,n);
-			for(let j=plr.widget.querySelectorAll('[width]'),l=j.length;l--;){j[l].setAttribute('width',this.minsize2[0]);j[l].setAttribute('height',this.minsize2[1])}
-			plr.widget.style.width=this.minsize2[0]+'px';
-			plr.widget.style.height=this.minsize2[1]+'px'
+			for(let j=plr.widget.querySelectorAll('[width]'),l=j.length;l--;){j[l].setAttribute('width',plr.fly2.mis[0]);j[l].setAttribute('height',plr.fly2.mis[1])}
+			plr.widget.style.width=plr.fly2.mis[0]+'px';
+			plr.widget.style.height=plr.fly2.mis[1]+'px'
 		}
 		else{
-			this.nest2[this.nest2.indexOf(i)]=0;
-			plr.fly2=false;
+			plr.fly2.tp[plr.fly2.tp.indexOf(i)]=0;
+			plr.fly2.act=false;
 			plr.div.style.zIndex=1;
 			for(let j=plr.widget.querySelectorAll('[width]'),l=j.length;l--;){j[l].setAttribute('width',this.playerSize.x);j[l].setAttribute('height',this.playerSize.y-7)}
 			plr.widget.removeAttribute('style');
@@ -1627,25 +1640,25 @@ function ScPlayer(){
 		}
 	}
 	this.toFly2To=function(p,n){
-		p.widget.style.left=this.minsize2[0]*this.socket2[n][0]+(n<2?2:0)+'px';
-		p.widget.style.top=this.minsize2[1]*this.socket2[n][1]+'px'
+		p.widget.style.left=plr.fly2.mis[0]*plr.fly2.sck[n][0]+(n<2?2:0)+'px';
+		p.widget.style.top=plr.fly2.mis[1]*plr.fly2.sck[n][1]+'px'
 	}
 	this.toFly=function(){
 		if(this.plr==='-1')return;
 		let i=this.plr,plr=this.players.get(i),n;
-		if(plr.fly2){
-			n=this.nest2.indexOf(0);
+		if(plr.fly2.act){
+			n=plr.fly2.tp.indexOf(0);
 			if(n!==-1){
-				n=this.nest2.indexOf(i);
+				n=plr.fly2.tp.indexOf(i);
 				for(let x=n;;){
-					if(this.nest2[x]===0){
-						this.nest2[n]=0;
+					if(plr.fly2.tp[x]===0){
+						plr.fly2.tp[n]=0;
 						n=x;
 						break
 					}
 					if(++x===4)x=0
 				}
-				this.nest2[n]=i;
+				plr.fly2.tp[n]=i;
 				this.toFly2To(plr,n)
 			}
 			return
@@ -1738,7 +1751,10 @@ function ScPlayer(){
 		n.fly.onclick=function(){scp.chanSwitch(this.i);scp.toFly()}.bind({i:i});
 		n.fly2.textContent='^';
 		n.fly2.classList.add('pmd_span');
-		n.fly2.onclick=function(){scp.chanSwitch(this.i);scp.toFly2()}.bind({i:i});
+		n.fly2.onclick=function(e){
+			scp.chanSwitch(this.i);
+			scp.toFly2(e.ctrlKey)
+		}.bind({i:i});
 
 		//n.chat.textContent='⌸';
 		//n.chat.classList.add('pmd_span');
