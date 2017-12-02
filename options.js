@@ -1607,19 +1607,19 @@ function ScPlayer(){
 			}
 			return
 		}
-		if(!ctrl){
-			plr.fly2.tp=this.nest2;
-			plr.fly2.mis=this.minsize2;
-			plr.fly2.sck=this.socket2;
-		}
-		else{
-			plr.fly2.tp=this.nest3;
-			plr.fly2.mis=this.minsize3;
-			plr.fly2.sck=this.socket3;
-		}
-		n=plr.fly2.tp.indexOf(0);
-		if(!plr.fly2.act&&n===-1)return;
 		if(!plr.fly2.act){
+			if(!ctrl){
+				plr.fly2.tp=this.nest2;
+				plr.fly2.mis=this.minsize2;
+				plr.fly2.sck=this.socket2;
+			}
+			else{
+				plr.fly2.tp=this.nest3;
+				plr.fly2.mis=this.minsize3;
+				plr.fly2.sck=this.socket3;
+			}
+			n=plr.fly2.tp.indexOf(0);
+			if(n===-1)return;
 			plr.fly2.tp[n]=i;
 			plr.fly2.act=true;
 			plr.div.style.zIndex=2;
