@@ -21,28 +21,23 @@ var DIV3_HIDE_SCROLL=(localStorage.hasOwnProperty('div3scroll')?Number.parseInt(
 
 //Л О К А Л Ь Н Ы Е   Д А Н Н Ы Е
 function deleteFromList(alt,cn,i){
-	if(alt!=='-1')cn=cMan.getcn(alt);
-	//let st;
+	if(alt!=='-1')cn=cMan.getcn(alt);//let st;
 	if(i===1){
-		if(HID.hasOwnProperty(cn)){
-			//st=false;
+		if(HID.hasOwnProperty(cn)){//st=false;
 			delete HID[cn]
 		}
-		else{
-			//st=true;
+		else{//st=true;
 			HID[cn]=(new Date()).getTime()
 		}
 		localStorage.hid=JSON.stringify(HID)
 	}
 	else{
 		let ff=JSON.parse(localStorage.fav);
-		if(FAV.hasOwnProperty(cn)){
-			//st=false;
+		if(FAV.hasOwnProperty(cn)){//st=false;
 			delete FAV[cn];
 			delete ff[cn]
 		}
-		else{
-			//st=true;
+		else{//st=true;
 			FAV[cn]={};
 			ff[cn]={}
 		}
@@ -1693,12 +1688,15 @@ function ScPlayer(){
 	this.chanSwitch=function(alt){
 		if(alt===this.plr)return;
 		let h;
+		console.log(this.players.has(this.plr))
 		if(this.players.has(this.plr)){
 			h=this.players.get(this.plr);
-			if(!h.fly2)h.div.style.zIndex=0
+			console.log(h,h.fly2.act)
+			if(!h.fly2.act)h.div.style.zIndex=0
 		}
 		h=this.players.get(alt);
-		if(!h.fly2)h.div.style.zIndex=1;
+		console.log(h,h.fly2.act)
+		if(!h.fly2.act)h.div.style.zIndex=1;
 		this.plr=alt;
 		this.remakeMark()
 	}
