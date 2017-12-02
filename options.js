@@ -1650,13 +1650,13 @@ function ScPlayer(){
 			n=plr.fly2.tp.indexOf(0);
 			if(n!==-1){
 				n=plr.fly2.tp.indexOf(i);
-				for(let x=n;;){
+				for(let x=n,y=plr.fly2.tp.length;;){
 					if(plr.fly2.tp[x]===0){
 						plr.fly2.tp[n]=0;
 						n=x;
 						break
 					}
-					if(++x===4)x=0
+					if(++x===y)x=0
 				}
 				plr.fly2.tp[n]=i;
 				this.toFly2To(plr,n)
