@@ -1521,7 +1521,7 @@ function ScPlayer(){
 				p.widget.remove();
 				this.nest[this.nest.indexOf(i)]=0
 			}
-			else if(p.fly2)this.nest2[this.nest2.indexOf(i)]=0;
+			else if(p.fly2.act)p.fly2.tp[p.fly2.tp.indexOf(i)]=0;
 			p.div.remove();
 			this.players.delete(i);
 			this.count(-1);
@@ -1533,7 +1533,7 @@ function ScPlayer(){
 				let k;
 				for(k of this.players.keys()){}
 				let h=this.players.get(k);
-				if(!h.fly2)h.div.style.zIndex=1;
+				if(!h.fly2.act)h.div.style.zIndex=1;
 				this.plr=k
 			}
 			cMan.setcolid(i);
