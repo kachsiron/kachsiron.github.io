@@ -1490,7 +1490,7 @@ function ScPlayer(){
 	this.playerSize={x:740,y:416};
 	this.minsize=[355,204];
 	this.minsize2=[362,208];
-	this.minsize3=[960,540];
+	this.minsize3=[560,315];
 	this.div=C('DIV');
 	this.div.className='scpdiv';
 	B(this.div);
