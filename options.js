@@ -3500,7 +3500,9 @@ messtochat.MSG.onkeypress=function(e){
 					localStorage.dns=s[3];
 					localStorage.tfav=s[4]
 				}
-				else if(m==='imp')scp.importing(w);//добавить твитч канал по нику
+				else if(m==='imp'){
+					scp.importing(w.replace(/https?:\/\/.*?\//,''));//добавить твитч канал по нику
+				}
 //else if(m==='st')STEAM.get();
 //else if(m==='sta'&&w!==void 0)STEAM.add(w);
 //else if(m==='s'||m==='ы')saveHid();
