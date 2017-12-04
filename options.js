@@ -3607,7 +3607,7 @@ GodVille.func = function() {
 			}
 		}
 		else GodVille.h_notice = true;
-		if(e.godpower >= 24) {
+		if(e.godpower >= 25) {
 			if(GodVille.g_notice) {
 				GodVille.sounds[2].play();
 				GodVille.g_notice = false;
