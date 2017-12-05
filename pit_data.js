@@ -3232,7 +3232,7 @@ var R = {
 			}]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical (Failed at 55). Effect: Knife. Chance to inflict Spores",
+			"desc": "Skill: Mechanical (Failed at 55). Effect: Knife Weapon. 30 accuracy, 7 damage, 60 penetration. Chance to inflict Spores",
 			"items": [{
 					"title": "Spore Dagger",
 					"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/f/f5/75px-Spore_Dagger.png/revision/latest?cb=20150420110115"
