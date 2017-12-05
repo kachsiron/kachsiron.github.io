@@ -4,9 +4,9 @@ body{background-color:black;color:#70b8ff;font-family:Verdana}
 #winv{}
 #wbut{text-align:center}
 button{width:100px;font-family:monospace;font-weight:bold}
-input,select,option{width:200px;font-family:monospace}
+input[type="text"],select,option{width:200px;font-family:monospace}
 .inv{width:750px;display:flex;flex-flow:row wrap;align-items:center;justify-content:center}
-.recept{animation:fade 333ms 1 linear;animation-fill-mode:forwards;display:flex;flex-flow:row wrap;align-items:center;justify-content:flex-start}
+.recept{position:relative;animation:fade 333ms 1 linear;animation-fill-mode:forwards;display:flex;flex-flow:row wrap;align-items:center;justify-content:flex-start}
 .icon{width:50px;height:50px}
 .item,.item2{width:60px;height:100px;border:1px solid gray;text-align:center;word-wrap:break-word}
 .item{transition: background-color 333ms;cursor:pointer}
@@ -18,3 +18,5 @@ input,select,option{width:200px;font-family:monospace}
 .active_button{color:red}
 .inactive_item{opacity:0.5}
 .good{background-color:#783e48}
+.fav_icon{padding:0 4px;position:absolute;right:0;top:0;cursor:pointer;font-size:150%}
+#save_button{position:absolute;left:0;top:0}

@@ -1,5 +1,6 @@
-var myinv = {'cooker': [], 'lab': []};
-var curkedah = 'cooker';
+var myinv = localStorage.hasOwnProperty('myinv')?JSON.parse(localStorage.myinv):{'cooker':[],'lab':[]};
+var fav = localStorage.hasOwnProperty('fav')?JSON.parse(localStorage.fav):{'cooker':[],'lab':[]};
+var curkedah = '';
 var allitems = {'cooker': [], 'lab': []};
 var allitemsname = {'cooker': {}, 'lab': {}};
 var resultData = {'cooker': [], 'lab': []};
@@ -13,11 +14,15 @@ var listRes = document.createElement('DIV');
 var wrap = document.createElement('DIV');
 var but = document.createElement('BUTTON');
 var but2 = document.createElement('BUTTON');
+var saveBut = document.createElement('BUTTON');
+var chk = document.createElement('INPUT');
+var chkLabel = document.createElement('LABEL');
 var selecd = { 'cooker': document.createElement('SELECT'), 'lab': document.createElement('SELECT') }, selectd_opt = { 'cooker': ['','Biotech','Medical','Necro Tech'], 'lab': ['','Medical','Computer','Biotech','Traps','Electronics','Necro Tech','Engineering','Mechanical'] };
 
+function lenin() { resetList(); calcu(curkedah); listSearching() }
 for(let i in selecd) {
 	selecd[i].setAttribute('size', 1);
-	selecd[i].onchange = function() { resetList(); calcu(curkedah) }
+	selecd[i].onchange = lenin;
 	for(let j = 0, l = selectd_opt[i].length; j < l; j++) {
 		let o = document.createElement('OPTION');
 		o.textContent = (selectd_opt[i][j] === '' ? 'Фильтр по навыку' : selectd_opt[i][j]);
@@ -27,6 +32,10 @@ for(let i in selecd) {
 }
 listSearch.placeholder = 'Фильтр по ингредиенту';
 listSearch.type = 'text';
+chk.type='checkbox';
+chk.id='chk';
+chkLabel.setAttribute('for', 'chk');
+chkLabel.textContent='Избранное';
 winv.id='winv';
 wbut.id='wbut';
 div.className='inv';
@@ -37,8 +46,7 @@ function listSearchReset(type) {
 	resultData[type].forEach(e => { e.element.style.display = '' });
 }
 function listSearching() {
-	listSearch.disabled = (resultData[curkedah].length === 0);
-	selecd[curkedah].disabled = (resultData[curkedah].length === 0);
+	listSearch.disabled = selecd[curkedah].disabled = (resultData[curkedah].length === 0);
 	let value = listSearch.value;
 	if(value === '') listSearchReset(curkedah);
 	else {
@@ -67,6 +75,9 @@ for(let i in I.lab) {
 	allitemsname.lab[i] = d;
 	div2.appendChild(d)
 }
+for(let i in myinv) {
+	for(let o = 0, l = myinv[i].length; o<l; o++) allitemsname[i][ myinv[i][o] ].classList.add('active');
+}
 function makeItem(name, src, zv) {
 	let d = document.createElement('DIV');
 	d.className = (zv?'item':'item2');
@@ -86,23 +97,41 @@ function resetList() {
 function calcu(type) {
 	resultData[type] = [];
 	let result = [];
-	for(let r in R[type]) {
-		let b = 0, n = [], rt = R[type][r];
-		if(selecd[type].value !== 'none' && selecd[type].value !== rt.skill) continue;
-		for(let i = 1, l = rt.items.length; i < l; i++) {
-			if(myinv[type].indexOf(rt.items[i].title) !== -1) {
-				b++;
-				n[i] = true;
+	if(chk.checked) {
+		for(let r = 0, rl = fav[type].length; r < rl; r++) {
+			let b = 0, n = [], rt = R[type][ fav[type][r] ];
+			if(selecd[type].value !== 'none' && selecd[type].value !== rt.skill) continue;
+			for(let i = 1, l = rt.items.length; i < l; i++) {
+				if(myinv[type].indexOf(rt.items[i].title) !== -1) {
+					b++;
+					n[i] = true;
+				}
+				else n[i] = false
 			}
-			else n[i] = false
+			result.push({ 'b': b / rt.items.length, 'n': n, 'r': fav[type][r], 'a': b === (rt.items.length - 1) });
 		}
-		if(b === 0) continue;
-		result.push({ 'b': b / rt.items.length, 'n': n, 'r': r, 'a': b === (rt.items.length - 1) });
+	}
+	else{
+		for(let r in R[type]) {
+			let b = 0, n = [], rt = R[type][r];
+			if(selecd[type].value !== 'none' && selecd[type].value !== rt.skill) continue;
+			for(let i = 1, l = rt.items.length; i < l; i++) {
+				if(myinv[type].indexOf(rt.items[i].title) !== -1) {
+					b++;
+					n[i] = true;
+				}
+				else n[i] = false
+			}
+			if(b === 0) continue;
+			result.push({ 'b': b / rt.items.length, 'n': n, 'r': r, 'a': b === (rt.items.length - 1) });
+		}
 	}
 	result.sort((a,b)=>{return b.b-a.b});
-	for(let i = 0, l = result.length, d, rd, r, e; i < l; i++) {
+	for(let i = 0, l = result.length, d, rd, r, e, fb; i < l; i++) {
 		d = document.createElement('DIV');
+		fb = document.createElement('DIV');
 		d.className = 'recept';
+		fb.className = 'fav_icon';
 		if(result[i].a) d.classList.add('good');
 		r = result[i].r;
 		e = { 'element': d, 'ingr': new Set() };
@@ -132,6 +161,20 @@ function calcu(type) {
 		rd.className='desc';
 		rd.textContent=R[type][r].desc;
 		d.appendChild(rd);
+		fb.onclick=function(){
+			let sk = fav[this.type].indexOf(this.r);
+			if(sk===-1){
+				fav[this.type].push(this.r);
+				this.element.textContent= '★'
+			}
+			else {
+				fav[this.type].splice(sk, 1)
+				this.element.textContent= '☆';
+			}
+			if(this.wim) lenin()
+		}.bind({ 'r': r, 'type': type, 'element': fb, 'wim': chk.checked });
+		fb.textContent = fav[type].indexOf(r)===-1?'☆':'★';
+		d.appendChild(fb);
 		listRes.appendChild(d)
 	}
 }
@@ -153,7 +196,6 @@ function butik() {
 	listSearch.value = '';
 	if(curkedah === this.type) {
 		myinv[this.type] = [];
-		//resultData[this.type] = [];
 		for(let o = 0, l = allitems[this.type].length; o<l; o++) allitems[this.type][o].classList.remove('active');
 	}
 	selecd.cooker.style.display = selecd.lab.style.display = div.style.display = div2.style.display='none';
@@ -171,17 +213,27 @@ function butik() {
 	}
 	curkedah = this.type;
 	resetList();
-	calcu(this.type)
+	calcu(this.type);
+	listSearching()
 }
+saveBut.textContent = 'Сохранить';
+saveBut.id='save_button';
 but.textContent = 'К У К Е Р';
 but2.textContent = 'Л А Б';
+saveBut.onclick=function(){
+	localStorage.fav=JSON.stringify(fav);
+	localStorage.myinv=JSON.stringify(myinv);
+}
 but.onclick=butik.bind({'type':'cooker'})
 but2.onclick=butik.bind({'type':'lab'})
 butik.call({'type':'cooker'});
+chk.onchange=lenin;
 listSearching();
 list.appendChild(listSearch);
 list.appendChild(selecd.cooker);
 list.appendChild(selecd.lab);
+list.appendChild(chk);
+list.appendChild(chkLabel);
 list.appendChild(listRes);
 wbut.appendChild(but);
 wbut.appendChild(but2);
@@ -190,4 +242,5 @@ winv.appendChild(div);
 winv.appendChild(div2);
 wrap.appendChild(winv);
 wrap.appendChild(list);
+document.body.appendChild(saveBut);
 document.body.appendChild(wrap);
