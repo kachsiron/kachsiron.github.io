@@ -3463,11 +3463,11 @@ messtochat.MSG.onkeypress=function(e){
 						localStorage.tfav=JSON.stringify(TFAV)
 					}
 				}
-				//else if(m==='скрыть'||m==='crhsnm'){
-				//	messtochat.MSG.value=deleteFromList2(w);
-				//	for(let i in cMan.chn)cMan.setFavHid(cMan.chn[i]);
-				//	return
-				//}
+				/*else if(m==='скрыть'||m==='crhsnm'){
+					messtochat.MSG.value=deleteFromList2(w);
+					for(let i in cMan.chn)cMan.setFavHid(cMan.chn[i]);
+					return
+				}*/
 				else if(m==='шрифт'&&w!==void 0)D.body.style.fontSize=w+'px';
 				else if((m==='ггчат'||m==='uuxfn')&&w!==void 0)mch.addChat('g_'+w,Number.parseInt(w));
 				else if((m==='ггс'||m==='uuc')&&w!==void 0)GGLISTAMOUNT=Number.parseInt(w);
@@ -3595,7 +3595,8 @@ var GodVille = {
 	'sounds': [C('audio'),C('source'),C('audio'),C('source'),C('audio'),C('source')],
 	'h_notice': true,
 	'g_notice': true,
-	'timer': null
+	'timer': null,
+	'lph': ''
 }
 GodVille.func = function() {
 	GMX({method:'GET',url:'https://godville.net/gods/api/%D0%92%D1%83%D0%BA%D1%83%D0%BF%D0%BA%D0%B0%D0%BA%D0%B5/529007a4e508',onload:e=>{try{
@@ -3616,10 +3617,10 @@ GodVille.func = function() {
 			}
 		}
 		else GodVille.g_notice = true;
-		if(/«|»/.test(e.diary_last)) {
+		if(GodVille.lph !== e.diary_last && /«|»/.test(e.diary_last)) {
 			GodVille.sounds[4].play();
 		}
-		
+		GodVille.lph = e.diary_last;
 	}catch(err){OPOV.serv('Не удалось годвильнуть',0);console.log(err)}}})
 }
 GodVille.grun = function() { GodVille.timer = setInterval(GodVille.func, 59999) }
