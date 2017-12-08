@@ -2500,7 +2500,7 @@ function mChats(){
 			this.div.onclick=()=>{this.div.style.display='none'}
 			this.div.appendChild(this.titleDiv);
 			//this.buts[0].style.marginBottom='5px';
-			with(this.but.style){cursor='pointer';height='10px';minWidth='15px';backgroundColor='green')}
+			with(this.but.style){cursor='pointer';height='10px';minWidth='15px';backgroundColor='green'}
 			this.div.appendChild(this.but);
 			
 			this.but.onclick=function(){
