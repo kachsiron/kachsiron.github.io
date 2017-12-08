@@ -2539,8 +2539,8 @@ function mChats(){
 							}
 						}
 					}
-				}.bind(this,x)*/
-			}
+				}.bind(this,x)
+			}*/
 			B(this.div)
 		},
 		'data':null,'timer':null,
