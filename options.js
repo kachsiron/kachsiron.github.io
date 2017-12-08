@@ -2025,18 +2025,16 @@ function mChats(){
 		w.messageDiv.className='mc_messageDiv';
 		w.messageDiv.innerHTML='<hr></hr>';
 		
-		//this.igno.tie(w);
 		this.top(w);
 		w.scrl={disp:true,y:0,yy:0,t:false,rail:C('DIV'),lay:C('DIV'),msc:C('DIV')};
 		with(w.scrl){rail.className='rail';lay.className='lay';msc.className='msc';rail.style.height=this.railHeight+'px';msc.style.top=lay.style.top=this.tHeight+'px'}
 
 		(function(t,w){
-			//w.messageDiv.onmouseup=()=>{clearTimeout(t.igno.timer)}
 			w.messageDiv.onclick=e=>{
 				if(e.ctrlKey){
 					if(e.target.hasOwnProperty('ignoName')){
 						t.igno.data=e.target.ignoName;
-						t.igno.titleDiv=e.target.ignoName.n;
+						t.igno.titleDiv.textContent=e.target.ignoName.n;
 						with(t.igno.div.style){display='block';left=e.pageX-t.igno.div.offsetWidth/2+'px';top=e.pageY-t.igno.div.offsetHeight/2+'px'}
 					}
 				}
@@ -2498,7 +2496,7 @@ function mChats(){
 	}
 	this.igno={
 		'check':function(c,d,b,t,n){
-			if(c.twShifts.hasOwnProperty(n)&&c.twShifts[n]===1){d.style.color='gray';d.style.opacity='0.4';d.style.whiteSpace='nowrap'}
+			if(c.twShifts.hasOwnProperty(n)){d.style.color='gray';d.style.opacity='0.4';d.style.whiteSpace='nowrap'}
 		},
 		'init':function(){
 			this.div=C('DIV');
@@ -2518,10 +2516,9 @@ function mChats(){
 				this.data=null;
 				if(!chat.twShifts.hasOwnProperty(n))chat.twShifts[n]=1;
 				else delete chat.twShifts[n]
-				for(let g=chat.messageDiv.querySelectorAll('div'),x=0,l=g.length,w,ws;x<l;x++){
+				for(let g=chat.messageDiv.querySelectorAll('div'),x=0,l=g.length,w;x<l;x++){
 					w=g[x];
 					if(w.hasOwnProperty('ignoName')&&w.ignoName.n===n){
-						//ws=w.children[0];
 						if(!chat.twShifts.hasOwnProperty(n)){w.style.color='';w.style.opacity='';w.style.whiteSpace=''}
 						else{w.style.color='gray';w.style.opacity='0.4';w.style.whiteSpace='nowrap'}
 					}
@@ -2739,7 +2736,7 @@ function mChats(){
 		dd.appendChild(co);dd.appendChild(bb);dd.appendChild(b);
 
 		dd.ignoName={chat,n};
-		this.igno.check(chat,dd,bb,b,n);
+		this.igno.check(chat,dd,n);
 		
 		if(chat.sun)this.fadeMessage(ve,dd,chat.id);
 		if(chat.wsChat!==2)chat.light[n]=[dd,bb,0];
