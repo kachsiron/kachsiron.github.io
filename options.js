@@ -2036,7 +2036,6 @@ function mChats(){
 				if(e.ctrlKey){
 					if(e.target.hasOwnProperty('ignoName')){
 						t.igno.data=e.target.ignoName;
-						console.log(t.igno.data)
 						with(t.igno.div.style){display='block';left=e.pageX-t.igno.div.offsetWidth/2+'px';top=e.pageY-t.igno.div.offsetHeight/2+'px'}
 					}
 				}
@@ -2516,13 +2515,14 @@ function mChats(){
 			this.but.onclick=function(){
 				let {chat,n}=this.data;
 				this.data=null;
-				if(!chat.twShifts.hasOwnProperty(n)||chat.twShifts[n]===0)chat.twShifts[n]=1;//else delete chat.twShifts[n]
+				if(!chat.twShifts.hasOwnProperty(n))chat.twShifts[n]=1;
+				else delete chat.twShifts[n]
 				for(let g=chat.messageDiv.querySelectorAll('div'),x=0,l=g.length,w,ws;x<l;x++){
 					w=g[x];
 					if(w.hasOwnProperty('ignoName')&&w.ignoName.n===n){
 						ws=w.children[0];
-						if(!chat.twShifts.hasOwnProperty(n)||chat.twShifts[n]===0){ws.style.color='';ws.nextSibling.style.opacity='';w.style.whiteSpace=''}
-						else if(chat.twShifts[n]===1){ws.style.color='gray';ws.nextSibling.style.opacity='0.4';w.style.whiteSpace='nowrap'}
+						if(!chat.twShifts.hasOwnProperty(n)){ws.style.color='';ws.nextSibling.style.opacity='';w.style.whiteSpace=''}
+						else{ws.style.color='gray';ws.nextSibling.style.opacity='0.4';w.style.whiteSpace='nowrap'}
 					}
 				}
 			}.bind(this);
