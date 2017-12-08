@@ -2498,7 +2498,7 @@ function mChats(){
 	}
 	this.igno={
 		'check':function(c,d,b,t,n){
-			if(c.twShifts.hasOwnProperty(n)&&c.twShifts[n]===1){d.style.color='gray';d.style.opacity='0.4';t.style.whiteSpace='nowrap'}
+			if(c.twShifts.hasOwnProperty(n)&&c.twShifts[n]===1){d.style.color='gray';d.style.opacity='0.4';d.style.whiteSpace='nowrap'}
 		},
 		'init':function(){
 			this.div=C('DIV');
@@ -2522,8 +2522,8 @@ function mChats(){
 					w=g[x];
 					if(w.hasOwnProperty('ignoName')&&w.ignoName.n===n){
 						ws=w.children[0];
-						if(!chat.twShifts.hasOwnProperty(n)){ws.style.color='';ws.nextSibling.style.opacity='';w.style.whiteSpace=''}
-						else{ws.style.color='gray';ws.nextSibling.style.opacity='0.4';w.style.whiteSpace='nowrap'}
+						if(!chat.twShifts.hasOwnProperty(n)){w.style.color='';w.nextSibling.style.opacity='';w.style.whiteSpace=''}
+						else{w.style.color='gray';w.nextSibling.style.opacity='0.4';w.style.whiteSpace='nowrap'}
 					}
 				}
 			}.bind(this);
