@@ -2036,6 +2036,7 @@ function mChats(){
 				if(e.ctrlKey){
 					if(e.target.hasOwnProperty('ignoName')){
 						t.igno.data=e.target.ignoName;
+						console.log(t.igno.data)
 						with(t.igno.div.style){display='block';left=e.pageX-t.igno.div.offsetWidth/2+'px';top=e.pageY-t.igno.div.offsetHeight/2+'px'}
 					}
 				}
@@ -2738,7 +2739,6 @@ function mChats(){
 		dd.appendChild(co);dd.appendChild(bb);dd.appendChild(b);
 
 		dd.ignoName={chat,n};
-		console.log(dd,dd.ignoName)
 		this.igno.check(chat,dd,bb,b,n);
 		
 		if(chat.sun)this.fadeMessage(ve,dd,chat.id);
