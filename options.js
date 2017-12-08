@@ -2035,9 +2035,7 @@ function mChats(){
 			w.messageDiv.onclick=e=>{
 				if(e.ctrlKey){
 					if(e.target.hasOwnProperty('ignoName')){
-						
 						t.igno.data=e.target.ignoName;
-						console.log(t.igno.data);
 						with(t.igno.div.style){display='block';left=e.pageX-t.igno.div.offsetWidth/2+'px';top=e.pageY-t.igno.div.offsetHeight/2+'px'}
 					}
 				}
@@ -2521,6 +2519,7 @@ function mChats(){
 				for(let g=chat.messageDiv.querySelectorAll('div'),x=0,l=g.length,w,ws;x<l;x++){
 					w=g[x];
 					ws=w.children[0];
+					console.log(w,ws)
 					if(w.ignoName.n===n){
 						if(!chat.twShifts.hasOwnProperty(n)||chat.twShifts[n]===0){ws.style.color='';ws.nextSibling.style.opacity='';w.style.whiteSpace=''}
 						else if(chat.twShifts[n]===1){ws.style.color='gray';ws.nextSibling.style.opacity='0.4';w.style.whiteSpace='nowrap'}
