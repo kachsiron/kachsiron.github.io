@@ -2521,7 +2521,7 @@ function mChats(){
 				for(let g=chat.messageDiv.querySelectorAll('div'),x=0,l=g.length,w,ws;x<l;x++){
 					w=g[x];
 					if(w.hasOwnProperty('ignoName')&&w.ignoName.n===n){
-						ws=w.children[0];
+						//ws=w.children[0];
 						if(!chat.twShifts.hasOwnProperty(n)){w.style.color='';w.nextSibling.style.opacity='';w.style.whiteSpace=''}
 						else{w.style.color='gray';w.nextSibling.style.opacity='0.4';w.style.whiteSpace='nowrap'}
 					}
