@@ -2519,7 +2519,7 @@ function mChats(){
 				for(let g=chat.messageDiv.querySelectorAll('div'),x=0,l=g.length,w,ws;x<l;x++){
 					w=g[x];
 					ws=w.children[0];
-					console.log(w,ws,ws.ignoName)
+					console.log(w,ws,w.ignoName)
 					if(ws.ignoName.n===n){
 						if(!chat.twShifts.hasOwnProperty(n)||chat.twShifts[n]===0){ws.style.color='';ws.nextSibling.style.opacity='';w.style.whiteSpace=''}
 						else if(chat.twShifts[n]===1){ws.style.color='gray';ws.nextSibling.style.opacity='0.4';w.style.whiteSpace='nowrap'}
