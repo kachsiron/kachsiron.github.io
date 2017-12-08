@@ -2515,7 +2515,7 @@ function mChats(){
 						else if(c.twShifts[n]===1){ws.style.color='gray';ws.nextSibling.style.opacity='0.4';w.style.whiteSpace='nowrap'}
 					}
 				}
-			}.bind(this,x);
+			}.bind(this);
 			/*for(let x=0;x<2;x++){
 				with(this.buts[x].style){cursor='pointer';height='10px';minWidth='15px';backgroundColor=(x===0?'green':'red')}
 				this.div.appendChild(this.buts[x]);
