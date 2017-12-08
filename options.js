@@ -2035,6 +2035,7 @@ function mChats(){
 			w.messageDiv.onclick=e=>{
 				if(e.ctrlKey){
 					if(e.target.hasOwnProperty('ignoName')){
+						console.log(e.target.ignoName)
 						t.igno.data=e.target.ignoName;
 						w.titleDiv.textContent=t.igno.data.n;
 						with(t.igno.div.style){display='block';left=e.pageX-t.igno.div.offsetWidth/2+'px';top=e.pageY-t.igno.div.offsetHeight/2+'px'}
