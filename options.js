@@ -2033,6 +2033,7 @@ function mChats(){
 		(function(t,w){
 			w.messageDiv.onmouseup=()=>{clearTimeout(t.igno.timer)}
 			w.messageDiv.onmousedown=e=>{
+				console.log(e)
 				if(e.ctrlKey)return;
 				if(e.currentTarget.hasOwnProperty('ignoName')){
 					t.igno.timer=setTimeout(()=>{
