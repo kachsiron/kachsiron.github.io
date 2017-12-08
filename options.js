@@ -1947,7 +1947,7 @@ function mChats(){
 		this.windows.set(id,{
 			'boat':null,'light':{},'last':[null,null],'sun':isa,'id':id,'cid':0,'wsChat':0,'bColor':'rosybrown','fontSize':100,
 			'nick':'','touch':{'t':false,'x':0,'y':0},'nickColors':{},'nickCounter':{},
-			'square':{},'x':this.startPoint.x,'y':this.startPoint.y,
+			'square':{},'twShifts':{},'x':this.startPoint.x,'y':this.startPoint.y,
 			'winDiv':C('DIV'),					'streamButton':C('BUTTON'),
 			'upButton':C('BUTTON'),			'downButton':C('BUTTON'),
 			'leftButton':C('BUTTON'),		'rightButton':C('BUTTON'),
@@ -1964,7 +1964,6 @@ function mChats(){
 				w.bColor='indigo';
 				w.nick=streamer;
 				w.wsChatChannelId=streamer;
-				w.twShifts={}
 			}
 			else{
 				w.wsChat=1;
