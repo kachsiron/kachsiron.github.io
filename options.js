@@ -2514,8 +2514,8 @@ function mChats(){
 			this.div.appendChild(this.but);
 			
 			this.but.onclick=function(){
-				console.log(this)
 				let {c,n}=this.data;
+				console.log(c,n)
 				this.data=null;
 				if(!c.twShifts.hasOwnProperty(n)||c.twShifts[n]===0)c.twShifts[n]=1;//else delete c.twShifts[n]
 				for(let g=c.messageDiv.querySelectorAll('div'),x=0,l=g.length,w,ws;x<l;x++){
