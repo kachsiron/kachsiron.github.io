@@ -2514,6 +2514,7 @@ function mChats(){
 			this.div.appendChild(this.but);
 			
 			this.but.onclick=function(){
+				console.log(this)
 				let {c,n}=this.data;
 				this.data=null;
 				if(!c.twShifts.hasOwnProperty(n)||c.twShifts[n]===0)c.twShifts[n]=1;//else delete c.twShifts[n]
