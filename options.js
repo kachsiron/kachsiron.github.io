@@ -2025,6 +2025,7 @@ function mChats(){
 		w.messageDiv.className='mc_messageDiv';
 		w.messageDiv.innerHTML='<hr></hr>';
 		
+		console.log(this)
 		this.igno.tie(w);
 		this.top(w);
 		w.scrl={disp:true,y:0,yy:0,t:false,rail:C('DIV'),lay:C('DIV'),msc:C('DIV')};
