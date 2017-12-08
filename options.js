@@ -2031,17 +2031,14 @@ function mChats(){
 		with(w.scrl){rail.className='rail';lay.className='lay';msc.className='msc';rail.style.height=this.railHeight+'px';msc.style.top=lay.style.top=this.tHeight+'px'}
 
 		(function(t,w){
-			w.messageDiv.onmouseup=()=>{clearTimeout(t.igno.timer)}
+			//w.messageDiv.onmouseup=()=>{clearTimeout(t.igno.timer)}
 			w.messageDiv.onclick=e=>{
-				console.log(e)
-				if(e.ctrlKey)return;
-				if(e.currentTarget.hasOwnProperty('ignoName')){
-					t.igno.timer=setTimeout(()=>{
+				if(e.ctrlKey){
+					if(e.target.hasOwnProperty('ignoName')){
 						t.igno.data=e.currentTarget.ignoName;
 						t.igno.titleDiv.textContent=t.igno.data.n;
 						with(t.igno.div.style){display='block';left=e.pageX-t.igno.div.offsetWidth/2+'px';top=e.pageY-t.igno.div.offsetHeight/2+'px'}
-					},333);
-					e.stopPropagation()
+					}
 				}
 			}
 			
