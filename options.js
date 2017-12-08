@@ -2544,6 +2544,7 @@ function mChats(){
 		},
 		'data':null,'timer':null,
 		'tie':function(w){
+			console.log(this)
 			(function(t,w){
 				w.messageDiv.onmouseup=()=>{clearTimeout(t.igno.timer)}
 				w.messageDiv.onmousedown=(e)=>{
