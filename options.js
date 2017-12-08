@@ -2522,8 +2522,8 @@ function mChats(){
 					w=g[x];
 					if(w.hasOwnProperty('ignoName')&&w.ignoName.n===n){
 						//ws=w.children[0];
-						if(!chat.twShifts.hasOwnProperty(n)){w.style.color='';w.nextSibling.style.opacity='';w.style.whiteSpace=''}
-						else{w.style.color='gray';w.nextSibling.style.opacity='0.4';w.style.whiteSpace='nowrap'}
+						if(!chat.twShifts.hasOwnProperty(n)){w.style.color='';w.style.opacity='';w.style.whiteSpace=''}
+						else{w.style.color='gray';w.style.opacity='0.4';w.style.whiteSpace='nowrap'}
 					}
 				}
 			}.bind(this);
