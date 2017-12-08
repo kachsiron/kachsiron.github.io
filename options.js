@@ -2738,6 +2738,7 @@ function mChats(){
 		dd.appendChild(co);dd.appendChild(bb);dd.appendChild(b);
 
 		dd.ignoName={chat,n};
+		console.log(dd,dd.ignoName)
 		this.igno.check(chat,dd,bb,b,n);
 		
 		if(chat.sun)this.fadeMessage(ve,dd,chat.id);
