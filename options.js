@@ -2036,6 +2036,7 @@ function mChats(){
 				if(e.ctrlKey){
 					if(e.target.hasOwnProperty('ignoName')){
 						t.igno.data=e.target.ignoName;
+						t.igno.titleDiv=e.target.ignoName.n;
 						with(t.igno.div.style){display='block';left=e.pageX-t.igno.div.offsetWidth/2+'px';top=e.pageY-t.igno.div.offsetHeight/2+'px'}
 					}
 				}
@@ -2497,7 +2498,7 @@ function mChats(){
 	}
 	this.igno={
 		'check':function(c,d,b,t,n){
-			if(c.twShifts.hasOwnProperty(n)&&c.twShifts[n]===1){d.style.whiteSpace='nowrap';b.style.color='gray';t.style.opacity='0.4'}
+			if(c.twShifts.hasOwnProperty(n)&&c.twShifts[n]===1){d.style.color='gray';d.style.opacity='0.4';t.style.whiteSpace='nowrap'}
 		},
 		'init':function(){
 			this.div=C('DIV');
