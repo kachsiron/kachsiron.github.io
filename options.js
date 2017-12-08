@@ -2035,8 +2035,7 @@ function mChats(){
 			w.messageDiv.onclick=e=>{
 				if(e.ctrlKey){
 					if(e.target.hasOwnProperty('ignoName')){
-						t.igno.data=e.currentTarget.ignoName;
-						t.igno.titleDiv.textContent=t.igno.data.n;
+						w.titleDiv.textContent=e.ignoName.n;
 						with(t.igno.div.style){display='block';left=e.pageX-t.igno.div.offsetWidth/2+'px';top=e.pageY-t.igno.div.offsetHeight/2+'px'}
 					}
 				}
@@ -2552,8 +2551,7 @@ function mChats(){
 				}.bind(this,x)
 			}*/
 			B(this.div)
-		},
-		'data':null,'timer':null
+		}
 	}
 	this.letterColor=[
 		'а','б','в','г','д','a','b','c','d','0','(',
