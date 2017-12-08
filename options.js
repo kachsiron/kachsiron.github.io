@@ -2495,7 +2495,7 @@ function mChats(){
 		this.creep(c,false)
 	}
 	this.igno={
-		'check':function(c,d,b,t,n){
+		'check':function(c,d,n){
 			if(c.twShifts.hasOwnProperty(n)){d.style.color='gray';d.style.opacity='0.4';d.style.whiteSpace='nowrap'}
 		},
 		'init':function(){
