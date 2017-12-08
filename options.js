@@ -2025,7 +2025,8 @@ function mChats(){
 
 		w.messageDiv.className='mc_messageDiv';
 		w.messageDiv.innerHTML='<hr></hr>';
-
+		
+		this.igno.tie(w);
 		this.top(w);
 		w.scrl={disp:true,y:0,yy:0,t:false,rail:C('DIV'),lay:C('DIV'),msc:C('DIV')};
 		with(w.scrl){rail.className='rail';lay.className='lay';msc.className='msc';rail.style.height=this.railHeight+'px';msc.style.top=lay.style.top=this.tHeight+'px'}
@@ -2487,21 +2488,35 @@ function mChats(){
 	}
 	this.igno={
 		'check':function(c,d,b,t,n){
-			if(c.twShifts.hasOwnProperty(n)){
-				if(c.twShifts[n]===0){d.style.whiteSpace='nowrap';b.style.color='gray';t.style.opacity='0.4'}
-				//else b.style.color='pink'
-			}
+			if(c.twShifts.hasOwnProperty(n)&&c.twShifts[n]===1){d.style.whiteSpace='nowrap';b.style.color='gray';t.style.opacity='0.4'}
 		},
 		'init':function(){
 			this.div=C('DIV');
 			this.titleDiv=C('DIV');
-			this.buts = [C('DIV'),C('DIV')];
+			//this.buts = [C('DIV'),C('DIV')];
+			this.but=C('DIV');
 			with(this.div.style){borderRadius='5px';zIndex=4;position='absolute';display='none';padding='0px 5px 5px';backgroundColor='gray'}
 			with(this.titleDiv.style){color='black';fontSize='50%'}
 			this.div.onclick=()=>{this.div.style.display='none'}
 			this.div.appendChild(this.titleDiv);
-			this.buts[0].style.marginBottom='5px';
-			for(let x=0;x<2;x++){
+			//this.buts[0].style.marginBottom='5px';
+			with(this.but.style){cursor='pointer';height='10px';minWidth='15px';backgroundColor='green')}
+			this.div.appendChild(this.but);
+			
+			this.but.onclick=function(){
+				let {c,n}=this.data;
+				this.data=null;
+				if(!c.twShifts.hasOwnProperty(n)||c.twShifts[n]===0)c.twShifts[n]=1;//else delete c.twShifts[n]
+				for(let g=c.messageDiv.querySelectorAll('div'),x=0,l=g.length,w,ws;x<l;x++){
+					w=g[x];
+					ws=w.children[0];
+					if(w.ignoName.n===n){
+						if(!c.twShifts.hasOwnProperty(n)||c.twShifts[n]===0){ws.style.color='';ws.nextSibling.style.opacity='';w.style.whiteSpace=''}
+						else if(c.twShifts[n]===1){ws.style.color='gray';ws.nextSibling.style.opacity='0.4';w.style.whiteSpace='nowrap'}
+					}
+				}
+			}.bind(this,x);
+			/*for(let x=0;x<2;x++){
 				with(this.buts[x].style){cursor='pointer';height='10px';minWidth='15px';backgroundColor=(x===0?'green':'red')}
 				this.div.appendChild(this.buts[x]);
 				this.buts[x].onclick=function(u){
@@ -2524,24 +2539,26 @@ function mChats(){
 							}
 						}
 					}
-				}.bind(this,x)
+				}.bind(this,x)*/
 			}
 			B(this.div)
 		},
 		'data':null,'timer':null,
-		'tie':function(t,c,d,n){
-			(function(t,c,d,n){
-				d.s_nick=n;
-				d.onmouseup=()=>{clearTimeout(t.igno.timer)}
-				d.onmousedown=(e)=>{
+		'tie':function(w){
+			(function(t,w){
+				w.messageDiv.onmouseup=()=>{clearTimeout(t.igno.timer)}
+				w.messageDiv.onmousedown=(e)=>{
 					if(e.ctrlKey)return;
-					t.igno.timer=setTimeout(()=>{
-						t.igno.data={'c':c,'n':n}
-						t.igno.titleDiv.textContent=n;
-						with(t.igno.div.style){display='block';left=e.pageX-t.igno.div.offsetWidth/2+'px';top=e.pageY-t.igno.div.offsetHeight/2+'px'}
-					},333)
+					if(e.currentTarget.hasOwnProperty('ignoName')){
+						t.igno.timer=setTimeout(()=>{
+							t.igno.data=e.currentTarget.ignoName;
+							t.igno.titleDiv.textContent=t.igno.data.n;
+							with(t.igno.div.style){display='block';left=e.pageX-t.igno.div.offsetWidth/2+'px';top=e.pageY-t.igno.div.offsetHeight/2+'px'}
+						},333);
+						e.stopPropagation()
+					}
 				}
-			})(t,c,d,n)
+			})(this,w)
 		}
 	}
 	this.letterColor=[
@@ -2695,7 +2712,7 @@ function mChats(){
 			dt=e.timestamp.getHours().totwo()+':'+e.timestamp.getMinutes().totwo();
 			this.setBorderColor(bb,2,iv,n.toLowerCase(),chat.nick);
 			if(e.sub==='1')bb.style.borderLeft='2px solid deepskyblue';
-			this.igno.check(chat,dd,bb,b,n);
+			//this.igno.check(chat,dd,bb,b,n);
 			if(bnick!==null){
 				bnick=bnick[1]||bnick[2];
 				bnick2=bnick.toLowerCase();
@@ -2716,7 +2733,7 @@ function mChats(){
 				if(!cf)this.setColorOfNick(chat,bs,bnick)
 				//bs.ondblclick=this.creeper.bind(this,chat,bnick2||bnick.toLowerCase())
 			}
-			this.igno.tie(this,chat,dd,n)
+			//this.igno.tie(this,chat,dd,n)
 		}
 		if(chat.last[0]===n)chat.last[1].textContent='↑';
 		this.setCounterOfNick(chat,co,n);
@@ -2727,6 +2744,9 @@ function mChats(){
 		bb.onclick=respMessFun.bind({i:chat.id,n:n,t:chat.wsChat,uid:(e.id||null)});
 		dd.appendChild(co);dd.appendChild(bb);dd.appendChild(b);
 
+		dd.ignoName={chat,n};
+		this.igno.check(chat,dd,bb,b,n);
+		
 		if(chat.sun)this.fadeMessage(ve,dd,chat.id);
 		if(chat.wsChat!==2)chat.light[n]=[dd,bb,0];
 		else chat.light[n.toLowerCase()]=[dd,bb,0];
