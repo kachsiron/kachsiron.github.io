@@ -2035,9 +2035,9 @@ function mChats(){
 			w.messageDiv.onclick=e=>{
 				if(e.ctrlKey){
 					if(e.target.hasOwnProperty('ignoName')){
-						console.log(e.target.ignoName)
+						
 						t.igno.data=e.target.ignoName;
-						w.titleDiv.textContent=t.igno.data.n;
+						console.log(t.igno.data);
 						with(t.igno.div.style){display='block';left=e.pageX-t.igno.div.offsetWidth/2+'px';top=e.pageY-t.igno.div.offsetHeight/2+'px'}
 					}
 				}
@@ -2516,7 +2516,7 @@ function mChats(){
 			
 			this.but.onclick=function(){
 				let {c,n}=this.data;
-				console.log(c,n)
+				console.log(c,n,this.data)
 				this.data=null;
 				if(!c.twShifts.hasOwnProperty(n)||c.twShifts[n]===0)c.twShifts[n]=1;//else delete c.twShifts[n]
 				for(let g=c.messageDiv.querySelectorAll('div'),x=0,l=g.length,w,ws;x<l;x++){
