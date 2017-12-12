@@ -18,7 +18,7 @@ window.onerror=function(msg,url,lineNo,columnNo,error){
 
 var D=document,C=D.createElement.bind(D);
 var DIV3_HIDE_SCROLL=(localStorage.hasOwnProperty('div3scroll')?Number.parseInt(localStorage.div3scroll):-10),CANVAS_WIDTH=299,B=D.body.appendChild.bind(D.body);
-var fonty=['Calibri','Cormorant Infant','Alegreya','Alice','Bad Script','Vollkorn SC','Tenor Sans','Prosto One','Philosopher','Pattaya','Pangolin','Oswald','Oranienbaum','Old Standard','Neucha','Marck Script','Ledger','Kurale','Gabriela','Cuprum'];
+var fonty=['Calibri','Cormorant Infant','Alegreya','Alice','Bad Script','Vollkorn SC','Tenor Sans','Prosto One','Philosopher','Pangolin','Oswald','Oranienbaum','Old Standard','Neucha','Marck Script','Ledger','Kurale','Gabriela','Cuprum'];
 
 //Л О К А Л Ь Н Ы Е   Д А Н Н Ы Е
 function deleteFromList(alt,cn,i){
