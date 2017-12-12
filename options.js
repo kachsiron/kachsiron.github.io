@@ -273,7 +273,7 @@ var grBut2={
 			if(this.imgs[x][4])this.imgs[x][0].style.cssFloat='left';
 			span.appendChild(this.imgs[x][0])
 		}
-		for(let y in this.tw_req){
+		for(let y of this.tw_req){
 			let x=C('BUTTON');
 			//x.onclick=function(e){STEAM.get();e.stopPropagation()};
 			x.onclick=e=>{tw_list(y[0]);e.stopPropagation()};
