@@ -2994,7 +2994,7 @@ function makeCnv(){
 }
 
 //U T I L S
-function scrollHider(e){return e.offsetWidth-e.clientWidth}
+function scrollHider(e){console.log(e.offsetWidth,e.clientWidth);return e.offsetWidth-e.clientWidth}
 function nameToUrl(n){return n.replace(rgxpChan[7],'').replace(/-/g,'').replace(rgxpChan[8],'-').toLowerCase()}
 function graphsendi(n){try{
 	if(graph){
