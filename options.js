@@ -3004,7 +3004,7 @@ function scrollHider(){
 	scrlh[1].style.width='10px';
 	scrlh[0].appendChild(scrlh[1]);
 	B(scrlh[0]);
-	DIV3_HIDE_SCROLL=scrlh[0].clientWidth-scrlh[0].offsetWidth;
+	DIV3_HIDE_SCROLL=scrlh[0].clientWidth-scrlh[0].offsetWidth-1;
 	scrlh[0].remove();
 	scrlh=null;
 }
