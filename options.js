@@ -18,6 +18,7 @@ window.onerror=function(msg,url,lineNo,columnNo,error){
 
 var D=document,C=D.createElement.bind(D);
 var DIV3_HIDE_SCROLL=(localStorage.hasOwnProperty('div3scroll')?Number.parseInt(localStorage.div3scroll):-10),CANVAS_WIDTH=299,B=D.body.appendChild.bind(D.body);
+var fonty=['Calibri','Cormorant Infant','Alegreya','Alice','BadScript','VollkornSC','TenorSans','ProstoOne','Philosopher','Pattaya','Pangolin','Oswald','Oranienbaum','OldStandard','Neucha','MarckScript','Ledger','Kurale','Gabriela','Cuprum','Caveat'];
 
 //Л О К А Л Ь Н Ы Е   Д А Н Н Ы Е
 function deleteFromList(alt,cn,i){
@@ -94,7 +95,7 @@ function getNews(){
 		getNewsShow(result,opv,++resco,'GG announces ok...')
 	}})
 }
-function Toganash(){
+/*function Toganash(){
 	let opv=OPOV.serv('Запрос Тоганашей...');
 	GMX({method:'GET',url:'https://api.vk.com/method/wall.get?owner_id=-82867005&v=5.62',onload:requ=>{
 		let div=C('DIV'),b='';
@@ -110,7 +111,7 @@ function Toganash(){
 		div.innerHTML=b;
 		B(div)
 	}})
-}
+}*/
 function getNewsShow(res,opv,r,s){
 	if(r<2){OPOV.serv(s,0,opv);return}
 	else OPOV.serv('Готово!',3000,opv,true);
@@ -1982,6 +1983,7 @@ function mChats(){
 		}
 
 		w.winDiv.className='mc_windowDiv';
+		w.winDiv.style.fontFamily=fonty[rand(0,fonty.length-1)];
 		w.winDiv.style.zIndex=1;
 
 		with(w.closeButton){className='mc_button';textContent='x';style.top=style.right='0';style.height='14px'}
@@ -2088,7 +2090,7 @@ function mChats(){
 				D.onselectstart=function(){return false}
 			}
 			w.titleDiv.onmouseup=()=>{
-				D.body.id='';
+				//D.body.id='';
 				document.onmousemove=null;
 				t.touch(w);
 				t.checkOnSquares();
@@ -2115,8 +2117,7 @@ function mChats(){
 		w.y=this.startPoint.y+f[1]*this.ul_height;
 		w.square.x=f[2];
 		w.square.y=f[3];
-		this.setMessageDivHeight(w);this.setMessageDivWidth(w);
-		this.move(w);
+		this.setMessageDivHeight(w);this.setMessageDivWidth(w);this.move(w);
 		this.checkOnSquares();
 
 		h(w.scrl.lay);h(w.scrl.rail);h(w.scrl.msc);h(w.closeButton);h(w.upButton);h(w.downButton);h(w.leftButton);
@@ -3023,7 +3024,8 @@ function graphsendi(n){try{
 	return;
 
 	GMX({timeout:15000,method:'POST',data:formData,url:'http://www.acapela-group.com/demo-tts/DemoHTML5Form_V2.php?langdemo=Powered+by+<a+href="http://www.acapela-vaas.com">Acapela+Voice+as+a+Service</a>.+For+demo+and+evaluation+purpose+only,+for+commercial+use+of+generated+sound+files+please+go+to+<a+href="http://www.acapela-box.com">www.acapela-box.com</a>',onload:requ=>{try{
-	GMX({timeout:15000,method:'GET',data:formData,url:'https://tts.global.ivonacloud.com/CreateSpeech?Voice.Name=Tatyana&Input.Type=text/plain&OutputFormat.Codec=MP3&Voice.Language=ru-RU&Input.Data=Привет, меня зовут Татьяна.&OutputFormat.SampleRate=22050&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20161209T141120Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=GDNAI2EMTPXZH7ONBHZQ/20161209/global/tts/aws4_request&X-Amz-Signature=9471916092cb8f25d5e274eee475695f8622ae7434cbc086c81518f710e4512e',onload:requ=>{
+	GMX({timeout:15000,method:'GET',data:formData,url:'https://tts.global.ivonacloud.com/CreateSpeech?Voice.Name=Tatyana&Input.Type=text/plain&OutputFormat.Codec=MP3&Voice.Language=ru-RU&Input.Data=Привет, меня зовут Татьяна.&
+	OutputFormat.SampleRate=22050&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20161209T141120Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=GDNAI2EMTPXZH7ONBHZQ/20161209/global/tts/aws4_request&X-Amz-Signature=9471916092cb8f25d5e274eee475695f8622ae7434cbc086c81518f710e4512e',onload:requ=>{
 		let au=new Audio();
 		//au.type = 'type/mpeg';
 		au.src=requ.responseText.match(/var myPhpVar = '(.*?)';/)[1];
