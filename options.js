@@ -2124,7 +2124,7 @@ function mChats(){
 		this.setMessageDivHeight(w);this.setMessageDivWidth(w);this.move(w);
 		this.checkOnSquares();
 
-		h(w.scrl.lay);h(w.scrl.rail);h(w.scrl.msc);h(w.closeButton);h(w.upButton);h(w.downButton);h(w.leftButton);
+		h(w.scrl.msc);h(w.scrl.lay);h(w.scrl.rail);h(w.closeButton);h(w.upButton);h(w.downButton);h(w.leftButton);
 		h(w.rightButton);h(w.sunButton);h(w.fontUpButton);h(w.fontDownButton);h(w.titleDiv);h(w.messageDiv);
 		if(!ws)h(w.listUserDiv);
 		B(w.winDiv)
