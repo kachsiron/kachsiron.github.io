@@ -1721,10 +1721,10 @@ function ScPlayer(){
 				.replace(/youtube.com/,'YT')
 				.replace(/peka2.tv/,'P2');
 			r.code='<iframe width="'+this.playerSize.x+'" height="'+this.playerSize.y+'" src="';
-			if(r.name==='GG'){
+			if(r.name==='GG'){try{
 				m.ggid=plrs[x].channel;
 				r.code+='https://goodgame.ru/player?'+(plrs[x].hasOwnProperty('code')?plrs[x].code.match(/player\?(.*?)"/)[1]:m.ggid)
-			}
+			}catch(e){console.log(plrs[x],e);OPOV.serv('GG ошибка',11111)}}
 			else if(r.name==='TW'){
 				m.twid=plrs[x].channel;
 				r.code+='https://player.twitch.tv/?branding=false&showInfo=false&autoplay=false&channel='+m.twid
