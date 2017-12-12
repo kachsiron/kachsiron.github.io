@@ -17,20 +17,9 @@ window.onerror=function(msg,url,lineNo,columnNo,error){
 }
 
 var D=document,C=D.createElement.bind(D);
-var CANVAS_WIDTH=299,B=D.body.appendChild.bind(D.body);
+var DIV3_HIDE_SCROLL=0,CANVAS_WIDTH=299,B=D.body.appendChild.bind(D.body);
 var fonty=['Calibri','Cormorant Infant','Alegreya','Alice','Bad Script','Vollkorn SC','Tenor Sans','Prosto One','Philosopher','Pangolin','Oswald','Oranienbaum','Old Standard','Neucha','Marck Script','Ledger','Kurale','Gabriela','Cuprum'];
-
-let scrlh=[C('DIV'),C('DIV')];
-scrlh[0].style.overflowY='scroll';
-scrlh[0].style.height='100px';
-scrlh[0].style.width='50px';
-scrlh[1].style.height='200px';
-scrlh[1].style.width='10px';
-scrlh[0].appendChild(scrlh[1]);
-B(scrlh[0]);
-var DIV3_HIDE_SCROLL=scrlh[0].offsetWidth-scrlh[0].clientWidth;
-scrlh[0].remove();
-scrlh=null;
+scrollHider();
 
 //Л О К А Л Ь Н Ы Е   Д А Н Н Ы Е
 function deleteFromList(alt,cn,i){
@@ -3006,6 +2995,19 @@ function makeCnv(){
 }
 
 //U T I L S
+function scrollHider(){
+	let scrlh=[C('DIV'),C('DIV')];
+	scrlh[0].style.overflowY='scroll';
+	scrlh[0].style.height='100px';
+	scrlh[0].style.width='50px';
+	scrlh[1].style.height='200px';
+	scrlh[1].style.width='10px';
+	scrlh[0].appendChild(scrlh[1]);
+	B(scrlh[0]);
+	DIV3_HIDE_SCROLL=scrlh[0].clientWidth-scrlh[0].offsetWidth;
+	scrlh[0].remove();
+	scrlh=null;
+}
 function nameToUrl(n){return n.replace(rgxpChan[7],'').replace(/-/g,'').replace(rgxpChan[8],'-').toLowerCase()}
 function graphsendi(n){try{
 	if(graph){
@@ -3444,6 +3446,7 @@ window.onresize=function(){
 		divLog2.style.right=window.innerWidth-730+'px'
 	}
 	catch(e){}
+	scrollHider()
 }
 
 messtochat.ID.chan4l=null;
