@@ -2598,7 +2598,7 @@ function mChats(){
 				}
 				else continue;
 				for(let j=0;j<3;j++)c[j]+=l[j];
-				if(++r===3)r=0;
+				if(++r===9)r=0;
 			}
 			for(let i=0;i<3;i++){
 				c[i]/=er;
