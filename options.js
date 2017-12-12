@@ -2576,7 +2576,7 @@ function mChats(){
 		let c;
 		if(chat.nickColors.hasOwnProperty(n))c=chat.nickColors[n];
 		else{
-			let l,er=0;//r=0,f=0
+			let l,r=0,er=0;//f=0
 			c=[0,0,0];
 			for(let i in n){
 				//l=letterColor.indexOf(n[i].toLowerCase());
@@ -2598,7 +2598,7 @@ function mChats(){
 				}
 				else continue;
 				for(let j=0;j<3;j++)c[j]+=l[j];
-				//if(++r===4)r=0;
+				if(++r===3)r=0;
 			}
 			for(let i=0;i<3;i++){
 				c[i]/=er;
