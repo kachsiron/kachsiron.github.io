@@ -3070,7 +3070,7 @@ var tw_list=function(r){
 			el.textContent=re[x].channel.name+' ('+re[x].viewers+')';
 			el.style.cursor='pointer';
 			el2=C('DIV');
-			el2.textContent=re[x].channel.display_name;
+			el2.textContent=re[x].channel.status;
 			el2.style.cursor='pointer';
 			el.onclick=el2.onclick=function(){scp.importing(this.cn)}.bind({cn:re[x].channel.name});
 			div.appendChild(el);
