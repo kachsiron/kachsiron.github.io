@@ -51,7 +51,7 @@ aside{font-size:80%;width:555px;border-bottom:1px solid #444}
 .smilepad{overflow-y:scroll;overflow-x:hidden;border-bottom:1px solid yellow}
 .cd2{top:0;line-height:6px}
 hr{clear:both}
-.mc_windowDiv{overflow:hidden;border:1px solid rosybrown;background-color:black;color:white;font-family:Calibri,Verdana;position:fixed}
+.mc_windowDiv{overflow:hidden;border:1px solid rosybrown;background-color:black;color:white;font-family:Verdana;position:fixed}
 .mc_titleDiv{font-weight:bold;cursor:pointer;border-bottom:3px solid rosybrown;height:11px;font-size:80%;text-align:center;overflow:hidden}
 .mc_button{padding:0;cursor:pointer;position:absolute;width:12px;font-size:66.6%;line-height:0px;background-color:black;color:white}
 .mc_messageDiv{overflow-y:scroll;overflow-x:hidden}
