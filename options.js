@@ -1924,15 +1924,15 @@ function mChats(){
 			if(isNaN(wid.scrl.yy))wid.scrl.yy=this.tHeight;
 			wid.scrl.rail.style.top=wid.scrl.yy+'px'
 		}
-		this.dredro(wid)
+		this.dredro(wid,true)
 	}
 	this.creeper=function(c,n){
 		c.messageDiv.scrollTop=n.offsetTop-this.tHeight;
 		this.creep(c,false);
 		messtochat.MSG.value=''
 	}
-	this.dredro=function(wid){
-		if(wid.messageDiv.scrollTop===0&&wid.scrl.disp){
+	this.dredro=function(wid,ccc){
+		if(ccc&&wid.messageDiv.scrollTop===0&&wid.scrl.disp){
 			wid.scrl.t=wid.scrl.disp=false;
 			wid.scrl.lay.style.display=wid.scrl.rail.style.opacity='';
 			wid.scrl.rail.style.display=wid.scrl.msc.style.display='none'
@@ -2103,9 +2103,9 @@ function mChats(){
 			w.titleDiv.ondblclick=()=>{messtochat.ID.chan4v(w.id);messtochat.MSG.focus()}
 			w.messageDiv.onscroll=()=>{if(!t.windows.get(w.id).scrl.t)t.creep(w,true)}
 			w.scrl.rail.onmousedown=e=>{t.touchs(w,e.pageY)}
-			w.scrl.rail.onmouseup=()=>{t.touchs(w)}
+			w.scrl.rail.onmouseup=()=>{t.touchs(w);t.dredro(w,true)}
 			w.scrl.lay.onmousemove=w.scrl.rail.onmousemove=e=>{t.moves(w,e.pageY)}
-			w.scrl.msc.onclick=e=>{w.messageDiv.scrollTop=0;t.dredro(w)}
+			w.scrl.msc.onclick=e=>{w.messageDiv.scrollTop=0;t.dredro(w,true)}
 		})(this,w);
 
 		this.setTitle(w);
@@ -2276,7 +2276,7 @@ function mChats(){
 			wid.scrl.rail.style.top=Math.round(wid.scrl.yy)+'px';
 			wid.scrl.y=y;
 			wid.messageDiv.scrollTop=(wid.messageDiv.scrollHeight-wid.mHeight)/(wid.HHeight/(wid.scrl.yy-this.tHeight));
-			this.dredro(wid)
+			this.dredro(wid,false)
 		}
 	}
 	this.touchs=function(wid,y){
