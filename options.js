@@ -251,12 +251,12 @@ var grBut2={
 	//'twitchers':{'guit88man':null,'knjazevdesu':null,'nuke73':null,'etozhemad':null},
 	'imgs':{
 		//'st_allmaps':[C('IMG'),'http://stats.altfs.ru/show_graph.php?type=0&width=500&height=200&game=tf&server_id=3&bgcolor=282828&color=FFFFFF&range=1','300px','133px',false],
-		'st_dustgoldbad':[C('IMG'),'https://stats.altfs.ru/show_graph.php?type=0&width=500&height=200&game=tf&server_id=4&bgcolor=282828&color=FFFFFF&range=1','300px','133px',false],
-		'st_dustbowl':[C('IMG'),'https://stats.altfs.ru/show_graph.php?type=0&width=500&height=200&game=tf&server_id=5&bgcolor=282828&color=FFFFFF&range=1','300px','133px',false],
-		'st_2fort':[C('IMG'),'https://stats.altfs.ru/show_graph.php?type=0&width=500&height=200&game=tf&server_id=11&bgcolor=282828&color=FFFFFF&range=1','300px','133px',false],
+		//'st_dustgoldbad':[C('IMG'),'https://stats.altfs.ru/show_graph.php?type=0&width=500&height=200&game=tf&server_id=4&bgcolor=282828&color=FFFFFF&range=1','300px','133px',false],
+		//'st_dustbowl':[C('IMG'),'https://stats.altfs.ru/show_graph.php?type=0&width=500&height=200&game=tf&server_id=5&bgcolor=282828&color=FFFFFF&range=1','300px','133px',false],
+		//'st_2fort':[C('IMG'),'https://stats.altfs.ru/show_graph.php?type=0&width=500&height=200&game=tf&server_id=11&bgcolor=282828&color=FFFFFF&range=1','300px','133px',false],
 		'sc2tv':[C('IMG'),'https://traffic.alexa.com/graph?o=lt&y=t&b=ffffff&n=666666&f=999999&p=4e8cff&r=1y&t=2&z=30&c=1&h=150&w=340&u=peka2.tv','300px','130px',false],
 		'goodgame':[C('IMG'),'https://traffic.alexa.com/graph?o=lt&y=t&b=ffffff&n=666666&f=999999&p=4e8cff&r=1y&t=2&z=30&c=1&h=150&w=340&u=goodgame.ru','300px','130px',false],
-		'altfstat':[C('IMG'),'https://stats.altfs.ru/trend_graph.php?bgcolor=282828&color=FFFFFF&player=701197','300px','150px',false]
+		//'altfstat':[C('IMG'),'https://stats.altfs.ru/trend_graph.php?bgcolor=282828&color=FFFFFF&player=701197','300px','150px',false]
 		//'gt_2fort':[C('IMG'),'http://www.gametracker.com/images/graphs/server_rank.php?GSID=4541130','173px','113px',true]
 		//'gt_dustgoldbad':[C('IMG'),'http://www.gametracker.com/images/graphs/server_rank.php?GSID=4542987','173px','113px',true]
 		//'gt_x3m':[C('IMG'),'http://www.gametracker.com/images/graphs/server_rank.php?GSID=5212002','173px','113px',true]
@@ -264,6 +264,7 @@ var grBut2={
 	'button':C('BUTTON'),
 	'buttonMenu':C('BUTTON'),
 	'status':0,
+	'tw_req': [['Team Fortress 2','TF2'], ['Heroes of Might and Magic III: The Shadow of Death','HoMM3']],
 	'init':function(){
 		let span=C('DIV');
 		for(let x in this.imgs){
@@ -272,12 +273,14 @@ var grBut2={
 			if(this.imgs[x][4])this.imgs[x][0].style.cssFloat='left';
 			span.appendChild(this.imgs[x][0])
 		}
-		let x=C('BUTTON');
-		x.onclick=function(e){STEAM.get();e.stopPropagation()};
-		x.textContent='steam';
-		span.appendChild(x);
+		for(let y in this.tw_req){
+			let x=C('BUTTON');
+			//x.onclick=function(e){STEAM.get();e.stopPropagation()};
+			x.onclick=e=>{tw_list(y[0]);e.stopPropagation()};
+			x.textContent=y[1];
+			span.appendChild(x);
+		}
 		smilepadik.appendChild(span);
-
 		this.button.textContent='fs';
 		this.buttonMenu.textContent='m';
 		this.buttonMenu.type=this.button.type='button';
@@ -3073,7 +3076,7 @@ var tw_list=function(r){
 		B(div)
 	}})
 },TWL={'pok':'Pokémon Trading Card Game Online','tf':'Team Fortress 2'};
-var STEAM={//['212.76.130.124:27015','b_350_20_692108_381007_FFFFFF_000000.png'],
+/*var STEAM={//['212.76.130.124:27015','b_350_20_692108_381007_FFFFFF_000000.png'],
 	'ids':'76561198086044175,76561198097816819,76561198081507280,76561198013376987,76561198057651317,76561198068535614',
 	'se':new Map([['193.26.217.5:27295','altfs dust/gold/bad']]),
 	//['46.174.48.45:27242','b_350_20_692108_381007_FFFFFF_000000.png'],
@@ -3098,7 +3101,7 @@ var STEAM={//['212.76.130.124:27015','b_350_20_692108_381007_FFFFFF_000000.png']
 		ref.textContent='↻';
 		div.appendChild(lis);
 		let a,i,t=(new Date()).getTime();
-		/*for(let [k,v] of this.im){
+		for(let [k,v] of this.im){
 			a=C('A');
 			i=C('IMG');
 			a.href='http://www.gametracker.com/server_info/'+k+'/';
@@ -3111,12 +3114,12 @@ var STEAM={//['212.76.130.124:27015','b_350_20_692108_381007_FFFFFF_000000.png']
 			i.style.display='block';
 			a.appendChild(i);
 			div.appendChild(a)
-		}*/
+		}
 		div.appendChild(ref);
 		B(div)
 	},
 	'get':function(){GMX({method:'GET',url:'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=3E58305C0F935230A67536967CD4BB3E&steamids='+this.ids+'&format=json',onload:requ=>{this.comp(requ.target)}})}
-};
+};*/
 function perevodchik(s,d){
 	GMX({timeout:5000,method:'GET',url:'http://www.lingvo-online.ru/ru/Translate/'+d+'/'+s,onload:function(requ){
 		requ=requ.target;
