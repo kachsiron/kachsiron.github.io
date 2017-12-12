@@ -3055,13 +3055,12 @@ function graphsendi(n){try{
 }*/
 function objSize(o){let c=0;for(i in o)c++;return c}
 var tw_list=function(r){
-	if(r in TWL)r=TWL[r];
 	GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/kraken/streams?game='+r,onload:requ=>{
 		requ=requ.target;
 		let div=C('DIV'),re=JSON.parse(requ.responseText).streams;
 		with(div.style){fontSize='75%';position='fixed';bottom='0';right='0';width='150px';maxHeight='500px';zIndex=100;overflowY='scroll';backgroundColor='black';border='1px solid white';overflowX='hidden'}
 		div.ondblclick=function(e){this.remove();e.stopPropagation()}
-		for(let x=0,l=re.length,el;x<l;x++){
+		for(let x=0,l=re.length,el,el2;x<l;x++){
 			if(x>0)div.appendChild(C('HR'));
 			el=C('IMG');
 			el.src=re[x].preview.medium;
@@ -3070,12 +3069,16 @@ var tw_list=function(r){
 			el=C('DIV');
 			el.textContent=re[x].channel.name+' ('+re[x].viewers+')';
 			el.style.cursor='pointer';
-			el.onclick=function(){scp.importing(this.cn)}.bind({cn:re[x].channel.name});
-			div.appendChild(el)
+			el2=C('DIV');
+			el2.textContent=re[x].channel.display_name;
+			el2.style.cursor='pointer';
+			el.onclick=el2.onclick=function(){scp.importing(this.cn)}.bind({cn:re[x].channel.name});
+			div.appendChild(el);
+			div.appendChild(el2);
 		}
 		B(div)
 	}})
-},TWL={'pok':'Pokémon Trading Card Game Online','tf':'Team Fortress 2'};
+};
 /*var STEAM={//['212.76.130.124:27015','b_350_20_692108_381007_FFFFFF_000000.png'],
 	'ids':'76561198086044175,76561198097816819,76561198081507280,76561198013376987,76561198057651317,76561198068535614',
 	'se':new Map([['193.26.217.5:27295','altfs dust/gold/bad']]),
