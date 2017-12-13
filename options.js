@@ -1995,9 +1995,10 @@ function mChats(){
 		with(w.closeButton){className='mc_button';textContent='x';style.top=style.right='0';style.height='14px'}
 		with(w.upButton){className='mc_button';textContent='-';style.top=style.left='0';style.height='7px'}
 		with(w.downButton){className='mc_button';textContent='-';style.left='0';style.height=style.top='7px'}
-
+		
 		w.listUserDiv.className='mc_listUserDiv';
 		if(!ws){
+			w.smileVis=true;
 			w.invisibleConnect=true;
 			w.noticeDiv=C('DIV');
 			w.noticeDiv.className='mc_notice';
@@ -2072,22 +2073,12 @@ function mChats(){
 				}
 			};
 			w.connectButton.onclick=()=>{
-				if(w.invisibleConnect){
-					//cMan.removeSub(w.wsChatChannelId);
-					//t.openSocketFun(w,false);
-					w.sock.send('428'+JSON.stringify(['/chat/login',{'token':FUNTOKEN}]))
-				}
-				else{
-					//t.sam('[<u>выход из чата</u>]',w,false);
-					w.sock.send('429'+JSON.stringify(['/chat/logout',[]]));
-					//clearInterval(w.interval);
-					//w.sock.send('425'+JSON.stringify(['/chat/leave',{'channel':w.wsChatChannelFullId}]));
-					//w.sock.close();
-					//cMan.addSub(w.wsChatChannelId,w);
-					//w.connectButton.textContent='c'
-				}
-				//w.invisibleConnect=!w.invisibleConnect
+				w.smileVis=!w.smileVis
 			}
+			/*w.connectButton.onclick=()=>{
+				if(w.invisibleConnect)w.sock.send('428'+JSON.stringify(['/chat/login',{'token':FUNTOKEN}]))
+				else w.sock.send('429'+JSON.stringify(['/chat/logout',[]]));
+			}*/
 			//w.titleDiv.onmousedown=e=>{D.body.id='nonsel';document.onmousemove=e=>{t.move(w,e.pageX,e.pageY)};t.touch(w,e.pageX,e.pageY)}
 			//w.titleDiv.onmouseup=()=>{D.body.id='';document.onmousemove=null;t.touch(w);t.checkOnSquares()}
 			w.titleDiv.onmousedown=e=>{
@@ -2651,7 +2642,7 @@ function mChats(){
 				btag.onclick=respMessFun.bind({i:chat.id,n:bnick.name,t:chat.wsChat,uid:bnick.id});
 				bb.className='mc_nick3';
 				b.appendChild(btag);
-				stag.innerHTML=' '+msgReplace2(iv);
+				stag.innerHTML=' '+msgReplace2(iv,chat.smileVis);
 				if(chat.light.hasOwnProperty(bnick.name)){
 					btag.ondblclick=this.creeper.bind(this,chat,chat.light[bnick.name][0]);
 					this.flash(chat,bnick.name)
@@ -2664,7 +2655,7 @@ function mChats(){
 					bb.className='mc_nick2';
 					stag.style.fontStyle='italic'
 				}
-				stag.innerHTML=msgReplace2(iv)
+				stag.innerHTML=msgReplace2(iv,chat.smileVis)
 			}
 			previewHandle(stag);
 			b.appendChild(stag)
@@ -2703,7 +2694,6 @@ function mChats(){
 			dt=e.timestamp.getHours().totwo()+':'+e.timestamp.getMinutes().totwo();
 			this.setBorderColor(bb,2,iv,n.toLowerCase(),chat.nick);
 			if(e.sub==='1')bb.style.borderLeft='2px solid deepskyblue';
-			//this.igno.check(chat,dd,bb,b,n);
 			if(bnick!==null){
 				bnick=bnick[1]||bnick[2];
 				bnick2=bnick.toLowerCase();
@@ -2722,9 +2712,7 @@ function mChats(){
 				bb.className='mc_nick3';
 				if(chat.light.hasOwnProperty(bnick2))bs.ondblclick=this.creeper.bind(this,chat,chat.light[bnick2][0])
 				if(!cf)this.setColorOfNick(chat,bs,bnick)
-				//bs.ondblclick=this.creeper.bind(this,chat,bnick2||bnick.toLowerCase())
 			}
-			//this.igno.tie(this,chat,dd,n)
 		}
 		if(chat.last[0]===n)chat.last[1].textContent='↑';
 		this.setCounterOfNick(chat,co,n);
@@ -3131,7 +3119,10 @@ function perevodchik(s,d){
 		//var au=new Audio();au.src='http://translate.google.ru/translate_tts?ie=UTF-8&q='+r+'&tl=en&total=1&idx=0&client=t&textlen='+r.length;au.play()
 	}})
 }
-function msgReplace2(m){return m.replace(rgxpChat[1],'☺').replace(RGXP_HTTP,replacer2).replace(rgxpChat[4],replacer)}
+function msgReplace2(m,o){
+	if(o)return m.replace(rgxpChat[1],'☺').replace(RGXP_HTTP,replacer2).replace(rgxpChat[4],replacer);
+	else return m.replace(rgxpChat[1],'☺').replace(RGXP_HTTP,replacer2).replace(rgxpChat[4],'☺')
+}
 function msgReplaceGG2(m,c){return m.replace(rgxpChatGG[1],'<nobr>'+(c?'©':'$1')+'</nobr> ')}
 function msgReplaceTwitch(m,n,c){return m.replace(rgxpChatTwitch[1],'<nobr>'+(c?'©':n)+'</nobr> ')}
 function respMessFun(){
