@@ -1914,7 +1914,7 @@ function mChats(){
 	this.startPoint={x:scp.playerSize.x+2,y:-1}
 	this.fadeCountTimers={'a':0};//'c':0,'m':{},
 	this.fctDiv=C('DIV');
-this.sencolors=[1,0.9,0.825,0.775,0.75,0.734375,0.71875,0.703125,0.6875,0.671875,0.65625,0.640625,0.625,0.609375,0.59375,0.578125,0.5625,0.546875,0.53125,0.515625,0.5],
+	this.sencolors=[1,0.9,0.825,0.775,0.75,0.734375,0.71875,0.703125,0.6875,0.671875,0.65625,0.640625,0.625,0.609375,0.59375,0.578125,0.5625,0.546875,0.53125,0.515625,0.5],
 //this.sencolors=[0,0.0075,0.015,0.0225,0.03,0.0375,0.045,0.0525,0.06,0.0675,0.075,0.0825,0.09,0.0975,0.105,0.1125,0.12,0.1275,0.135,0.1425,0.15],
 //this.sencolors=[0,0.0125,0.025,0.0375,0.05,0.0625,0.075,0.0875,0.1,0.1125,0.125,0.1375,0.15,0.1625,0.175,0.1875,0.2,0.2125,0.225,0.2375,0.25],
 	this.colorCodes=[[255,0,0],[0,255,0],[0,0,255],[127.5,85,42.5],[127.5,42.5,85],[85,127.5,42.5],[42.5,127.5,85],[85,42.5,127.5],[42.5,85,127.5],[-255,0,0],[0,-255,0],[0,0,-255]],
@@ -2722,7 +2722,7 @@ this.sencolors=[1,0.9,0.825,0.775,0.75,0.734375,0.71875,0.703125,0.6875,0.671875
 		dd.ignoName={chat,n};
 		this.igno.check(chat,dd,n);
 		
-		if(chat.sun)this.fadeMessage(ve,dd,chat.id);
+		if(chat.sun)this.fadeMessage(ve,dd,chat.id);else co.style.opacity=sencolors[20];
 		if(chat.wsChat!==2)chat.light[n]=[dd,bb,0];
 		else chat.light[n.toLowerCase()]=[dd,bb,0];
 
@@ -2807,15 +2807,11 @@ this.sencolors=[1,0.9,0.825,0.775,0.75,0.734375,0.71875,0.703125,0.6875,0.671875
 	}
 	this.fadeMessage=function(f,d,p1){
 		if(f){this.fadeMessageGra(d,20);return}
-		//if(this.fadeCountTimers.m[p1]===void 0)this.fadeCountTimers.m[p1]=0;
-		//this.fadeCountTimers.m[p1]++;
-		//if(this.fadeCountTimers.m[p1]>75)m=4;
 		this.fadeMessageDig(1);
 		(function(d,p1,c){
 			let x=2, f=true, r=setInterval(function(){
 				if(f){d.classList.remove('fadeup');f=false}
 				if(x===20||d.parentNode===null){
-					//c.fadeCountTimers.m[p1]--;
 					c.fadeMessageDig(-1);
 					clearInterval(r)
 				}
@@ -2829,9 +2825,9 @@ this.sencolors=[1,0.9,0.825,0.775,0.75,0.734375,0.71875,0.703125,0.6875,0.671875
 		this.fctDiv.textContent=this.fadeCountTimers.a
 	}
 	this.fadeMessageGra=function(d,x){
-		let s=this.sencolors[x];
+		//let s=this.sencolors[x];
 		//d.style.backgroundImage='repeating-linear-gradient(100deg,rgba(255,255,255,'+s+'),rgba(255,255,255,'+s+') 2px,transparent 3px,transparent 4px)'
-		d.children[0].style.opacity=s
+		d.children[0].style.opacity=this.sencolors[x]
 	}
 	this.setUserList=function(w,d,c){
 		w.listUserDiv.innerHTML='';
