@@ -2573,7 +2573,7 @@ function mChats(){
 		'С','Т','У','Ф','Р','Х','P','Q','R','S','T',
 		'Ц','Ч','Ш','Щ','Ъ','U','V','W','X','Y','Z',
 		'Ы','Ь','Э','Ю','Я',' ','*'
-	],
+	];
 	this.setColorOfNick=function(chat,bb,n){
 		let c;
 		if(chat.nickColors.hasOwnProperty(n))c=chat.nickColors[n];
@@ -2581,29 +2581,18 @@ function mChats(){
 			let l,r=0,er=0,f;
 			c=[0,0,0];
 			for(let i in n){
-				//l=letterColor.indexOf(n[i].toLowerCase());
-				//if(l===-1)l=[0,0,0];
 				l=this.letterColor[n[i]];
-				//if(l===void 0)l=[0,0,0];
 				if(l!==void 0){
 					f=(l+r)%12;
 					if(f<9)er++;
 					else er--;
 					l=this.colorCodes[f];
-					/*if(r<3){
-						er++;
-						l=this.colorCodes[(l+r)%3];
-					}
-					else{
-						er--;
-						l=this.acolorCodes[(l+f)%3];
-						if(++f===3)f=0;
-					}*/
 				}
 				else continue;
 				for(let j=0;j<3;j++)c[j]+=l[j];
 				if(++r===12)r=0;
 			}
+			if(er<1)er=1;
 			for(let i=0;i<3;i++){
 				if(c[i]<0)c[i]=0;
 				else c[i]/=er;
