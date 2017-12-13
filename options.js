@@ -1998,7 +1998,7 @@ function mChats(){
 		
 		w.listUserDiv.className='mc_listUserDiv';
 		if(!ws){
-			w.smileVis=true;
+			w.smileVis=isa;
 			w.invisibleConnect=true;
 			w.noticeDiv=C('DIV');
 			w.noticeDiv.className='mc_notice';
@@ -2006,7 +2006,7 @@ function mChats(){
 			w.noticeDiv.onclick=function(e){this.style.display='none';e.stopPropagation()}
 			with(w.streamButton){className='mc_button';textContent='s';style.left='12px';style.top='0';style.height='14px';onclick=function(){scp.mkp(this.id)}.bind({id:w.id})}
 			with(w.listUserButton){className='mc_button';textContent='u';style.right='36px';style.height='14px'}
-			with(w.connectButton){className='mc_button';textContent='c';style.right='48px';style.height='14px'}
+			with(w.connectButton){className='mc_button';textContent=(isa?'c':'d');style.right='48px';style.height='14px'}
 			h(w.noticeDiv);h(w.streamButton);h(w.listUserButton);h(w.connectButton);
 
 			w.userListStatus=false;
@@ -2048,7 +2048,6 @@ function mChats(){
 					}
 				}
 			}
-			
 			w.closeButton.onclick=()=>{t.closeChat(w.id)}
 			w.upButton.onclick=()=>{t.setMessageDivHeight(w,-1);t.checkOnSquares()}
 			w.downButton.onclick=()=>{t.setMessageDivHeight(w,1);t.checkOnSquares()}
@@ -2072,9 +2071,7 @@ function mChats(){
 					w.listUserDiv.style.display='none'
 				}
 			};
-			w.connectButton.onclick=()=>{
-				w.smileVis=!w.smileVis
-			}
+			w.connectButton.onclick=()=>{w.smileVis=!w.smileVis;w.connectButton.textContent=(w.smileVis?'c':'d')}
 			/*w.connectButton.onclick=()=>{
 				if(w.invisibleConnect)w.sock.send('428'+JSON.stringify(['/chat/login',{'token':FUNTOKEN}]))
 				else w.sock.send('429'+JSON.stringify(['/chat/logout',[]]));
