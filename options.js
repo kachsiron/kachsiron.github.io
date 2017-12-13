@@ -1510,7 +1510,9 @@ function ScPlayer(){
 	this.sitesort=function(a, b){
 		//var t=a.match(rgxpc[4]);
 		//if(t!==null&&t[1]==='goodgame')return false;return true
-		if(a.name==='GG')return false;return true
+		if(a.name==='GG')return false;
+		if(a.name==='TW')return false;
+		return true
 	}
 	this.cls=function(i){
 		if(this.players.has(i)){
@@ -1735,7 +1737,7 @@ function ScPlayer(){
 			r.code+='" allowfullscreen="true" frameborder="0"></iframe>';
 			m.strms.push(r)
 		}
-		//m.strms.sort(this.sitesort);
+		m.strms.sort(this.sitesort);
 
 		m.widget.innerHTML=m.strms[0].code;
 		m.div.appendChild(m.widget);
