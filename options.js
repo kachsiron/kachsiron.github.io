@@ -2689,7 +2689,7 @@ function mChats(){
 			bnick=iv.match(rgxpChatTwitch[1]);
 			dt=e.timestamp.getHours().totwo()+':'+e.timestamp.getMinutes().totwo();
 			this.setBorderColor(bb,2,iv,n.toLowerCase(),chat.nick);
-			if(e.sub==='1')bb.style.borderLeft='2px solid deepskyblue';
+			if(e.sub==='1')bb.style.textDecoration='underline';
 			if(bnick!==null){
 				bnick=bnick[1]||bnick[2];
 				bnick2=bnick.toLowerCase();
