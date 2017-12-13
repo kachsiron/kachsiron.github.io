@@ -2722,7 +2722,7 @@ function mChats(){
 		dd.ignoName={chat,n};
 		this.igno.check(chat,dd,n);
 		
-		if(chat.sun)this.fadeMessage(ve,dd,chat.id);else co.style.opacity=sencolors[20];
+		if(chat.sun)this.fadeMessage(ve,dd,chat.id);else co.style.opacity=this.sencolors[20];
 		if(chat.wsChat!==2)chat.light[n]=[dd,bb,0];
 		else chat.light[n.toLowerCase()]=[dd,bb,0];
 
