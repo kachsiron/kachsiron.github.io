@@ -60,7 +60,7 @@ hr{clear:both}
 .mc_messageBoat>div:first-child{border-left:none}
 .mc_message{border-bottom:1px solid #444;word-wrap:break-word;line-height:1.1}
 .mc_message>span{text-shadow:1px 1px 0px black}
-.mc_message>sup{color:gray;letter-spacing:-1px;white-space:nowrap}
+.mc_message>sup{color:white;letter-spacing:-1px;white-space:nowrap}
 .mc_notice{right:0;width:100px;cursor:pointer;display:none;position:absolute;padding-left:3px;background-color:black;color:white;border:1px solid yellow;font-size:75%}
 .link>span{text-shadow:none}
 .mc_listUserDiv{justify-content:space-around;align-content:flex-start;flex-direction:row;flex-wrap:wrap;display:none;overflow-x:hidden;font-size:75%}
