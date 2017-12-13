@@ -1958,7 +1958,7 @@ this.sencolors=[1,0.9,0.825,0.775,0.75,0.734375,0.71875,0.703125,0.6875,0.671875
 			'upButton':C('BUTTON'),			'downButton':C('BUTTON'),
 			'leftButton':C('BUTTON'),		'rightButton':C('BUTTON'),
 			'closeButton':C('BUTTON'),	'sunButton':C('BUTTON'),
-			'fontUpButton':C('BUTTON'),	'fontDownButton':C('BUTTON'),	'listUserButton':C('BUTTON'),	'connectButton':C('BUTTON'),
+			'fontUpButton':C('BUTTON'),	'fontDownButton':C('BUTTON'),	'listUserButton':C('BUTTON'),//'connectButton':C('BUTTON'),
 			'titleDiv':C('DIV'),				'messageDiv':C('DIV'),				'listUserDiv':C('DIV')
 		});
 		this.cleaner(true);
@@ -1997,16 +1997,16 @@ this.sencolors=[1,0.9,0.825,0.775,0.75,0.734375,0.71875,0.703125,0.6875,0.671875
 		
 		w.listUserDiv.className='mc_listUserDiv';
 		if(!ws){
-			w.smileVis=isa;
-			w.invisibleConnect=true;
+			//w.smileVis=isa;
+			//w.invisibleConnect=true;
 			w.noticeDiv=C('DIV');
 			w.noticeDiv.className='mc_notice';
 			w.noticeDiv.style.top=this.tHeight+'px';
 			w.noticeDiv.onclick=function(e){this.style.display='none';e.stopPropagation()}
 			with(w.streamButton){className='mc_button';textContent='s';style.left='12px';style.top='0';style.height='14px';onclick=function(){scp.mkp(this.id)}.bind({id:w.id})}
 			with(w.listUserButton){className='mc_button';textContent='u';style.right='36px';style.height='14px'}
-			with(w.connectButton){className='mc_button';textContent=(isa?'c':'d');style.right='48px';style.height='14px'}
-			h(w.noticeDiv);h(w.streamButton);h(w.listUserButton);h(w.connectButton);
+			//with(w.connectButton){className='mc_button';textContent=(isa?'c':'d');style.right='48px';style.height='14px'}
+			h(w.noticeDiv);h(w.streamButton);h(w.listUserButton);//h(w.connectButton);
 
 			w.userListStatus=false;
 			w.leftButton.style.left='24px';
@@ -2070,7 +2070,7 @@ this.sencolors=[1,0.9,0.825,0.775,0.75,0.734375,0.71875,0.703125,0.6875,0.671875
 					w.listUserDiv.style.display='none'
 				}
 			};
-			w.connectButton.onclick=()=>{w.smileVis=!w.smileVis;w.connectButton.textContent=(w.smileVis?'c':'d')}
+			//w.connectButton.onclick=()=>{w.smileVis=!w.smileVis;w.connectButton.textContent=(w.smileVis?'c':'d')}
 			/*w.connectButton.onclick=()=>{
 				if(w.invisibleConnect)w.sock.send('428'+JSON.stringify(['/chat/login',{'token':FUNTOKEN}]))
 				else w.sock.send('429'+JSON.stringify(['/chat/logout',[]]));
@@ -2404,15 +2404,15 @@ this.sencolors=[1,0.9,0.825,0.775,0.75,0.734375,0.71875,0.703125,0.6875,0.671875
 		else if(code==='438'){
 			if(r[2][0].status==='ok') {
 				this.sam('[<u>Залогинились</u>]',w,false);
-				w.connectButton.textContent='d';
-				w.invisibleConnect=false
+				//w.connectButton.textContent='d';
+				//w.invisibleConnect=false
 			}
 			else this.sam('[<u>Ошибка</u>]: ' + r[2][0].result.message,w,false);
 		}
 		else if(code==='439'){
 			this.sam('[<u>Разлогинились</u>]',w,false);
-			w.connectButton.textContent='c';
-			w.invisibleConnect=true
+			//w.connectButton.textContent='c';
+			//w.invisibleConnect=true
 		}
 		else if(code==='0'){
 			//this.sam('[<u>авторизованы</u>]',w,true,2);
@@ -2638,7 +2638,7 @@ this.sencolors=[1,0.9,0.825,0.775,0.75,0.734375,0.71875,0.703125,0.6875,0.671875
 				btag.onclick=respMessFun.bind({i:chat.id,n:bnick.name,t:chat.wsChat,uid:bnick.id});
 				bb.className='mc_nick3';
 				b.appendChild(btag);
-				stag.innerHTML=' '+msgReplace2(iv,chat.smileVis);
+				stag.innerHTML=' '+msgReplace2(iv)//,chat.smileVis);
 				if(chat.light.hasOwnProperty(bnick.name)){
 					btag.ondblclick=this.creeper.bind(this,chat,chat.light[bnick.name][0]);
 					this.flash(chat,bnick.name)
@@ -2651,7 +2651,7 @@ this.sencolors=[1,0.9,0.825,0.775,0.75,0.734375,0.71875,0.703125,0.6875,0.671875
 					bb.className='mc_nick2';
 					stag.style.fontStyle='italic'
 				}
-				stag.innerHTML=msgReplace2(iv,chat.smileVis)
+				stag.innerHTML=msgReplace2(iv)//,chat.smileVis)
 			}
 			previewHandle(stag);
 			b.appendChild(stag)
@@ -3117,8 +3117,9 @@ function perevodchik(s,d){
 	}})
 }
 function msgReplace2(m,o){
-	if(o)return m.replace(rgxpChat[1],'☺').replace(RGXP_HTTP,replacer2).replace(rgxpChat[4],replacer);
-	else return m.replace(rgxpChat[1],'☺').replace(RGXP_HTTP,replacer2).replace(rgxpChat[4],'☺')
+	return m.replace(rgxpChat[1],'☺').replace(RGXP_HTTP,replacer2).replace(rgxpChat[4],replacer);
+	//if(o)return m.replace(rgxpChat[1],'☺').replace(RGXP_HTTP,replacer2).replace(rgxpChat[4],replacer);
+	//else return m.replace(rgxpChat[1],'☺').replace(RGXP_HTTP,replacer2).replace(rgxpChat[4],'☺')
 }
 function msgReplaceGG2(m,c){return m.replace(rgxpChatGG[1],'<nobr>'+(c?'©':'$1')+'</nobr> ')}
 function msgReplaceTwitch(m,n,c){return m.replace(rgxpChatTwitch[1],'<nobr>'+(c?'©':n)+'</nobr> ')}
