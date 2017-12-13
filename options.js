@@ -2831,7 +2831,8 @@ function mChats(){
 	}
 	this.fadeMessageGra=function(d,x){
 		let s=this.sencolors[x];
-		d.style.backgroundImage='repeating-linear-gradient(100deg,rgba(255,255,255,'+s+'),rgba(255,255,255,'+s+') 2px,transparent 3px,transparent 4px)'
+		//d.style.backgroundImage='repeating-linear-gradient(100deg,rgba(255,255,255,'+s+'),rgba(255,255,255,'+s+') 2px,transparent 3px,transparent 4px)'
+		d.style.backgroundColor='rgba(255,255,255,'+s+')'
 	}
 	this.setUserList=function(w,d,c){
 		w.listUserDiv.innerHTML='';
