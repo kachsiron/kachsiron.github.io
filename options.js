@@ -1958,7 +1958,7 @@ function mChats(){
 			'winDiv':C('DIV'),					'streamButton':C('BUTTON'),
 			'upButton':C('BUTTON'),			'downButton':C('BUTTON'),
 			'leftButton':C('BUTTON'),		'rightButton':C('BUTTON'),
-			'closeButton':C('BUTTON'),	'sunButton':C('BUTTON'),
+			'closeButton':C('BUTTON'),//'sunButton':C('BUTTON'),
 			'fontUpButton':C('BUTTON'),	'fontDownButton':C('BUTTON'),	'listUserButton':C('BUTTON'),//'connectButton':C('BUTTON'),
 			'titleDiv':C('DIV'),				'messageDiv':C('DIV'),				'listUserDiv':C('DIV')
 		});
@@ -2027,7 +2027,7 @@ function mChats(){
 		w.rightButton.style.height='14px';
 		with(w.fontUpButton){className='mc_button';textContent='-';style.top='0';style.right='24px';style.height='7px'}
 		with(w.fontDownButton){className='mc_button';textContent='-';style.right='24px';style.height=style.top='7px'}
-		with(w.sunButton){className='mc_button';textContent=(isa?'☼':'☀');style.right='12px';style.height='14px'}
+//with(w.sunButton){className='mc_button';textContent=(isa?'☼':'☀');style.right='12px';style.height='14px'}
 
 		w.titleDiv.className='mc_titleDiv';
 
@@ -2055,7 +2055,7 @@ function mChats(){
 			w.fontDownButton.onclick=()=>{t.fontSize(w,-1)}
 			w.leftButton.onclick=()=>{t.setMessageDivWidth(w,-1);t.checkOnSquares()};
 			w.rightButton.onclick=()=>{t.setMessageDivWidth(w,1);t.checkOnSquares()};
-			w.sunButton.onclick=()=>{w.sun=!w.sun;w.sunButton.textContent=(w.sun?'☼':'☀')};
+//w.sunButton.onclick=()=>{w.sun=!w.sun;w.sunButton.textContent=(w.sun?'☼':'☀')};
 			w.listUserButton.onclick=()=>{
 				if(!w.userListStatus){
 					if(cMan.getListUser(w)){
@@ -2115,7 +2115,7 @@ function mChats(){
 		this.checkOnSquares();
 
 		h(w.scrl.msc);h(w.scrl.lay);h(w.scrl.rail);h(w.closeButton);h(w.upButton);h(w.downButton);h(w.leftButton);
-		h(w.rightButton);h(w.sunButton);h(w.fontUpButton);h(w.fontDownButton);h(w.titleDiv);h(w.messageDiv);
+		h(w.rightButton);h(w.fontUpButton);h(w.fontDownButton);h(w.titleDiv);h(w.messageDiv);//h(w.sunButton);
 		if(!ws)h(w.listUserDiv);
 		B(w.winDiv)
 	}
@@ -2723,7 +2723,7 @@ function mChats(){
 		dd.ignoName={chat,n};
 		this.igno.check(chat,dd,n);
 		
-		if(chat.sun)this.fadeMessage(ve,dd,chat.id);else co.style.opacity=this.sencolors[20];
+//if(chat.sun)this.fadeMessage(ve,dd,chat.id);else co.style.opacity=this.sencolors[20];
 		if(chat.wsChat!==2)chat.light[n]=[dd,bb,0];
 		else chat.light[n.toLowerCase()]=[dd,bb,0];
 
@@ -2806,7 +2806,7 @@ function mChats(){
 		if(text.replace(rgxpChatTwitch[9],'').replace(rgxpChan[8],'').length>5)return false;
 		return true
 	}
-	this.fadeMessage=function(f,d,p1){
+/*this.fadeMessage=function(f,d,p1){
 		if(f){this.fadeMessageGra(d,20);return}
 		this.fadeMessageDig(1);
 		(function(d,p1,c){
@@ -2829,7 +2829,7 @@ function mChats(){
 		//let s=this.sencolors[x];
 		//d.style.backgroundImage='repeating-linear-gradient(100deg,rgba(255,255,255,'+s+'),rgba(255,255,255,'+s+') 2px,transparent 3px,transparent 4px)'
 		d.children[0].style.opacity=this.sencolors[x]
-	}
+	}*/
 	this.setUserList=function(w,d,c){
 		w.listUserDiv.innerHTML='';
 		let div1=C('DIV'),div2=C('DIV'),l=d.length;
