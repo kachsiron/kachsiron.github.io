@@ -2005,7 +2005,7 @@ function mChats(){
 			w.noticeDiv.style.top=this.tHeight+'px';
 			w.noticeDiv.onclick=function(e){this.style.display='none';e.stopPropagation()}
 			with(w.streamButton){className='mc_button';textContent='s';style.left='12px';style.top='0';style.height='14px';onclick=function(){scp.mkp(this.id)}.bind({id:w.id})}
-			with(w.listUserButton){className='mc_button';textContent='u';style.right='36px';style.height='14px'}
+			with(w.listUserButton){className='mc_button';textContent='u';style.right='24px';style.height='14px'}
 			//with(w.connectButton){className='mc_button';textContent=(isa?'c':'d');style.right='48px';style.height='14px'}
 			h(w.noticeDiv);h(w.streamButton);h(w.listUserButton);//h(w.connectButton);
 
@@ -2025,8 +2025,8 @@ function mChats(){
 		w.rightButton.className='mc_button';
 		w.rightButton.textContent='>';
 		w.rightButton.style.height='14px';
-		with(w.fontUpButton){className='mc_button';textContent='-';style.top='0';style.right='24px';style.height='7px'}
-		with(w.fontDownButton){className='mc_button';textContent='-';style.right='24px';style.height=style.top='7px'}
+		with(w.fontUpButton){className='mc_button';textContent='-';style.top='0';style.right='12px';style.height='7px'}
+		with(w.fontDownButton){className='mc_button';textContent='-';style.right='12px';style.height=style.top='7px'}
 //with(w.sunButton){className='mc_button';textContent=(isa?'☼':'☀');style.right='12px';style.height='14px'}
 
 		w.titleDiv.className='mc_titleDiv';
