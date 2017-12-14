@@ -295,14 +295,14 @@ var grBut2={
 				scp.div.style.right=scp.div.style.bottom='';
 				scp.div.style.top=scp.div.style.left=0;
 				divLog2.style.right=window.innerWidth-730+'px';
-				D.body.style.overflow='hidden';
-				divLog2.style.top=cMan.checkbox.style.top=mch.fctDiv.style.top=cMan.fctDiv.div.style.top=cMan.nadDiv.div.style.top=D.body.style.paddingTop='436px';
+				D.body.style.overflow='hidden';//mch.fctDiv.style.top=
+				divLog2.style.top=cMan.checkbox.style.top=cMan.fctDiv.div.style.top=cMan.nadDiv.div.style.top=D.body.style.paddingTop='436px';
 				this.status=1;
 				with(cMan.div1.style){width='742px';overflowX='hidden';overflowY='scroll'}
 			}
 			else{
-				scp.div.style.left=scp.div.style.top='';
-				scp.div.style.right=scp.div.style.bottom=divLog2.style.top=divLog2.style.right=D.body.style.paddingTop=cMan.checkbox.style.top=cMan.fctDiv.div.style.top=cMan.nadDiv.div.style.top=mch.fctDiv.style.top=0;
+				scp.div.style.left=scp.div.style.top='';//mch.fctDiv.style.top=
+				scp.div.style.right=scp.div.style.bottom=divLog2.style.top=divLog2.style.right=D.body.style.paddingTop=cMan.checkbox.style.top=cMan.fctDiv.div.style.top=cMan.nadDiv.div.style.top=0;
 				D.body.style.overflow='auto';
 				this.status=0;
 				with(cMan.div1.style){width=height=overflowX=overflowY=''}
@@ -1913,7 +1913,7 @@ function mChats(){
 //this.defWidth=14.581;this.ul_width=2.083;this.scrlWidth=1.25;
 	this.startPoint={x:scp.playerSize.x+2,y:-1}
 	this.fadeCountTimers={'a':0};//'c':0,'m':{},
-	this.fctDiv=C('DIV');
+//this.fctDiv=C('DIV');
 	this.sencolors=[1,0.9,0.85,0.8,0.75,0.7,0.65,0.6,0.55,0.525,0.5,0.475,0.45,0.425,0.4,0.375,0.35,0.325,0.3,0.275,0.25],
 //this.sencolors=[1,0.9,0.825,0.775,0.75,0.734375,0.71875,0.703125,0.6875,0.671875,0.65625,0.640625,0.625,0.609375,0.59375,0.578125,0.5625,0.546875,0.53125,0.515625,0.5],
 //this.sencolors=[0,0.0075,0.015,0.0225,0.03,0.0375,0.045,0.0525,0.06,0.0675,0.075,0.0825,0.09,0.0975,0.105,0.1125,0.12,0.1275,0.135,0.1425,0.15],
@@ -2870,10 +2870,10 @@ function mChats(){
 		}*/
 		for(let i=0,l=this.letterColor.length;i<l;i++)arr[this.letterColor[i]]=i;
 		this.letterColor=arr;
-		with(this.fctDiv.style){cursor='pointer';position='absolute';left='503px';top='0';height='12px';backgroundColor='black'}
-		this.fctDiv.textContent='0';
-		this.fctDiv.onclick=cMan.turnTable.bind(cMan);
-		B(this.fctDiv);
+//with(this.fctDiv.style){cursor='pointer';position='absolute';left='503px';top='0';height='12px';backgroundColor='black'}
+//this.fctDiv.textContent='0';
+//this.fctDiv.onclick=cMan.turnTable.bind(cMan);
+//B(this.fctDiv);
 		this.igno.init()
 	}
 	this.divideSquare=function(){
