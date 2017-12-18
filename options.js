@@ -2655,7 +2655,8 @@ function mChats(){
 				stag.innerHTML=msgReplace2(iv)//,chat.smileVis)
 			}
 			previewHandle(stag);
-			b.appendChild(stag)
+			b.appendChild(stag);
+			this.setColorOfNick(chat,co,n);
 		}
 		else if(chat.wsChat===1){// G O O D G A M E
 			iv=e.text.replace(rgxpChatGG[0],'$1');
@@ -2682,14 +2683,15 @@ function mChats(){
 				if(!cf)this.setColorOfNick(chat,bs,bnick)
 				//bs.ondblclick=this.creeper.bind(this,chat,bnick)
 			}
+			this.setColorOfNick(chat,co,n);
 		}
 		else{// T W I T C H
 			iv=this.escapeHtml(e.text);
-			let bnick2=null;
+			let bnick2=null,nn=n.toLowerCase();
 			iv=iv.replace(rgxpChatTwitch[8],this.sm_replacer.bind(this));
 			bnick=iv.match(rgxpChatTwitch[1]);
 			dt=e.timestamp.getHours().totwo()+':'+e.timestamp.getMinutes().totwo();
-			this.setBorderColor(bb,2,iv,n.toLowerCase(),chat.nick);
+			this.setBorderColor(bb,2,iv,nn,chat.nick);
 			if(e.sub==='1')bb.style.textDecoration='underline';
 			if(bnick!==null){
 				bnick=bnick[1]||bnick[2];
@@ -2708,12 +2710,12 @@ function mChats(){
 				bs.onclick=respMessFun.bind({i:chat.id,n:bnick,t:chat.wsChat,uid:null});
 				bb.className='mc_nick3';
 				if(chat.light.hasOwnProperty(bnick2))bs.ondblclick=this.creeper.bind(this,chat,chat.light[bnick2][0])
-				if(!cf)this.setColorOfNick(chat,bs,bnick)
+				if(!cf)this.setColorOfNick(chat,bs,bnick2)
 			}
+			this.setColorOfNick(chat,co,nn);
 		}
 		if(chat.last[0]===n)chat.last[1].textContent='↑';
 		this.setCounterOfNick(chat,co,n);
-		this.setColorOfNick(chat,bb,n);
 		chat.last=[n,bb];
 		bb.textContent=n;
 		bb.title=dt;
