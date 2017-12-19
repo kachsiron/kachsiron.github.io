@@ -1725,8 +1725,11 @@ function ScPlayer(){
 			r.code='<iframe width="'+this.playerSize.x+'" height="'+this.playerSize.y+'" src="';
 			if(r.name==='GG'){try{
 				m.ggid=plrs[x].channel;
-				if(plrs[x].code.includes('goodgame.ru'))r.code+='https://goodgame.ru/player?'+(plrs[x].hasOwnProperty('code')?plrs[x].code.match(/player\?(.*?)"/)[1]:m.ggid);
-				else 	if(plrs[x].code.includes('twitch.tv'))r.code+=plrs[x].code.match(/ src="(.*?)"/)[1];
+				if(plrs[x].hasOwnProperty('code')){
+					if(plrs[x].code.includes('goodgame.ru'))r.code+='https://goodgame.ru/player?'+plrs[x].code.match(/player\?(.*?)"/)[1];
+					else 	if(plrs[x].code.includes('twitch.tv'))r.code+=plrs[x].code.match(/ src="(.*?)"/)[1];
+				}
+				else r.code+='https://goodgame.ru/player?'+m.ggid;
 			}catch(e){console.log(plrs[x],e);OPOV.serv('GG ошибка',11111)}}
 			else if(r.name==='TW'){
 				m.twid=plrs[x].channel;
