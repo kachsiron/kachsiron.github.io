@@ -1234,8 +1234,6 @@ var cMan={
 						ss=s.result[x];
 						mch.am({timestamp:ss.time,user_name:ss.from.name,text:ss.text,to:ss.to,id:ss.from.id},this.subscriber[suv],true)
 					}
-					//let dt=new Date(s.result[0].time*1000);
-					//dt=dt.getFullYear()+'-'+(dt.getMonth()+1)+'-'+dt.getDate()+' '+totwo(dt.getHours())+':'+totwo(dt.getMinutes())+':'+totwo(dt.getSeconds());
 					this.subscriber[suv].wsHistory=true;
 					mch.nlawka(this.subscriber[suv],mch.tss(s.result[0].time*1000))
 				}
@@ -2312,7 +2310,6 @@ function mChats(){
 	}
 	this.ts=function(){//curr time
 		let dt=new Date();
-		//return dt.getFullYear()+'-'+(dt.getMonth()+1)+'-'+dt.getDate()+' '+totwo(dt.getHours())+':'+totwo(dt.getMinutes())+':'+totwo(dt.getSeconds())
 		return dt.getDate()+' '+dt.getHours().totwo()+':'+dt.getMinutes().totwo()+':'+dt.getSeconds().totwo()
 	}
 	this.tss=function(i){
@@ -2697,7 +2694,7 @@ function mChats(){
 			let bnick2=null,nn=n.toLowerCase();
 			iv=iv.replace(rgxpChatTwitch[8],this.sm_replacer.bind(this));
 			bnick=iv.match(rgxpChatTwitch[1]);
-			dt=e.timestamp.getHours().totwo()+':'+e.timestamp.getMinutes().totwo();
+			dt=e.timestamp.getHours().totwo()+':'+e.timestamp.getMinutes().totwo()+':'+e.timestamp.getSeconds().totwo();
 			this.setBorderColor(bb,2,iv,nn,chat.nick);
 			if(e.sub==='1')bb.style.textDecoration='underline';
 			if(bnick!==null){
