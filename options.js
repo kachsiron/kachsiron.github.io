@@ -2602,9 +2602,9 @@ function mChats(){
 		}
 		bb.style.color=c;
 	}
-	this.setCounterOfNick=function(chat,co,n){
-		if(!chat.nickCounter.hasOwnProperty(n))chat.nickCounter[n]=0;
-		co.textContent=++chat.nickCounter[n]
+	this.setCounterOfNick=function(chat,n){
+		if(!chat.nickCounter.hasOwnProperty(n))return=0;
+		return ++chat.nickCounter[n]
 	}
 	this.setBorderColor=function(bb,d,iv,n,nick){
 		let c='black';
@@ -2628,7 +2628,7 @@ function mChats(){
 	},
 	this.escapeHtml=function(u){return u.replace(rgxpChat[5],'&lt;').replace(rgxpChat[6],'&gt;')},
 	this.am=function(e,chat,ve){
-		let bs,dt,n=e.user_name,iv,dd=C('DIV'),co=C('SUP'),bb=C('SPAN'),b=C('SPAN'),bnick=null,cf=false;
+		let bs,dt,n=e.user_name,iv,dd=C('DIV'),co=C('SUB'),bb=C('SPAN'),b=C('SPAN'),bnick=null,cf=false;
 		bb.className='mc_nick';dd.className='mc_message';
 		if(chat.wsChat===0){
 			iv=this.escapeHtml(e.text);
@@ -2719,7 +2719,7 @@ function mChats(){
 			this.setColorOfNick(chat,bb,nn);
 		}
 		if(chat.last[0]===n)chat.last[1].textContent='↑';
-		this.setCounterOfNick(chat,co,n);
+		co.textContent=this.setCounterOfNick(chat,n) + '/' + dt;
 		chat.last=[n,bb];
 		bb.textContent=n;
 		bb.title=dt;
