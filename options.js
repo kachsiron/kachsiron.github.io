@@ -2603,7 +2603,7 @@ function mChats(){
 		bb.style.color=c;
 	}
 	this.setCounterOfNick=function(chat,n){
-		if(!chat.nickCounter.hasOwnProperty(n))return=0;
+		if(!chat.nickCounter.hasOwnProperty(n))return 0;
 		return ++chat.nickCounter[n]
 	}
 	this.setBorderColor=function(bb,d,iv,n,nick){
