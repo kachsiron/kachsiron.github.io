@@ -2317,8 +2317,11 @@ function mChats(){
 	}
 	this.tss=function(i){
 		let dt=new Date(i);
-		//return dt.getFullYear()+'-'+(dt.getMonth()+1)+'-'+dt.getDate()+' '+totwo(dt.getHours())+':'+totwo(dt.getMinutes())+':'+totwo(dt.getSeconds())
 		return dt.getDate()+' '+dt.getHours().totwo()+':'+dt.getMinutes().totwo()+':'+dt.getSeconds().totwo()
+	}
+	this.tss2=function(i){
+		let dt=new Date(i);
+		return dt.getHours().totwo()+':'+dt.getMinutes().totwo()+':'+dt.getSeconds().totwo()
 	}
 	this.restTime=function(t){//depr
 		t=(new Date()).getTime()/1000-t;
@@ -2603,7 +2606,7 @@ function mChats(){
 		bb.style.color=c;
 	}
 	this.setCounterOfNick=function(chat,n){
-		if(!chat.nickCounter.hasOwnProperty(n))return 0;
+		if(!chat.nickCounter.hasOwnProperty(n))chat.nickCounter[n]=0;
 		return ++chat.nickCounter[n]
 	}
 	this.setBorderColor=function(bb,d,iv,n,nick){
@@ -2632,7 +2635,7 @@ function mChats(){
 		bb.className='mc_nick';dd.className='mc_message';
 		if(chat.wsChat===0){
 			iv=this.escapeHtml(e.text);
-			dt=this.tss(e.timestamp*1000);
+			dt=this.tss2(e.timestamp*1000);
 			if(e.to!==null)bnick=e.to;
 			this.setBorderColor(bb,0,bnick,n,chat.nick);
 			let stag=C('SPAN');
@@ -2665,7 +2668,7 @@ function mChats(){
 		else if(chat.wsChat===1){// G O O D G A M E
 			iv=e.text.replace(rgxpChatGG[0],'$1');
 			bnick=iv.match(rgxpChatGG[1]);
-			dt=this.tss(e.timestamp*1000);
+			dt=this.tss2(e.timestamp*1000);
 			this.setBorderColor(bb,1,iv,n,chat.nick);
 			if(bnick!==null){
 				bnick=bnick[1];
