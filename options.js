@@ -2600,7 +2600,7 @@ function mChats(){
 			c='rgb('+Math.round(c[0])+','+Math.round(c[1])+','+Math.round(c[2])+')';
 			chat.nickColors[n]=c
 		}
-		bb.style.color=c;
+		bb.forEach(a=>{a.style.color=c})
 	}
 	this.setCounterOfNick=function(chat,n){
 		if(!chat.nickCounter.hasOwnProperty(n))chat.nickCounter[n]=0;
@@ -2648,7 +2648,7 @@ function mChats(){
 					btag.ondblclick=this.creeper.bind(this,chat,chat.light[bnick.name][0]);
 					this.flash(chat,bnick.name)
 				}
-				if(!cf)this.setColorOfNick(chat,btag,bnick.name)
+				if(!cf)this.setColorOfNick(chat,[btag],bnick.name)
 			}
 			else{
 				if(rgxpServ[8].test(iv)){
@@ -2660,7 +2660,7 @@ function mChats(){
 			}
 			previewHandle(stag);
 			b.appendChild(stag);
-			this.setColorOfNick(chat,bb,n);
+			this.setColorOfNick(chat,[bb,co],n);
 		}
 		else if(chat.wsChat===1){// G O O D G A M E
 			iv=e.text.replace(rgxpChatGG[0],'$1');
@@ -2684,10 +2684,10 @@ function mChats(){
 				bs.onclick=respMessFun.bind({i:chat.id,n:bnick,t:chat.wsChat,uid:null});
 				bb.className='mc_nick3';
 				if(chat.light.hasOwnProperty(bnick))bs.ondblclick=this.creeper.bind(this,chat,chat.light[bnick][0])
-				if(!cf)this.setColorOfNick(chat,bs,bnick)
+				if(!cf)this.setColorOfNick(chat,[bs],bnick)
 				//bs.ondblclick=this.creeper.bind(this,chat,bnick)
 			}
-			this.setColorOfNick(chat,bb,n);
+			this.setColorOfNick(chat,[bb,co],n);
 		}
 		else{// T W I T C H
 			iv=this.escapeHtml(e.text);
@@ -2714,9 +2714,9 @@ function mChats(){
 				bs.onclick=respMessFun.bind({i:chat.id,n:bnick,t:chat.wsChat,uid:null});
 				bb.className='mc_nick3';
 				if(chat.light.hasOwnProperty(bnick2))bs.ondblclick=this.creeper.bind(this,chat,chat.light[bnick2][0])
-				if(!cf)this.setColorOfNick(chat,bs,bnick2)
+				if(!cf)this.setColorOfNick(chat,[bs],bnick2)
 			}
-			this.setColorOfNick(chat,bb,nn);
+			this.setColorOfNick(chat,[bb,co],nn);
 		}
 		if(chat.last[0]===n)chat.last[1].textContent='↑';
 		co.textContent=this.setCounterOfNick(chat,n) + '/' + dt;
