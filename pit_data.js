@@ -548,7 +548,7 @@ var R = {
 			}]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech ?. Effect: ",
+			"desc": "Skill: Biotech 70. Effect: +220 food",
 			"items": [{
 					"title": "Gronch Heart Elixir",
 					"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/1/17/75px-Gronch_Heart_Elixir.png/revision/latest?cb=20150429140957"
