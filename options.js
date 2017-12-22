@@ -2495,7 +2495,8 @@ function mChats(){
 	}
 	this.igno={
 		'check':function(c,d,n){
-			if(c.twShifts.hasOwnProperty(n)){d.style.color='gray';d.style.opacity='0.4';d.style.whiteSpace='nowrap'}
+			if(c.twShifts.hasOwnProperty(n)){d.style.opacity='gray';d.style.opacity='0.4';d.style.whiteSpace='nowrap';return false}
+			return true
 		},
 		'init':function(){
 			this.div=C('DIV');
@@ -2727,7 +2728,7 @@ function mChats(){
 		dd.appendChild(co);dd.appendChild(bb);dd.appendChild(b);
 
 		dd.ignoName={chat,n};
-		this.igno.check(chat,dd,n);
+		ve=(!ve&&this.igno.check(chat,dd,n));
 		
 //if(chat.sun)this.fadeMessage(ve,dd,chat.id);else co.style.opacity=this.sencolors[20];
 		if(chat.wsChat!==2)chat.light[n]=[dd,bb,0];
@@ -2740,7 +2741,7 @@ function mChats(){
 		}
 		else{
 			if(chat.boat!==null)chat.boat=null;
-			if(!ve)dd.classList.add('fadeup');
+			if(ve)dd.classList.add('fadeup');
 			chat.messageDiv.insertBefore(dd,chat.messageDiv.children[0]);
 			if(chat.messageDiv.scrollTop>0)chat.messageDiv.scrollTop+=dd.offsetHeight
 		}
