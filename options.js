@@ -2520,7 +2520,7 @@ function mChats(){
 					w=g[x];
 					if(w.hasOwnProperty('ignoName')&&w.ignoName.n===n){
 						if(!chat.twShifts.hasOwnProperty(n)){w.style.color='';w.style.opacity='';w.style.whiteSpace=''}
-						else{w.style.color='gray';w.style.opacity='0.4';w.style.whiteSpace='nowrap'}
+						else{w.style.color='gray';w.style.opacity='0.4';w.style.whiteSpace='nowrap';w.classList.remove('fadeup')}
 					}
 				}
 			}.bind(this);
