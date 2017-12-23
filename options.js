@@ -2050,6 +2050,13 @@ function mChats(){
 					}
 				}
 			}
+			w.messageDiv.ondblclick=e=>{
+				if(e.target.hasOwnProperty('ignoName')){
+					t.igno.data=e.target.ignoName;
+					t.igno.titleDiv.textContent=e.target.ignoName.n;
+					with(t.igno.div.style){display='block';left=e.pageX-t.igno.div.offsetWidth/2+'px';top=e.pageY-t.igno.div.offsetHeight/2+'px'}
+				}
+			}
 			w.closeButton.onclick=()=>{t.closeChat(w.id)}
 			w.upButton.onclick=()=>{t.setMessageDivHeight(w,-1);t.checkOnSquares()}
 			w.downButton.onclick=()=>{t.setMessageDivHeight(w,1);t.checkOnSquares()}
