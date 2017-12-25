@@ -2851,6 +2851,28 @@ var R = {
 			}]
 	}, {
 			"skill": "Engineering",
+			"desc": "Skill: Engineering 110. Effect: Belt. Increases carrying slots by 24 when equipped",
+			"items": [{
+					"title": "Pocket Tesseract",
+					"src": ""
+			}, {
+					"title": "Superconductors",
+					"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/a/af/75px-Superconductors.png/revision/latest?cb=20150412102018"
+			}, {
+					"title": "Quantum Capacitors",
+					"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/8/8f/75px-Quantum_Capacitors.png/revision/latest?cb=20141203130030"
+			}, {
+					"title": "Element X",
+					"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/b/b7/75px-Element_X.png/revision/latest?cb=20141208180133"
+			}, {
+					"title": "Energy Cell",
+					"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/1/17/75px-Energy_Cell.png/revision/latest?cb=20141202035152"
+			}, {
+					"title": "Bindings",
+					"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/5/5f/75px-Bindings.png/revision/latest?cb=20141208183320"
+			}]
+	}, {
+			"skill": "Engineering",
 			"desc": "Skill: Engineering. Effect: ",
 			"items": [{
 					"title": "Seismic Boots",
