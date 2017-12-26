@@ -17,6 +17,7 @@ var but2 = document.createElement('BUTTON');
 var saveBut = document.createElement('BUTTON');
 var chk = document.createElement('INPUT');
 var chkLabel = document.createElement('LABEL');
+var wiki = document.createElement('A');
 var selecd = { 'cooker': document.createElement('SELECT'), 'lab': document.createElement('SELECT') }, selectd_opt = { 'cooker': ['','Biotech','Medical','Necro Tech'], 'lab': ['','Medical','Computer','Biotech','Traps','Electronics','Necro Tech','Engineering','Mechanical'] };
 
 function lenin() { resetList(); calcu(curkedah); listSearching() }
@@ -30,6 +31,8 @@ for(let i in selecd) {
 		selecd[i].appendChild(o)
 	}
 }
+wiki.href = 'http://sword-of-the-stars-the-pit.wikia.com';
+wiki.id = 'copywiki';
 listSearch.placeholder = 'Фильтр по ингредиенту';
 listSearch.type = 'text';
 chk.type='checkbox';
@@ -244,3 +247,4 @@ wrap.appendChild(winv);
 wrap.appendChild(list);
 document.body.appendChild(saveBut);
 document.body.appendChild(wrap);
+document.body.appendChild(wiki);
