@@ -20,4 +20,4 @@ input[type="text"],select,option{width:200px;font-family:monospace}
 .good{background-color:#783e48}
 .fav_icon{padding:0 4px;position:absolute;right:0;top:0;cursor:pointer;font-size:150%}
 #save_button{position:absolute;left:0;top:0}
-#copywiki{position:fixed;left:0;right:0}
+#copywiki{position:fixed;bottom:0;right:0}
