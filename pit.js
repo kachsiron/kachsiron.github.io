@@ -33,6 +33,7 @@ for(let i in selecd) {
 }
 wiki.href = 'http://sword-of-the-stars-the-pit.wikia.com';
 wiki.id = 'copywiki';
+wiki.textContent = 'sword-of-the-stars-the-pit.wikia.com';
 listSearch.placeholder = 'Фильтр по ингредиенту';
 listSearch.type = 'text';
 chk.type='checkbox';
