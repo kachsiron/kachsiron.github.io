@@ -2854,7 +2854,7 @@ var R = {
 			"desc": "Skill: Engineering 110. Effect: Belt. Increases carrying slots by 24 when equipped",
 			"items": [{
 					"title": "Pocket Tesseract",
-					"src": ""
+					"src": "https://kachsiron.github.io/imgs/Pocket Tesseract.png"
 			}, {
 					"title": "Superconductors",
 					"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/a/af/75px-Superconductors.png/revision/latest?cb=20150412102018"
