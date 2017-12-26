@@ -50,7 +50,7 @@ function listSearchReset(type) {
 	resultData[type].forEach(e => { e.element.style.display = '' });
 }
 function listSearching() {
-	listSearch.disabled = selecd[curkedah].disabled = (resultData[curkedah].length === 0);
+	listSearch.disabled = selecd[curkedah].disabled = (resultData[curkedah].length === 0 && selecd.cooker.options.selectedIndex + selecd.lab.options.selectedIndex === 0);
 	let value = listSearch.value;
 	if(value === '') listSearchReset(curkedah);
 	else {
