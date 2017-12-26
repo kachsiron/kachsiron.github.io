@@ -1754,7 +1754,7 @@ var R = {
 					"src": ""
 			}, {
 					"title": "Laser Sword",
-					"src": ""
+					"src": "https://kachsiron.github.io/imgs/Laser Sword.png"
 			}, {
 					"title": "Quantum Capacitors",
 					"src": a+"8/8f/75px-Quantum_Capacitors.png/revision/latest?cb=20141203130030"
@@ -3658,7 +3658,7 @@ var I = {
 		"Sword": a+"9/98/75px-Sword.png/revision/latest?cb=20150412102035",
 		"Sar": a+"b/b8/75px-Sar.png/revision/latest?cb=20141208183451",
 		"Lightning Blade": a+"c/c5/75px-Lightning_Blade.png/revision/latest?cb=20150420105519",
-		"Laser Sword": "",
+		"Laser Sword": "https://kachsiron.github.io/imgs/Laser Sword.png",
 		"Grenade": a+"c/cd/75px-Grenade.png/revision/latest?cb=20141201074802",
 		"High Calibre Rounds": a+"b/ba/75px-High_Calibre_Rounds.png/revision/latest?cb=20141202035358",
 		"Darts": a+"4/45/75px-Darts.png/revision/latest?cb=20141202040739",
