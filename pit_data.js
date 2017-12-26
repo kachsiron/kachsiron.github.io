@@ -1172,7 +1172,7 @@ var R = {
 			"desc": "Skill: Electronics 110. Effect: Armor. 95 armor, 60 durability. Cannot be repaired. Makes Shedding Carapace wearable by Humans, Tarka and Zuul.",
 			"items": [{
 					"title": "Ablative Plate",
-					"src": ""
+					"src": "https://kachsiron.github.io/imgs/Ablative Plate.png"
 			}, {
 					"title": "Shedding Carapace",
 					"src": "https://vignette.wikia.nocookie.net/sword-of-the-stars-the-pit/images/9/92/Shedding_Carapace_image1.jpg/revision/latest/scale-to-width-down/75?cb=20160425192451"
