@@ -964,6 +964,8 @@ var cMan={
 	},
 	'incomingg':function(){
 		for(let page=1;page<=GGLISTAMOUNT;page++){
+			setTimeout(()=>{
+				console.log(page)
 			GMX({ontimeout:()=>{OPOV.serv('Таймаут при запросе GG контента',null);this.checkReady('gg')},timeout:7777,method:'POST',url:'https://goodgame.ru/ajax/streams/selector/tab=popular&page='+page+'&onpage=15',headers:{"Content-Type":"application/x-www-form-urlencoded"},onload:requ=>{
 				requ=requ.target;
 				let content;
@@ -977,6 +979,7 @@ var cMan={
 				this.contents.gg=this.contents.gg.concat(content);
 				this.checkReady('gg')
 			}})
+			}, 2000);
 		}
 	},
 	'incoming':function(){
@@ -3312,7 +3315,6 @@ function getCookie(){
 	formData.append('password','6cBa3c0d37A35933');
 	formData.append('remember','1');
 	GMX({method:'POST',url:'https://goodgame.ru/ajax/chatlogin/',data:formData,onload:function(requ){try{
-		console.log(requ.target)
 		requ=JSON.parse(requ.target.responseText);
 		if(requ.hasOwnProperty('token')){GGTOKEN=requ.token;OPOV.serv('GGCookie получены',3000)}
 		else OPOV.serv('Отсутствуют ggcookie. Зайдите на <a target="_blank" href="https://goodgame.ru/">goodgame</a>',0)
