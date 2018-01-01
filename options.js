@@ -3314,6 +3314,7 @@ function getCookie(){
 	formData.append('password','6cBa3c0d37A35933');
 	formData.append('remember','1');
 	GMX({method:'POST',url:'https://goodgame.ru/ajax/chatlogin/',data:formData,onload:function(requ){try{
+		console.log(requ.target)
 		requ=JSON.parse(requ.target.responseText);
 		if(requ.hasOwnProperty('token')){GGTOKEN=requ.token;OPOV.serv('GGCookie получены',3000)}
 		else OPOV.serv('Отсутствуют ggcookie. Зайдите на <a target="_blank" href="https://goodgame.ru/">goodgame</a>',0)
