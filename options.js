@@ -980,7 +980,7 @@ var cMan={
 				this.contents.gg=this.contents.gg.concat(content);
 				this.checkReady('gg')
 			}})
-			}, (page - 1) * 4444);
+			}, (page - 1) * 11111);
 		}
 	},
 	'incoming':function(){
