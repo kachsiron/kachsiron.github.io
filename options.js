@@ -1007,6 +1007,7 @@ var cMan={
 		}})*/
 	},
 	'checkReady':function(t){
+		console.log(t)
 		this.contentReady[t]++;
 		this.nadDiv.div.textContent=++this.nadDiv.dig;
 		if(this.contentReady.fun>0&&this.contentReady.gg>=GGLISTAMOUNT&&this.contentReady.tw>=this.contents_twitch_length)this.coming()
