@@ -965,8 +965,9 @@ var cMan={
 	'incomingg':function(){
 		for(let page=1;page<=GGLISTAMOUNT;page++){
 			setTimeout(()=>{
-				console.log(page)
+				console.log('https://goodgame.ru/ajax/streams/selector/tab=popular&page='+page+'&onpage=15')
 			GMX({ontimeout:()=>{OPOV.serv('Таймаут при запросе GG контента',null);this.checkReady('gg')},timeout:7777,method:'POST',url:'https://goodgame.ru/ajax/streams/selector/tab=popular&page='+page+'&onpage=15',headers:{"Content-Type":"application/x-www-form-urlencoded"},onload:requ=>{
+				console.log(requ.target)
 				requ=requ.target;
 				let content;
 				try{content=JSON.parse(requ.responseText).streams}
