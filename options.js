@@ -979,7 +979,7 @@ var cMan={
 				this.contents.gg=this.contents.gg.concat(content);
 				this.checkReady('gg')
 			}})
-			}, 2000);
+			}, page * 2000);
 		}
 	},
 	'incoming':function(){
