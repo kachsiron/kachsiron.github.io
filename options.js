@@ -964,7 +964,7 @@ var cMan={
 	},
 	'incomingg':function(){
 		for(let page=1;page<=GGLISTAMOUNT;page++){
-			GMX({ontimeout:()=>{OPOV.serv('Таймаут при запросе GG контента',null);this.checkReady('gg')},timeout:7777,method:'POST',url:'https://goodgame.ru/ajax/streams/selector/',data:'tab=populat&page='+page,headers:{"Content-Type":"application/x-www-form-urlencoded"},onload:requ=>{
+			GMX({ontimeout:()=>{OPOV.serv('Таймаут при запросе GG контента',null);this.checkReady('gg')},timeout:7777,method:'POST',url:'https://goodgame.ru/ajax/streams/selector/',data:'tab=populat&page='+page+'&onpage=25',headers:{"Content-Type":"application/x-www-form-urlencoded"},onload:requ=>{
 				requ=requ.target;
 				let content;
 				try{content=JSON.parse(requ.responseText).streams}
