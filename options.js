@@ -835,7 +835,7 @@ var cMan={
 				thumbnail:z.preview,
 				rating:0,
 				description:'',
-				category:{name:'GG'},
+				category:{name:z.games},
 				streamer:{id:'g_'+z.id,name:z.streamer},
 				start_at:0,
 				viewers:Number.parseInt(z.viewers)
