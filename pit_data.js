@@ -1169,6 +1169,28 @@ var R = {
 					"src": a+"f/fb/75px-Sonic_Nodule.png/revision/latest?cb=20150411200839"
 			}]
 	}, {
+			"skill": "Engineering",
+			"desc": "Skill: Engineering. Does 15x2 damage to doors and mechs",
+			"items": [{
+					"title": "Seismic Gloves",
+					"src": a+"f/fe/75px-Seismic_Gloves.png/revision/latest?cb=20150420110025"
+			}, {
+					"title": "Vibranite",
+					"src": a+"2/20/75px-Vibranite.png/revision/latest?cb=20150419134822"
+			}, {
+					"title": "Composite Cloth",
+					"src": a+"c/ca/75px-Composite_Cloth.png/revision/latest?cb=20141208183339"
+			}, {
+					"title": "AM Cells",
+					"src": a+"c/cd/75px-AM_Cells.png/revision/latest?cb=20141202045713"
+			}, {
+					"title": "Sonic Nodule",
+					"src": a+"f/fb/75px-Sonic_Nodule.png/revision/latest?cb=20150411200839"
+			}, {
+					"title": "Quantum Capacitors",
+					"src": a+"8/8f/75px-Quantum_Capacitors.png/revision/latest?cb=20141203130030"
+			}]
+	}, {
 			"skill": "Electronics",
 			"desc": "Skill: Electronics 110. Effect: Armor. 95 armor, 60 durability. Cannot be repaired. Makes Shedding Carapace wearable by Humans, Tarka and Zuul.",
 			"items": [{
