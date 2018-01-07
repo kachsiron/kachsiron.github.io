@@ -26,7 +26,7 @@ for(let i in selecd) {
 	selecd[i].onchange = lenin;
 	for(let j = 0, l = selectd_opt[i].length; j < l; j++) {
 		let o = document.createElement('OPTION');
-		o.textContent = (selectd_opt[i][j] === '' ? 'Фильтр по навыку' : selectd_opt[i][j]);
+		o.textContent = (selectd_opt[i][j] === '' ? 'Filter by skill' : selectd_opt[i][j]);
 		o.value = (selectd_opt[i][j] === '' ? 'none' : selectd_opt[i][j])
 		selecd[i].appendChild(o)
 	}
@@ -34,12 +34,12 @@ for(let i in selecd) {
 wiki.href = 'http://sword-of-the-stars-the-pit.wikia.com';
 wiki.id = 'copywiki';
 wiki.textContent = 'sword-of-the-stars-the-pit.wikia.com';
-listSearch.placeholder = 'Фильтр по ингредиенту';
+listSearch.placeholder = 'Filter by ingredient';
 listSearch.type = 'text';
 chk.type='checkbox';
 chk.id='chk';
 chkLabel.setAttribute('for', 'chk');
-chkLabel.textContent='Избранное';
+chkLabel.textContent='Favorites';
 winv.id='winv';
 wbut.id='wbut';
 div.className='inv';
