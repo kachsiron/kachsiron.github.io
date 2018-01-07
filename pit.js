@@ -221,7 +221,7 @@ function butik() {
 	calcu(this.type);
 	listSearching()
 }
-saveBut.textContent = 'Сохранить';
+saveBut.textContent = 'Save';
 saveBut.id='save_button';
 but.textContent = 'Cooker';
 but2.textContent = 'Lab';
