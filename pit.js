@@ -223,8 +223,8 @@ function butik() {
 }
 saveBut.textContent = 'Сохранить';
 saveBut.id='save_button';
-but.textContent = 'К У К Е Р';
-but2.textContent = 'Л А Б';
+but.textContent = 'Cooker';
+but2.textContent = 'Lab';
 saveBut.onclick=function(){
 	localStorage.fav=JSON.stringify(fav);
 	localStorage.myinv=JSON.stringify(myinv);
