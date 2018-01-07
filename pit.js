@@ -65,16 +65,16 @@ function listSearching() {
 	}
 }
 listSearch.onkeyup = listSearching;
-for(let i in I.cooker) {
-	let d = makeItem(i, I.cooker[i], true);
-	d.onclick=clonick.bind({'item':i, 'element':d,'type':'cooker'});
+for(let i of I.cooker) {
+	let d = makeItem(i, true);
+	d.onclick = clonick.bind({ 'item':i, 'element':d, 'type':'cooker' });
 	allitems.cooker.push(d);
 	allitemsname.cooker[i] = d;
 	div.appendChild(d)
 }
-for(let i in I.lab) {
-	let d = makeItem(i, I.lab[i], true);
-	d.onclick=clonick.bind({'item':i, 'element':d,'type':'lab'});
+for(let i of I.lab) {
+	let d = makeItem(i, true);
+	d.onclick = clonick.bind({ 'item':i, 'element':d, 'type':'lab' });
 	allitems.lab.push(d);
 	allitemsname.lab[i] = d;
 	div2.appendChild(d)
@@ -82,11 +82,12 @@ for(let i in I.lab) {
 for(let i in myinv) {
 	for(let o = 0, l = myinv[i].length; o<l; o++) allitemsname[i][ myinv[i][o] ].classList.add('active');
 }
-function makeItem(name, src, zv) {
+function makeItem(name, zv) {
 	let d = document.createElement('DIV');
 	d.className = (zv?'item':'item2');
-	let img = document.createElement('IMG');
-	img.src = src;
+	let img = document.createElement('DIV');
+	img.style.backgroundImage = Gurl;
+	img.style.backgroundPosition = C[name][0] + 'px ' + C[name][1] + 'px'; 
 	img.className = 'icon';
 	d.appendChild(img);
 	let span = document.createElement('DIV');
@@ -106,7 +107,7 @@ function calcu(type) {
 			let b = 0, n = [], rt = R[type][ fav[type][r] ];
 			if(selecd[type].value !== 'none' && selecd[type].value !== rt.skill) continue;
 			for(let i = 1, l = rt.items.length; i < l; i++) {
-				if(myinv[type].indexOf(rt.items[i].title) !== -1) {
+				if(myinv[type].indexOf(rt.items[i]) !== -1) {
 					b++;
 					n[i] = true;
 				}
@@ -120,7 +121,7 @@ function calcu(type) {
 			let b = 0, n = [], rt = R[type][r];
 			if(selecd[type].value !== 'none' && selecd[type].value !== rt.skill) continue;
 			for(let i = 1, l = rt.items.length; i < l; i++) {
-				if(myinv[type].indexOf(rt.items[i].title) !== -1) {
+				if(myinv[type].indexOf(rt.items[i]) !== -1) {
 					b++;
 					n[i] = true;
 				}
@@ -140,9 +141,9 @@ function calcu(type) {
 		r = result[i].r;
 		e = { 'element': d, 'ingr': new Set() };
 		for(let j = 1, l = R[type][r].items.length, t; j < l;) {
-			t = R[type][r].items[j].title;
+			t = R[type][r].items[j];
 			e.ingr.add(t);
-			rd = makeItem(t, R[type][r].items[j].src, true);
+			rd = makeItem(t, true);
 			rd.onclick = clonick.bind({'item': t, 'element': allitemsname[type][t], 'type': type});
 			if(!result[i].n[j])rd.classList.add('inactive_item');
 			d.appendChild(rd);
@@ -157,9 +158,9 @@ function calcu(type) {
 				break
 			}
 		}
-		//e.ingr.add(R[type][r].items[0].title);
+		//e.ingr.add(R[type][r].items[0]);
 		resultData[type].push(e);
-		rd = makeItem(R[type][r].items[0].title, R[type][r].items[0].src, false);
+		rd = makeItem(R[type][r].items[0], false);
 		d.appendChild(rd);
 		rd = document.createElement('DIV');
 		rd.className='desc';
