@@ -166,6 +166,7 @@ function calcu(type) {
 		rd.className='desc';
 		rd.textContent=R[type][r].desc;
 		d.appendChild(rd);
+		fb.title='Add to Favorites';
 		fb.onclick=function(){
 			let sk = fav[this.type].indexOf(this.r);
 			if(sk===-1){
