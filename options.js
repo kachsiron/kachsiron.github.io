@@ -2054,7 +2054,8 @@ function mChats(){
 
 		(function(t,w){
 			w.messageDiv.onclick=e=>{
-				if(e.ctrlKey){
+				if(e.target.hasOwnProperty('tagb'))respMessFun.call(e.target.tagb);
+				else if(e.ctrlKey){
 					if(e.target.hasOwnProperty('ignoName')){
 						t.igno.data=e.target.ignoName;
 						t.igno.titleDiv.textContent=e.target.ignoName.n;
@@ -2660,7 +2661,8 @@ function mChats(){
 				cf=bnick.name===chat.nick;
 				let btag=C('NOBR');
 				btag.textContent=(cf?'©':bnick.name);
-				btag.onclick=respMessFun.bind({i:chat.id,n:bnick.name,t:chat.wsChat,uid:bnick.id});
+				//btag.onclick=respMessFun.bind({i:chat.id,n:bnick.name,t:chat.wsChat,uid:bnick.id});
+				btag.tagb={i:chat.id,n:bnick.name,t:chat.wsChat,uid:bnick.id};
 				bb.className='mc_nick3';
 				b.appendChild(btag);
 				stag.innerHTML=' '+msgReplace2(iv)//,chat.smileVis);
@@ -2701,7 +2703,8 @@ function mChats(){
 			previewHandle(b);
 			bs=b.querySelector('nobr');
 			if(bs!==null){
-				bs.onclick=respMessFun.bind({i:chat.id,n:bnick,t:chat.wsChat,uid:null});
+				//bs.onclick=respMessFun.bind({i:chat.id,n:bnick,t:chat.wsChat,uid:null});
+				bs.tagb={i:chat.id,n:bnick,t:chat.wsChat,uid:null};
 				bb.className='mc_nick3';
 				if(chat.light.hasOwnProperty(bnick))bs.ondblclick=this.creeper.bind(this,chat,chat.light[bnick][0])
 				if(!cf)this.setColorOfNick(chat,[bs],bnick)
@@ -2731,7 +2734,8 @@ function mChats(){
 			previewHandle(b);
 			bs=b.querySelector('nobr');
 			if(bs!==null){
-				bs.onclick=respMessFun.bind({i:chat.id,n:bnick,t:chat.wsChat,uid:null});
+				//bs.onclick=respMessFun.bind({i:chat.id,n:bnick,t:chat.wsChat,uid:null});
+				bs.tagb={i:chat.id,n:bnick,t:chat.wsChat,uid:null};
 				bb.className='mc_nick3';
 				if(chat.light.hasOwnProperty(bnick2))bs.ondblclick=this.creeper.bind(this,chat,chat.light[bnick2][0])
 				if(!cf)this.setColorOfNick(chat,[bs],bnick2)
@@ -2743,7 +2747,8 @@ function mChats(){
 		chat.last=[n,bb];
 		bb.textContent=n;
 		bb.title=dt;
-		bb.onclick=respMessFun.bind({i:chat.id,n:n,t:chat.wsChat,uid:(e.id||null)});
+		//bb.onclick=respMessFun.bind({i:chat.id,n:n,t:chat.wsChat,uid:(e.id||null)});
+		bb.tagb={i:chat.id,n:n,t:chat.wsChat,uid:(e.id||null)};
 		dd.appendChild(co);dd.appendChild(bb);dd.appendChild(b);
 
 		dd.ignoName={chat,n};
