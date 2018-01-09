@@ -287,7 +287,7 @@ var grBut2={
 			d.appendChild(v);
 			for(let y of this.utfs[x]){
 				let t=C('SPAN');
-				t.textContent=x;
+				t.textContent=y;
 				s.appendChild(t)
 			}
 			d.appendChild(s);
