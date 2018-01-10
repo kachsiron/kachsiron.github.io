@@ -18,7 +18,7 @@ window.onerror=function(msg,url,lineNo,columnNo,error){
 
 var D=document,C=D.createElement.bind(D);
 var DIV3_HIDE_SCROLL=0,CANVAS_WIDTH=299,B=D.body.appendChild.bind(D.body);
-var fonty=['Calibri','Cormorant Infant','Alegreya','Alice','Tenor Sans','Prosto One','Philosopher','Pangolin','Oranienbaum','Old Standard TT','Neucha','Ledger','Kurale','Gabriela','Cuprum'];
+var fonty=['Calibri','Alegreya','Alice','Tenor Sans','Prosto One','Philosopher','Pangolin','Oranienbaum','Old Standard TT','Neucha','Ledger','Kurale','Gabriela','Cuprum'];
 scrollHider();
 
 //Л О К А Л Ь Н Ы Е   Д А Н Н Ы Е
