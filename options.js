@@ -2741,7 +2741,7 @@ function mChats(){
 			let antis=iv.match(/[^\sа-яА-Я]+/g);
 			if(antis.length>0){
 				for(let i=0,l=antis.length;i<l;i++){
-					if(!antis[i].match(/\W/g).length===0){
+					if(!antis[i].match(/\W/g)===null){
 						if(antis[i].match(/[A-Z]/g).length>1||antis[i].search(/[A-Z]/)>0){
 							iv.replace(antis[i],'<span title="'+antis[i]+'">☺</span>')
 						}
