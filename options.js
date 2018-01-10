@@ -2179,7 +2179,13 @@ function mChats(){
 		w.sock.onerror=function(e){console.log('error',e);OPOV.serv('Ошибка в сокете. Смотри в консоль',10000)};
 		w.sock.onmessage=function(e){this.i.amoGG(e,this.w)}.bind({i:this,w:w})
 	}
-	this.openSocketTwitch=function(w,i){
+	this.openSocketTwitch=function(w,i){//https://api.twitch.tv/kraken/chat/emoticons
+GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/kraken/chat/emoticons',onload:requ=>{try{
+	requ=JSON.parse(requ.target.responseText);
+
+	console.log(requ)
+}catch(e){console.log(e);OPOV.serv('Twitch. Ошибка при получении смайлов',10000)}}})
+		
 		if(this.twitchSmiles===null){//https://api.twitch.tv/kraken/chat/emoticon_images
 			GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/kraken/chat/emoticon_images?on_site=1&emotesets=0,2490,2774,2808,3902,7301,13715',onload:requ=>{try{
 				requ=JSON.parse(requ.target.responseText);
