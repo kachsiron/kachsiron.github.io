@@ -2179,20 +2179,14 @@ function mChats(){
 		w.sock.onerror=function(e){console.log('error',e);OPOV.serv('Ошибка в сокете. Смотри в консоль',10000)};
 		w.sock.onmessage=function(e){this.i.amoGG(e,this.w)}.bind({i:this,w:w})
 	}
-	this.openSocketTwitch=function(w,i){//https://api.twitch.tv/kraken/chat/emoticons
-GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/kraken/chat/emoticons',onload:requ=>{try{
-	requ=JSON.parse(requ.target.responseText);
-
-	console.log(requ)
-}catch(e){console.log(e);OPOV.serv('Twitch. Ошибка при получении смайлов',10000)}}})
-		
-		if(this.twitchSmiles===null){//https://api.twitch.tv/kraken/chat/emoticon_images
+	this.openSocketTwitch=function(w,i){
+		/*if(this.twitchSmiles===null){//https://api.twitch.tv/kraken/chat/emoticon_images
 			GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/kraken/chat/emoticon_images?on_site=1&emotesets=0,2490,2774,2808,3902,7301,13715',onload:requ=>{try{
 				requ=JSON.parse(requ.target.responseText);
 				this.twitchSmiles=[];
 				for(let e in requ.emoticon_sets)requ.emoticon_sets[e].forEach(el=>this.twitchSmiles.push(el.code))
 			}catch(e){console.log(e);OPOV.serv('Twitch. Ошибка при получении смайлов',10000)}}})
-		}
+		}*/
 		this.sam('[<u>соединение</u>]',w,true,0);
 		GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/api/channels/'+w.wsChatChannelId+'/chat_properties?on_site=1',onload:requ=>{try{
 			requ=JSON.parse(requ.target.responseText).web_socket_servers[0];
@@ -2743,7 +2737,17 @@ GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/kr
 		else{// T W I T C H
 			iv=this.escapeHtml(e.text);
 			let bnick2=null,nn=n.toLowerCase();
-			iv=iv.replace(rgxpChatTwitch[8],this.sm_replacer.bind(this));
+			//iv=iv.replace(rgxpChatTwitch[8],this.sm_replacer.bind(this));
+			let antis=iv.match(/[^\sа-яА-Я]+/g);
+			if(antis.length>0){
+				for(let i=0,l=antis.length;i<l;i++){
+					if(!antis[i].match(/\W/g).length===0){
+						if(antis[i].match(/[A-Z]/g).length>1||antis[i].search(/[A-Z]/)>0){
+							iv.replace(antis[i],'<span title="'+antis[i]+'">☺</span>')
+						}
+					}
+				}
+			}
 			bnick=iv.match(rgxpChatTwitch[1]);
 			dt=e.timestamp.getHours().totwo()+':'+e.timestamp.getMinutes().totwo()+':'+e.timestamp.getSeconds().totwo();
 			this.setBorderColor(bb,2,iv,nn,chat.nick);
@@ -2917,7 +2921,7 @@ GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/kr
 			w.listUserDiv.appendChild(v)
 		}
 	}
-	this.sm_replacer=function(str,p1){if(this.twitchSmiles.indexOf(p1)!==-1)return '☺';return p1}
+	//this.sm_replacer=function(str,p1){if(this.twitchSmiles.indexOf(p1)!==-1)return '☺';return p1}
 	this.init=function(){
 		let arr={};
 		/*for(let j=0,i=0,l=this.letterColor.length;i<l;){
