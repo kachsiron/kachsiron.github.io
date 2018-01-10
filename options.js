@@ -286,6 +286,8 @@ var grBut2={
 	'init':function(){
 		let span=C('DIV'),utf=C('DIV');
 		utf.style.cursor='pointer';
+		utf.style.display='flex';
+		utf.style.flexWrap='wrap';
 		for(let x in this.utfs){
 			let d=C('DIV'),v=C('DIV'),s=C('DIV');
 			v.textContent=x;
@@ -295,14 +297,18 @@ var grBut2={
 			for(let y of this.utfs[x]){
 				let t=C('SPAN');
 				t.textContent=y;
+				t.thisissmile=true;
 				s.appendChild(t)
 			}
 			d.appendChild(s);
+			d.style.border='1px solid gray';
 			utf.appendChild(d)
 		}
 		utf.onclick=function(e){
-			messtochat.MSG.value=messtochat.MSG.value+(messtochat.MSG.value!==''?' ':'')+e.target.textContent;
-			messtochat.MSG.focus();
+			if(e.target.thisissmile){
+				messtochat.MSG.value=messtochat.MSG.value+(messtochat.MSG.value!==''?' ':'')+e.target.textContent;
+				messtochat.MSG.focus();
+			}
 			if(e.ctrlKey)e.stopPropagation()
 		}
 		smilepadik.appendChild(utf);
