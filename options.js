@@ -1954,7 +1954,7 @@ function mChats(){
 		'блин':'whut',
 		'нувот':'nc'
 	};
-	this.missSmile=true;	this.windows=new Map();	this.twitchSmiles=null;
+	this.missSmile=true;	this.windows=new Map();	this.twitchSmiles={};
 	this.defHeight=150;		this.defWidth=161;		this.defSquare={x:7,y:5};
 	this.tHeight=14;		this.railHeight=30;		this.minSquare={x:5,y:2};
 	this.ul_width=23;		this.ul_height=30;		this.scrlWidth=15;
@@ -2192,17 +2192,7 @@ function mChats(){
 		w.sock.onmessage=function(e){this.i.amoGG(e,this.w)}.bind({i:this,w:w})
 	}
 	this.openSocketTwitch=function(w,i){
-		if(this.twitchSmiles===null){//https://api.twitch.tv/kraken/chat/emoticon_images?on_site=1&emotesets=0,2490,2774,2808,3902,7301,13715
-			GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/kraken/chat/emoticon_images',onload:requ=>{try{
-				requ=JSON.parse(requ.target.responseText);
-				this.twitchSmiles={};
-				requ.emoticons.forEach(el=>{
-					if(!this.twitchSmiles.hasOwnProperty(el.code[0]))this.twitchSmiles[ el.code[0] ]=[]
-					this.twitchSmiles[ el.code[0] ].push(el.code)
-				})
-				//for(let e in requ.emoticon)requ.emoticon_sets[e].forEach(el=>this.twitchSmiles.push(el.code))
-			}catch(e){console.log(e);OPOV.serv('Twitch. Ошибка при получении смайлов',10000)}}})
-		}
+		//if(this.twitchSmiles===null)//https://api.twitch.tv/kraken/chat/emoticon_images?on_site=1&emotesets=0,2490,2774,2808,3902,7301,13715
 		this.sam('[<u>соединение</u>]',w,true,0);
 		GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/api/channels/'+w.wsChatChannelId+'/chat_properties?on_site=1',onload:requ=>{try{
 			requ=JSON.parse(requ.target.responseText).web_socket_servers[0];
@@ -2931,7 +2921,24 @@ function mChats(){
 		if(this.twitchSmiles[ p1[0] ].indexOf(p1)!==-1)return '☺';
 		return p1
 	}
+	this.load_twitch_smiles=function(){
+		let opv=OPOV.serv('Загрузь твитч смайлов...');
+		GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/kraken/chat/emoticon_images',onload:requ=>{try{
+			requ=JSON.parse(requ.target.responseText).emoticons;
+			this.twitchSmiles={};
+			requ.forEach(el=>{
+				if(!this.twitchSmiles.hasOwnProperty(el.code[0]))this.twitchSmiles[ el.code[0] ]=[]
+				this.twitchSmiles[ el.code[0] ].push(el.code)
+			});
+			delete this.twitchSmiles['#'];
+			delete this.twitchSmiles[':'];
+			delete this.twitchSmiles['['];
+			delete this.twitchSmiles['\\'];
+			OPOV.serv('Twitch. Смайлы загружены',3000,opv)
+		}catch(e){console.log(e);OPOV.serv('Twitch. Ошибка при получении смайлов',10000)}}});
+	}
 	this.init=function(){
+		this.load_twitch_smiles();
 		let arr={};
 		/*for(let j=0,i=0,l=this.letterColor.length;i<l;){
 			for(let k=0;k<11;){
