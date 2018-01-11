@@ -2926,15 +2926,17 @@ function mChats(){
 		GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/kraken/chat/emoticon_images',onload:requ=>{try{
 			requ=JSON.parse(requ.target.responseText).emoticons;
 			this.twitchSmiles={};
+			let c=0;
 			requ.forEach(el=>{
 				if(!this.twitchSmiles.hasOwnProperty(el.code[0]))this.twitchSmiles[ el.code[0] ]=[]
-				this.twitchSmiles[ el.code[0] ].push(el.code)
+				this.twitchSmiles[ el.code[0] ].push(el.code);
+				c++
 			});
 			delete this.twitchSmiles['#'];
 			delete this.twitchSmiles[':'];
 			delete this.twitchSmiles['['];
 			delete this.twitchSmiles['\\'];
-			OPOV.serv('Готово',3000,opv,true)
+			OPOV.serv('Готово (' + c + ')',3000,opv,true)
 		}catch(e){console.log(e);OPOV.serv('Ошибка!',60000,opv,true)}}});
 	}
 	this.init=function(){
