@@ -2918,7 +2918,7 @@ function mChats(){
 		}
 	}
 	this.sm_replacer=function(str,p1){
-		if(this.twitchSmiles[ p1[0] ].indexOf(p1)!==-1)return '☺';
+		if(this.twitchSmiles.hasOwnProperty(p1[0])&&this.twitchSmiles[ p1[0] ].indexOf(p1)!==-1)return '☺';
 		return p1
 	}
 	this.load_twitch_smiles=function(){
