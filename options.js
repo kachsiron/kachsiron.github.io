@@ -2934,8 +2934,8 @@ function mChats(){
 			delete this.twitchSmiles[':'];
 			delete this.twitchSmiles['['];
 			delete this.twitchSmiles['\\'];
-			OPOV.serv('Twitch. Смайлы загружены',3000,opv)
-		}catch(e){console.log(e);OPOV.serv('Twitch. Ошибка при получении смайлов',10000)}}});
+			OPOV.serv('Готово',3000,opv,true)
+		}catch(e){console.log(e);OPOV.serv('Ошибка!',60000,opv,true)}}});
 	}
 	this.init=function(){
 		this.load_twitch_smiles();
