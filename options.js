@@ -3457,7 +3457,7 @@ rgxpChatTwitch=[
 	/^.*?PRIVMSG #.*? :(.*)$/,
 	/ PONG /,
 	/:Welcome, GLHF!/,
-	/((?=[A-Z])[A-Za-z0-9]{4,})/g,
+	/([A-Za-z0-9]{4,})/g,
 	/☺/g,
 	/^.*?;subscriber=(.*?);/ //^jtv MODE #.*? -(.) (.*)$/
 ],
