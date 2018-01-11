@@ -2192,11 +2192,15 @@ function mChats(){
 		w.sock.onmessage=function(e){this.i.amoGG(e,this.w)}.bind({i:this,w:w})
 	}
 	this.openSocketTwitch=function(w,i){
-		if(this.twitchSmiles===null){//https://api.twitch.tv/kraken/chat/emoticon_images
-			GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/kraken/chat/emoticon_images?on_site=1&emotesets=0,2490,2774,2808,3902,7301,13715',onload:requ=>{try{
+		if(this.twitchSmiles===null){//https://api.twitch.tv/kraken/chat/emoticon_images?on_site=1&emotesets=0,2490,2774,2808,3902,7301,13715
+			GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/kraken/chat/emoticon_images',onload:requ=>{try{
 				requ=JSON.parse(requ.target.responseText);
-				this.twitchSmiles=[];
-				for(let e in requ.emoticon_sets)requ.emoticon_sets[e].forEach(el=>this.twitchSmiles.push(el.code))
+				this.twitchSmiles={};
+				requ.emoticons.forEach(el=>{
+					if(!this.twitchSmiles.hasOwnProperty(el.code[0]))this.twitchSmiles[ el.code[0] ]=[]
+					this.twitchSmiles[ el.code[0] ].push(el.code)
+				})
+				//for(let e in requ.emoticon)requ.emoticon_sets[e].forEach(el=>this.twitchSmiles.push(el.code))
 			}catch(e){console.log(e);OPOV.serv('Twitch. Ошибка при получении смайлов',10000)}}})
 		}
 		this.sam('[<u>соединение</u>]',w,true,0);
@@ -2923,7 +2927,10 @@ function mChats(){
 			w.listUserDiv.appendChild(v)
 		}
 	}
-	this.sm_replacer=function(str,p1){if(this.twitchSmiles.indexOf(p1)!==-1)return '☺';return p1}
+	this.sm_replacer=function(str,p1){
+		if(this.twitchSmiles[ p1[0] ].indexOf(p1)!==-1)return '☺';
+		return p1
+	}
 	this.init=function(){
 		let arr={};
 		/*for(let j=0,i=0,l=this.letterColor.length;i<l;){
@@ -3441,7 +3448,7 @@ rgxpChatTwitch=[
 	/^.*?PRIVMSG #.*? :(.*)$/,
 	/ PONG /,
 	/:Welcome, GLHF!/,
-	/([A-Za-z0-9]{4,})/g,
+	/((?=[A-Z])[A-Za-z0-9]{4,})/g,
 	/☺/g,
 	/^.*?;subscriber=(.*?);/ //^jtv MODE #.*? -(.) (.*)$/
 ],
