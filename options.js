@@ -3457,7 +3457,7 @@ rgxpChatTwitch=[
 	/^.*?PRIVMSG #.*? :(.*)$/,
 	/ PONG /,
 	/:Welcome, GLHF!/,
-	/([A-Za-z0-9]{4,})/g,
+	/((?=[a-z0-9]*[A-Z])[A-Za-z0-9]{4,})/g,
 	/☺/g,
 	/^.*?;subscriber=(.*?);/ //^jtv MODE #.*? -(.) (.*)$/
 ],
@@ -3574,6 +3574,14 @@ messtochat.MSG.onkeypress=function(e){
 				else if((m==='ггчат'||m==='uuxfn')&&w!==void 0)mch.addChat('g_'+w,Number.parseInt(w));
 				else if((m==='ггс'||m==='uuc')&&w!==void 0)GGLISTAMOUNT=Number.parseInt(w);
 				else if((m==='тчат'||m==='nxfn')&&w!==void 0)mch.addChat('t_'+w,true,w);
+				else if(m==='с'||m==='c'){
+					if(document.getSelection().anchorNode===document.getSelection().focusNode){
+						let c=document.getSelection(),b=c.anchorNode,a=b.textContent.slice(c.anchorOffset,c.focusOffset-c.anchorOffset);
+						if(!mch.twitchSmiles.hasOwnProperty(a[0]))mch.twitchSmiles[ a[0] ]=[];
+						mch.twitchSmiles[ a[0] ]=a;
+						OPOV.serv('Слово "' + a + '" добавлено',3000)
+					}
+				}
 				/*else if(m==='мясо'){
 					if(messtochat.UID!==null){
 						let s=messtochat.UID.name.split(''),l=s.length,r='';
