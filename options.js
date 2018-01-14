@@ -2008,7 +2008,8 @@ function mChats(){
 			'leftButton':C('BUTTON'),		'rightButton':C('BUTTON'),
 			'closeButton':C('BUTTON'),//'sunButton':C('BUTTON'),
 			'fontUpButton':C('BUTTON'),	'fontDownButton':C('BUTTON'),	'listUserButton':C('BUTTON'),//'connectButton':C('BUTTON'),
-			'titleDiv':C('DIV'),				'messageDiv':C('DIV'),				'listUserDiv':C('DIV')
+			'titleDiv':C('DIV'),				'messageDiv':C('DIV'),				'listUserDiv':C('DIV'),
+			'idle':{'span':C('SPAN'),'timer':null,'last':0}
 		});
 		this.cleaner(true);
 		let w=this.windows.get(id);
@@ -2060,6 +2061,7 @@ function mChats(){
 			w.userListStatus=false;
 			w.leftButton.style.left='24px';
 			w.rightButton.style.left='36px'
+			w.idle.span.style.left='48px'
 		}
 		else{
 			w.leftButton.style.left='12px';
@@ -2073,6 +2075,8 @@ function mChats(){
 		w.rightButton.className='mc_button';
 		w.rightButton.textContent='>';
 		w.rightButton.style.height='14px';
+		
+		w.idle.span.className='mc_titleSpan';
 		with(w.fontUpButton){className='mc_button';textContent='-';style.top='0';style.right='12px';style.height='7px'}
 		with(w.fontDownButton){className='mc_button';textContent='-';style.right='12px';style.height=style.top='7px'}
 //with(w.sunButton){className='mc_button';textContent=(isa?'☼':'☀');style.right='12px';style.height='14px'}
@@ -2171,7 +2175,7 @@ function mChats(){
 		this.checkOnSquares();
 
 		h(w.scrl.msc);h(w.scrl.lay);h(w.scrl.rail);h(w.closeButton);h(w.upButton);h(w.downButton);h(w.leftButton);
-		h(w.rightButton);h(w.fontUpButton);h(w.fontDownButton);h(w.titleDiv);h(w.messageDiv);//h(w.sunButton);
+		h(w.rightButton);h(w.idle.span);h(w.fontUpButton);h(w.fontDownButton);h(w.titleDiv);h(w.messageDiv);//h(w.sunButton);
 		if(!ws)h(w.listUserDiv);
 		B(w.winDiv)
 	}
@@ -2676,12 +2680,19 @@ function mChats(){
 		bb.style.backgroundImage='radial-gradient(ellipse farthest-corner at center, '+c+' 0%, transparent 85%, transparent 100%)'
 	},
 	this.escapeHtml=function(u){return u.replace(rgxpChat[5],'&lt;').replace(rgxpChat[6],'&gt;')},
+	this.idleTimer=function(){
+		this.span.textContent=(new Date()).getTime()-this.last
+	}
 	this.am=function(e,chat,ve){
+		if(!ve&&chat.idle.timer===null)chat.idle.timer=setInterval(this.idleTimer.bind(chat.idle),1000);
+
 		let bs,dt,n=e.user_name,iv,dd=C('DIV'),co=C('SUB'),bb=C('SPAN'),b=C('SPAN'),bnick=null,cf=false;
 		bb.className='mc_nick';dd.className='mc_message';
 		if(chat.wsChat===0){
 			iv=this.escapeHtml(e.text);
-			dt=this.tss2(e.timestamp*1000);
+			dt=e.timestamp*1000;
+			chat.idle.last=dt;
+			dt=this.tss2(dt);
 			if(e.to!==null)bnick=e.to;
 			this.setBorderColor(bb,0,bnick,n,chat.nick);
 			let stag=C('SPAN');
@@ -2715,7 +2726,9 @@ function mChats(){
 		else if(chat.wsChat===1){// G O O D G A M E
 			iv=e.text.replace(rgxpChatGG[0],'$1');
 			bnick=iv.match(rgxpChatGG[1]);
-			dt=this.tss2(e.timestamp*1000);
+			dt=e.timestamp*1000;
+			chat.idle.last=dt;
+			dt=this.tss2(dt);
 			this.setBorderColor(bb,1,iv,n,chat.nick);
 			if(bnick!==null){
 				bnick=bnick[1];
@@ -2746,6 +2759,7 @@ function mChats(){
 			iv=iv.replace(rgxpChatTwitch[8],this.sm_replacer.bind(this));
 			bnick=iv.match(rgxpChatTwitch[1]);
 			dt=e.timestamp.getHours().totwo()+':'+e.timestamp.getMinutes().totwo()+':'+e.timestamp.getSeconds().totwo();
+			chat.idle.last=e.timestamp.getTime();
 			this.setBorderColor(bb,2,iv,nn,chat.nick);
 			if(e.sub==='1')bb.style.textDecoration='underline';
 			if(bnick!==null){
