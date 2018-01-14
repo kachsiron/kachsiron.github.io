@@ -2069,7 +2069,6 @@ function mChats(){
 			w.idle.span.style.left='36px'
 		}
 		
-		
 		w.leftButton.className='mc_button';
 		w.leftButton.textContent='<';
 		w.leftButton.style.height='14px';
@@ -2683,7 +2682,10 @@ function mChats(){
 	},
 	this.escapeHtml=function(u){return u.replace(rgxpChat[5],'&lt;').replace(rgxpChat[6],'&gt;')},
 	this.idleTimer=function(){
-		this.span.textContent=Math.round(((new Date()).getTime()-this.last)/1000)
+		let a=Math.round(((new Date()).getTime()-this.last)/1000);
+		this.span.textContent=a;
+		this.span.style.backgroundColor=a<120?'':a<300?'yellow':a<600?'orange':'red'
+		this.span.style.color=a<120?'':'black'
 	}
 	this.am=function(e,chat,ve){
 		if(!ve&&chat.idle.timer===null)chat.idle.timer=setInterval(this.idleTimer.bind(chat.idle),1000);
@@ -2765,7 +2767,7 @@ function mChats(){
 			this.setBorderColor(bb,2,iv,nn,chat.nick);
 			if(e.sub==='1')bb.style.textDecoration='underline';
 			if(bnick!==null){
-				bnick=bnick[1]||bnick[2];
+				bnick=bnick[1]||bnick[2]||'?';
 				bnick2=bnick.toLowerCase();
 				cf=(bnick2===chat.nick);
 				if(chat.light.hasOwnProperty(bnick2)){
