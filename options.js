@@ -2060,13 +2060,15 @@ function mChats(){
 
 			w.userListStatus=false;
 			w.leftButton.style.left='24px';
-			w.rightButton.style.left='36px'
+			w.rightButton.style.left='36px';
+			w.idle.span.style.left='48px'
 		}
 		else{
 			w.leftButton.style.left='12px';
-			w.rightButton.style.left='24px'
+			w.rightButton.style.left='24px';
+			w.idle.span.style.left='36px'
 		}
-		w.idle.span.style.left='48px';
+		
 		
 		w.leftButton.className='mc_button';
 		w.leftButton.textContent='<';
