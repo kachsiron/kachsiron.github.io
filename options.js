@@ -2335,6 +2335,7 @@ function mChats(){
 	this.closeChat=function(id){
 		let w=this.windows.get(id);
 		w.messageDiv.innerHTML='';
+		if(w.idle.timer!==null)clearInterval(w.idle.timer);
 		if(messtochat.ID.value===id)messtochat.ID.chan4v('');
 		if(w.wsChat===0){//fun
 			//cMan.removeSub(w.wsChatChannelId);
