@@ -319,7 +319,7 @@ var R = {
 	}, {
 			"skill": "Mechanical",
 			"desc": "Skill: Mechanical 110. Effect: Melee Weapon, replaces Fists. 8 damage, 100 penetration. Cannot be used as a weapon by Liir.",
-			"items": ["Adamantium Claws", "Adamantium Resin", "Cyber Connectors", "Living Steel Remnant", "Nano-Wire"]
+			"items": ["Adamantium Claws", "Adamantium Resin", "Living Steel Remnant", "Cyber Connectors", "Nano-Wire"]
 	}, {
 			"skill": "Mechanical",
 			"desc": "Skill: Mechanical 115. Effect: Blade Weapon. 9-15 AoE damage, 150 penetration, 200 durability.",
@@ -359,7 +359,7 @@ var R = {
 	}, {
 			"skill": "Mechanical",
 			"desc": "Skill: Mechanical 80. Effect: Grenade. Slows Organic movement by 1 in the area for 3 turns. 3 range, 2 damage, 5 penetration.",
-			"items": ["Caltrops", "Bone Slivers", "Bone Slivers", "Casing Fragments", "Bindings", "Bindings"]
+			"items": ["Caltrops", "Casing Fragments", "Bone Slivers", "Bone Slivers", "Bindings", "Bindings"]
 	}, {
 			"skill": "Mechanical",
 			"desc": "Skill: Mechanical 110. Effect: Armor. 80 armor, 180 durability.",
@@ -495,7 +495,7 @@ var R = {
 	}, {
 			"skill": "Mechanical",
 			"desc": "Skill: Mechanical 90. Effect: Used to craft Silenced Auto Rifle and Silenced Machine Pistol.",
-			"items": ["Heavy Silencer", "Rifle Parts", "Scaleskin", "Duct Tape", "Scaleskin", "Vibranite"]
+			"items": ["Heavy Silencer", "Rifle Parts", "Vibranite", "Scaleskin", "Scaleskin", "Duct Tape"]
 	}, {
 			"skill": "Mechanical",
 			"desc": "Skill: Mechanical 70. Effect: Assault Weapon. Uses crafted ammo.",
@@ -551,7 +551,7 @@ var R = {
 	}, {
 			"skill": "Engineering",
 			"desc": "Skill: Engineering ?. Effect: Armor. 50 armor, 60 durability. Reduces Blunt and Balistic damage. Wearable by Humans, Hiver, Tarka and Zuul.",
-			"items": ["Impact Armor", "Scaleskin", "Scaleskin", "Bindings", "Adamantium Resin"]
+			"items": ["Impact Armor", "Adamantium Resin", "Scaleskin", "Scaleskin", "Bindings"]
 	}, {
 			"skill": "Engineering",
 			"desc": "Skill: Engineering 140. Effect: Armour. Crafted using Engineering check.",
@@ -571,7 +571,7 @@ var R = {
 	}, {
 			"skill": "Electronics",
 			"desc": "Skill: Electronics 90. Effect: Rifle Weapon, also an ingredients for other advanced recipes. ",
-			"items": ["Laser Rifle", "Bindings", "Photonic Amplifier", "Quantum Capacitors", "Rifle Parts", "Superconductors"]
+			"items": ["Laser Rifle", "Photonic Amplifier", "Rifle Parts", "Quantum Capacitors", "Superconductors", "Bindings"]
 	}, {
 			"skill": "Electronics",
 			"desc": "Skill: Electronics 100. Effect: +12 inventory. Only 1 Lifter pack can be equipped, but it does not take any equipment slot.",
@@ -615,11 +615,11 @@ var R = {
 	}, {
 			"skill": "Electronics",
 			"desc": "Skill: Electronics. Effect: Detects Floor Traps within 2 tiles for a short time. 5 charges.",
-			"items": ["Pulse Resonator", "Cybernetic Brain", "Softscreen", "Sonic Nodule"]
+			"items": ["Pulse Resonator", "Softscreen", "Cybernetic Brain", "Sonic Nodule"]
 	}, {
 			"skill": "Electronics",
 			"desc": "Skill: Electronics 115. Effect: Multi-target Rifle Weapon.",
-			"items": ["Pulse Rifle", "Bindings", "Laser Rifle", "Photonic Amplifier", "Superconductors"]
+			"items": ["Pulse Rifle", "Laser Rifle", "Photonic Amplifier", "Superconductors", "Bindings"]
 	}, {
 			"skill": "Mechanical",
 			"desc": "Skill: Mechanical 85. Effect: Purifies basic food (see below). Used to craft Star Bacon.",
