@@ -2061,13 +2061,13 @@ function mChats(){
 			w.userListStatus=false;
 			w.leftButton.style.left='24px';
 			w.rightButton.style.left='36px'
-			w.idle.span.style.left='48px'
 		}
 		else{
 			w.leftButton.style.left='12px';
 			w.rightButton.style.left='24px'
 		}
-
+		w.idle.span.style.left='48px';
+		
 		w.leftButton.className='mc_button';
 		w.leftButton.textContent='<';
 		w.leftButton.style.height='14px';
@@ -2681,7 +2681,7 @@ function mChats(){
 	},
 	this.escapeHtml=function(u){return u.replace(rgxpChat[5],'&lt;').replace(rgxpChat[6],'&gt;')},
 	this.idleTimer=function(){
-		this.span.textContent=(new Date()).getTime()-this.last
+		this.span.textContent=Math.round(((new Date()).getTime()-this.last)/1000)
 	}
 	this.am=function(e,chat,ve){
 		if(!ve&&chat.idle.timer===null)chat.idle.timer=setInterval(this.idleTimer.bind(chat.idle),1000);
@@ -2690,8 +2690,9 @@ function mChats(){
 		bb.className='mc_nick';dd.className='mc_message';
 		if(chat.wsChat===0){
 			iv=this.escapeHtml(e.text);
-			dt=this.tss2(e.timestamp*1000);
-			chat.idle.last=e.timestamp;
+			dt=e.timestamp*1000;
+			chat.idle.last=dt;
+			dt=this.tss2(dt);
 			if(e.to!==null)bnick=e.to;
 			this.setBorderColor(bb,0,bnick,n,chat.nick);
 			let stag=C('SPAN');
@@ -2725,8 +2726,9 @@ function mChats(){
 		else if(chat.wsChat===1){// G O O D G A M E
 			iv=e.text.replace(rgxpChatGG[0],'$1');
 			bnick=iv.match(rgxpChatGG[1]);
-			dt=this.tss2(e.timestamp*1000);
-			chat.idle.last=e.timestamp;
+			dt=e.timestamp*1000;
+			chat.idle.last=dt;
+			dt=this.tss2(dt);
 			this.setBorderColor(bb,1,iv,n,chat.nick);
 			if(bnick!==null){
 				bnick=bnick[1];
@@ -2757,7 +2759,7 @@ function mChats(){
 			iv=iv.replace(rgxpChatTwitch[8],this.sm_replacer.bind(this));
 			bnick=iv.match(rgxpChatTwitch[1]);
 			dt=e.timestamp.getHours().totwo()+':'+e.timestamp.getMinutes().totwo()+':'+e.timestamp.getSeconds().totwo();
-			chat.idle.last=Math.round(e.timestamp.getTime()/1000);
+			chat.idle.last=e.timestamp.getTime();
 			this.setBorderColor(bb,2,iv,nn,chat.nick);
 			if(e.sub==='1')bb.style.textDecoration='underline';
 			if(bnick!==null){
