@@ -2690,9 +2690,8 @@ function mChats(){
 		bb.className='mc_nick';dd.className='mc_message';
 		if(chat.wsChat===0){
 			iv=this.escapeHtml(e.text);
-			dt=e.timestamp*1000;
-			chat.idle.last=dt;
-			dt=this.tss2(dt);
+			dt=this.tss2(e.timestamp*1000);
+			chat.idle.last=e.timestamp;
 			if(e.to!==null)bnick=e.to;
 			this.setBorderColor(bb,0,bnick,n,chat.nick);
 			let stag=C('SPAN');
@@ -2726,9 +2725,8 @@ function mChats(){
 		else if(chat.wsChat===1){// G O O D G A M E
 			iv=e.text.replace(rgxpChatGG[0],'$1');
 			bnick=iv.match(rgxpChatGG[1]);
-			dt=e.timestamp*1000;
-			chat.idle.last=dt;
-			dt=this.tss2(dt);
+			dt=this.tss2(e.timestamp*1000);
+			chat.idle.last=e.timestamp;
 			this.setBorderColor(bb,1,iv,n,chat.nick);
 			if(bnick!==null){
 				bnick=bnick[1];
@@ -2759,7 +2757,7 @@ function mChats(){
 			iv=iv.replace(rgxpChatTwitch[8],this.sm_replacer.bind(this));
 			bnick=iv.match(rgxpChatTwitch[1]);
 			dt=e.timestamp.getHours().totwo()+':'+e.timestamp.getMinutes().totwo()+':'+e.timestamp.getSeconds().totwo();
-			chat.idle.last=e.timestamp.getTime();
+			chat.idle.last=Math.round(e.timestamp.getTime()/1000);
 			this.setBorderColor(bb,2,iv,nn,chat.nick);
 			if(e.sub==='1')bb.style.textDecoration='underline';
 			if(bnick!==null){
