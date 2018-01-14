@@ -311,7 +311,7 @@ var R = {
 	}, {
 			"skill": "Engineering",
 			"desc": "Skill: Engineering 100. Effect: Armor. 40 armor, 40 durability, 75% dmg reduction from energy and laser weapons",
-			"items": ["Absorber Weave", "Scaleskin", "Scaleskin", "Superconductors", "Nano-Wire", "String Sinks"]
+			"items": ["Absorber Weave", "String Sinks", "Nano-Wire", "Superconductors", "Scaleskin", "Scaleskin"]
 	}, {
 			"skill": "Engineering",
 			"desc": "Skill: Engineering 100. Effect: Armor. Makes Absorption Scale wearable by Humans, Tarka, Hiver and Zuul. 30 armor, 30 durability, 50% dmg reduction from energy and laser weapons. Unlike Absorption Scale doesn't recharge energy weapons",
@@ -463,7 +463,7 @@ var R = {
 	}, {
 			"skill": "Engineering",
 			"desc": "Skill: Engineering. Effect: Belt",
-			"items": ["Force Field Belt", "Superconductors", "String Sinks", "Utility Belt", "Reflex Micro-Furnace", "Duct Tape"]
+			"items": ["Force Field Belt", "String Sinks", "Utility Belt", "Superconductors", "Reflex Micro-Furnace", "Duct Tape"]
 	}, {
 			"skill": "Mechanical",
 			"desc": "Skill: Mechanical 60. Effect: Reloads 3-P Restraint Gun",
