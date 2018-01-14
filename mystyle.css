@@ -54,6 +54,7 @@ hr{clear:both}
 .mc_windowDiv{overflow:hidden;border:1px solid rosybrown;background-color:black;color:white;font-family:Verdana;position:fixed}
 .mc_titleDiv{font-weight:bold;cursor:pointer;border-bottom:3px solid rosybrown;height:11px;font-size:80%;text-align:center;overflow:hidden}
 .mc_button{padding:0;cursor:pointer;position:absolute;width:12px;font-size:66.6%;line-height:0px;background-color:black;color:white}
+.mc_titleSpan{position:absolute;font-size:66.6%;background-color:black;color:white}
 .mc_messageDiv{overflow-y:scroll;overflow-x:hidden}
 .mc_messageBoat{display:flex;align-content:flex-start;flex-direction:row;flex-wrap:wrap}
 .mc_messageBoat>div{flex:1 0 auto;border-left:1px solid #444}
