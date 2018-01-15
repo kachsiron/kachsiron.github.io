@@ -347,7 +347,7 @@ var R = {
 	}, {
 			"skill": "Mechanical",
 			"desc": "Skill: Mechanical 80. Effect: Rifle Weapon, shotgun type. Breaks quickly but good for spending excess ammo. 30-35 damage, 20 penetration, 15 durability.",
-			"items": ["Blunderbuss", "Rifle Parts", "Compression Chamber", "Welding Goo", "Duct Tape", "Sparker"]
+			"items": ["Blunderbuss", "Rifle Parts", "Compression Chamber", "Welding Goo", "Sparker", "Duct Tape"]
 	}, {
 			"skill": "Mechanical",
 			"desc": "Skill: Mechanical 85. Effect: Knife Weapon. 3-5 damage, 15 penetration, 10 health.",
@@ -463,7 +463,7 @@ var R = {
 	}, {
 			"skill": "Engineering",
 			"desc": "Skill: Engineering. Effect: Belt",
-			"items": ["Force Field Belt", "String Sinks", "Utility Belt", "Superconductors", "Reflex Micro-Furnace", "Duct Tape"]
+			"items": ["Force Field Belt", "Utility Belt", "String Sinks", "Superconductors", "Reflex Micro-Furnace", "Duct Tape"]
 	}, {
 			"skill": "Mechanical",
 			"desc": "Skill: Mechanical 60. Effect: Reloads 3-P Restraint Gun",
@@ -471,7 +471,7 @@ var R = {
 	}, {
 			"skill": "Electronics",
 			"desc": "Skill: Electronics. Effect: Can walk over detected floor Traps and will not trigger undetected ones.",
-			"items": ["Grav Boots", "Bindings", "Combat Boots", "Element X", "Energy Cell", "Superconductors"]
+			"items": ["Grav Boots", "Combat Boots", "Superconductors", "Element X", "Energy Cell", "Bindings"]
 	}, {
 			"skill": "Mechanical",
 			"desc": "Skill: Mechanical 85. Effect: Standard grenade. Can be converted into a Mine Trap.",
@@ -579,7 +579,7 @@ var R = {
 	}, {
 			"skill": "Engineering",
 			"desc": "Skill: Engineering (failed w/ 25ish one time). Effect: Blade Weapon. Chance to Stun. Crafted using Engineering check. Can be found in all versions but only crafted starting with the Mindgames Expansion.",
-			"items": ["Lightning Blade", "String Sinks", "Living Steel Remnant", "Sar", "Welding Goo", "AM Cells"]
+			"items": ["Lightning Blade", "Sar", "String Sinks", "Living Steel Remnant", "AM Cells", "Welding Goo"]
 	}, {
 			"skill": "Mechanical",
 			"desc": "Skill: Mechanical 110. Effect: Heavy Weapon with acid cone attack. Using Acid Sacks as ammo (1 Acid Sack giving 4 charges)",
@@ -587,7 +587,7 @@ var R = {
 	}, {
 			"skill": "Mechanical",
 			"desc": "Skill: Mechanical 110. Effect: A darter that fires 2 darts that inflict the spore status in its targets (Using only 1 dart ammo per use, when shooting twice). Very useful against unarmored and low-armored targets due to spore status.",
-			"items": ["M'kkose Darter", "Primordial Soup", "Compression Chamber", "Rifle Parts", "M'kkosian Fungus Shards", "Duct Tape"]
+			"items": ["M'kkose Darter", "Rifle Parts", "Compression Chamber", "M'kkosian Fungus Shards", "Duct Tape", "Primordial Soup"]
 	}, {
 			"skill": "Engineering",
 			"desc": "Skill: Engineering ??. Effect: +30 Durability, -2 Bio Mod Slots, +5 Damage, +60 Penetration. Using same shotgun ammo, but usable only with Brawler PBA or similar armours allowing usage of heavy weapons. Also has a knockback chance. Doesn't work in Gold Edition",
@@ -675,7 +675,7 @@ var R = {
 	}, {
 			"skill": "Engineering",
 			"desc": "Skill: Engineering. Effect: ",
-			"items": ["Seismic Boots", "Vibranite", "Sonic Nodule", "Combat Boots", "Reflex Micro-Furnace", "Superconductors"]
+			"items": ["Seismic Boots", "Combat Boots", "Vibranite", "Sonic Nodule", "Reflex Micro-Furnace", "Superconductors"]
 	}, {
 			"skill": "Mechanical",
 			"desc": "Skill: Mechanical. Effect: Repairs Hammers, Knives, Blades, and Crowbars. But not Spears. Has 5 uses, poor efficiency. ",
@@ -754,7 +754,7 @@ var R = {
 			"items": ["Smart Rifle", "Rifle", "Combat Processors", "Nano-Wire", "Myomer Bundles"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical (99% at 80 Mechanical). Effect: Rifle Weapon, allows a regular Rifle to tackle higher armor creatures.",
+			"desc": "Skill: Mechanical 80. Effect: Rifle Weapon, allows a regular Rifle to tackle higher armor creatures.",
 			"items": ["Sniper Rifle", "Rifle", "Bindings", "Optics"]
 	}, {
 			"skill": "Mechanical",
