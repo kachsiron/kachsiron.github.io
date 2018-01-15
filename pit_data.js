@@ -363,7 +363,7 @@ var R = {
 	}, {
 			"skill": "Mechanical",
 			"desc": "Skill: Mechanical 110. Effect: Armor. 80 armor, 180 durability.",
-			"items": ["Chitin Plate Armor", "Bindings", "Composite Cloth", "Chitin", "Chitin", "Chitin"]
+			"items": ["Chitin Plate Armor", "Composite Cloth", "Chitin", "Chitin", "Chitin", "Bindings"]
 	}, {
 			"skill": "Mechanical",
 			"desc": "Skill: Mechanical ??. Effect: ",
@@ -407,11 +407,11 @@ var R = {
 	}, {
 			"skill": "Engineering",
 			"desc": "Skill: Engineering. Effect: ",
-			"items": ["Disruptor Plate", "Duct Tape", "Composite Cloth", "Crusader Armor", "Reflex Micro-furnace", "Duct Tape"]
+			"items": ["Disruptor Plate", "Crusader Armor", "Composite Cloth", "Reflex Micro-furnace", "Duct Tape", "Duct Tape"]
 	}, {
 			"skill": "Mechanical",
 			"desc": "Skill: Mechanical 60. Effect: Use next to doors to cause large damage to them.",
-			"items": ["Door Spike", "Giant Mitochondria", "Punch Claw", "Shotgun Shells", "Shotgun Shells"]
+			"items": ["Door Spike", "Punch Claw", "Giant Mitochondria", "Shotgun Shells", "Shotgun Shells"]
 	}, {
 			"skill": "Engineering",
 			"desc": "Skill: Engineering. Effect: Teleports to a random, possibly unexplored area on the current Floor.",
@@ -455,7 +455,7 @@ var R = {
 	}, {
 			"skill": "Engineering",
 			"desc": "Skill: Engineering 100. Effect: Grenade which sets creatures on Fire.",
-			"items": ["Firebomb", "Sparker", "Fuel Cell", "Fuel Cell", "Bindings"]
+			"items": ["Firebomb", "Fuel Cell", "Fuel Cell", "Sparker", "Bindings"]
 	}, {
 			"skill": "Engineering",
 			"desc": "Skill: Engineering ??. Effect: ",
@@ -643,7 +643,7 @@ var R = {
 	}, {
 			"skill": "Mechanical",
 			"desc": "Skill: Mechanical 80. Effect: Melee Weapon. Grants 5-10 armor when equipped and replaces Fists.",
-			"items": ["Razor Fists", "Bindings", "Composite Cloth", "Razorteeth"]
+			"items": ["Razor Fists", "Composite Cloth", "Razorteeth", "Bindings"]
 	}, {
 			"skill": "Medical",
 			"desc": "Skill: Medical (Failed at 60). Effect: Healing over time. can't be created in gold edition ",
