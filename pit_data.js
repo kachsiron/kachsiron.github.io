@@ -323,7 +323,7 @@ var R = {
 	}, {
 			"skill": "Mechanical",
 			"desc": "Skill: Mechanical 115. Effect: Blade Weapon. 9-15 AoE damage, 150 penetration, 200 durability.",
-			"items": ["Adamantium Sword", "Adamantium Resin", "Bindings", "Lightning Blade", "Unstable Isotopes"]
+			"items": ["Adamantium Sword", "Adamantium Resin", "Lightning Blade", "Unstable Isotopes", "Bindings"]
 	}, {
 			"skill": "Biotech",
 			"desc": "Skill: Biotech 140-160??. Effect: ",
@@ -331,11 +331,11 @@ var R = {
 	}, {
 			"skill": "Mechanical",
 			"desc": "Skill: Mechanical 90. Effect: Rifle Weapon, breaks quickly but good for spending excess ammo. 6-10 damage, 50 penetration, 20 durability.",
-			"items": ["Aykay Rifle", "Rifle Parts", "Structural Rods", "Welding Goo", "Bindings", "Servos"]
+			"items": ["Aykay Rifle", "Rifle Parts", "Structural Rods", "Servos", "Welding Goo", "Bindings"]
 	}, {
 			"skill": "Mechanical",
 			"desc": "Skill: Mechanical 75. Effect: Repairs ballistic firearms. Effectiveness: 70%, 5 charges.",
-			"items": ["Ballistic Repair Kit", "Electronic Parts", "Rifle Parts", "Servos"]
+			"items": ["Ballistic Repair Kit", "Rifle Parts", "Electronic Parts", "Servos"]
 	}, {
 			"skill": "Biotech",
 			"desc": "Skill: Biotech 125. Effect: Pistol weapon, consumes 5 points from your food gauge instead of ammo. 10-13 damage, 80 penetration, 30 durability.",
@@ -439,7 +439,7 @@ var R = {
 	}, {
 			"skill": "Mechanical",
 			"desc": "Skill: Mechanical 75. Effect: Repairs non-melee energy Weapons.",
-			"items": ["Energy System Tuner", "Electronic Parts", "Gun Parts", "Optics", "Superconductors"]
+			"items": ["Energy System Tuner", "Gun Parts", "Electronic Parts", "Optics", "Superconductors"]
 	}, {
 			"skill": "Necro Tech",
 			"desc": "Skill: Necro Tech ??. Effect: ",
@@ -479,7 +479,7 @@ var R = {
 	}, {
 			"skill": "Electronics",
 			"desc": "Skill: Electronics 90. Effect: Pistol weapon with Stun AoE.",
-			"items": ["Hand Stunner", "Energy Cell", "Gun Parts", "Electronic Parts", "Sonic Nodule"]
+			"items": ["Hand Stunner", "Gun Parts", "Energy Cell", "Electronic Parts", "Sonic Nodule"]
 	}, {
 			"skill": "Electronics",
 			"desc": "Skill: Electronics. Effect: Absorbs one Von Neumann Probe attack or Disintegration Bay backlash.",
@@ -583,7 +583,7 @@ var R = {
 	}, {
 			"skill": "Mechanical",
 			"desc": "Skill: Mechanical 110. Effect: Heavy Weapon with acid cone attack. Using Acid Sacks as ammo (1 Acid Sack giving 4 charges)",
-			"items": ["Liquidator", "Rifle Parts", "Welding Goo", "Compression Chamber", "Servos"]
+			"items": ["Liquidator", "Rifle Parts", "Compression Chamber", "Servos", "Welding Goo"]
 	}, {
 			"skill": "Mechanical",
 			"desc": "Skill: Mechanical 110. Effect: A darter that fires 2 darts that inflict the spore status in its targets (Using only 1 dart ammo per use, when shooting twice). Very useful against unarmored and low-armored targets due to spore status.",
@@ -591,7 +591,7 @@ var R = {
 	}, {
 			"skill": "Engineering",
 			"desc": "Skill: Engineering ??. Effect: +30 Durability, -2 Bio Mod Slots, +5 Damage, +60 Penetration. Using same shotgun ammo, but usable only with Brawler PBA or similar armours allowing usage of heavy weapons. Also has a knockback chance. Doesn't work in Gold Edition",
-			"items": ["Neutronium Stormer", "Auto-Shotgun", "Molecular Neutronium", "Rifle Parts", "Element X", "Servos"]
+			"items": ["Neutronium Stormer", "Auto-Shotgun", "Molecular Neutronium", "Rifle Parts", "Servos", "Element X"]
 	}, {
 			"skill": "Engineering",
 			"desc": "Skill: Engineering 95. Effect: ",
