@@ -2009,7 +2009,7 @@ function mChats(){
 			'closeButton':C('BUTTON'),//'sunButton':C('BUTTON'),
 			'fontUpButton':C('BUTTON'),	'fontDownButton':C('BUTTON'),	'listUserButton':C('BUTTON'),//'connectButton':C('BUTTON'),
 			'titleDiv':C('DIV'),				'messageDiv':C('DIV'),				'listUserDiv':C('DIV'),
-			'idle':{'span':C('SPAN'),'timer':null,'last':0}
+			'idle':{'span':C('SPAN'),'timer':null,'last':(new Date()).getTime()}
 		});
 		this.cleaner(true);
 		let w=this.windows.get(id);
@@ -2696,6 +2696,7 @@ function mChats(){
 		if(chat.wsChat===0){
 			iv=this.escapeHtml(e.text);
 			dt=e.timestamp*1000;
+			co.textContent=this.setCounterOfNick(chat,n) + '/' + Math.round((dt - chat.idle.last)/1000);
 			chat.idle.last=dt;
 			dt=this.tss2(dt);
 			if(e.to!==null)bnick=e.to;
@@ -2732,6 +2733,7 @@ function mChats(){
 			iv=e.text.replace(rgxpChatGG[0],'$1');
 			bnick=iv.match(rgxpChatGG[1]);
 			dt=e.timestamp*1000;
+			co.textContent=this.setCounterOfNick(chat,n) + '/' + Math.round((dt - chat.idle.last)/1000);
 			chat.idle.last=dt;
 			dt=this.tss2(dt);
 			this.setBorderColor(bb,1,iv,n,chat.nick);
@@ -2764,6 +2766,7 @@ function mChats(){
 			iv=iv.replace(rgxpChatTwitch[8],this.sm_replacer.bind(this));
 			bnick=iv.match(rgxpChatTwitch[1]);
 			dt=e.timestamp.getHours().totwo()+':'+e.timestamp.getMinutes().totwo()+':'+e.timestamp.getSeconds().totwo();
+			co.textContent=this.setCounterOfNick(chat,n) + '/' + Math.round((e.timestamp.getTime() - chat.idle.last)/1000);
 			chat.idle.last=e.timestamp.getTime();
 			this.setBorderColor(bb,2,iv,nn,chat.nick);
 			if(e.sub==='1')bb.style.textDecoration='underline';
@@ -2790,7 +2793,7 @@ function mChats(){
 			this.setColorOfNick(chat,[bb,co],nn);
 		}
 		if(chat.last[0]===n)chat.last[1].textContent='↑';
-		co.textContent=this.setCounterOfNick(chat,n) + '/' + dt;
+		
 		chat.last=[n,bb];
 		bb.textContent=n;
 		bb.title=dt;
@@ -3480,7 +3483,7 @@ rgxpChatTwitch=[
 	/☺/g,
 	/^.*?;subscriber=(.*?);/ //^jtv MODE #.*? -(.) (.*)$/
 ],
-RGXP_B=/\[b\](.*?):\[\/b\]/g,RGXP_HTTP=/(([a-z]{2,5}):\/\/([^\/]+\.)*([^\/]+\.[^\/ ]+)\/?([^ ]*))/gi,
+RGXP_B=/\[b\](.*?):\[\/b\]/g,RGXP_HTTP=/(([a-z]{2,5}):\/\/([^\/]+\.)*([^\/]+\.[^\/ ]+)\/?([^: ]*))/gi,
 vasya={div:C('DIV'),cnv:C('CANVAS'),cnd:false},
 smiles={},smilesGG={},graph=true,
 smilepadik=C('DIV'),messtochat={'MSG':C('INPUT'),'ID':C('INPUT'),'UID':null},
