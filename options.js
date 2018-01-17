@@ -2803,9 +2803,10 @@ function mChats(){
 		}
 		if(chat.last[0]===n)chat.last[1].textContent='↑';
 		
-		dnt=Math.round(100 - dnt / 6);
-		dd.style.background='linear-gradient(to right, black '+dnt+'%, rgb(50, 50, 50) '+dnt+'%, rgb(50, 50, 50) 100%)';
-		
+		if(dnt>5){
+			dnt=Math.round(100 - dnt / 6);
+			dd.style.background='linear-gradient(to right, black '+dnt+'%, rgb(50, 50, 50) '+dnt+'%, rgb(50, 50, 50) 100%)';
+		}
 		chat.last=[n,bb];
 		bb.textContent=n;
 		bb.title=dt;
@@ -2959,7 +2960,7 @@ function mChats(){
 		let opv=OPOV.serv('Загрузь твитч смайлов...');
 		GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/kraken/chat/emoticon_images',onload:requ=>{try{
 			requ=JSON.parse(requ.target.responseText).emoticons;
-			this.twitchSmiles={'F':['FeelsGoodMan','FeelsBadMan']};
+			this.twitchSmiles={'F':['FeelsGoodMan','FeelsBadMan','FeelsAmazingMan']};
 			let c=0;
 			requ.forEach(el=>{
 				if(!this.twitchSmiles.hasOwnProperty(el.code[0]))this.twitchSmiles[ el.code[0] ]=[]
