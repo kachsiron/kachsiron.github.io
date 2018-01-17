@@ -2701,7 +2701,7 @@ function mChats(){
 			co.textContent=this.setCounterOfNick(chat,n) + '/' + dnt;
 			
 			dnt=100-Math.round(dnt / 600);
-			dd.style.background='linear-gradient(to right, black '+dnt+'%, #202020 '+dnt+'%, #202020 100%)';
+			dd.style.background='linear-gradient(to right, black '+dnt+'%, #101010 '+dnt+'%, #101010 100%)';
 			
 			chat.idle.last=dt;
 			dt=this.tss2(dt);
@@ -2744,7 +2744,7 @@ function mChats(){
 			co.textContent=this.setCounterOfNick(chat,n) + '/' + dnt;
 			
 			dnt=100-Math.round(dnt / 600);
-			dd.style.background='linear-gradient(to right, black '+dnt+'%, #202020 '+dnt+'%, #202020 100%)';
+			dd.style.background='linear-gradient(to right, black '+dnt+'%, #101010 '+dnt+'%, #101010 100%)';
 			
 			chat.idle.last=dt;
 			dt=this.tss2(dt);
@@ -2783,7 +2783,7 @@ function mChats(){
 			co.textContent=this.setCounterOfNick(chat,n) + '/' + dnt;
 			
 			dnt=100-Math.round(dnt / 600);
-			dd.style.background='linear-gradient(to right, black '+dnt+'%, #202020 '+dnt+'%, #202020 100%)';
+			dd.style.background='linear-gradient(to right, black '+dnt+'%, #101010 '+dnt+'%, #101010 100%)';
 			
 			chat.idle.last=e.timestamp.getTime();
 			this.setBorderColor(bb,2,iv,nn,chat.nick);
