@@ -2698,7 +2698,7 @@ function mChats(){
 			dt=e.timestamp*1000;
 			co.textContent=this.setCounterOfNick(chat,n) + '/' + Math.round((dt - chat.idle.last)/1000);
 			
-			let dnt=Math.round((dt - chat.idle.last) / 6000);
+			let dnt=100-Math.round((dt - chat.idle.last) / 6000);
 			dd.style.background='linear-gradient(to right, black '+dnt+'%, #303030 '+dnt+'%, #303030 100%)';
 			
 			chat.idle.last=dt;
