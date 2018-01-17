@@ -1554,8 +1554,8 @@ function ScPlayer(){
 	this.sitesort=function(a, b){
 		//var t=a.match(rgxpc[4]);
 		//if(t!==null&&t[1]==='goodgame')return false;return true
+		//if(a.name==='TW')return false;
 		if(a.name==='GG')return false;
-		if(a.name==='TW')return false;
 		return true
 	}
 	this.cls=function(i){
