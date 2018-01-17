@@ -2697,7 +2697,7 @@ function mChats(){
 			iv=this.escapeHtml(e.text);
 			dt=e.timestamp*1000;
 			
-			let dnt=Math.round((dt - chat.idle.last)/1000);
+			dnt=Math.round((dt - chat.idle.last)/1000);
 			co.textContent=this.setCounterOfNick(chat,n) + '/' + dnt;
 						
 			chat.idle.last=dt;
@@ -2737,7 +2737,7 @@ function mChats(){
 			bnick=iv.match(rgxpChatGG[1]);
 			dt=e.timestamp*1000;
 			
-			let dnt=Math.round((dt - chat.idle.last)/1000);
+			dnt=Math.round((dt - chat.idle.last)/1000);
 			co.textContent=this.setCounterOfNick(chat,n) + '/' + dnt;
 			
 			chat.idle.last=dt;
@@ -2773,7 +2773,7 @@ function mChats(){
 			bnick=iv.match(rgxpChatTwitch[1]);
 			dt=e.timestamp.getHours().totwo()+':'+e.timestamp.getMinutes().totwo()+':'+e.timestamp.getSeconds().totwo();
 			
-			let dnt=Math.round((e.timestamp.getTime() - chat.idle.last)/1000);
+			dnt=Math.round((e.timestamp.getTime() - chat.idle.last)/1000);
 			co.textContent=this.setCounterOfNick(chat,n) + '/' + dnt;
 			
 			chat.idle.last=e.timestamp.getTime();
@@ -2803,10 +2803,8 @@ function mChats(){
 		}
 		if(chat.last[0]===n)chat.last[1].textContent='↑';
 		
-		console.log(dnt)
 		dnt=Math.round(100 - dnt / 6);
 		if(dnt<0)dnt=0;
-		console.log(dnt)
 		dd.style.background='linear-gradient(to right, black '+dnt+'%, #101010 '+dnt+'%, #101010 100%)';
 		
 		chat.last=[n,bb];
