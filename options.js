@@ -2803,6 +2803,7 @@ function mChats(){
 		}
 		if(chat.last[0]===n)chat.last[1].textContent='↑';
 		
+		console.log(dnt)
 		dnt=Math.round(100 - dnt / 6);
 		if(dnt<0)dnt=0;
 		console.log(dnt)
