@@ -2689,7 +2689,7 @@ function mChats(){
 		this.span.style.color=a<120?'':'black'
 	}
 	this.am=function(e,chat,ve){
-		if(!ve&&chat.idle.timer===null)chat.idle.timer=setInterval(this.idleTimer.bind(chat.idle),1000);
+		if(!ve&&chat.idle.timer===null)chat.idle.timer=setInterval(this.idleTimer.bind(chat.idle),1000),dnt;
 
 		let bs,dt,n=e.user_name,iv,dd=C('DIV'),co=C('SUB'),bb=C('SPAN'),b=C('SPAN'),bnick=null,cf=false;
 		bb.className='mc_nick';dd.className='mc_message';
@@ -2699,10 +2699,7 @@ function mChats(){
 			
 			let dnt=Math.round((dt - chat.idle.last)/1000);
 			co.textContent=this.setCounterOfNick(chat,n) + '/' + dnt;
-			
-			dnt=100-Math.round(dnt / 600);
-			dd.style.background='linear-gradient(to right, black '+dnt+'%, #101010 '+dnt+'%, #101010 100%)';
-			
+						
 			chat.idle.last=dt;
 			dt=this.tss2(dt);
 			if(e.to!==null)bnick=e.to;
@@ -2743,9 +2740,6 @@ function mChats(){
 			let dnt=Math.round((dt - chat.idle.last)/1000);
 			co.textContent=this.setCounterOfNick(chat,n) + '/' + dnt;
 			
-			dnt=100-Math.round(dnt / 600);
-			dd.style.background='linear-gradient(to right, black '+dnt+'%, #101010 '+dnt+'%, #101010 100%)';
-			
 			chat.idle.last=dt;
 			dt=this.tss2(dt);
 			this.setBorderColor(bb,1,iv,n,chat.nick);
@@ -2782,9 +2776,6 @@ function mChats(){
 			let dnt=Math.round((e.timestamp.getTime() - chat.idle.last)/1000);
 			co.textContent=this.setCounterOfNick(chat,n) + '/' + dnt;
 			
-			dnt=100-Math.round(dnt / 600);
-			dd.style.background='linear-gradient(to right, black '+dnt+'%, #101010 '+dnt+'%, #101010 100%)';
-			
 			chat.idle.last=e.timestamp.getTime();
 			this.setBorderColor(bb,2,iv,nn,chat.nick);
 			if(e.sub==='1')bb.style.textDecoration='underline';
@@ -2811,6 +2802,10 @@ function mChats(){
 			this.setColorOfNick(chat,[bb,co],nn);
 		}
 		if(chat.last[0]===n)chat.last[1].textContent='↑';
+		
+		dnt=100-Math.round(dnt / 6);
+		if(dnt<0)dnt=0;
+		dd.style.background='linear-gradient(to right, black '+dnt+'%, #101010 '+dnt+'%, #101010 100%)';
 		
 		chat.last=[n,bb];
 		bb.textContent=n;
