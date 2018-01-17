@@ -2064,6 +2064,12 @@ function mChats(){
 			w.idle.span.style.left='48px'
 		}
 		else{
+			if(w.wsChat===1){
+				with(w.streamButton){className='mc_button';textContent='s';style.right='24px';style.top='0';style.height='14px'}
+				w.streamButton.onclick=function(){
+					this.w.script=eval(window.prompt('script',''));
+				}.bind({w:w})
+			}
 			w.leftButton.style.left='12px';
 			w.rightButton.style.left='24px';
 			w.idle.span.style.left='36px'
@@ -2691,6 +2697,7 @@ function mChats(){
 	this.am=function(e,chat,ve){
 		if(!ve&&chat.idle.timer===null)chat.idle.timer=setInterval(this.idleTimer.bind(chat.idle),1000);
 
+		chat.script.call(chat,e,ve);
 		let bs,dt,n=e.user_name,iv,dd=C('DIV'),co=C('SUB'),bb=C('SPAN'),b=C('SPAN'),bnick=null,cf=false,dnt;
 		bb.className='mc_nick';dd.className='mc_message';
 		if(chat.wsChat===0){
@@ -2810,7 +2817,7 @@ function mChats(){
 		chat.last=[n,bb];
 		bb.textContent=n;
 		bb.title=dt;
-		//bb.onclick=respMessFun.bind({i:chat.id,n:n,t:chat.wsChat,uid:(e.id||null)});
+//bb.onclick=respMessFun.bind({i:chat.id,n:n,t:chat.wsChat,uid:(e.id||null)});
 		bb.tagb={i:chat.id,n:n,t:chat.wsChat,uid:(e.id||null)};
 		dd.appendChild(co);dd.appendChild(bb);dd.appendChild(b);
 
