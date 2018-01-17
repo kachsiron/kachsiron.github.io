@@ -2803,11 +2803,8 @@ function mChats(){
 		}
 		if(chat.last[0]===n)chat.last[1].textContent='↑';
 		
-		console.log(dnt)
 		dnt=Math.round(100 - dnt / 6);
-		if(dnt<0)dnt=0;
-		console.log(dnt)
-		dd.style.background='linear-gradient(to right, black '+dnt+'%, #101010 '+dnt+'%, #101010 100%)';
+		dd.style.background='linear-gradient(to right, black '+dnt+'%, rgb(50, 50, 50) '+dnt+'%, rgb(50, 50, 50) 100%)';
 		
 		chat.last=[n,bb];
 		bb.textContent=n;
