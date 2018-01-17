@@ -2696,10 +2696,12 @@ function mChats(){
 		if(chat.wsChat===0){
 			iv=this.escapeHtml(e.text);
 			dt=e.timestamp*1000;
-			co.textContent=this.setCounterOfNick(chat,n) + '/' + Math.round((dt - chat.idle.last)/1000);
 			
-			let dnt=100-Math.round((dt - chat.idle.last) / 6000);
-			dd.style.background='linear-gradient(to right, black '+dnt+'%, #303030 '+dnt+'%, #303030 100%)';
+			let dnt=Math.round((dt - chat.idle.last)/1000);
+			co.textContent=this.setCounterOfNick(chat,n) + '/' + dnt;
+			
+			dnt=100-Math.round(dnt / 600);
+			dd.style.background='linear-gradient(to right, black '+dnt+'%, #202020 '+dnt+'%, #202020 100%)';
 			
 			chat.idle.last=dt;
 			dt=this.tss2(dt);
@@ -2737,7 +2739,13 @@ function mChats(){
 			iv=e.text.replace(rgxpChatGG[0],'$1');
 			bnick=iv.match(rgxpChatGG[1]);
 			dt=e.timestamp*1000;
-			co.textContent=this.setCounterOfNick(chat,n) + '/' + Math.round((dt - chat.idle.last)/1000);
+			
+			let dnt=Math.round((dt - chat.idle.last)/1000);
+			co.textContent=this.setCounterOfNick(chat,n) + '/' + dnt;
+			
+			dnt=100-Math.round(dnt / 600);
+			dd.style.background='linear-gradient(to right, black '+dnt+'%, #202020 '+dnt+'%, #202020 100%)';
+			
 			chat.idle.last=dt;
 			dt=this.tss2(dt);
 			this.setBorderColor(bb,1,iv,n,chat.nick);
@@ -2770,7 +2778,13 @@ function mChats(){
 			iv=iv.replace(rgxpChatTwitch[8],this.sm_replacer.bind(this));
 			bnick=iv.match(rgxpChatTwitch[1]);
 			dt=e.timestamp.getHours().totwo()+':'+e.timestamp.getMinutes().totwo()+':'+e.timestamp.getSeconds().totwo();
-			co.textContent=this.setCounterOfNick(chat,n) + '/' + Math.round((e.timestamp.getTime() - chat.idle.last)/1000);
+			
+			let dnt=Math.round((e.timestamp.getTime() - chat.idle.last)/1000);
+			co.textContent=this.setCounterOfNick(chat,n) + '/' + dnt;
+			
+			dnt=100-Math.round(dnt / 600);
+			dd.style.background='linear-gradient(to right, black '+dnt+'%, #202020 '+dnt+'%, #202020 100%)';
+			
 			chat.idle.last=e.timestamp.getTime();
 			this.setBorderColor(bb,2,iv,nn,chat.nick);
 			if(e.sub==='1')bb.style.textDecoration='underline';
