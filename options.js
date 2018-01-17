@@ -2005,7 +2005,7 @@ function mChats(){
 			'square':{},'twShifts':{},'x':this.startPoint.x,'y':this.startPoint.y,
 			'winDiv':C('DIV'),					'streamButton':C('BUTTON'),
 			'upButton':C('BUTTON'),			'downButton':C('BUTTON'),
-			'leftButton':C('BUTTON'),		'rightButton':C('BUTTON'),
+			'leftButton':C('BUTTON'),		'rightButton':C('BUTTON'),'script':function(){},
 			'closeButton':C('BUTTON'),//'sunButton':C('BUTTON'),
 			'fontUpButton':C('BUTTON'),	'fontDownButton':C('BUTTON'),	'listUserButton':C('BUTTON'),//'connectButton':C('BUTTON'),
 			'titleDiv':C('DIV'),				'messageDiv':C('DIV'),				'listUserDiv':C('DIV'),
