@@ -2595,8 +2595,8 @@ function mChats(){
 				}
 			}.bind(this);
 			this.butRem.onclick=function(){
-				let {chat,n,el}=this.data;
-				el.remove();
+				let {chat,n,dd}=this.data;
+				dd.remove();
 				this.data=null
 			}.bind(this);
 			/*for(let x=0;x<2;x++){
