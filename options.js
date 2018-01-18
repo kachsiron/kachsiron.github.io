@@ -2570,16 +2570,19 @@ function mChats(){
 			this.titleDiv=C('DIV');
 			//this.buts = [C('DIV'),C('DIV')];
 			this.but=C('DIV');
+			this.butRem=C('DIV');
 			with(this.div.style){borderRadius='5px';zIndex=4;position='absolute';display='none';padding='0px 5px 5px';backgroundColor='gray'}
 			with(this.titleDiv.style){color='black';fontSize='50%'}
 			this.div.onclick=()=>{this.div.style.display='none'}
 			this.div.appendChild(this.titleDiv);
 			//this.buts[0].style.marginBottom='5px';
 			with(this.but.style){cursor='pointer';height='10px';minWidth='15px';backgroundColor='green'}
+			with(this.butRem.style){cursor='pointer';height='10px';minWidth='15px';backgroundColor='red'}
 			this.div.appendChild(this.but);
+			this.div.appendChild(this.butRem);
 			
 			this.but.onclick=function(){
-				let {chat,n}=this.data;
+				let {chat,n,el}=this.data;
 				this.data=null;
 				if(!chat.twShifts.hasOwnProperty(n))chat.twShifts[n]=1;
 				else delete chat.twShifts[n]
@@ -2590,6 +2593,10 @@ function mChats(){
 						else{w.style.color='gray';w.style.opacity='0.4';w.style.whiteSpace='nowrap';w.classList.remove('fadeup')}
 					}
 				}
+			}.bind(this);
+			this.butRem.onclick=function(){
+				this.data.el.remove();
+				this.data=null
 			}.bind(this);
 			/*for(let x=0;x<2;x++){
 				with(this.buts[x].style){cursor='pointer';height='10px';minWidth='15px';backgroundColor=(x===0?'green':'red')}
@@ -2828,7 +2835,7 @@ function mChats(){
 		bb.tagb={i:chat.id,n:n,t:chat.wsChat,uid:(e.id||null)};
 		dd.appendChild(co);dd.appendChild(bb);dd.appendChild(b);
 
-		dd.ignoName={chat,n};
+		dd.ignoName={chat,n,dd};
 		ve=(!ve&&this.igno.check(chat,dd,n));
 		
 //if(chat.sun)this.fadeMessage(ve,dd,chat.id);else co.style.opacity=this.sencolors[20];
