@@ -2005,7 +2005,7 @@ function mChats(){
 			'square':{},'twShifts':{},'x':this.startPoint.x,'y':this.startPoint.y,
 			'winDiv':C('DIV'),					'streamButton':C('BUTTON'),
 			'upButton':C('BUTTON'),			'downButton':C('BUTTON'),
-			'leftButton':C('BUTTON'),		'rightButton':C('BUTTON'),'script':function(){},
+			'leftButton':C('BUTTON'),		'rightButton':C('BUTTON'),//'script':function(){},
 			'closeButton':C('BUTTON'),//'sunButton':C('BUTTON'),
 			'fontUpButton':C('BUTTON'),	'fontDownButton':C('BUTTON'),	'listUserButton':C('BUTTON'),//'connectButton':C('BUTTON'),
 			'titleDiv':C('DIV'),				'messageDiv':C('DIV'),				'listUserDiv':C('DIV'),
@@ -2067,15 +2067,15 @@ function mChats(){
 			if(w.wsChat===1){
 				with(w.streamButton){className='mc_button';textContent='s';style.right='24px';style.top='0';style.height='14px'}
 				
-				w.streamButton.onclick=function(){
+				/*w.streamButton.onclick=function(){
 					(function(w){
 						let a=window.prompt("script","");
-						eval('function abc(chat,ve){'+a+'}');
+						eval('function abc(chat,e,ve){'+a+'}');
 						w.script=abc;
 					})(w);
 				}.bind({w:w});
 				
-				h(w.streamButton);
+				h(w.streamButton);*/
 			}
 			w.leftButton.style.left='12px';
 			w.rightButton.style.left='24px';
@@ -2703,8 +2703,8 @@ function mChats(){
 	}
 	this.am=function(e,chat,ve){
 		if(!ve&&chat.idle.timer===null)chat.idle.timer=setInterval(this.idleTimer.bind(chat.idle),1000);
-console.log(chat.script)
-		chat.script.call(chat,e,ve);
+
+		//chat.script.call(this,chat,e,ve);
 		let bs,dt,n=e.user_name,iv,dd=C('DIV'),co=C('SUB'),bb=C('SPAN'),b=C('SPAN'),bnick=null,cf=false,dnt;
 		bb.className='mc_nick';dd.className='mc_message';
 		if(chat.wsChat===0){
@@ -3717,7 +3717,6 @@ messtochat.MSG.onkeypress=function(e){
 						if(miss&&mch.missSmile){mch.missSmile=false;return}
 						mch.missSmile=true
 					}
-					//else if(chat.wsChat===1) msg=msg.replace(/( |^):Д($| )/g,'$1:smilegasm:$2').replace(/( |^):D($| )/g,'$1:rofl:$2').replace(/( |^):О($| )/g,'$1:shoked:$2').replace(/( |^):\)($| )/g,'$1:smile:$2').replace(/( |^):\(($| )/g,'$1:cry:$2')
 					mch.wsSend(chat,msg)
 				}
 				return
