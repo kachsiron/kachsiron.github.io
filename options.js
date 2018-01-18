@@ -2066,9 +2066,13 @@ function mChats(){
 		else{
 			if(w.wsChat===1){
 				with(w.streamButton){className='mc_button';textContent='s';style.right='24px';style.top='0';style.height='14px'}
+				
 				w.streamButton.onclick=function(){
-					this.w.script=eval(window.prompt('script',''));
+					(function(w){
+						eval('w.script=window.prompt("script","")');
+					})(w);
 				}.bind({w:w});
+				
 				h(w.streamButton);
 			}
 			w.leftButton.style.left='12px';
