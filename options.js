@@ -2070,7 +2070,7 @@ function mChats(){
 				w.streamButton.onclick=function(){
 					(function(w){
 						let a=window.prompt("script","");
-						eval('function abc(chat,ve)={'+a+'}');
+						eval('function abc(chat,ve){'+a+'}');
 						w.script=abc;
 					})(w);
 				}.bind({w:w});
