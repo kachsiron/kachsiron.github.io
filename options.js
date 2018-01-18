@@ -3675,6 +3675,7 @@ messtochat.MSG.onkeypress=function(e){
 						})
 					})(w);
 				}
+				else if(m==='t')mch.load_twitch_smiles();
 				else if(m==='tw'&&w!==void 0)tw_list(w);//список стримов по категории
 				else if(m==='gdv'&&w!==void 0){
 					if(w === 'str') GodVille.grun();
