@@ -2701,7 +2701,7 @@ function mChats(){
 	}
 	this.am=function(e,chat,ve){
 		if(!ve&&chat.idle.timer===null)chat.idle.timer=setInterval(this.idleTimer.bind(chat.idle),1000);
-
+console.log(chat.script)
 		chat.script.call(chat,e,ve);
 		let bs,dt,n=e.user_name,iv,dd=C('DIV'),co=C('SUB'),bb=C('SPAN'),b=C('SPAN'),bnick=null,cf=false,dnt;
 		bb.className='mc_nick';dd.className='mc_message';
