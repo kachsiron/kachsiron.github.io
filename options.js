@@ -2069,7 +2069,8 @@ function mChats(){
 				
 				w.streamButton.onclick=function(){
 					(function(w){
-						eval('w.script=window.prompt("script","")');
+						eval('function abc(chat,ve)={window.prompt("script","")}');
+						w.script=abc;
 					})(w);
 				}.bind({w:w});
 				
