@@ -2987,7 +2987,7 @@ console.log(chat.script)
 		}catch(e){console.log(e);OPOV.serv('Ошибка!',60000,opv,true)}}});
 	}
 	this.init=function(){
-		this.load_twitch_smiles();
+		//this.load_twitch_smiles();
 		let arr={};
 		/*for(let j=0,i=0,l=this.letterColor.length;i<l;){
 			for(let k=0;k<11;){
