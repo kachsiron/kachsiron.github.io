@@ -2608,38 +2608,40 @@ function mChats(){
 		'Ц','Ч','Ш','Щ','Ъ','U','V','W','X','Y','Z',
 		'Ы','Ь','Э','Ю','Я',' ','*'
 	];
+	this.getCo=function(n){
+		let l,r=0,er=0,f,c=[0,0,0];
+		for(let i in n){
+			l=this.letterColor[n[i]];
+			if(l!==void 0){
+				f=(l+r)%12;
+				if(f<9)er++;
+				else er--;
+				l=this.colorCodes[f];
+			}
+			else continue;
+			for(let j=0;j<3;j++)c[j]+=l[j];
+			if(++r===12)r=0;
+		}
+		if(er<1)er=1;
+		for(let i=0;i<3;i++){
+			if(c[i]<0)c[i]=0;
+			else c[i]/=er;
+		}
+		let e=c[0]+c[1]+c[2];
+		if(e<383){
+			e=(383-e)/3;
+			for(let i=0;i<3;i++){
+				c[i]+=e;
+				if(c[i]>255)c[i]=255
+			}
+		}
+		return 'rgb('+Math.round(c[0])+','+Math.round(c[1])+','+Math.round(c[2])+')';
+	}
 	this.setColorOfNick=function(chat,bb,n){
 		let c;
 		if(chat.nickColors.hasOwnProperty(n))c=chat.nickColors[n];
 		else{
-			let l,r=0,er=0,f;
-			c=[0,0,0];
-			for(let i in n){
-				l=this.letterColor[n[i]];
-				if(l!==void 0){
-					f=(l+r)%12;
-					if(f<9)er++;
-					else er--;
-					l=this.colorCodes[f];
-				}
-				else continue;
-				for(let j=0;j<3;j++)c[j]+=l[j];
-				if(++r===12)r=0;
-			}
-			if(er<1)er=1;
-			for(let i=0;i<3;i++){
-				if(c[i]<0)c[i]=0;
-				else c[i]/=er;
-			}
-			let e=c[0]+c[1]+c[2];
-			if(e<383){
-				e=(383-e)/3;
-				for(let i=0;i<3;i++){
-					c[i]+=e;
-					if(c[i]>255)c[i]=255
-				}
-			}
-			c='rgb('+Math.round(c[0])+','+Math.round(c[1])+','+Math.round(c[2])+')';
+			c=this.getCo(n);
 			chat.nickColors[n]=c
 		}
 		bb.forEach(a=>{a.style.color=c})
@@ -3042,7 +3044,7 @@ function refreshTitles(nid){
 }
 
 //Г Р А Ф И К
-var canvas_colors=['red','yellow','green','teal','fuchsia','silver','maroon','olive','lime','aqua','blue','purple','CornflowerBlue','DarkSeaGreen','DeepPink','GreenYellow','LightGreen','Plum','Salmon','SpringGreen','Wheat','Thistle','PowderBlue','MediumTurquoise','MediumSlateBlue','Magenta','IndianRed','HotPink','Gold','DodgerBlue','DarkSlateGray','Chartreuse'];
+//var canvas_colors=['red','yellow','green','teal','fuchsia','silver','maroon','olive','lime','aqua','Wheat','purple','CornflowerBlue','DarkSeaGreen','DeepPink','GreenYellow','LightGreen','Plum','Salmon','SpringGreen','blue','Thistle','PowderBlue','MediumTurquoise','MediumSlateBlue','Magenta','IndianRed','HotPink','Gold','DodgerBlue','DarkSlateGray','Chartreuse'];
 function makeCnv(){
 	//let padd=2,mam=[],mamx=0,cnw=CANVAS_WIDTH-padd*2,cpo=[4,CANVAS_WIDTH/1.875,CANVAS_WIDTH/1.5,CANVAS_WIDTH/1.25],lh=[18,12,4],c=vasya.ctx,dt=(new Date()).getTime();
 	let paddLeft=50,padd=2,cnw=CANVAS_WIDTH-padd-paddLeft,cnh=CANVAS_HEIGHT-padd*2,c=vasya.ctx,dt=(new Date()).getTime();
@@ -3051,9 +3053,9 @@ function makeCnv(){
 	for(let k in cMan.chn){
 		if(cMan.chn[k].service!==1)continue;
 		let cm=cMan.chn[k];
-		if(!vasya.data.hasOwnProperty(cm.name))vasya.data[cm.name]=[];
+		if(!vasya.data.hasOwnProperty(cm.name))vasya.data[cm.name]={'c':mch.getCo(cm.name),'d':[]};
 		if(vasya.max<cm.viewers)vasya.max=cm.viewers;
-		vasya.data[cm.name].push([dt,cm.viewers]);
+		vasya.data[cm.name].d.push([dt,cm.viewers]);
 		//mam.push([cm.name,cm.rate,null,cm.un[0]]);
 		//if(cm.un[0]>mamx)mamx=cm.un[0]
 	}
@@ -3072,8 +3074,8 @@ function makeCnv(){
 		}
 	}*/
 	for(let i in vasya.data){
-		let vdi=vasya.data[i];
-		c.strokeStyle=canvas_colors[cc++];
+		let vdi=vasya.data[i].d;
+		c.strokeStyle=vasya.data[i].c;
 		
 		if(vdi.length<2)continue;
 		c.strokeText(cc+' '+i,0,cc*9);
