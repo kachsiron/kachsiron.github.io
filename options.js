@@ -3045,19 +3045,36 @@ function refreshTitles(nid){
 
 //Г Р А Ф И К
 function makeCnv(){
-	let paddLeft=50,padd=2,cnw=CANVAS_WIDTH-padd-paddLeft,cnh=CANVAS_HEIGHT-padd*2,c=vasya.ctx,dt=(new Date()).getTime(),cc=1,chp=CANVAS_HEIGHT - padd;
+	let arr=[],paddLeft=50,padd=2,cnw=CANVAS_WIDTH-padd-paddLeft,cnh=CANVAS_HEIGHT-padd*2,c=vasya.ctx,dt=(new Date()).getTime(),cc=1,chp=CANVAS_HEIGHT - padd;
 	vasya.cnd=true;
 	if(vasya.startPoint===0)vasya.startPoint=dt;
 	for(let k in cMan.chn){
 		if(cMan.chn[k].service!==1)continue;
 		let cm=cMan.chn[k];
 		if(!vasya.data.hasOwnProperty(cm.name))vasya.data[cm.name]={'c':mch.getCo(cm.name),'d':[],'t':0,'o':false};
-		if(vasya.max<cm.viewers)vasya.max=cm.viewers;
 		vasya.data[cm.name].o=true;
-		vasya.data[cm.name].d.push([dt,cm.viewers])
+		vasya.data[cm.name].d.push([dt,cm.viewers]);
+		arr.push([cm.name,cm.viewers])
 	}
+	arr.sort((a,b)=>{return b[1] - a[1]});
 	c.fillStyle='black';
 	c.fillRect(0,0,CANVAS_WIDTH,CANVAS_HEIGHT);
+	for(let v=0, l=arr.length, a; v<l; v++){
+		a=vasya.data[ arr[v][0] ];
+		if(a.o){a.t=0;a.o=false}
+		else if(++a.t===3){
+			vasya.max=0;
+			delete vasya.data[ arr[v][0] ]
+		}
+	}
+	if(vasya.max===0){
+		for(let v=0, l=arr.length, vdi; v<l; v++){
+			vdi=vasya.data[ arr[v][0] ].d;
+			for(let j=0, l=vdi.length; j<l; j++){
+				if(vasya.max<vdi[j][1])vasya.max=vdi[j][1]
+			}
+		}
+	}
 	let ctw=cnw/(dt-vasya.startPoint),cth=cnh/vasya.max;
 	if(dt-vasya.startPoint>3600000){
 		c.strokeStyle='gray';
@@ -3071,21 +3088,15 @@ function makeCnv(){
 			i-=3600000
 		}
 	}
-	for(let i in vasya.data){
-		if(vasya.data[i].o){
-			vasya.data[i].t=0;
-			vasya.data[i].o=false;
-		}
-		else if(++vasya.data[i].t===3)delete vasya.data[i]
-	}
-	for(let i in vasya.data){
-		let vdi=vasya.data[i].d;
+	for(let v=0, l=arr.length, vdi, a; v<l; v++){
+		a=vasya.data[ arr[v][0] ];
+		vdi=a.d;
 		if(vdi.length<2)continue;
-		c.strokeStyle=vasya.data[i].c;
-		c.strokeText(cc+' '+i,0,cc*9);
+		c.strokeStyle=a.c;
+		c.strokeText(cc+' '+arr[v][0],0,cc*9);
 		c.beginPath();
 		c.moveTo((vdi[0][0]-vasya.startPoint)*ctw + paddLeft,chp - vdi[0][1]*cth);
-		for(let j=1,l=vdi.length;j<l;j++)c.lineTo((vdi[j][0]-vasya.startPoint)*ctw + paddLeft,chp - vdi[j][1]*cth);
+		for(let j=1, l=vdi.length; j<l; j++)c.lineTo((vdi[j][0]-vasya.startPoint)*ctw + paddLeft,chp - vdi[j][1]*cth);
 		c.stroke();
 		c.strokeText(cc,CANVAS_WIDTH - 10,chp - vdi[vdi.length-1][1]*cth);
 		if(cc++>20)break;
