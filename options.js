@@ -3050,9 +3050,9 @@ function makeCnv(){
 	for(let k in cMan.chn){
 		if(cMan.chn[k].service!==1)continue;
 		let cm=cMan.chn[k];
-		if(!vasya.data.hasOwnProperty(cm.streamer.id))vasya.data[cm.streamer.id]=[];
+		if(!vasya.data.hasOwnProperty(cm.id))vasya.data[cm.id]=[];
 		if(vasya.max<cm.viewers)vasya.max=cm.viewers;
-		vasya.data[cm.streamer.id].push([dt,cm.viewers]);
+		vasya.data[cm.id].push([dt,cm.viewers]);
 		//mam.push([cm.name,cm.rate,null,cm.un[0]]);
 		//if(cm.un[0]>mamx)mamx=cm.un[0]
 	}
