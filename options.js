@@ -3099,7 +3099,7 @@ function makeCnv(){
 		c.moveTo((vdi[0][0]-vasya.startPoint)*ctw + paddLeft,CANVAS_HEIGHT - vdi[0][1]*cth);
 		for(let j=1, l=vdi.length; j<l; j++)c.lineTo((vdi[j][0]-vasya.startPoint)*ctw + paddLeft,CANVAS_HEIGHT - vdi[j][1]*cth);
 		c.stroke();
-		c.strokeText(cc,CANVAS_WIDTH - 10,CANVAS_HEIGHT - vdi[vdi.length-1][1]*cth);
+		c.strokeText(cc,CANVAS_WIDTH - 10,CANVAS_HEIGHT - vdi[vdi.length-1][1]*cth+7);
 		if(cc++>20)break;
 	}
 	vasya.div.style.display='block'
