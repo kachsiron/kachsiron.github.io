@@ -3066,7 +3066,7 @@ function makeCnv(){
 	
 	let ctw=cnw/(dt-vasya.startPoint),cth=cnh/vasya.max;
 	
-	let cc=0;
+	let cc=1;
 	/*for(let i in vasya.data){
 		if(vasya.data[i][vasya.data[i].length-1][0]!==dt){
 			delete vasya.data[i];
@@ -3086,7 +3086,7 @@ function makeCnv(){
 		}
 		c.stroke();
 		c.strokeText(cc,(dt-vasya.startPoint)*ctw + paddLeft - 10,CANVAS_HEIGHT - vdi[vdi.length-1][1]*cth - padd);
-		if(cc>20)break;
+		if(cc++>20)break;
 	}
 	/*for(let x=mam.length,l,lt,m,ctw=cnw/mam[0][1],ctm=cnw/mamx;x--;){
 		m=mam[x];l=x*lh[0]+padd;
