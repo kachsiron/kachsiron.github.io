@@ -3054,7 +3054,7 @@ function makeCnv(){
 		if(!vasya.data.hasOwnProperty(cm.name))vasya.data[cm.name]={'c':mch.getCo(cm.name),'d':[],'t':0,'o':false};
 		vasya.data[cm.name].o=true;
 		vasya.data[cm.name].d.push([dt,cm.viewers]);
-		//if(vasya.max<cm.viewers)vasya.max=cm.viewers;
+		if(vasya.max<cm.viewers)vasya.max=0;
 		arr.push([cm.name,cm.viewers])
 	}
 	arr.sort((a,b)=>{return b[1] - a[1]});
