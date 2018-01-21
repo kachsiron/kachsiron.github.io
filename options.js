@@ -3042,7 +3042,7 @@ function refreshTitles(nid){
 }
 
 //Г Р А Ф И К
-var canvas_colors=['red','yellow','green','teal','fuchsia','silver','maroon','olive','lime','aqua','blue','purple','brown','CornflowerBlue','DarkSeaGreen','DeepPink''FireBrick','GreenYellow','white','LightGreen','Orchid'];
+var canvas_colors=['red','yellow','green','teal','fuchsia','silver','maroon','olive','lime','aqua','blue','purple','brown','CornflowerBlue','DarkSeaGreen','DeepPink','FireBrick','GreenYellow','white','LightGreen','Orchid'];
 function makeCnv(){
 	//let padd=2,mam=[],mamx=0,cnw=CANVAS_WIDTH-padd*2,cpo=[4,CANVAS_WIDTH/1.875,CANVAS_WIDTH/1.5,CANVAS_WIDTH/1.25],lh=[18,12,4],c=vasya.ctx,dt=(new Date()).getTime();
 	let padd=2,cnw=CANVAS_WIDTH-padd*2,cnh=CANVAS_HEIGHT-padd*2,c=vasya.ctx,dt=(new Date()).getTime();
