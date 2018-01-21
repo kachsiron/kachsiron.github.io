@@ -3098,7 +3098,7 @@ function makeCnv(){
 			c.lineTo((vdi[j][0]-vasya.startPoint)*ctw + paddLeft,CANVAS_HEIGHT - vdi[j][1]*cth - padd);
 		}
 		c.stroke();
-		c.strokeText(cc,(dt-vasya.startPoint)*ctw + paddLeft - 10,CANVAS_HEIGHT - vdi[vdi.length-1][1]*cth - padd);
+		c.strokeText(cc,CANVAS_HEIGHT - 10,CANVAS_HEIGHT - vdi[vdi.length-1][1]*cth - padd);
 		if(cc++>20)break;
 	}
 
