@@ -3071,10 +3071,11 @@ function makeCnv(){
 		
 		for(let i=dt-vasya.startPoint,j=1,k;i>0;j++){
 			k=3600000*j*ctw;
-			c.strokeText(j,k,10);
+			c.strokeText(j,k + paddLeft,8);
 			c.beginPath();
 			c.moveTo(k + paddLeft,0);
 			c.lineTo(k + paddLeft,CANVAS_HEIGHT);
+			c.stroke();
 			i-=3600000
 		}
 	}
@@ -3098,7 +3099,7 @@ function makeCnv(){
 			c.lineTo((vdi[j][0]-vasya.startPoint)*ctw + paddLeft,CANVAS_HEIGHT - vdi[j][1]*cth - padd);
 		}
 		c.stroke();
-		c.strokeText(cc,CANVAS_HEIGHT - 10,CANVAS_HEIGHT - vdi[vdi.length-1][1]*cth - padd);
+		c.strokeText(cc,CANVAS_WIDTH - 10,CANVAS_HEIGHT - vdi[vdi.length-1][1]*cth - padd);
 		if(cc++>20)break;
 	}
 
