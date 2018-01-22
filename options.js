@@ -3044,6 +3044,13 @@ function refreshTitles(nid){
 }
 
 //Г Р А Ф И К
+function makeCnvSize(s){
+	s=s.split(' ');
+	vasya.cnv.setAttribute('width',s[0]);
+	vasya.cnv.setAttribute('height',s[1]);
+	CANVAS_WIDTH=s[0];
+	CANVAS_HEIGHT=s[1];
+}
 function makeCnv(){
 	let arr=[],paddLeft=50,padd=2,cnw=CANVAS_WIDTH-padd-paddLeft,c=vasya.ctx,dt=(new Date()).getTime(),cc=1;
 	vasya.cnd=true;
@@ -3063,7 +3070,7 @@ function makeCnv(){
 	for(let v=0, l=arr.length, a; v<l; v++){
 		a=vasya.data[ arr[v][0] ];
 		if(a.o){a.t=0;a.o=false}
-		else if(++a.t===3){
+		else if(++a.t===6){
 			vasya.max=0;
 			delete vasya.data[ arr[v][0] ]
 		}
@@ -3100,7 +3107,7 @@ function makeCnv(){
 		for(let j=1, l=vdi.length; j<l; j++)c.lineTo((vdi[j][0]-vasya.startPoint)*ctw + paddLeft,CANVAS_HEIGHT - vdi[j][1]*cth);
 		c.stroke();
 		c.strokeText(cc,CANVAS_WIDTH - 10,CANVAS_HEIGHT - vdi[vdi.length-1][1]*cth+7);
-		if(cc++>20)break;
+		if(cc++>15)break;
 	}
 	vasya.div.style.display='block'
 }
@@ -3531,8 +3538,7 @@ with(divLog2.style){overflowX='hidden';width='125px';position='absolute';top=0;r
 //А Т Р И Б У Т Ы  И  Т Е К С Т
 divLog.innerHTML='<div></div>';
 grBut.textContent='on';
-vasya.cnv.setAttribute('width',CANVAS_WIDTH);
-vasya.cnv.setAttribute('height',CANVAS_HEIGHT);
+makeCnvSize('400 200');
 zvuk[0].src=MF[0];
 zvuk[1].setAttribute('preload','preload');zvuk[1].type='audio/ogg';
 vasya.ctx.font='8px Verdana';
@@ -3599,6 +3605,7 @@ messtochat.MSG.onkeypress=function(e){
 				}
 				//else if(m==='t'||m==='е')Toganash();
 				else if(m==='m'||m==='ь')makeCnv();
+				else if((m==='j'||m==='о')&&w!==void 0)makeCnvSize(w);
 				//else if(m==='l'||m==='д')cMan.linker(true);
 				//else if(m==='т'||m==='n')recentNews();
 				else if(m==='ф'||m==='a')FORMELA.filter(true,w);
