@@ -3858,7 +3858,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 	//ACAPELA.init()
 });
 
-function mafia(mch,chat){
+function Mafia(mch,chat){
 	this.chat = chat;
 	this.mch = mch;
 	this.idChat = 0;
