@@ -4304,7 +4304,7 @@ function Mafia(mch,chat){
 	}
 }
 //function rand(min,max){return Math.floor(Math.random()*(max-min+1))+min}
-mafia.prototype.init = function(id){
+Mafia.prototype.init = function(id){
 	this.started = 0;
 	this.idChat = id;
 	this.timer = setInterval(this.engine.bind(this), 1000);
