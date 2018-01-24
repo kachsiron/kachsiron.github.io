@@ -3888,6 +3888,7 @@ function Mafia(mch,chat){
 		this.sendToAll(string);
 	};
 	this.income = function(msg){
+		console.log(msg)
 		let sMsg = msg.text.match(/!(.*)/);
 		if(sMsg !== null){
 			sMsg = sMsg[1];
@@ -4302,9 +4303,11 @@ function Mafia(mch,chat){
 		this.started = 2;
 		clearInterval(this.timer);
 	}
+	console.log('mafia!')
 }
 //function rand(min,max){return Math.floor(Math.random()*(max-min+1))+min}
 Mafia.prototype.init = function(id){
+	console.log('mafia init')
 	this.started = 0;
 	this.idChat = id;
 	this.timer = setInterval(this.engine.bind(this), 1000);
