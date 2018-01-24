@@ -2449,6 +2449,7 @@ function mChats(){
 			this.sam('[<u>голосование</u>] ' + o.data.title,w,false)
 		}
 		else if(o.type==='private_message'){
+			console.log({'user_name':o.data.user_name,'user_id':o.data.user_id,'channel_id':o.data.channel_id,'text':o.data.text},w.mafia)
 			w.mafia.income({'user_name':o.data.user_name,'user_id':o.data.user_id,'channel_id':o.data.channel_id,'text':o.data.text});
 			o.data.text='[<u>приватное сообщение</u>] ' + o.data.text;
 			this.am(o.data,w,false);
