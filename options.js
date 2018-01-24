@@ -2404,6 +2404,7 @@ function mChats(){
 		//e=e.data.replace(/\\"/g,'"').match(/a\["(.*?)"\]/)[1];
 		//let o=JSON.parse(e);
 		let o=JSON.parse(e.data);
+		console.log(o)
 		if(o.type==='message')this.am(o.data,w,false);
 		else if(o.type==='channel_counters'){
 			w.timeOut=(new Date()).getTime();
