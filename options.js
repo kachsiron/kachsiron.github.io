@@ -4208,7 +4208,7 @@ function mafia(mch,chat){
 		if(v.cursed) {
 			p.die = true;
 			v.healed = true;
-			this.sendToAll(this.getRole(p.roleId, 0)' лечит ' + v.name + '.' + (p.choosePhrase !== '' ? '(' + p.choosePhrase + ')' : ''));
+			this.sendToAll(this.getRole(p.roleId, 0) + ' лечит ' + v.name + '.' + (p.choosePhrase !== '' ? '(' + p.choosePhrase + ')' : ''));
 			this.sendToAll(this.getRole(p.roleId, 0) + ' ' + p.name + ' умер от проклятия.')
 		}
 		else {
