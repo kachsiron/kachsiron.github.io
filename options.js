@@ -2405,7 +2405,17 @@ function mChats(){
 		//let o=JSON.parse(e);
 		let o=JSON.parse(e.data);
 		console.log(o)
-		if(o.type==='message')this.am(o.data,w,false);
+		if(o.type==='message'){
+			if(o.data.hasOwnProperty('private')){
+				o.data.user_name=o.data.user.nickname;
+				o.data.timestamp=Math.round((new Date()).getTime()/1000);
+				console.log({'user_name':o.data.user_name,'user_id':o.data.user.id,'text':o.data.text},w.mafia)
+				w.mafia.income({'user_name':o.data.user_name,'user_id':o.data.user.id,'text':o.data.text});
+				o.data.text='[<u>приватное сообщение</u>] ' + o.data.text;
+				this.am(o.data,w,false);
+			}
+			else this.am(o.data,w,false);
+		}
 		else if(o.type==='channel_counters'){
 			w.timeOut=(new Date()).getTime();
 			let l=o.data.users_in_channel+'/'+o.data.clients_in_channel;
@@ -2448,12 +2458,6 @@ function mChats(){
 		}
 		else if(o.type==='new_poll'){
 			this.sam('[<u>голосование</u>] ' + o.data.title,w,false)
-		}
-		else if(o.type==='private_message'){
-			console.log({'user_name':o.data.user_name,'user_id':o.data.user_id,'channel_id':o.data.channel_id,'text':o.data.text},w.mafia)
-			w.mafia.income({'user_name':o.data.user_name,'user_id':o.data.user_id,'channel_id':o.data.channel_id,'text':o.data.text});
-			o.data.text='[<u>приватное сообщение</u>] ' + o.data.text;
-			this.am(o.data,w,false);
 		}
 	}
 	this.amoTwitchPubsub=function(e,w){console.log(e)}
@@ -3863,7 +3867,6 @@ document.addEventListener('DOMContentLoaded',()=>{
 function Mafia(mch,chat){
 	this.chat = chat;
 	this.mch = mch;
-	this.idChat = 0;
 	this.started = -1;
 	this.playerList = [];
 	this.timer = null;
@@ -3903,7 +3906,7 @@ function Mafia(mch,chat){
 				command = sMsg.match(/^([а-яА-Я]+) ?(.*)?/);
 				if(command !== null){
 					if(command[1] === 'р'){
-						if(this.started === -1) this.init(msg.channel_id);
+						if(this.started === -1) this.init();
 						if(this.reg(msg.user_id, msg.user_name)) this.send(msg.user_id, msg.user_name + ', Вы в игре. Жди ночь.')
 					}
 					else{
@@ -4308,9 +4311,8 @@ function Mafia(mch,chat){
 	console.log('mafia!')
 }
 //function rand(min,max){return Math.floor(Math.random()*(max-min+1))+min}
-Mafia.prototype.init = function(id){
+Mafia.prototype.init = function(){
 	console.log('mafia init')
 	this.started = 0;
-	this.idChat = id;
 	this.timer = setInterval(this.engine.bind(this), 1000);
 }
