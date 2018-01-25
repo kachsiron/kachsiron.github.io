@@ -3865,37 +3865,43 @@ document.addEventListener('DOMContentLoaded',()=>{
 function Mafia(mch,chat){
 	this.chat = chat;
 	this.mch = mch;
-	this.started = -1;
-	this.playerList = [];
+	
+	this.playerList = null;
+	this.intervals = null;
+	this.started = null;
+	this.winType = null;
 	this.timer = null;
-	this.phase = 0; // 0 - reg, 1 - night, 2 - voice
+	this.phase = null; // 0 - reg, 1 - night, 2 - voice
+	
 	this.origIntervals = [20, 30, 20];//reg,night,voice
-	this.intervals = [0, 0, 0];
-	this.winType = 0;
+	
 	this.send = function(pid, string){
-		this.mch.wsSendMafia(this.chat, pid, '💬'+string)
+		this.mch.wsSendMafia(this.chat, pid, '💬 '+string)
 		console.log(pid, string)
 	};
-	this.sendToAll = function(str){
+	this.sendToAll = function(str){//всем кроме мёртвых
 		for(let i = 0, l = this.playerList.length; i<l; i++){
 			if(this.playerList[i].dead) continue;
 			this.send(this.playerList[i].id, str)
 		}
 	};
-	this.sendToAll1 = function(str){
+	this.sendToAll1 = function(str){//всем кроме мёртвых и ДМ
 		for(let i = 0, l = this.playerList.length; i<l; i++){
 			if(this.playerList[i].dead || this.playerList[i].roleId === 0) continue;
 			this.send(this.playerList[i].id, str)
 		}
 	};
-	this.sendToAll2 = function(str){
+	this.sendToAll2 = function(str){//всем
+		for(let i = 0, l = this.playerList.length; i<l; i++) this.send(this.playerList[i].id, str)
+	};
+	this.sendToAll3 = function(id, str){//всем кроме одного
 		for(let i = 0, l = this.playerList.length; i<l; i++){
-			this.send(this.playerList[i].id, str)
+			if(id !== this.playerList[i].id) this.send(this.playerList[i].id, str)
 		}
 	};
-	this.sendToAllListAndCommsnds = function(){
+	this.sendToAllCommsnds = function(){//список команд всем кроме мёртвых
 		for(let i = 0, l = this.playerList.length; i<l; i++){
-			if(this.playerList[i].dead || this.playerList[i].roleId === 0) continue;
+			if(this.playerList[i].dead) continue;
 			this.send(this.playerList[i].id, this.comm[ this.playerList[i].roleId ])
 		}
 	}
@@ -3908,7 +3914,7 @@ function Mafia(mch,chat){
 		this.sendToAll1(string);
 	};
 	this.income = function(msg){
-		let sMsg = msg.text.match(/!(.*)/);
+		let sMsg = msg.text.match(/^!(.*)/);
 		if(sMsg !== null){
 			sMsg = sMsg[1];
 			let command = sMsg.match(/^(\d+)/);
@@ -3921,7 +3927,10 @@ function Mafia(mch,chat){
 				if(command !== null){
 					if(command[1] === 'р'){
 						if(this.started === -1) this.init();
-						if(this.reg(msg.user_id, msg.user_name)) this.send(msg.user_id, 'Вы в игре. Жди ночь. ( Все комманды вводятся через приватное сообщение. Пример: @Asoas, !проверить 1 )')
+						if(this.reg(msg.user_id, msg.user_name)) {
+							this.send(msg.user_id, 'Вы в игре. Жди ночь. ( Все комманды вводятся через приватное сообщение. Пример: @Asoas, !проверить 1 )');
+							if(this.playerList.length < 5) this.sendToAll3(msg.user_id, msg.user_name + ' в игре.');
+						}
 					}
 					else{
 						if(command[2] !== void 0) {
@@ -3938,7 +3947,7 @@ function Mafia(mch,chat){
 	}
 	this.getCountOfPlayers = function() {
 		let c = 0;
-		for(let i=0, l=this.playerList.length; i<l; i++){
+		for(let i = 0, l = this.playerList.length; i < l; i++){
 			if(!this.playerList[i].dead) c++
 		}
 		return c
@@ -3968,7 +3977,6 @@ function Mafia(mch,chat){
 			else if(p[4] === 1 && p[1] === 0 && p[2] === 0 && (p[3] + p[0]) < 2) {
 				this.winType = 3;
 			}
-			
 		}
 		else if(type === 'after voice') {
 			console.log(p)
@@ -3987,7 +3995,6 @@ function Mafia(mch,chat){
 			else if(p[4] === 1 && p[1] === 0 && p[2] === 0 && (p[3] + p[0]) < 2) {
 				this.winType = 3;
 			}
-
 		}
 		if(this.winType > 0) return false;
 		return true
@@ -4007,19 +4014,16 @@ function Mafia(mch,chat){
 		if(this.started === 1){
 			if(this.phase === 2){
 				if(this.checkInGame(pid)){
-					if(digit < this.playerList.length && !this.getFromList(digit).dead){
+					if(digit < this.playerList.length && digit >= 0 && !this.getFromList(digit).dead){
 						let p = this.getPlayer(pid);
 						if(!p.dead && p.stringup === null) {
 							p.stringup = this.getFromList( digit );
 							this.sendToAll(p.name + ' голосует за ' + p.stringup.name);
 							
 							let t = true;
-							for(let i=0, l=this.playerList.length; i<l; i++){
+							for(let i = 0, l = this.playerList.length; i < l; i++){
 								if(this.playerList[i].dead) continue;
-								if(this.playerList[i].stringup === null) {
-									t = false
-									break
-								}
+								if(this.playerList[i].stringup === null) { t = false; break }
 							}
 							if(t) this.turbo();
 							return true
@@ -4030,7 +4034,7 @@ function Mafia(mch,chat){
 		}
 	}
 	this.getFromList = function(nid) {
-		for(let i=0, l=this.playerList.length; i<l; i++){
+		for(let i = 0, l=this.playerList.length; i < l; i++){
 			if(this.playerList[i].dead) continue;
 			if(nid-- === 0) return this.playerList[i]
 		}
@@ -4066,7 +4070,7 @@ function Mafia(mch,chat){
 		return false
 	}
 	this.checkTurn = function(p, d, t) {
-		if(d <= this.playerList.length && !this.getFromList(d).dead) {
+		if(d <= this.playerList.length && d >= 0 && !this.getFromList(d).dead) {
 			if(t === 'kill') {
 				if(p.roleId === 1 || p.roleId === 2 || p.roleId === 4) return true
 			}
@@ -4083,17 +4087,33 @@ function Mafia(mch,chat){
 		return false
 	}
 	this.getPlayer = function(pid){
-		for(let i=0, l=this.playerList.length; i<l; i++){
-			if(this.playerList[i].id === pid)return this.playerList[i]
+		for(let i = 0, l=this.playerList.length; i < l; i++){
+			if(this.playerList[i].id === pid) return this.playerList[i]
 		}
 		return void 0
 	}
 	this.reg = function(pid, name){
 		if(this.started === 0 && this.playerList.length < 5){
 			if(!this.checkInGame(pid)){
-				this.playerList.push({'id':pid, 'name':name, 'choose':null, 'stringup':null, 'stringupCounter':0, 'chooseType':null, 'choosePhrase':'', 'roleType':0, 'roleId':0, 'healed':false, 'cursed':false, 'die':false, 'dead':false});
-				if(this.playerList.length === 5) this.turbo();
-				return true;
+				let l = this.playerList.length;
+				this.playerList.push({
+					'id': pid,
+					'name': name,
+					'choose': null,
+					'stringup': null,
+					'stringupCounter': 0,
+					'chooseType': null,
+					'choosePhrase': '',
+					'roleType': 0,
+					'roleId': 0,
+					'healed': false,
+					'cursed': false,
+					'dead': false,
+					'die': false
+				});
+				if(l === 5) this.turbo();
+				else if(l < 3) this.brake();
+				return true
 			}
 			return false
 		}
@@ -4107,11 +4127,11 @@ function Mafia(mch,chat){
 		['Лихо одноглазое', 'Лихо одноглазое пыталось убить', 'убит Лихом одноглазым', 'Лихо одноглазое', 'Лихом одноглазым']
 	];
 	this.comm = [
-		'',
+		'Ваши действия: ждите окончания ночи',
 		'Ваши действия: !убить <номер>',
 		'Ваши действия: !убить <номер> или !проверить <номер>',
 		'Ваши действия: !лечить <номер>',
-		'Ваши действия: !убить <номер> или !проклясть <номер>'
+		'Ваши действия: !проклясть <номер>'
 	];
 	this.desc = [
 		'Ваша задача одолеть зло. Ночью вы спите, а днём голосуете.',
@@ -4297,21 +4317,22 @@ function Mafia(mch,chat){
 		return this.roles[rid][type]
 	}
 	this.turbo = function(){
-		this.intervals[this.phase]=this.origIntervals[this.phase]
+		this.intervals[ this.phase ] = this.origIntervals[ this.phase ]
+	}
+	this.brake = function() {
+		this.intervals[this.phase] = 0;
 	}
 	this.engine = function(){
 		if(this.phase === 0){//reg
 			if(++this.intervals[0] >= this.origIntervals[0]){//night
 				if(this.calcRegResult()){
 					this.sendToAll('Наступила ночь.');
-					this.sendToAllListAndCommsnds();
+					this.sendToAllCommsnds();
 					this.sendToAllList();
 					this.phase = 1;
 					this.intervals[1] = 0
 				}
-				else{
-					this.endGame();
-				}
+				else this.endGame();
 			}
 		}
 		else if(this.phase === 1){//night
@@ -4321,11 +4342,9 @@ function Mafia(mch,chat){
 					this.sendToAll('Наступило утро. Голосуй. Команда: !<номер>');
 					this.sendToAllList();
 					this.phase = 2;
-					this.intervals[2] = 0;
+					this.intervals[2] = 0
 				}
-				else{
-					this.endGame();
-				}
+				else this.endGame();
 			}
 		}
 		else if(this.phase === 2){//voice
@@ -4337,43 +4356,40 @@ function Mafia(mch,chat){
 					this.phase = 1;
 					this.intervals[1] = 0
 				}
-				else{
-					this.endGame();
-				}
+				else this.endGame();
 			}
 		}
 		
 	}
+	this.robin = function(str, s) {
+		return (str !== '' ? ', ' : '') + s
+	}
 	this.endGame = function() {
-		if(this.winType === 0) {
-			this.sendToAll2('Игры не будет. Минимум 3 игрока.')
-		}
+		if(this.winType === 0) this.sendToAll2('Игры не будет. Необходимо 3-5 игроков.')
 		else {
 			let winers = '', losers = '';
 			for(let i = 0, l = this.playerList.length, p; i<l; i++){
 				p = this.playerList[i];
-				if(p.dead) losers += (losers !== '' ? ', ' : '') + p.name
+				if(p.dead) losers += this.robin(losers, p.name);
 				else {
 					if(this.winType === 1) {
-						if(p.roleId === 1) winers += (winers !== '' ? ', ' : '') + p.name;
-						else losers += (losers !== '' ? ', ' : '') + p.name
+						if(p.roleId === 1) winers += this.robin(winers, p.name);
+						else losers += this.robin(losers, p.name)
 					}
 					else if(this.winType === 2) {
-						if(p.roleId === 0 || p.roleId === 2 || p.roleId === 3) winers += (winers !== '' ? ', ' : '') + p.name;
-						else losers += (losers !== '' ? ', ' : '') + p.name
+						if(p.roleId === 0 || p.roleId === 2 || p.roleId === 3) winers += this.robin(winers, p.name);
+						else losers += this.robin(losers, p.name)
 					}
 					else if(this.winType === 2) {
-						if(p.roleId === 0 || p.roleId === 2 || p.roleId === 3) winers += (winers !== '' ? ', ' : '') + p.name;
-						else losers += (losers !== '' ? ', ' : '') + p.name
+						if(p.roleId === 0 || p.roleId === 2 || p.roleId === 3) winers += this.robin(winers, p.name);
+						else losers += this.robin(losers, p.name)
 					}
 					else if(this.winType === 3) {
-						if(p.roleId === 4) winers += (winers !== '' ? ', ' : '') + p.name;
-						else losers += (losers !== '' ? ', ' : '') + p.name
+						if(p.roleId === 4) winers += this.robin(winers, p.name);
+						else losers += this.robin(losers, p.name)
 					}
-					else if(this.winType === 4) {
-						winers += (winers !== '' ? ', ' : '') + p.name;
-					}
-					else losers += (losers !== '' ? ', ' : '') + p.name
+					else if(this.winType === 4) winers += this.robin(winers, p.name);
+					else losers += this.robin(losers, p.name)
 				}
 			}
 			if(this.winType === 1) {
@@ -4389,17 +4405,23 @@ function Mafia(mch,chat){
 				this.sendToAll2('Игра окончена. Ничья. Победители: ' + winers + ', проигравшие: ' + losers)
 			}
 		}
-		this.stop()
+		this.reset()
 	}
-	this.stop = function(){
-		this.started = 2;
+	this.reset = function() {
 		clearInterval(this.timer);
+		this.started = -1;
+		this.playerList = [];
+		this.timer = null;
+		this.phase = 0;
+		this.intervals = [0, 0, 0];
+		this.winType = 0;
+		console.log('mafia reset')
 	}
-	console.log('mafia!')
+	console.log('mafia there!')
 }
 //function rand(min,max){return Math.floor(Math.random()*(max-min+1))+min}
 Mafia.prototype.init = function(){
-	console.log('mafia init')
-	this.started = 0;
+	console.log('mafia start')
+	this.reset();
 	this.timer = setInterval(this.engine.bind(this), 1000);
 }
