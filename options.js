@@ -3921,7 +3921,7 @@ function Mafia(mch,chat){
 				if(command !== null){
 					if(command[1] === 'р'){
 						if(this.started === -1) this.init();
-						if(this.reg(msg.user_id, msg.user_name)) this.send(msg.user_id, 'Вы в игре. Жди ночь.')
+						if(this.reg(msg.user_id, msg.user_name)) this.send(msg.user_id, 'Вы в игре. Жди ночь. ( Все комманды вводятся через приватное сообщение. Пример: @Asoas, !проверить 1 )')
 					}
 					else{
 						if(command[2] !== void 0) {
