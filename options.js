@@ -3869,7 +3869,7 @@ function Mafia(mch,chat){
 	this.playerList = [];
 	this.timer = null;
 	this.phase = 0; // 0 - reg, 1 - night, 2 - voice
-	this.origIntervals = [20, 20, 20];//reg,night,voice
+	this.origIntervals = [20, 30, 20];//reg,night,voice
 	this.intervals = [0, 0, 0];
 	this.winType = 0;
 	this.send = function(pid, string){
