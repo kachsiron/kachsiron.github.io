@@ -4163,7 +4163,7 @@ function Mafia(mch,chat){
 			p = this.playerList[i];
 			if(p.dead) continue;
 			if(p.stringupCounter > result[1]) result = [p, p.stringupCounter];
-			else if(p.stringupCounter === result[1]) result = [void 0, 0]
+			else if(p.stringupCounter === result[1]) result[0] = void 0
 		}
 		if(result[0] !== void 0) {
 			this.stringup(result[0])
