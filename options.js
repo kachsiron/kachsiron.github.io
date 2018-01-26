@@ -3868,7 +3868,7 @@ function Mafia(mch,chat){
 	
 	this.playerList = null;
 	this.intervals = null;
-	this.started = null;
+	this.started = null;// -1 - sleep, 0 - reg, 1 - game
 	this.winType = null;
 	this.timer = null;
 	this.phase = null; // 0 - reg, 1 - night, 2 - voice
@@ -4096,7 +4096,7 @@ function Mafia(mch,chat){
 		return void 0
 	}
 	this.reg = function(pid, name){
-		if(this.started === 0 && this.playerList.length < 5){
+		if(this.started === 0 && this.playerList.length < 5) {
 			if(!this.checkInGame(pid)){
 				let l = this.playerList.length;
 				this.playerList.push({
@@ -4118,8 +4118,8 @@ function Mafia(mch,chat){
 				else if(l < 3) this.brake();
 				return true
 			}
-			return false
 		}
+		return false
 	}
 	//0-молодец,1-мафия,2-иван,3-доктор,4-маньяк
 	this.roles = [
@@ -4431,5 +4431,6 @@ function Mafia(mch,chat){
 Mafia.prototype.init = function(){
 	console.log('mafia start')
 	//this.reset();
+	this.started = 0;
 	this.timer = setInterval(this.engine.bind(this), 1000);
 }
