@@ -4423,11 +4423,13 @@ function Mafia(mch,chat){
 		this.winType = 0;
 		console.log('mafia reset')
 	}
+	
+	this.reset();
 	console.log('mafia there!')
 }
 //function rand(min,max){return Math.floor(Math.random()*(max-min+1))+min}
 Mafia.prototype.init = function(){
 	console.log('mafia start')
-	this.reset();
+	//this.reset();
 	this.timer = setInterval(this.engine.bind(this), 1000);
 }
