@@ -3929,7 +3929,7 @@ function Mafia(mch,chat){
 						if(this.started === -1) this.init();
 						if(this.reg(msg.user_id, msg.user_name)) {
 							this.send(msg.user_id, 'Вы в игре. Жди ночь. ( Все комманды вводятся через приватное сообщение. Пример: @Asoas, !проверить 1 )');
-							if(this.playerList.length < 5) this.sendToAll3(msg.user_id, msg.user_name + ' в игре.');
+							if(this.playerList.length < 5) this.sendToAll3(msg.user_id, '{' + msg.user_name + '} в игре.');
 						}
 					}
 					else{
@@ -4018,7 +4018,7 @@ function Mafia(mch,chat){
 						let p = this.getPlayer(pid);
 						if(!p.dead && p.stringup === null) {
 							p.stringup = this.getFromList( digit );
-							this.sendToAll(p.name + ' голосует за ' + p.stringup.name);
+							this.sendToAll('{' + p.name + '} голосует за {' + p.stringup.name + '}');
 							
 							let t = true;
 							for(let i = 0, l = this.playerList.length; i < l; i++){
@@ -4026,12 +4026,14 @@ function Mafia(mch,chat){
 								if(this.playerList[i].stringup === null) { t = false; break }
 							}
 							if(t) this.turbo();
+							else this.slow();
 							return true
 						}
 					}
 				}
 			}
 		}
+		return false
 	}
 	this.getFromList = function(nid) {
 		for(let i = 0, l=this.playerList.length; i < l; i++){
@@ -4064,6 +4066,7 @@ function Mafia(mch,chat){
 					}
 				}
 				if(t) this.turbo();
+				else this.slow();
 				return true
 			}
 		}
@@ -4254,30 +4257,30 @@ function Mafia(mch,chat){
 		}
 	}
 	this.suicied = function(p) {
-		this.sendToAll(this.getRole(p.roleId, 0) + ' ' + p.name + ' заснул и не проснулся.');
+		this.sendToAll(this.getRole(p.roleId, 0) + ' {' + p.name + '} заснул и не проснулся.');
 		p.die = true;
 		//this.send(v.roleId, 'Вы пропустили ход.')
 	}
 	this.stringup = function(v) {
 		let p = this.getPlayer(v.id);
-		this.sendToAll(this.getRole(p.roleId, 0) + ' ' + p.name + ' повешен.');
+		this.sendToAll(this.getRole(p.roleId, 0) + ' {' + p.name + '} повешен.');
 		p.dead = true;
 	}
 	this.killer = function(p) {
 		let v = p.choose;
 		if(v.healed) {
 			v.healed = false
-			this.sendToAll(this.getRole(p.roleId, 1) + ' ' + v.name + ', но он был вылечен Василисой Премудрой. ' + (p.choosePhrase !== '' ? '(' + p.choosePhrase + ')' : ''))
+			this.sendToAll(this.getRole(p.roleId, 1) + ' {' + v.name + '}, но он был вылечен Василисой Премудрой. ' + (p.choosePhrase !== '' ? '(' + p.choosePhrase + ')' : ''))
 			if(v.cursed) {
 				p.die = true;
-				this.sendToAll(this.getRole(p.roleId, 0) + ' ' + p.name + ' умер от проклятия.')
+				this.sendToAll(this.getRole(p.roleId, 0) + ' {' + p.name + '} умер от проклятия.')
 			}
 		}
 		else {
 			v.die = true;
-			this.sendToAll(this.getRole(v.roleId, 0) + ' ' + v.name + ' ' + this.getRole(p.roleId, 2) + '. ' + (p.choosePhrase !== '' ? '(' + p.choosePhrase + ')' : ''))
+			this.sendToAll(this.getRole(v.roleId, 0) + ' {' + v.name + '} ' + this.getRole(p.roleId, 2) + '. ' + (p.choosePhrase !== '' ? '(' + p.choosePhrase + ')' : ''))
 			if(v.cursed) {
-				this.sendToAll(this.getRole(p.roleId, 0) + ' ' + p.name + ' умер от проклятия.')
+				this.sendToAll(this.getRole(p.roleId, 0) + ' {' + p.name + '} умер от проклятия.')
 			};
 			//this.send(v.roleId, 'Вы погибли.')
 		}
@@ -4287,11 +4290,11 @@ function Mafia(mch,chat){
 		if(v.cursed) {
 			p.die = true;
 			v.healed = true;
-			this.sendToAll(this.getRole(p.roleId, 0) + ' лечит ' + v.name + '.' + (p.choosePhrase !== '' ? '(' + p.choosePhrase + ')' : ''));
-			this.sendToAll(this.getRole(p.roleId, 0) + ' ' + p.name + ' умер от проклятия.')
+			this.sendToAll(this.getRole(p.roleId, 0) + ' лечит {' + v.name + '}.' + (p.choosePhrase !== '' ? '(' + p.choosePhrase + ')' : ''));
+		this.sendToAll(this.getRole(p.roleId, 0) + ' {' + p.name + '} умер от проклятия.')
 		}
 		else {
-			this.sendToAll(this.getRole(p.roleId, 0) + ' лечит ' + v.name + '.' + (p.choosePhrase !== '' ? '(' + p.choosePhrase + ')' : ''));
+			this.sendToAll(this.getRole(p.roleId, 0) + ' лечит {' + v.name + '}.' + (p.choosePhrase !== '' ? '(' + p.choosePhrase + ')' : ''));
 			v.healed = true
 		}
 	}
@@ -4299,17 +4302,17 @@ function Mafia(mch,chat){
 		let v = p.choose;
 		if(v.cursed) {
 			p.die = true;
-			this.sendToAll(this.getRole(p.roleId, 0) + ' проверяет ' + v.name + '.' + (p.choosePhrase !== '' ? '(' + p.choosePhrase + ')' : ''));
-			this.sendToAll(this.getRole(p.roleId, 0) + ' ' + p.name + ' умер от проклятия.')
+			this.sendToAll(this.getRole(p.roleId, 0) + ' проверяет {' + v.name + '}.' + (p.choosePhrase !== '' ? '(' + p.choosePhrase + ')' : ''));
+			this.sendToAll(this.getRole(p.roleId, 0) + ' {' + p.name + '} погиб от проклятия.')
 		}
 		else {
-			this.sendToAll(this.getRole(p.roleId, 0) + ' проверяет ' + v.name + '.' + (p.choosePhrase !== '' ? '(' + p.choosePhrase + ')' : ''));
-			this.send(p.id, v.name + ' это ' + this.getRole(v.roleId, 0))
+			this.sendToAll(this.getRole(p.roleId, 0) + ' проверяет {' + v.name + '}.' + (p.choosePhrase !== '' ? '(' + p.choosePhrase + ')' : ''));
+			this.send(p.id, '{' + v.name + '} это ' + this.getRole(v.roleId, 0))
 		}
 	}
 	this.curser = function(p) {
 		let v = p.choose;
-		this.sendToAll(this.getRole(v.roleId, 0) + ' ' + v.name + ' проклят ' + this.getRole(p.roleId, 4) + '. ' + (p.choosePhrase !== '' ? '(' + p.choosePhrase + ')' : ''))
+		this.sendToAll(this.getRole(v.roleId, 0) + ' {' + v.name + '} проклят ' + this.getRole(p.roleId, 4) + '. ' + (p.choosePhrase !== '' ? '(' + p.choosePhrase + ')' : ''))
 		v.cursed = true;
 		//this.send(v.roleId, 'Вы погибли от проклятия.')
 	}
@@ -4321,6 +4324,9 @@ function Mafia(mch,chat){
 	}
 	this.brake = function() {
 		this.intervals[this.phase] = 0;
+	}
+	this.slow = function() {
+		this.intervals[this.phase] -= 5;
 	}
 	this.engine = function(){
 		if(this.phase === 0){//reg
