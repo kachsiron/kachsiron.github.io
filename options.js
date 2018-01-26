@@ -2400,9 +2400,6 @@ function mChats(){
 		return new Date(d[1],d[2]-1,d[3],d[4],d[5],d[6]).getTime()/1000
 	}
 	this.amoGG=function(e,w){
-		//if(e.data[0]!=='a')return;
-		//e=e.data.replace(/\\"/g,'"').match(/a\["(.*?)"\]/)[1];
-		//let o=JSON.parse(e);
 		let o=JSON.parse(e.data);
 		if(o.type==='message'){
 			if(o.data.hasOwnProperty('private')){
@@ -2410,9 +2407,9 @@ function mChats(){
 				o.data.timestamp=Math.round((new Date()).getTime()/1000);
 				w.mafia.income({'user_name':o.data.user_name,'user_id':o.data.user.id,'text':o.data.text});
 				o.data.text='[<u>приватное сообщение</u>] ' + o.data.text;
-				this.am(o.data,w,false);
+				this.amgg(o.data,w,false);
 			}
-			else this.am(o.data,w,false);
+			else this.amgg(o.data,w,false);
 		}
 		else if(o.type==='channel_counters'){
 			w.timeOut=(new Date()).getTime();
@@ -2425,7 +2422,7 @@ function mChats(){
 		}
 		else if(o.type==='channel_history'){
 			let l=o.data.messages.length;
-			for(let x=0;x<l;x++)this.am(o.data.messages[x],w,true);
+			for(let x=0;x<l;x++)this.amgg(o.data.messages[x],w,true);
 			if(l>0)this.nlawka(w,this.tss(o.data.messages[l-1].timestamp*1000));
 			if(w.motd!=='')this.sam('[<u>motd</u>] ' + w.motd,w,false)
 		}
@@ -2686,6 +2683,62 @@ function mChats(){
 		this.span.textContent=a;
 		this.span.style.backgroundColor=a<120?'':a<300?'yellow':a<600?'orange':'red'
 		this.span.style.color=a<120?'':'black'
+	}
+	this.amgg=function(e,chat,ve){
+		if(!ve&&chat.idle.timer===null)chat.idle.timer=setInterval(this.idleTimer.bind(chat.idle),1000);
+		let bs,dt,n=e.user_name,iv,dd=C('DIV'),co=C('SUB'),bb=C('SPAN'),b=C('SPAN'),bnick=null,cf=false,dnt;
+		bb.className='mc_nick';dd.className='mc_message';
+		iv=e.text.replace(rgxpChatGG[0],'$1');
+		bnick=iv.match(rgxpChatGG[1]);
+		dt=e.timestamp*1000;
+		
+		dnt=Math.round((dt - chat.idle.last)/1000);
+		co.textContent=this.setCounterOfNick(chat,n) + '/' + dnt;
+		
+		chat.idle.last=dt;
+		dt=this.tss2(dt);
+		this.setBorderColor(bb,1,iv,n,chat.nick);
+		if(bnick!==null){
+			bnick=bnick[1];
+			cf=bnick===chat.nick;
+			if(chat.light.hasOwnProperty(bnick)){
+				this.flash(chat,bnick);
+				iv=msgReplaceGG2(iv,cf)
+			}
+			else if(cf)iv=msgReplaceGG2(iv,true)
+		}
+		if(iv.includes(':'))b.innerHTML=iv.replace(RGXP_HTTP,replacer2).replace(rgxpChatGG[2],replacerGG).replace(rgxpChatGG[2],'<img class="smimg" src="https://goodgame.ru/images/smiles/$1.png" title="$1">');
+		else b.innerHTML=iv;
+		previewHandle(b);
+		bs=b.querySelector('nobr');
+		if(bs!==null){
+			bs.tagb={i:chat.id,n:bnick,t:chat.wsChat,uid:null};
+			bb.className='mc_nick3';
+			if(chat.light.hasOwnProperty(bnick))bs.ondblclick=this.creeper.bind(this,chat,chat.light[bnick][0])
+			if(!cf)this.setColorOfNick(chat,[bs],bnick)
+		}
+		this.setColorOfNick(chat,[bb,co],n);
+		if(chat.last[0]===n)chat.last[1].textContent='↑';
+		
+		if(dnt>5){
+			dnt=Math.round(100 - dnt / 6);
+			dd.style.background='linear-gradient(to right, black '+dnt+'%, rgb(50, 50, 50) '+dnt+'%, rgb(50, 50, 50) 100%)';
+		}
+		chat.last=[n,bb];
+		bb.textContent=n;
+		bb.title=dt;
+		bb.tagb={i:chat.id,n:n,t:chat.wsChat,uid:(e.id||null)};
+		dd.appendChild(co);dd.appendChild(bb);dd.appendChild(b);
+
+		dd.ignoName={chat,n,dd};
+		ve=(!ve&&this.igno.check(chat,dd,n));
+		chat.light[n]=[dd,bb,0];
+		if(this.onlysmiletest(bnick,iv)){
+			let sh=chat.messageDiv.scrollHeight;
+			this.addBoat(chat,dd,true);
+			if(chat.messageDiv.scrollTop>0)chat.messageDiv.scrollTop+=chat.messageDiv.scrollHeight-sh
+		}
+		this.creep(chat,false)
 	}
 	this.am=function(e,chat,ve){
 		if(!ve&&chat.idle.timer===null)chat.idle.timer=setInterval(this.idleTimer.bind(chat.idle),1000);
@@ -3862,7 +3915,28 @@ document.addEventListener('DOMContentLoaded',()=>{
 	//ACAPELA.init()
 });
 
-function Mafia(mch,chat){
+/*function Victor(mch, chat) {
+	this.chat = chat;
+	this.mch = mch;
+	this.started = false;
+	this.listOfQuestions = [];
+	this.timer = null;
+	this.income = function(msg) {
+		let sMsg = msg.text.match(/^(.*)/);
+		if(sMsg !== null) {
+			sMsg = sMsg[1];
+
+		}
+	}
+	this.addQuestion = function(q) {
+		this.listOfQuestions.push(q)
+	}
+	this.start = function() {
+		this.started = true;
+	}
+}*/
+
+function Mafia(mch, chat) {
 	this.chat = chat;
 	this.mch = mch;
 	
