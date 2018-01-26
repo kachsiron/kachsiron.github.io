@@ -2685,7 +2685,6 @@ function mChats(){
 		this.span.style.color=a<120?'':'black'
 	}
 	this.amgg=function(e,chat,ve){
-		console.log(e)
 		if(!ve&&chat.idle.timer===null)chat.idle.timer=setInterval(this.idleTimer.bind(chat.idle),1000);
 		let bs,dt,n=e.user_name,iv,dd=C('DIV'),co=C('SUB'),bb=C('SPAN'),b=C('SPAN'),bnick=null,cf=false,dnt;
 		bb.className='mc_nick';dd.className='mc_message';
@@ -2738,6 +2737,12 @@ function mChats(){
 			let sh=chat.messageDiv.scrollHeight;
 			this.addBoat(chat,dd,true);
 			if(chat.messageDiv.scrollTop>0)chat.messageDiv.scrollTop+=chat.messageDiv.scrollHeight-sh
+		}
+		else{
+			if(chat.boat!==null)chat.boat=null;
+			if(ve)dd.classList.add('fadeup');
+			chat.messageDiv.insertBefore(dd,chat.messageDiv.children[0]);
+			if(chat.messageDiv.scrollTop>0)chat.messageDiv.scrollTop+=dd.offsetHeight
 		}
 		this.creep(chat,false)
 	}
