@@ -2680,18 +2680,18 @@ function mChats(){
 			chat.nickColors[n]=c;
 			
 			pp=[1000,0];
-			for(let i = 0, l = pokemonColor.length, q=[], k; i < l; i++){
+			for(let i = 0, l = pokemon.length, q=[], k; i < l; i++){
 				k=0;
-				for(let j = 0; j < 3; j++) q[j] = Math.abs(cc[j] - pokemonColor[i][j]);
+				for(let j = 0; j < 3; j++) q[j] = Math.abs(cc[j] - pokemon[i][2][j]);
 				for(let j = 0; j < 3; j++) k += q[j];
 				if(k < pp[0]) pp = [k, i]
 			}
 			pp = pp[1];
 			chat.nickColors2[n] = pp
 		}
-		img.title=pokemonName[pp] + ' ' +c+' '+pokemonColor[pp][0]+','+pokemonColor[pp][1]+','+pokemonColor[pp][2];
+		img.title=pokemon[pp][0] + ' ' +c+' '+pokemon[pp][2][0]+','+pokemon[pp][2][1]+','+pokemon[pp][2][2];
 		img.style.backgroundImage = 'url("https://kachsiron.github.io/imgs/canvasPokemon.png")';
-		img.style.backgroundPosition = pokemonPoint[pp][0] + 'px ' + pokemonPoint[pp][1] + 'px'; 
+		img.style.backgroundPosition = pokemon[pp][1][0] + 'px ' + pokemon[pp][1][1] + 'px';
 		bb.forEach(a=>{a.style.color=c})
 	}
 	this.setCounterOfNick=function(chat,n){
