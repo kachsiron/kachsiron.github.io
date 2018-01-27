@@ -2639,7 +2639,7 @@ function mChats(){
 		let e=[];
 		for(let i=0;i<3;i++){
 			if(c[i]>255)c[i]=255
-			else if(c[i]<192)e.push(192-c[i]);
+			else if(c[i]<168)e.push(168-c[i]);
 		}
 		if(e.length===3){
 			let min=Math.min.apply(Math,e);
