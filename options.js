@@ -2023,6 +2023,7 @@ function mChats(){
 			}
 			else{
 				w.wsChat=1;
+				w.nickColors2={};
 				w.bColor='olive';
 				w.wsChatChannelId=ws;
 				w.wsUsersInChannel='';
@@ -2615,7 +2616,8 @@ function mChats(){
 		'Ц','Ч','Ш','Щ','Ъ','U','V','W','X','Y','Z',
 		'Ы','Ь','Э','Ю','Я',' ','*'
 	];
-	this.getCo=function(n){
+	
+	this.getC=function(n){
 		let l,r=0,er=0,f,c=[0,0,0];
 		for(let i in n){
 			l=this.letterColor[n[i]];
@@ -2642,7 +2644,11 @@ function mChats(){
 				if(c[i]>255)c[i]=255
 			}
 		}
-		return 'rgb('+Math.round(c[0])+','+Math.round(c[1])+','+Math.round(c[2])+')';
+		return [Math.round(c[0]), Math.round(c[1]), Math.round(c[2])]
+	}
+	this.getCo=function(n){
+		let c=this.getC(n);
+		return 'rgb('+c[0]+','+c[1]+','+c[2]+')';
 	}
 	this.setColorOfNick=function(chat,bb,n){
 		let c;
@@ -2651,6 +2657,31 @@ function mChats(){
 			c=this.getCo(n);
 			chat.nickColors[n]=c
 		}
+		bb.forEach(a=>{a.style.color=c})
+	}
+	this.setColorOfNick2=function(chat,bb,n,img){
+		let c,pp;
+		if(chat.nickColors2.hasOwnProperty(n)){
+			c=chat.nickColors[n];
+			pp=chat.nickColors2[n];
+		}
+		else{
+			let cc=this.getC(n);
+			c='rgb('+Math.round(cc[0])+','+Math.round(cc[1])+','+Math.round(cc[2])+')';
+			chat.nickColors[n]=c;
+			
+			pp=[1000,0];
+			for(let i = 0, l = pokemonColor.length, q=[], k; i < l; i++){
+				k=0;
+				for(let j = 0; j < 3; j++) q[j] = Math.abs(cc[j] - pokemonColor[i][j]);
+				for(let j = 0; j < 3; j++) k += q[j];
+				if(k < p) p = [k, i]
+			}
+			pp = pp[1];
+			chat.nickColors2[n] = pp
+		}
+		img.style.backgroundImage = pokemonImage;
+		img.style.backgroundPosition = pokemonPoint[pp][0] + 'px ' + pokemonPoint[pp][1] + 'px'; 
 		bb.forEach(a=>{a.style.color=c})
 	}
 	this.setCounterOfNick=function(chat,n){
@@ -2686,8 +2717,8 @@ function mChats(){
 	}
 	this.amgg=function(e,chat,ve){
 		if(!ve&&chat.idle.timer===null)chat.idle.timer=setInterval(this.idleTimer.bind(chat.idle),1000);
-		let bs,dt,n=e.user_name,iv,dd=C('DIV'),co=C('SUB'),bb=C('SPAN'),b=C('SPAN'),bnick=null,cf=false,dnt;
-		bb.className='mc_nick';dd.className='mc_message';
+		let bs,dt,n=e.user_name,iv,dd=C('DIV'),co=C('SUB'),bb=C('SPAN'),b=C('SPAN'),mimg=C('IMG'),bnick=null,cf=false,dnt;
+		bb.className='mc_nick';dd.className='mc_message';mimg.className='pokeImage';
 		iv=e.text.replace(rgxpChatGG[0],'$1');
 		bnick=iv.match(rgxpChatGG[1]);
 		dt=e.timestamp*1000;
@@ -2715,20 +2746,23 @@ function mChats(){
 			bs.tagb={i:chat.id,n:bnick,t:chat.wsChat,uid:null};
 			bb.className='mc_nick3';
 			if(chat.light.hasOwnProperty(bnick))bs.ondblclick=this.creeper.bind(this,chat,chat.light[bnick][0])
-			if(!cf)this.setColorOfNick(chat,[bs],bnick)
+			if(!cf)this.setColorOfNick2(chat,[bs],bnick,mimg)
 		}
-		this.setColorOfNick(chat,[bb,co],n);
-		if(chat.last[0]===n)chat.last[1].textContent='↑';
+		this.setColorOfNick2(chat,[bb,co],n,mimg);
+		if(chat.last[0]===n){
+			chat.last[2].remove();
+			chat.last[1].textContent='↑';
+		}
 		
 		if(dnt>5){
 			dnt=Math.round(100 - dnt / 6);
 			dd.style.background='linear-gradient(to right, black '+dnt+'%, rgb(50, 50, 50) '+dnt+'%, rgb(50, 50, 50) 100%)';
 		}
-		chat.last=[n,bb];
+		chat.last=[n,bb,mimg];
 		bb.textContent=n;
 		bb.title=dt;
 		bb.tagb={i:chat.id,n:n,t:chat.wsChat,uid:(e.id||null)};
-		dd.appendChild(co);dd.appendChild(bb);dd.appendChild(b);
+		dd.appendChild(co);dd.appendChild(mimg);dd.appendChild(bb);dd.appendChild(b);
 
 		dd.ignoName={chat,n,dd};
 		ve=(!ve&&this.igno.check(chat,dd,n));
