@@ -2749,7 +2749,7 @@ function mChats(){
 		}
 		this.setColorOfNick2(chat,[bb,co],n,mimg);
 		
-		//co.appendChild(document.createTextNode(this.setCounterOfNick(chat,n) + '/' + dnt));
+		co.appendChild(document.createTextNode(this.setCounterOfNick(chat,n) + '/' + dnt));
 		co.appendChild(mimg);
 		
 		if(chat.last[0]===n){
@@ -2765,7 +2765,7 @@ function mChats(){
 		bb.textContent=n;
 		bb.title=dt;
 		bb.tagb={i:chat.id,n:n,t:chat.wsChat,uid:(e.id||null)};
-		dd.appendChild(co);dd.appendChild(mimg);dd.appendChild(bb);dd.appendChild(b);
+		dd.appendChild(co);dd.appendChild(bb);dd.appendChild(b);
 
 		dd.ignoName={chat,n,dd};
 		ve=(!ve&&this.igno.check(chat,dd,n));
