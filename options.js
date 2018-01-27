@@ -2692,7 +2692,7 @@ function mChats(){
 		img.title=pokemon[pp][0] + ' ' +c+' '+pokemon[pp][2][0]+','+pokemon[pp][2][1]+','+pokemon[pp][2][2];
 		img.style.backgroundImage = 'url("https://kachsiron.github.io/imgs/canvasPokemon.png")';
 		img.style.backgroundPosition = pokemon[pp][1][0] + 'px ' + pokemon[pp][1][1] + 'px';
-		img.style.marginBottom='-'+pokemon[pp][3]+'px';
+		img.style.marginBottom=pokemon[pp][3]+'px';
 		bb.forEach(a=>{a.style.color=c})
 	}
 	this.setCounterOfNick=function(chat,n){
