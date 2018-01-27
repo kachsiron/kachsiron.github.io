@@ -2690,7 +2690,7 @@ function mChats(){
 			chat.nickColors2[n] = pp
 		}
 		img.title=c+pokemonColor[pp][0]+','+pokemonColor[pp][1]+','+pokemonColor[pp][2];
-		img.style.backgroundImage = 'url("https://kachsiron.github.io/imgs/canvasPokemonMini.png")';
+		img.style.backgroundImage = 'url("https://kachsiron.github.io/imgs/canvasPokemon.png")';
 		img.style.backgroundPosition = pokemonPoint[pp][0] + 'px ' + pokemonPoint[pp][1] + 'px'; 
 		bb.forEach(a=>{a.style.color=c})
 	}
