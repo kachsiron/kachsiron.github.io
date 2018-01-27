@@ -2724,7 +2724,6 @@ function mChats(){
 		dt=e.timestamp*1000;
 		
 		dnt=Math.round((dt - chat.idle.last)/1000);
-		co.textContent=this.setCounterOfNick(chat,n) + '/' + dnt;
 		
 		chat.idle.last=dt;
 		dt=this.tss2(dt);
@@ -2746,9 +2745,13 @@ function mChats(){
 			bs.tagb={i:chat.id,n:bnick,t:chat.wsChat,uid:null};
 			bb.className='mc_nick3';
 			if(chat.light.hasOwnProperty(bnick))bs.ondblclick=this.creeper.bind(this,chat,chat.light[bnick][0])
-			if(!cf)this.setColorOfNick2(chat,[bs],bnick,mimg)
+			if(!cf)this.setColorOfNick(chat,[bs],bnick)
 		}
 		this.setColorOfNick2(chat,[bb,co],n,mimg);
+		
+		co.appendChild(document.createTextNode(this.setCounterOfNick(chat,n) + '/' + dnt));
+		co.appendChild(mimg);
+		
 		if(chat.last[0]===n){
 			chat.last[2].remove();
 			chat.last[1].textContent='↑';
