@@ -2680,6 +2680,7 @@ function mChats(){
 			pp = pp[1];
 			chat.nickColors2[n] = pp
 		}
+		img.title=pp;
 		img.style.backgroundImage = 'url("https://kachsiron.github.io/imgs/canvasPokemonMini.png")';
 		img.style.backgroundPosition = pokemonPoint[pp][0] + 'px ' + pokemonPoint[pp][1] + 'px'; 
 		bb.forEach(a=>{a.style.color=c})
@@ -2717,13 +2718,14 @@ function mChats(){
 	}
 	this.amgg=function(e,chat,ve){
 		if(!ve&&chat.idle.timer===null)chat.idle.timer=setInterval(this.idleTimer.bind(chat.idle),1000);
-		let bs,dt,n=e.user_name,iv,dd=C('DIV'),co=C('SUB'),bb=C('SPAN'),b=C('SPAN'),mimg=C('DIV'),bnick=null,cf=false,dnt;
-		bb.className='mc_nick';dd.className='mc_message';mimg.className='pokeImage';
+		let bs,dt,n=e.user_name,iv,dd=C('DIV'),co=C('SUB'),cos=C('SPAN'),bb=C('SPAN'),b=C('SPAN'),mimg=C('DIV'),bnick=null,cf=false,dnt;
+		bb.className='mc_nick';dd.className='mc_message';mimg.className='pokeImage';cos.className='subspan';
 		iv=e.text.replace(rgxpChatGG[0],'$1');
 		bnick=iv.match(rgxpChatGG[1]);
 		dt=e.timestamp*1000;
 		
 		dnt=Math.round((dt - chat.idle.last)/1000);
+		cos.textContent=this.setCounterOfNick(chat,n) + '/' + dnt;
 		
 		chat.idle.last=dt;
 		dt=this.tss2(dt);
@@ -2749,19 +2751,16 @@ function mChats(){
 		}
 		this.setColorOfNick2(chat,[bb,co],n,mimg);
 		
-		co.appendChild(document.createTextNode(this.setCounterOfNick(chat,n) + '/' + dnt));
+		co.appendChild(cos);
 		co.appendChild(mimg);
 		
-		if(chat.last[0]===n){
-			chat.last[2].remove();
-			chat.last[1].textContent='↑';
-		}
+		if(chat.last[0]===n)chat.last[1].textContent='↑';
 		
 		if(dnt>5){
 			dnt=Math.round(100 - dnt / 6);
 			dd.style.background='linear-gradient(to right, black '+dnt+'%, rgb(50, 50, 50) '+dnt+'%, rgb(50, 50, 50) 100%)';
 		}
-		chat.last=[n,bb,mimg];
+		chat.last=[n,bb];
 		bb.textContent=n;
 		bb.title=dt;
 		bb.tagb={i:chat.id,n:n,t:chat.wsChat,uid:(e.id||null)};
