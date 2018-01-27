@@ -87,4 +87,4 @@ hr{clear:both}
 .linker_div{white-space:nowrap;font-size:75%;bottom:0;right:0;position:fixed;color:#AAA;background-color:black;width:350px;height:250px;zIndex:100;border-width:1px 0 0 1px;border-style:solid;border-color:white;overflow-y:scroll;overflow-x:hidden}
 @keyframes fade{from{opacity:0}to{opacity:1}}
 .fadeup{animation:fade 500ms 1 linear;animation-fill-mode:forwards}
-.pokeImage{width:32px;height:32px;display:inline-block;margin-bottom:-7px}
+.pokeImage{width:32px;height:32px;display:inline-block;margin-bottom:-8px}
