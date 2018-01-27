@@ -59,7 +59,7 @@ hr{clear:both}
 .mc_messageBoat{display:flex;align-content:flex-start;flex-direction:row;flex-wrap:wrap}
 .mc_messageBoat>div{flex:1 0 auto;border-left:1px solid #444}
 .mc_messageBoat>div:first-child{border-left:none}
-.mc_message{border-bottom:1px solid #444;word-wrap:break-word;line-height:1.1;position:relative}
+.mc_message{overflow:hidden;border-bottom:1px solid #444;word-wrap:break-word;line-height:1.1;position:relative}
 .mc_message>span{text-shadow:1px 1px 0px black;position:relative}
 .mc_message>sub{white-space:nowrap;position:absolute;right:0;bottom:0;font-size:75%;text-shadow:1px 1px 0px black}
 .subspan{opacity:0.6}
@@ -87,4 +87,4 @@ hr{clear:both}
 .linker_div{white-space:nowrap;font-size:75%;bottom:0;right:0;position:fixed;color:#AAA;background-color:black;width:350px;height:250px;zIndex:100;border-width:1px 0 0 1px;border-style:solid;border-color:white;overflow-y:scroll;overflow-x:hidden}
 @keyframes fade{from{opacity:0}to{opacity:1}}
 .fadeup{animation:fade 500ms 1 linear;animation-fill-mode:forwards}
-.pokeImage{width:32px;height:32px;display:inline-block;margin-bottom:1px}
+.pokeImage{width:32px;height:32px;display:inline-block;margin-bottom:-7px}
