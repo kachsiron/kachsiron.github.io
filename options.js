@@ -2675,7 +2675,7 @@ function mChats(){
 				k=0;
 				for(let j = 0; j < 3; j++) q[j] = Math.abs(cc[j] - pokemonColor[i][j]);
 				for(let j = 0; j < 3; j++) k += q[j];
-				if(k < p) p = [k, i]
+				if(k < pp[0]) pp = [k, i]
 			}
 			pp = pp[1];
 			chat.nickColors2[n] = pp
