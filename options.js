@@ -2680,7 +2680,7 @@ function mChats(){
 			pp = pp[1];
 			chat.nickColors2[n] = pp
 		}
-		img.style.backgroundImage = 'url("https://kachsiron.github.io/imgs/canvasPokemon.png")';
+		img.style.backgroundImage = 'url("https://kachsiron.github.io/imgs/canvasPokemonMini.png")';
 		img.style.backgroundPosition = pokemonPoint[pp][0] + 'px ' + pokemonPoint[pp][1] + 'px'; 
 		bb.forEach(a=>{a.style.color=c})
 	}
@@ -2717,7 +2717,7 @@ function mChats(){
 	}
 	this.amgg=function(e,chat,ve){
 		if(!ve&&chat.idle.timer===null)chat.idle.timer=setInterval(this.idleTimer.bind(chat.idle),1000);
-		let bs,dt,n=e.user_name,iv,dd=C('DIV'),co=C('SUB'),bb=C('SPAN'),b=C('SPAN'),mimg=C('IMG'),bnick=null,cf=false,dnt;
+		let bs,dt,n=e.user_name,iv,dd=C('DIV'),co=C('SUB'),bb=C('SPAN'),b=C('SPAN'),mimg=C('DIV'),bnick=null,cf=false,dnt;
 		bb.className='mc_nick';dd.className='mc_message';mimg.className='pokeImage';
 		iv=e.text.replace(rgxpChatGG[0],'$1');
 		bnick=iv.match(rgxpChatGG[1]);
