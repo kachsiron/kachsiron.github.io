@@ -2749,7 +2749,7 @@ function mChats(){
 		}
 		this.setColorOfNick2(chat,[bb,co],n,mimg);
 		
-		co.appendChild(document.createTextNode(this.setCounterOfNick(chat,n) + '/' + dnt));
+		//co.appendChild(document.createTextNode(this.setCounterOfNick(chat,n) + '/' + dnt));
 		co.appendChild(mimg);
 		
 		if(chat.last[0]===n){
