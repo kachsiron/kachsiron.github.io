@@ -2636,14 +2636,23 @@ function mChats(){
 			if(c[i]<0)c[i]=0;
 			else c[i]/=er;
 		}
-		let e=c[0]+c[1]+c[2];
+		let e=[];
+		for(let i=0;i<3;i++){
+			if(c[i]>255)c[i]=255
+			else if(c[i]<128)e.push(128-c[i]);
+		}
+		if(e.length===3){
+			let min=Math.min.apply(Math,e);
+			for(let i=0;i<3;i++)c[i]+=min
+		}
+		/*let e=c[0]+c[1]+c[2];
 		if(e<383){
 			e=(383-e)/3;
 			for(let i=0;i<3;i++){
 				c[i]+=e;
 				if(c[i]>255)c[i]=255
 			}
-		}
+		}*/
 		return [Math.round(c[0]), Math.round(c[1]), Math.round(c[2])]
 	}
 	this.getCo=function(n){
