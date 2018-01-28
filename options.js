@@ -2680,10 +2680,10 @@ function mChats(){
 			chat.nickColors[n]=c;
 			
 			pp=[1000,0];
-			for(let i = 0, l = pokemon.length, q=[], k; i < l; i++){
+			for(let i = 0, l = pokemon.length, k; i < l; i++){
 				k=0;
-				for(let j = 0; j < 3; j++) q[j] = Math.abs(cc[j] - pokemon[i][2][j]);
-				for(let j = 0; j < 3; j++) k += q[j];
+				for(let j = 0; j < 3; j++) k += Math.abs(cc[j] - pokemon[i][2][j]);
+				//for(let j = 0; j < 3; j++) k += q[j];
 				if(k < pp[0]) pp = [k, i]
 			}
 			pp = pp[1];
@@ -2693,6 +2693,9 @@ function mChats(){
 		img.style.backgroundImage = 'url("https://kachsiron.github.io/imgs/canvasPokemon.png")';
 		img.style.backgroundPosition = pokemon[pp][1][0] + 'px ' + pokemon[pp][1][1] + 'px';
 		img.style.marginBottom=pokemon[pp][3]+'px';
+		img.onclick=function(){
+			window.open('https://bulbapedia.bulbagarden.net/wiki/'+ this.p +'_(Pok%C3%A9mon)', 'Pokemons', '')
+		}.bind({'p':pokemon[pp][0]});
 		bb.forEach(a=>{a.style.color=c})
 	}
 	this.setCounterOfNick=function(chat,n){
