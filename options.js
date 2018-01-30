@@ -2746,10 +2746,9 @@ function mChats(){
 		this.span.style.color=a<120?'':'black'
 	}*/
 	this.idleTimer2=function(){
-		
 		let dt=(new Date()).getTime();
 		this.ctx.fillStyle='black';
-		this.ctx.fillRect(0,0,this.width,this.height);
+		this.ctx.fillRect(0,0,this.multy6,this.height);
 		
 		/*this.ctx.fillStyle='rgb(48,48,48)';
 		this.ctx.beginPath();
@@ -2759,7 +2758,7 @@ function mChats(){
 		
 		this.ctx.putImageData(this.copy, this.multy6, 0);
 		
-		for(let i=0,l=this.line.length,w;i<l;i++){
+		for(let i=this.line.length;--i>-1;){
 			w=(dt-this.line[i][0])*this.multy;
 			this.ctx.strokeStyle=this.line[i][1];
 			this.ctx.beginPath();
@@ -2768,12 +2767,11 @@ function mChats(){
 			this.ctx.stroke()
 		}
 		this.line=[]
-		this.copy=this.ctx.getImageData(0, 0, this.width-this.multy6, this.height);
-		
+		this.copy=this.ctx.getImageData(0, 0, this.width-this.multy6, this.height)
 	}
 	this.amgg=function(e,chat,ve){
 		//if(!ve&&chat.idle.timer===null)chat.idle.timer=setInterval(this.idleTimer.bind(chat.idle),1000);
-		let bs,dt,ddt,n=e.user_name,iv,dd=C('DIV'),co=C('SUB'),cos=C('SPAN'),bb=C('SPAN'),b=C('SPAN'),mimg=C('DIV'),bnick=null,cf=false;
+		let bs,dt,n=e.user_name,iv,dd=C('DIV'),co=C('SUB'),cos=C('SPAN'),bb=C('SPAN'),b=C('SPAN'),mimg=C('DIV'),bnick=null,cf=false;
 		bb.className='mc_nick';dd.className='mc_message';mimg.className='pokeImage';cos.className='subspan';
 		iv=e.text.replace(rgxpChatGG[0],'$1');
 		bnick=iv.match(rgxpChatGG[1]);
@@ -2783,7 +2781,7 @@ function mChats(){
 		cos.textContent=this.setCounterOfNick(chat,n);// + '/' + dnt;
 		
 		chat.idle.last=dt;
-		ddt=this.tss2(dt);
+		dt=this.tss2(dt);
 		this.setBorderColor(bb,1,iv,n,chat.nick);
 		if(bnick!==null){
 			bnick=bnick[1];
@@ -2806,7 +2804,7 @@ function mChats(){
 		}
 		this.setColorOfNick2(chat,[bb,co],n,mimg);
 		
-		chat.idle.line.unshift([dt,chat.nickColors[n]]);
+		chat.idle.line.unshift([chat.idle.last,chat.nickColors[n]]);
 		co.appendChild(cos);
 		co.appendChild(mimg);
 		
@@ -2818,7 +2816,7 @@ function mChats(){
 		}*/
 		chat.last=[n,bb];
 		bb.textContent=n;
-		bb.title=ddt;
+		bb.title=dt;
 		bb.tagb={i:chat.id,n:n,t:chat.wsChat,uid:(e.id||null)};
 		dd.appendChild(co);dd.appendChild(bb);dd.appendChild(b);
 
@@ -2839,17 +2837,17 @@ function mChats(){
 		this.creep(chat,false)
 	}
 	this.am=function(e,chat,ve){
-		if(!ve&&chat.idle.timer===null)chat.idle.timer=setInterval(this.idleTimer.bind(chat.idle),1000);
+		//if(!ve&&chat.idle.timer===null)chat.idle.timer=setInterval(this.idleTimer.bind(chat.idle),1000);
 
 		//chat.script.call(this,chat,e,ve);
-		let bs,dt,n=e.user_name,iv,dd=C('DIV'),co=C('SUB'),bb=C('SPAN'),b=C('SPAN'),bnick=null,cf=false,dnt;
+		let bs,dt,n=e.user_name,iv,dd=C('DIV'),co=C('SUB'),bb=C('SPAN'),b=C('SPAN'),bnick=null,cf=false;
 		bb.className='mc_nick';dd.className='mc_message';
 		if(chat.wsChat===0){
 			iv=this.escapeHtml(e.text);
 			dt=e.timestamp*1000;
 			
-			dnt=Math.round((dt - chat.idle.last)/1000);
-			co.textContent=this.setCounterOfNick(chat,n) + '/' + dnt;
+			//dnt=Math.round((dt - chat.idle.last)/1000);
+			co.textContent=this.setCounterOfNick(chat,n);// + '/' + dnt;
 						
 			chat.idle.last=dt;
 			dt=this.tss2(dt);
@@ -2881,38 +2879,7 @@ function mChats(){
 			previewHandle(stag);
 			b.appendChild(stag);
 			this.setColorOfNick(chat,[bb,co],n);
-		}
-		else if(chat.wsChat===1){// G O O D G A M E
-			iv=e.text.replace(rgxpChatGG[0],'$1');
-			bnick=iv.match(rgxpChatGG[1]);
-			dt=e.timestamp*1000;
-			
-			dnt=Math.round((dt - chat.idle.last)/1000);
-			co.textContent=this.setCounterOfNick(chat,n) + '/' + dnt;
-			
-			chat.idle.last=dt;
-			dt=this.tss2(dt);
-			this.setBorderColor(bb,1,iv,n,chat.nick);
-			if(bnick!==null){
-				bnick=bnick[1];
-				cf=bnick===chat.nick;
-				if(chat.light.hasOwnProperty(bnick)){
-					this.flash(chat,bnick);
-					iv=msgReplaceGG2(iv,cf)
-				}
-				else if(cf)iv=msgReplaceGG2(iv,true)
-			}
-			if(iv.includes(':'))b.innerHTML=iv.replace(RGXP_HTTP,replacer2).replace(rgxpChatGG[2],replacerGG).replace(rgxpChatGG[2],'<img class="smimg" src="https://goodgame.ru/images/smiles/$1.png" title="$1">');
-			else b.innerHTML=iv;
-			previewHandle(b);
-			bs=b.querySelector('nobr');
-			if(bs!==null){
-				bs.tagb={i:chat.id,n:bnick,t:chat.wsChat,uid:null};
-				bb.className='mc_nick3';
-				if(chat.light.hasOwnProperty(bnick))bs.ondblclick=this.creeper.bind(this,chat,chat.light[bnick][0])
-				if(!cf)this.setColorOfNick(chat,[bs],bnick)
-			}
-			this.setColorOfNick(chat,[bb,co],n);
+			chat.idle.line.unshift([chat.idle.last,chat.nickColors[n]]);
 		}
 		else{// T W I T C H
 			iv=this.escapeHtml(e.text);
@@ -2921,8 +2888,8 @@ function mChats(){
 			bnick=iv.match(rgxpChatTwitch[1]);
 			dt=e.timestamp.getHours().totwo()+':'+e.timestamp.getMinutes().totwo()+':'+e.timestamp.getSeconds().totwo();
 			
-			dnt=Math.round((e.timestamp.getTime() - chat.idle.last)/1000);
-			co.textContent=this.setCounterOfNick(chat,n) + '/' + dnt;
+			//dnt=Math.round((e.timestamp.getTime() - chat.idle.last)/1000);
+			co.textContent=this.setCounterOfNick(chat,n);// + '/' + dnt;
 			
 			chat.idle.last=e.timestamp.getTime();
 			this.setBorderColor(bb,2,iv,nn,chat.nick);
@@ -2947,13 +2914,14 @@ function mChats(){
 				if(!cf)this.setColorOfNick(chat,[bs],bnick2)
 			}
 			this.setColorOfNick(chat,[bb,co],nn);
+			chat.idle.line.unshift([chat.idle.last,chat.nickColors[nn]]);
 		}
 		if(chat.last[0]===n)chat.last[1].textContent='↑';
 		
-		if(dnt>5){
+		/*if(dnt>5){
 			dnt=Math.round(100 - dnt / 6);
 			dd.style.background='linear-gradient(to right, black '+dnt+'%, rgb(50, 50, 50) '+dnt+'%, rgb(50, 50, 50) 100%)';
-		}
+		}*/
 		chat.last=[n,bb];
 		bb.textContent=n;
 		bb.title=dt;
