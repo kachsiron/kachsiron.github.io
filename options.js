@@ -1962,11 +1962,11 @@ function mChats(){
 	this.startPoint={x:scp.playerSize.x+2,y:-1}
 	this.fadeCountTimers={'a':0};//'c':0,'m':{},
 //this.fctDiv=C('DIV');
-	this.sencolors=[1,0.9,0.85,0.8,0.75,0.7,0.65,0.6,0.55,0.525,0.5,0.475,0.45,0.425,0.4,0.375,0.35,0.325,0.3,0.275,0.25],
+//this.sencolors=[1,0.9,0.85,0.8,0.75,0.7,0.65,0.6,0.55,0.525,0.5,0.475,0.45,0.425,0.4,0.375,0.35,0.325,0.3,0.275,0.25],
 //this.sencolors=[1,0.9,0.825,0.775,0.75,0.734375,0.71875,0.703125,0.6875,0.671875,0.65625,0.640625,0.625,0.609375,0.59375,0.578125,0.5625,0.546875,0.53125,0.515625,0.5],
 //this.sencolors=[0,0.0075,0.015,0.0225,0.03,0.0375,0.045,0.0525,0.06,0.0675,0.075,0.0825,0.09,0.0975,0.105,0.1125,0.12,0.1275,0.135,0.1425,0.15],
 //this.sencolors=[0,0.0125,0.025,0.0375,0.05,0.0625,0.075,0.0875,0.1,0.1125,0.125,0.1375,0.15,0.1625,0.175,0.1875,0.2,0.2125,0.225,0.2375,0.25],
-	this.colorCodes=[[192,31.5,31.5],[31.5,192,31.5],[31.5,31.5,192],[127.5,85,42.5],[127.5,42.5,85],[85,127.5,42.5],[42.5,127.5,85],[85,42.5,127.5],[42.5,85,127.5],[-192,-31.5,-31.5],[-31.5,-192,-31.5],[-31.5,-31.5,-192]],
+//this.colorCodes=[[192,31.5,31.5],[31.5,192,31.5],[31.5,31.5,192],[127.5,85,42.5],[127.5,42.5,85],[85,127.5,42.5],[42.5,127.5,85],[85,42.5,127.5],[42.5,85,127.5],[-192,-31.5,-31.5],[-31.5,-192,-31.5],[-31.5,-31.5,-192]],
 //this.acolorCodes=[[-255,0,0],[0,-255,0],[0,0,-255]],
 	this.creep=function(wid,z){
 		if(wid.messageDiv.scrollTop>0||z){
@@ -2634,25 +2634,34 @@ function mChats(){
 		'Ц','Ч','Ш','Щ','Ъ','U','V','W','X','Y','Z',
 		'Ы','Ь','Э','Ю','Я',' ','*'
 	];
-	
+	this.letterColorLength=this.letterColor.length;
+	this.letterColorCircle=360/this.letterColor.length;
+	this.letterColorSegments=[120,240,360];//r-g,g-b,b-r
 	this.getC=function(n){
-		let l,r=0,er=0,f,c=[0,0,0];
+		let l,r=0,er,f,c=[0,0,0];
 		for(let i in n){
 			l=this.letterColor[n[i]];
 			if(l!==void 0){
-				f=(l+r)%12;
-				if(f<9)er++;else er--;
-				l=this.colorCodes[f];
+				f=(l+r)%this.letterColorLength * this.letterColorCircle;
+				for(let j=0;j<3;j++){
+					if(f<this.letterColorSegments[j]){
+						er=j;
+						break
+					}
+				}
+				f/=this.letterColorSegments[er];
+				if(er===0)l=[(1-f)*255,f*255,0];
+				else if(er===1)l=[0,(1-f)*255,f*255,0];
+				else l=[f*255,0,(1-f)*255]
 			}
 			else continue;
 			for(let j=0;j<3;j++)c[j]+=l[j];
-			if(++r===12)r=0;
+			r+=30;
+			if(r>=360)r=0;
 		}
-		if(er<1)er=1;
-		for(let i=0;i<3;i++){
-			if(c[i]<0)c[i]=0;
-			else c[i]/=er;
-		}
+		let nl=n.length-2;
+		if(nl<1)nl=1;
+		for(let i=0;i<3;i++) c[i]/=nl;
 		if(c.some(e=>e>255)){
 			let u=Math.max.apply(Math,c)-255;
 			for(let i=0;i<3;i++)c[i]-=u
