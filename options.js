@@ -2746,27 +2746,27 @@ function mChats(){
 	}*/
 	this.idleTimer2=function(){
 		let dt=(new Date()).getTime();
-		this.idle.ctx.fillStyle='black';
-		this.idle.ctx.fillRect(0,0,this.idle.width,this.idle.height);
+		this.ctx.fillStyle='black';
+		this.ctx.fillRect(0,0,this.width,this.height);
 		
-		this.idle.ctx.fillStyle='rgb(48,48,48)';
-		this.idle.ctx.beginPath();
-		this.idle.ctx.moveTo(0,1);
-		this.idle.ctx.lineTo(this.idle.width,1);
-		this.idle.ctx.fill();
+		this.ctx.fillStyle='rgb(48,48,48)';
+		this.ctx.beginPath();
+		this.ctx.moveTo(0,1);
+		this.ctx.lineTo(this.width,1);
+		this.ctx.fill();
 		
-		this.idle.ctx.putImageData(this.idle.copy, this.idle.multy6, 0);
+		this.ctx.putImageData(this.copy, this.multy6, 0);
 		
-		for(let i=0,l=this.idle.line.length,w;i<l;i++){
-			w=(this.idle.line[i][0]-dt)*this.idle.multy;
-			this.idle.ctx.fillStyle=this.idle.line[i][1];
-			this.idle.ctx.beginPath();
-			this.idle.ctx.moveTo(w,0);
-			this.idle.ctx.lineTo(w,3);
-			this.idle.ctx.fill()
+		for(let i=0,l=this.line.length,w;i<l;i++){
+			w=(this.line[i][0]-dt)*this.multy;
+			this.ctx.fillStyle=this.line[i][1];
+			this.ctx.beginPath();
+			this.ctx.moveTo(w,0);
+			this.ctx.lineTo(w,3);
+			this.ctx.fill()
 		}
-		this.idle.line=[]
-		this.idle.copy=this.idle.ctx.getImageData(0, 0, this.idle.width-this.idle.multy6, this.idle.height);
+		this.line=[]
+		this.copy=this.ctx.getImageData(0, 0, this.width-this.multy6, this.height);
 		
 	}
 	this.amgg=function(e,chat,ve){
