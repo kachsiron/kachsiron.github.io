@@ -1956,7 +1956,7 @@ function mChats(){
 	};
 	this.missSmile=true;	this.windows=new Map();	this.twitchSmiles={};
 	this.defHeight=150;		this.defWidth=161;		this.defSquare={x:7,y:5};
-	this.tHeight=14;		this.railHeight=30;		this.minSquare={x:5,y:2};
+	this.tHeight=17;		this.railHeight=30;		this.minSquare={x:5,y:2};
 	this.ul_width=23;		this.ul_height=30;		this.scrlWidth=15;
 //this.defWidth=14.581;this.ul_width=2.083;this.scrlWidth=1.25;
 	this.startPoint={x:scp.playerSize.x+2,y:-1}
@@ -2010,7 +2010,7 @@ function mChats(){
 			'fontUpButton':C('BUTTON'),	'fontDownButton':C('BUTTON'),	'listUserButton':C('BUTTON'),//'connectButton':C('BUTTON'),
 			'titleDiv':C('DIV'),				'messageDiv':C('DIV'),				'listUserDiv':C('DIV'),
 			//'idle':{'span':C('SPAN'),'timer':null,'last':(new Date()).getTime()}
-			'idle':{'interval':6000,'range':3600000,'canvas':C('CANVAS'),'timer':null,'line':[],'height':3,'width':0,'copy':null,'multy':0}
+			'idle':{'interval':6000,'range':600000,'canvas':C('CANVAS'),'timer':null,'line':[],'height':3,'width':0,'copy':null,'multy':0}
 		});
 		this.cleaner(true);
 		let w=this.windows.get(id);
@@ -2040,9 +2040,10 @@ function mChats(){
 		}
 
 		w.idle.canvas=C('CANVAS');
-		w.idle.canvas.style.position='absolute';
-		w.idle.canvas.style.bottom='0';
-		w.idle.canvas.style.left='0';
+		//w.idle.canvas.style.position='absolute';
+		//w.idle.canvas.style.top=this.tHeight-3+'px';
+		//w.idle.canvas.style.left='0';
+		w.idle.canvas.style.display='block';
 		w.idle.canvas.setAttribute('height',w.idle.height);
 		w.idle.ctx=w.idle.canvas.getContext('2d');
 		
@@ -2198,13 +2199,13 @@ function mChats(){
 		this.checkOnSquares();
 
 		h(w.scrl.msc);h(w.scrl.lay);h(w.scrl.rail);h(w.closeButton);h(w.upButton);h(w.downButton);h(w.leftButton);
-		h(w.idle.canvas);
-		h(w.rightButton);/*h(w.idle.span);*/h(w.fontUpButton);h(w.fontDownButton);h(w.titleDiv);h(w.messageDiv);//h(w.sunButton);
+		h(w.rightButton);/*h(w.idle.span);*/h(w.fontUpButton);h(w.fontDownButton);h(w.titleDiv);h(w.idle.canvas);h(w.messageDiv);//h(w.sunButton);
 		if(!ws)h(w.listUserDiv);
 		B(w.winDiv);
 		
 		w.idle.timer=setInterval(this.idleTimer2.bind(w.idle),w.idle.interval);
 		w.idle.copy=w.idle.ctx.getImageData(0, 0, 1, 1);
+		this.idleTimer2.call(w.idle);
 	}
 	this.openSocket=function(w){//gg
 		this.sam('[<u>соединение</u>]',w,true,0);
@@ -2318,10 +2319,10 @@ function mChats(){
 		wid.scrl.lay.style.width=wid.mWidth+'px';
 		this.creep(wid,false);
 		
-		wid.idle.width=wid.mWidth-DIV3_HIDE_SCROLL;
+		wid.idle.width=wid.mWidth;
 		wid.idle.multy=wid.idle.width/wid.idle.range;
 		wid.idle.multy6=wid.idle.multy*wid.idle.interval;
-		wid.idle.canvas.setAttribute('width',wid.mWidth-DIV3_HIDE_SCROLL)
+		wid.idle.canvas.setAttribute('width',wid.mWidth)
 	}
 	this.move=function(wid,x,y){
 		if(x===void 0){wid.winDiv.style.left=wid.x+'px';wid.winDiv.style.top=wid.y+'px'}
@@ -2745,25 +2746,26 @@ function mChats(){
 		this.span.style.color=a<120?'':'black'
 	}*/
 	this.idleTimer2=function(){
+		
 		let dt=(new Date()).getTime();
 		this.ctx.fillStyle='black';
 		this.ctx.fillRect(0,0,this.width,this.height);
 		
-		this.ctx.fillStyle='rgb(48,48,48)';
+		/*this.ctx.fillStyle='rgb(48,48,48)';
 		this.ctx.beginPath();
 		this.ctx.moveTo(0,1);
 		this.ctx.lineTo(this.width,1);
-		this.ctx.fill();
+		this.ctx.fill();*/
 		
 		this.ctx.putImageData(this.copy, this.multy6, 0);
 		
 		for(let i=0,l=this.line.length,w;i<l;i++){
-			w=(this.line[i][0]-dt)*this.multy;
-			this.ctx.fillStyle=this.line[i][1];
+			w=(dt-this.line[i][0])*this.multy;
+			this.ctx.strokeStyle=this.line[i][1];
 			this.ctx.beginPath();
 			this.ctx.moveTo(w,0);
 			this.ctx.lineTo(w,3);
-			this.ctx.fill()
+			this.ctx.stroke()
 		}
 		this.line=[]
 		this.copy=this.ctx.getImageData(0, 0, this.width-this.multy6, this.height);
@@ -2771,7 +2773,7 @@ function mChats(){
 	}
 	this.amgg=function(e,chat,ve){
 		//if(!ve&&chat.idle.timer===null)chat.idle.timer=setInterval(this.idleTimer.bind(chat.idle),1000);
-		let bs,dt,ddt,dnt,n=e.user_name,iv,dd=C('DIV'),co=C('SUB'),cos=C('SPAN'),bb=C('SPAN'),b=C('SPAN'),mimg=C('DIV'),bnick=null,cf=false;
+		let bs,dt,ddt,n=e.user_name,iv,dd=C('DIV'),co=C('SUB'),cos=C('SPAN'),bb=C('SPAN'),b=C('SPAN'),mimg=C('DIV'),bnick=null,cf=false;
 		bb.className='mc_nick';dd.className='mc_message';mimg.className='pokeImage';cos.className='subspan';
 		iv=e.text.replace(rgxpChatGG[0],'$1');
 		bnick=iv.match(rgxpChatGG[1]);
