@@ -2318,10 +2318,10 @@ function mChats(){
 		wid.scrl.lay.style.width=wid.mWidth+'px';
 		this.creep(wid,false);
 		
-		this.idle.width=wid.mWidth-DIV3_HIDE_SCROLL;
-		this.idle.multy=this.idle.width/this.idle.range;
-		this.idle.multy6=this.idle.multy*this.idle.interval;
-		this.idle.canvas.setAttribute('width',wid.mWidth-DIV3_HIDE_SCROLL)
+		wid.idle.width=wid.mWidth-DIV3_HIDE_SCROLL;
+		wid.idle.multy=wid.idle.width/wid.idle.range;
+		wid.idle.multy6=wid.idle.multy*wid.idle.interval;
+		wid.idle.canvas.setAttribute('width',wid.mWidth-DIV3_HIDE_SCROLL)
 	}
 	this.move=function(wid,x,y){
 		if(x===void 0){wid.winDiv.style.left=wid.x+'px';wid.winDiv.style.top=wid.y+'px'}
@@ -2804,7 +2804,7 @@ function mChats(){
 		}
 		this.setColorOfNick2(chat,[bb,co],n,mimg);
 		
-		this.idle.line.unshift([dt,chat.nickColors[n]]);
+		chat.idle.line.unshift([dt,chat.nickColors[n]]);
 		co.appendChild(cos);
 		co.appendChild(mimg);
 		
