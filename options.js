@@ -2044,7 +2044,7 @@ function mChats(){
 		w.idle.canvas.style.bottom='0';
 		w.idle.canvas.style.left='0';
 		w.idle.canvas.setAttribute('height',w.idle.height);
-		w.idle.ctx=w.canvas.getContext('2d');
+		w.idle.ctx=w.idle.canvas.getContext('2d');
 		
 		w.winDiv.className='mc_windowDiv';
 		w.winDiv.style.fontFamily=fonty[rand(0,fonty.length-1)];
