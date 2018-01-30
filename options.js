@@ -2009,7 +2009,8 @@ function mChats(){
 			'closeButton':C('BUTTON'),//'sunButton':C('BUTTON'),
 			'fontUpButton':C('BUTTON'),	'fontDownButton':C('BUTTON'),	'listUserButton':C('BUTTON'),//'connectButton':C('BUTTON'),
 			'titleDiv':C('DIV'),				'messageDiv':C('DIV'),				'listUserDiv':C('DIV'),
-			'idle':{'span':C('SPAN'),'timer':null,'last':(new Date()).getTime()}
+			//'idle':{'span':C('SPAN'),'timer':null,'last':(new Date()).getTime()}
+			'idle':{'interval':6000,'range':3600000,'canvas':C('CANVAS'),'timer':null,'line':[],'height':3,'width':0,'copy':null,'multy':0}
 		});
 		this.cleaner(true);
 		let w=this.windows.get(id);
@@ -2038,6 +2039,13 @@ function mChats(){
 			w.nick=cMan.getcn(id)
 		}
 
+		w.idle.canvas=C('CANVAS');
+		w.idle.canvas.style.position='absolute';
+		w.idle.canvas.style.bottom='0';
+		w.idle.canvas.style.left='0';
+		w.idle.canvas.setAttribute('height',w.idle.height);
+		w.idle.ctx=w.canvas.getContext('2d');
+		
 		w.winDiv.className='mc_windowDiv';
 		w.winDiv.style.fontFamily=fonty[rand(0,fonty.length-1)];
 		w.winDiv.style.zIndex=1;
@@ -2062,7 +2070,7 @@ function mChats(){
 			w.userListStatus=false;
 			w.leftButton.style.left='24px';
 			w.rightButton.style.left='36px';
-			w.idle.span.style.left='48px'
+			//w.idle.span.style.left='48px'
 		}
 		else{
 			if(w.wsChat===1){
@@ -2080,7 +2088,7 @@ function mChats(){
 			}
 			w.leftButton.style.left='12px';
 			w.rightButton.style.left='24px';
-			w.idle.span.style.left='36px'
+			//w.idle.span.style.left='36px'
 		}
 		
 		w.leftButton.className='mc_button';
@@ -2091,7 +2099,7 @@ function mChats(){
 		w.rightButton.textContent='>';
 		w.rightButton.style.height='14px';
 		
-		w.idle.span.className='mc_titleSpan';
+		//w.idle.span.className='mc_titleSpan';
 		with(w.fontUpButton){className='mc_button';textContent='-';style.top='0';style.right='12px';style.height='7px'}
 		with(w.fontDownButton){className='mc_button';textContent='-';style.right='12px';style.height=style.top='7px'}
 //with(w.sunButton){className='mc_button';textContent=(isa?'☼':'☀');style.right='12px';style.height='14px'}
@@ -2190,9 +2198,13 @@ function mChats(){
 		this.checkOnSquares();
 
 		h(w.scrl.msc);h(w.scrl.lay);h(w.scrl.rail);h(w.closeButton);h(w.upButton);h(w.downButton);h(w.leftButton);
-		h(w.rightButton);h(w.idle.span);h(w.fontUpButton);h(w.fontDownButton);h(w.titleDiv);h(w.messageDiv);//h(w.sunButton);
+		h(w.idle.canvas);
+		h(w.rightButton);/*h(w.idle.span);*/h(w.fontUpButton);h(w.fontDownButton);h(w.titleDiv);h(w.messageDiv);//h(w.sunButton);
 		if(!ws)h(w.listUserDiv);
-		B(w.winDiv)
+		B(w.winDiv);
+		
+		w.idle.timer=setInterval(this.idleTimer2.bind(w.idle),w.idle.interval);
+		w.idle.copy=w.idle.ctx.getImageData(0, 0, 1, 1);
 	}
 	this.openSocket=function(w){//gg
 		this.sam('[<u>соединение</u>]',w,true,0);
@@ -2304,7 +2316,12 @@ function mChats(){
 		wid.winDiv.style.width=wid.listUserDiv.style.width=wid.mWidth+'px';
 		wid.scrl.rail.style.left=wid.mWidth-this.scrlWidth+'px';
 		wid.scrl.lay.style.width=wid.mWidth+'px';
-		this.creep(wid,false)
+		this.creep(wid,false);
+		
+		this.idle.width=wid.mWidth-DIV3_HIDE_SCROLL;
+		this.idle.multy=this.idle.width/this.idle.range;
+		this.idle.multy6=this.idle.multy*this.idle.interval;
+		this.idle.canvas.setAttribute('width',wid.mWidth-DIV3_HIDE_SCROLL)
 	}
 	this.move=function(wid,x,y){
 		if(x===void 0){wid.winDiv.style.left=wid.x+'px';wid.winDiv.style.top=wid.y+'px'}
@@ -2693,9 +2710,7 @@ function mChats(){
 		img.style.backgroundImage = 'url("https://kachsiron.github.io/imgs/canvasPokemon.png")';
 		img.style.backgroundPosition = pokemon[pp][1][0] + 'px ' + pokemon[pp][1][1] + 'px';
 		img.style.marginBottom=pokemon[pp][3]+'px';
-		img.onclick=function(){
-			window.open('https://bulbapedia.bulbagarden.net/wiki/'+ this.p +'_(Pok%C3%A9mon)', 'Pokemons', '')
-		}.bind({'p':pokemon[pp][0]});
+		img.onclick=function(){window.open('https://bulbapedia.bulbagarden.net/wiki/'+ this.p +'_(Pok%C3%A9mon)', 'Pokemons', '')}.bind({'p':pokemon[pp][0]});
 		bb.forEach(a=>{a.style.color=c})
 	}
 	this.setCounterOfNick=function(chat,n){
@@ -2723,25 +2738,50 @@ function mChats(){
 		bb.style.backgroundImage='radial-gradient(ellipse farthest-corner at center, '+c+' 0%, transparent 85%, transparent 100%)'
 	},
 	this.escapeHtml=function(u){return u.replace(rgxpChat[5],'&lt;').replace(rgxpChat[6],'&gt;')},
-	this.idleTimer=function(){
+	/*this.idleTimer=function(){
 		let a=Math.round(((new Date()).getTime()-this.last)/1000);
 		this.span.textContent=a;
 		this.span.style.backgroundColor=a<120?'':a<300?'yellow':a<600?'orange':'red'
 		this.span.style.color=a<120?'':'black'
+	}*/
+	this.idleTimer2=function(){
+		let dt=(new Date()).getTime();
+		this.idle.ctx.fillStyle='black';
+		this.idle.ctx.fillRect(0,0,this.idle.width,this.idle.height);
+		
+		this.idle.ctx.fillStyle='rgb(48,48,48)';
+		this.idle.ctx.beginPath();
+		this.idle.ctx.moveTo(0,1);
+		this.idle.ctx.lineTo(this.idle.width,1);
+		this.idle.ctx.fill();
+		
+		this.idle.ctx.putImageData(this.idle.copy, this.idle.multy6, 0);
+		
+		for(let i=0,l=this.idle.line.length,w;i<l;i++){
+			w=(this.idle.line[i][0]-dt)*this.idle.multy;
+			this.idle.ctx.fillStyle=this.idle.line[i][1];
+			this.idle.ctx.beginPath();
+			this.idle.ctx.moveTo(w,0);
+			this.idle.ctx.lineTo(w,3);
+			this.idle.ctx.fill()
+		}
+		this.idle.line=[]
+		this.idle.copy=this.idle.ctx.getImageData(0, 0, this.idle.width-this.idle.multy6, this.idle.height);
+		
 	}
 	this.amgg=function(e,chat,ve){
-		if(!ve&&chat.idle.timer===null)chat.idle.timer=setInterval(this.idleTimer.bind(chat.idle),1000);
-		let bs,dt,n=e.user_name,iv,dd=C('DIV'),co=C('SUB'),cos=C('SPAN'),bb=C('SPAN'),b=C('SPAN'),mimg=C('DIV'),bnick=null,cf=false,dnt;
+		//if(!ve&&chat.idle.timer===null)chat.idle.timer=setInterval(this.idleTimer.bind(chat.idle),1000);
+		let bs,dt,ddt,dnt,n=e.user_name,iv,dd=C('DIV'),co=C('SUB'),cos=C('SPAN'),bb=C('SPAN'),b=C('SPAN'),mimg=C('DIV'),bnick=null,cf=false;
 		bb.className='mc_nick';dd.className='mc_message';mimg.className='pokeImage';cos.className='subspan';
 		iv=e.text.replace(rgxpChatGG[0],'$1');
 		bnick=iv.match(rgxpChatGG[1]);
 		dt=e.timestamp*1000;
 		
-		dnt=Math.round((dt - chat.idle.last)/1000);
-		cos.textContent=this.setCounterOfNick(chat,n) + '/' + dnt;
+		//dnt=Math.round((dt - chat.idle.last)/1000);
+		cos.textContent=this.setCounterOfNick(chat,n);// + '/' + dnt;
 		
 		chat.idle.last=dt;
-		dt=this.tss2(dt);
+		ddt=this.tss2(dt);
 		this.setBorderColor(bb,1,iv,n,chat.nick);
 		if(bnick!==null){
 			bnick=bnick[1];
@@ -2764,18 +2804,19 @@ function mChats(){
 		}
 		this.setColorOfNick2(chat,[bb,co],n,mimg);
 		
+		this.idle.line.unshift([dt,chat.nickColors[n]]);
 		co.appendChild(cos);
 		co.appendChild(mimg);
 		
 		if(chat.last[0]===n)chat.last[1].textContent='↑';
 		
-		if(dnt>5){
+		/*if(dnt>5){
 			dnt=Math.round(100 - dnt / 6);
 			dd.style.background='linear-gradient(to right, black '+dnt+'%, rgb(50, 50, 50) '+dnt+'%, rgb(50, 50, 50) 100%)';
-		}
+		}*/
 		chat.last=[n,bb];
 		bb.textContent=n;
-		bb.title=dt;
+		bb.title=ddt;
 		bb.tagb={i:chat.id,n:n,t:chat.wsChat,uid:(e.id||null)};
 		dd.appendChild(co);dd.appendChild(bb);dd.appendChild(b);
 
@@ -3974,20 +4015,39 @@ document.addEventListener('DOMContentLoaded',()=>{
 	this.chat = chat;
 	this.mch = mch;
 	this.started = false;
+	this.curr = null;
 	this.listOfQuestions = [];
 	this.timer = null;
 	this.income = function(msg) {
-		let sMsg = msg.text.match(/^(.*)/);
+		let sMsg = msg.text.match(this.listOfQuestions[this.curr].answer);
 		if(sMsg !== null) {
 			sMsg = sMsg[1];
-
+			
 		}
+
 	}
 	this.addQuestion = function(q) {
 		this.listOfQuestions.push(q)
 	}
 	this.start = function() {
 		this.started = true;
+		this.setRandomCurr();
+	}
+	this.setRandomCurr = function() {
+		let q=[];
+		let dt=(new Date()).getTime();
+		for(let i = 0; i < this.listOfQuetions.length; i++){
+			q.push([this.listOfQuestions[i].])
+		}
+	}
+	this.init = function() {
+		if(localStorage.hasOwnProperty('victor')){
+			this.players=JSON.parse(localStorage.victor)
+		}
+		else this.players={};
+	}
+	this.save = function() {
+		localStorage.victor=JSON.stringify(this.players)
 	}
 }*/
 
