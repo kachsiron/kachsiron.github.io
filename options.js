@@ -2664,7 +2664,10 @@ function mChats(){
 		for(let i=0;i<3;i++) c[i]/=nl;
 		if(c.some(e=>e>255)){
 			let u=Math.max.apply(Math,c)-255;
-			for(let i=0;i<3;i++)c[i]-=u
+			for(let i=0;i<3;i++){
+				c[i]-=u;
+				if(c[i]<0)c[i]=0
+			}
 		}
 		else{
 			if(c.every(e=>e<168)){
