@@ -2638,7 +2638,7 @@ function mChats(){
 	this.letterColorCircle=360/this.letterColor.length;
 	this.letterColorSegments=[120,240,360];//r-g,g-b,b-r
 	this.getC=function(n){
-		let l,r=0,er,f,c=[0,0,0];
+		let l,r=0,er,f,c=[0,0,0],u=0;
 		for(let i in n){
 			l=this.letterColor[n[i]];
 			if(l!==void 0){
@@ -2655,25 +2655,29 @@ function mChats(){
 				else l=[f*255,0,(1-f)*255]
 			}
 			else continue;
-			for(let j=0;j<3;j++)c[j]+=l[j];
+			if(u++<4)for(let j=0;j<3;j++)c[j]+=l[j];
+			else{
+				for(let j=0;j<3;j++)c[j]-=l[j];
+				u=0
+			}
 			r+=30;
 			if(r>=360)r=0;
 		}
-		let nl=n.length-2;
+		let nl=n.length-Math.floor(n.length/4);
 		if(nl<1)nl=1;
 		for(let i=0;i<3;i++) c[i]/=nl;
 		if(c.some(e=>e>255)){
 			let u=Math.max.apply(Math,c)-255;
-			for(let i=0;i<3;i++){
-				c[i]-=u;
-				if(c[i]<0)c[i]=0
-			}
+			for(let i=0;i<3;i++)c[i]-=u;
 		}
 		else{
 			if(c.every(e=>e<168)){
 				let u=168-Math.max.apply(Math,c);
 				for(let i=0;i<3;i++)c[i]+=u
 			}
+		}
+		for(let i=0;i<3;i++){
+			if(c[i]<0)c[i]=0;
 		}
 		return [Math.round(c[0]), Math.round(c[1]), Math.round(c[2])]
 	}
