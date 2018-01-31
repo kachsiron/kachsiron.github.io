@@ -2210,15 +2210,15 @@ function mChats(){
 	this.openSocket=function(w){//gg
 		this.sam('[<u>соединение</u>]',w,true,0);
 		w.timeOut=(new Date()).getTime();
-		w.interval=setInterval(function(i){
-			if((new Date()).getTime() - this.timeOut > 45000) {
-				console.log('gg',(new Date()).getTime() - this.timeOut)
-				this.titleDiv.style.backgroundColor=this.bColor;
+		w.interval=setInterval(()=>{
+			if((new Date()).getTime() - w.timeOut > 45000) {
+				console.log('gg',(new Date()).getTime() - w.timeOut)
+				w.titleDiv.style.backgroundColor=w.bColor;
 				clearInterval(w.interval);
-				this.sock.close();
-				i.openSocket(w)
+				w.sock.close();
+				this.openSocket(w)
 			}
-		}.bind(w,this),30000);
+		},30000);
 		w.sock=new WebSocket('wss://chat.goodgame.ru/chat/websocket');
 		w.sock.onerror=function(e){console.log('error',e);OPOV.serv('Ошибка в сокете. Смотри в консоль',10000)};
 		w.sock.onmessage=function(e){this.i.amoGG(e,this.w)}.bind({i:this,w:w})
@@ -2619,7 +2619,7 @@ function mChats(){
 			B(this.div)
 		},'data':null
 	}
-	this.letterColor=[
+	/*this.letterColor=[
 		'а','б','в','г','д','a','b','c','d','0','(',
 		'е','ё','ж','з','и','e','f','g','h','1','[',
 		'й','к','л','м','i','j','k','2','3','4','.',
@@ -2634,28 +2634,47 @@ function mChats(){
 		'Ц','Ч','Ш','Щ','Ъ','U','V','W','X','Y','Z',
 		'Ы','Ь','Э','Ю','Я',' ','*'
 	];
+	let lco=[];
+	for(let o=0,l=this.letterColor.length,r;--l>-1;o++){
+		r=rand(0,l);
+		lco[o]=this.letterColor[r];
+		this.letterColor.splice(r,1)
+	}
+	this.letterColor=lco;*/
+	this.letterColor=[
+		'6','З','Э','I','О','к','A','ч','Ю','n','H',
+		'S','д','C','п','q','B','w','ф','Г','Ж','о',
+		'F','s','Х','Z','Y','Ы','С','м','i','L','ж',
+		'а','W','л','е','2','щ','o','V','(','Ц','Л',
+		'б','f','J','н','т','u','ъ','r','Q','G','8',
+		'e','г','M','d','з','P','g','N','k','[',')',
+		'l','c','ц','А','Т','Ъ','ю','с','И','1','К',
+		'э','4','х','Я','Д','y','h','0',']','р','7',
+		'R','Ш','Е','3','.','x','*','U',',','ш','m',
+		'K','9','Ф','Щ','ё','T','ь','E','t','М','p',
+		'Р','Ч','v','Р','й','b','П','я','j','_','X',
+		'Й','В','ы','Ь','у',' ','5','в','a','O','D',
+		'-','и','Б','z','Н','Ё','У'
+	];
 	this.letterColorLength=this.letterColor.length;
 	this.letterColorCircle=360/this.letterColor.length;
 	this.letterColorSegments=[120,240,360];//r-g,g-b,b-r
 	this.getC=function(n){
-		let l,r=0,er,f,c=[0,0,0],u=0;
-		for(let i in n){
+		let c=[0,0,0];
+		for(let k=n.length,u=0,r=0,i=0,e,l,f;i<k;i++){
 			l=this.letterColor[n[i]];
 			if(l!==void 0){
-				f=(l+r)%this.letterColorLength * this.letterColorCircle;
+				f=(l+r)%this.letterColorLength*this.letterColorCircle;
 				for(let j=0;j<3;j++){
-					if(f<this.letterColorSegments[j]){
-						er=j;
-						break
-					}
+					if(f<this.letterColorSegments[j]){e=j;break}
 				}
-				f/=this.letterColorSegments[er];
-				if(er===0)l=[(1-f)*255,f*255,0];
-				else if(er===1)l=[0,(1-f)*255,f*255,0];
+				f/=this.letterColorSegments[e];
+				if(e===0)l=[(1-f)*255,f*255,0];
+				else if(e===1)l=[0,(1-f)*255,f*255,0];
 				else l=[f*255,0,(1-f)*255]
 			}
 			else continue;
-			if(u++<4)for(let j=0;j<3;j++)c[j]+=l[j];
+			if(++u<4)for(let j=0;j<3;j++)c[j]+=l[j];
 			else{
 				for(let j=0;j<3;j++)c[j]-=l[j];
 				u=0
@@ -2665,7 +2684,7 @@ function mChats(){
 		}
 		let nl=n.length-Math.floor(n.length/4);
 		if(nl<1)nl=1;
-		for(let i=0;i<3;i++) c[i]/=nl;
+		for(let i=0;i<3;i++)c[i]/=nl;
 		if(c.some(e=>e>255)){
 			let u=Math.max.apply(Math,c)-255;
 			for(let i=0;i<3;i++)c[i]-=u;
