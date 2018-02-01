@@ -810,7 +810,7 @@ var cMan={
 		let lc=c.chnlsId;
 		//c.hid=(h||(!c.temp&&hidGenre.hasOwnProperty(c.cat)));
 		if(c.service<2){
-			let h=HID.hasOwnProperty(c.name)
+			let h=HID.hasOwnProperty(c.name)||hidGenre.hasOwnProperty(c.cat)
 			c.hid=h;
 			c.fav=FAV.hasOwnProperty(c.name);
 			c.span.name.style.color=((c.fav&&h)?'brown':c.fav?'red':h?'gray':'white');
@@ -3628,7 +3628,7 @@ function getCookie(){
 }
 
 //З А Г Р У З К А   Д А Н Н Ы Х
-if(localStorage.fav===void 0){var TFAV={},FAV={},HID={'main':1},hidGenre={'DOTA':1},DNS={};localStorage.fav=JSON.stringify(FAV);localStorage.tfav=JSON.stringify(TFAV);localStorage.hid=JSON.stringify(HID);localStorage.dns=JSON.stringify(DNS);localStorage.hidGenre=JSON.stringify(hidGenre)}
+if(localStorage.fav===void 0){var TFAV={},FAV={},HID={'main':1},hidGenre={'DotA 2':1},DNS={};localStorage.fav=JSON.stringify(FAV);localStorage.tfav=JSON.stringify(TFAV);localStorage.hid=JSON.stringify(HID);localStorage.dns=JSON.stringify(DNS);localStorage.hidGenre=JSON.stringify(hidGenre)}
 else{var TFAV=JSON.parse(localStorage.tfav),FAV=JSON.parse(localStorage.fav),HID=JSON.parse(localStorage.hid),DNS=JSON.parse(localStorage.dns),hidGenre=JSON.parse(localStorage.hidGenre)}
 
 //Г Л О Б А Л Ь Н Ы Е   П Е Р Е М Е Н Н Ы Е
@@ -3811,11 +3811,11 @@ messtochat.MSG.onkeypress=function(e){
 						localStorage.tfav=JSON.stringify(TFAV)
 					}
 				}
-				/*else if(m==='скрыть'||m==='crhsnm'){
+				else if(m==='скрыть'||m==='crhsnm'){
 					messtochat.MSG.value=deleteFromList2(w);
 					for(let i in cMan.chn)cMan.setFavHid(cMan.chn[i]);
 					return
-				}*/
+				}
 				else if(m==='шрифт'&&w!==void 0)D.body.style.fontSize=w+'px';
 				else if((m==='ггчат'||m==='uuxfn')&&w!==void 0)mch.addChat('g_'+w,Number.parseInt(w));
 				else if((m==='ггс'||m==='uuc')&&w!==void 0)GGLISTAMOUNT=Number.parseInt(w);
