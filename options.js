@@ -874,7 +874,7 @@ var cMan={
 			z=this.contents.gg[x];
 			if(z.viewers==='0')continue;
 			console.log(z)
-			c={
+			/*c={
 				link:z.link,
 				id:z.streamkey,
 				chatId:z.id,
@@ -886,8 +886,20 @@ var cMan={
 				streamer:{id:'g_'+z.id,name:z.streamer},
 				start_at:0,
 				viewers:Number.parseInt(z.viewers)
+			};*/
+			c={
+				link:z.channel.url,
+				id:z.channel.id,
+				chatId:z.id,
+				name:z.channel.title,
+				thumbnail:z.channel.thumb,
+				rating:0,
+				description:'',
+				category:{name:(z.channel.games.length>0?z.channel.games[0].title:'GG')},
+				streamer:{id:'g_'+z.id,name:z.key},
+				start_at:z.broadcast_started,
+				viewers:Number.parseInt(z.viewers)
 			};
-			//this.addChan(c);
 			if(this.addChan(c)&&this.T_VALUE>0){
 				let nm=c.streamer.name,cid=c.streamer.id;
 				if(FAV.hasOwnProperty(nm)){
@@ -1012,7 +1024,6 @@ var cMan={
 	'incomingg':function(){
 		for(let page=1;page<=GGLISTAMOUNT;page++){
 			GMX({ontimeout:()=>{OPOV.serv('Таймаут при запросе GG контента',null);this.checkReady('gg')},timeout:11111,method:'GET',url:'http://api2.goodgame.ru/v2/streams?page='+page,onload:requ=>{
-				console.log(requ)
 				requ=requ.target;
 				let content;
 				try{content=JSON.parse(requ.responseText)._embedded.streams}
@@ -1022,7 +1033,6 @@ var cMan={
 					this.checkReady('gg');
 					return
 				}
-				console.log(content)
 				this.contents.gg=this.contents.gg.concat(content);
 				this.checkReady('gg')
 			}})
