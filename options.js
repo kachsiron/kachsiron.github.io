@@ -1011,6 +1011,22 @@ var cMan={
 	},
 	'incomingg':function(){
 		for(let page=1;page<=GGLISTAMOUNT;page++){
+			GMX({ontimeout:()=>{OPOV.serv('Таймаут при запросе GG контента',null);this.checkReady('gg')},timeout:11111,method:'GET',url:'http://api2.goodgame.ru/v2/streams?page='+page,onload:requ=>{
+				console.log(requ)
+				requ=requ.target;
+				let content;
+				try{content=JSON.parse(requ.responseText).streams}
+				catch(e){
+					console.log(requ);
+					OPOV.serv('Ошибка при обработке запроса GG контента',null);
+					this.checkReady('gg');
+					return
+				}
+				this.contents.gg=this.contents.gg.concat(content);
+				this.checkReady('gg')
+			}})
+		}/*
+		for(let page=1;page<=GGLISTAMOUNT;page++){
 			GMX({ontimeout:()=>{OPOV.serv('Таймаут при запросе GG контента',null);this.checkReady('gg')},timeout:11111,method:'POST',url:'https://goodgame.ru/ajax/streams/selector/',data:'tab=popular&page='+page+'&onpage=15',headers:{"Content-Type":"application/x-www-form-urlencoded"},onload:requ=>{
 				requ=requ.target;
 				let content;
@@ -1024,7 +1040,7 @@ var cMan={
 				this.contents.gg=this.contents.gg.concat(content);
 				this.checkReady('gg')
 			}})
-		}
+		}*/
 	},
 	'incoming':function(){
 		//this.api('bulk',{command:[['/api/content',{content:'stream',type:'all',category:{slug:'top'}}]]},requ=>{
