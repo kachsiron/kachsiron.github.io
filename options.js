@@ -2657,6 +2657,7 @@ function mChats(){
 		'-','и','Б','z','Н','Ё','У'
 	];
 	this.letterColorLength=this.letterColor.length;
+	this.letterColorAdd=this.letterColorLength/6;
 	this.letterColorCircle=360/this.letterColor.length;
 	this.letterColorSegments=[120,240,360];//r-g,g-b,b-r
 	this.getC=function(n){
@@ -2679,8 +2680,8 @@ function mChats(){
 				for(let j=0;j<3;j++)c[j]-=l[j];
 				u=0
 			}
-			r+=30;
-			if(r>=360)r=0;
+			r+=this.letterColorAdd;
+			if(r>=this.letterColorLength)r=0;
 		}
 		let nl=n.length-Math.floor(n.length/4);
 		if(nl<1)nl=1;
