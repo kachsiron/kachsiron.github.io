@@ -873,7 +873,6 @@ var cMan={
 		for(let x=0,l=this.contents.gg.length,c,z;x<l;x++){
 			z=this.contents.gg[x];
 			if(z.viewers==='0')continue;
-			console.log(z)
 			/*c={
 				link:z.link,
 				id:z.streamkey,
