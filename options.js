@@ -1015,13 +1015,14 @@ var cMan={
 				console.log(requ)
 				requ=requ.target;
 				let content;
-				try{content=JSON.parse(requ.responseText).streams}
+				try{content=JSON.parse(requ.responseText)._embedded.streams}
 				catch(e){
 					console.log(requ);
 					OPOV.serv('Ошибка при обработке запроса GG контента',null);
 					this.checkReady('gg');
 					return
 				}
+				console.log(content)
 				this.contents.gg=this.contents.gg.concat(content);
 				this.checkReady('gg')
 			}})
