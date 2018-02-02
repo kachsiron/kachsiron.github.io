@@ -2791,7 +2791,8 @@ function mChats(){
 			pp=[Number.POSITIVE_INFINITY,0];
 			for(let i = 0, l = pokemon.length, k; i < l; i++){
 				k=0;
-				for(let j = 0; j < 3; j++) k += Math.pow(abs[j] - pokemon[i][2][j],2);
+				//for(let j = 0; j < 3; j++) k += Math.pow(abs[j] - pokemon[i][2][j],2);
+				for(let j = 0; j < 3; j++) k += Math.abs(abs[j] - pokemon[i][2][j]);
 				if(k < pp[0]) pp = [k, i]
 			}
 			pp = pp[1];
