@@ -756,38 +756,25 @@ var cMan={
 		mch.setName(c.id,nm)
 	},
 	'obnovDesc':function(c,o){
-		//c.desc=o.description;
-		//c.span.cat.style.fontWeight=(c.desc!==''?'bold':'normal');
 		if(c.title!==o.name){
-			console.log(o)
 			c.title=o.name;
 			c.span.title.title=c.title;
 			c.span.title.innerHTML=c.title;
 			c.cat=o.category.name;
-			return true
-		}
-		/*if(c.cat!==o.category.name){
-			c.cat=o.category.name;
 			c.span.cat.textContent=c.cat;
 			return true
-		}*/
+		}
 		return false
 	},
 	'obnovDescForFun':function(c,o){
 		//c.desc=o.description;
 		//c.span.cat.style.fontWeight=(c.desc!==''?'bold':'normal');
 		if(c.title!==o.name){
-			console.log(o)
 			c.title=o.name;
 			c.span.title.title=c.title;
 			c.span.title.innerHTML=c.title;
 			return true
 		}
-		/*if(c.cat!==o.category.name){
-			c.cat=o.category.name;
-			c.span.cat.textContent=c.cat;
-			return true
-		}*/
 		return false
 	},
 	'obnovChan':function(o,r){
@@ -2786,7 +2773,7 @@ function mChats(){
 		else{
 			let cc=this.getC(n);
 			let min=Math.min.apply(cc),abs=[];
-			for(let i=3;--i>-1;)abs[i]=cc[i]-min[i];
+			for(let i=3;--i>-1;)abs[i]=cc[i]-min;
 			c='rgb('+Math.round(cc[0])+','+Math.round(cc[1])+','+Math.round(cc[2])+')';
 			chat.nickColors[n]=c;
 			
