@@ -45,6 +45,7 @@ aside{font-size:80%;width:555px;border-bottom:1px solid #444}
 .tablespan>div:nth-child(n):nth-child(-n+7),.tablespan>div:nth-child(11){cursor:pointer}
 .tablespan>div:nth-child(7){color:green;width:22px}
 .tablespan>div:nth-child(8){color:greenyellow}
+.tablespan>div:nth-child(11){color:#74c9ff;font-size:85%}
 .tablespan>a{display:block;text-decoration:none;color:dodgerblue;line-height:14px}
 .pm{position:relative;background-color:black;border-bottom:1px solid #444;border-top:1px solid #444;overflow:hidden}
 .tom{position:relative;z-index:1;word-wrap:break-word}
@@ -69,7 +70,6 @@ hr{clear:both}
 .mc_listUserDiv div:nth-child(1),.mc_listUserDiv div:nth-child(2){width:100%;font-weight:bold;text-align:center;font-size:100%}
 .mc_listUserDiv div{width:80px;overflow:hidden;white-space:nowrap;cursor:pointer}
 .mc_jq{cursor:pointer}
-.bb222{border-bottom:1px solid #222}
 #player_mark_div{position:absolute;bottom:11px;z-index:3;height:9px;font-size:66.6%}
 .pmd{border-right:3px solid gray;float:left;background-color:black}
 .pmd_span:hover,.pmd_close:hover{background-color:#444}
