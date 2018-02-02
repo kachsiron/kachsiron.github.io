@@ -423,7 +423,6 @@ var cMan={
 	'sock':null,
 	'enabled':true,
 	'twitchListRequest':'',
-	//'GGFAV':[],//['Miker','Tey','BSP'],
 	'contents':{},
 	'fctDiv':{div:C('DIV'),dig:6},
 	'nadDiv':{div:C('DIV'),dig:0},
@@ -760,6 +759,7 @@ var cMan={
 		//c.desc=o.description;
 		//c.span.cat.style.fontWeight=(c.desc!==''?'bold':'normal');
 		if(c.title!==o.name){
+			console.log(o)
 			c.title=o.name;
 			c.span.title.title=c.title;
 			c.span.title.innerHTML=c.title;
@@ -1165,7 +1165,8 @@ var cMan={
 				for(let i=z.length,c;--i>-1;){
 					c=z[i];
 					c.div.style.order=n++;
-					if(c.un[0]>0||FAV.hasOwnProperty(c.name)){c.div.style.display='flex';cnt++}
+					if(c.service===1&&(c.un[0]>1||FAV.hasOwnProperty(c.name))){c.div.style.display='flex';cnt++}
+					else if(c.service===0&&(c.un[0]>0||FAV.hasOwnProperty(c.name))){c.div.style.display='flex';cnt++}
 					else c.div.style.display='none'
 				}
 			}
@@ -1215,13 +1216,15 @@ var cMan={
 				if(this.rTimes-j.tvalue>600000&&(j.un[0]===0||j.service===1)){
 					this.div1h.removeChild(j.div);
 					this.chanCount--;
-					this.chnls[j.chnlsId].splice(this.chnls[j.chnlsId].indexOf(j),1);;
+					this.chnls[j.chnlsId].splice(this.chnls[j.chnlsId].indexOf(j),1);
 					o++;
 					delete this.chn[i]
 				}
 				else{
-					k=j.un[0]-j.un[2];
-					if(j.service===0&&k>4&&j.un[0]>j.un[2]*1.25)OPOV.serv('Скачок на канале стримера <span style="color:red">'+j.name+'</span>. '+j.un[2]+'=>'+j.un[0],10000);
+					if(j.service===0){
+						k=j.un[0]-j.un[2];
+						if(k>4&&j.un[0]>j.un[2]*1.25)OPOV.serv('Скачок на канале стримера <span style="color:red">'+j.name+'</span>. '+j.un[2]+'=>'+j.un[0],10000);
+					}
 					j.un[2]=j.un[0]
 				}
 			}
