@@ -757,12 +757,14 @@ var cMan={
 		mch.setName(c.id,nm)
 	},
 	'obnovDesc':function(c,o){
-		c.desc=o.description;
+		//c.desc=o.description;
 		//c.span.cat.style.fontWeight=(c.desc!==''?'bold':'normal');
 		if(c.title!==o.name){
 			c.title=o.name;
 			c.span.title.title=c.title;
-			c.span.title.innerHTML=c.title
+			c.span.title.innerHTML=c.title;
+			c.cat=o.category.name;
+			return true
 		}
 		/*if(c.cat!==o.category.name){
 			c.cat=o.category.name;
@@ -808,15 +810,18 @@ var cMan={
 	},
 	'setFavHid':function(c){
 		let lc=c.chnlsId;
-		//c.hid=(h||(!c.temp&&hidGenre.hasOwnProperty(c.cat)));
-		if(c.service<2){
+		if(c.service===0){
+			let h=HID.hasOwnProperty(c.name);
+			c.hid=h;
+			c.fav=FAV.hasOwnProperty(c.name);
+			c.span.name.style.color=((c.fav&&h)?'brown':c.fav?'red':h?'gray':'white');
+		}
+		else if(c.service===1){
 			let h=HID.hasOwnProperty(c.name)||hidGenre.hasOwnProperty(c.cat)
 			c.hid=h;
 			c.fav=FAV.hasOwnProperty(c.name);
 			c.span.name.style.color=((c.fav&&h)?'brown':c.fav?'red':h?'gray':'white');
 		}
-		//if(!c.hid)c.div.classList.add('bb222');
-		//else c.div.classList.remove('bb222');
 		if(c.hid)c.chnlsId=0;
 		else if(c.service===1)c.chnlsId=2;
 		else if(c.service===2)c.chnlsId=3;
@@ -867,12 +872,25 @@ var cMan={
 		this.contents.fun=null;
 		this.contents.gg=[]
 	},
+	'calc':function(){
+		let axm=[0,'Funchan'];
+		for(let x=0,h;x<2;x++){
+			h=this.chnls[x];
+			for(let i=0,l=h.length,c;i<l;i++){
+				c=h[i];
+				if(c.dcount>axm[0])axm=[c.dcount,c.name];
+				c.ddcount=c.dcount;
+				c.dcount=0
+			}
+		}
+		D.title=axm[1]+' | '+axm[0]
+	},
 	'coming':function(){
 		this.nadDiv.div.style.opacity=0;
 		this.setTime();
 		for(let x=0,l=this.contents.gg.length,c,z;x<l;x++){
+			if(this.contents.gg[x].viewers==='0')continue;
 			z=this.contents.gg[x];
-			if(z.viewers==='0')continue;
 			/*c={
 				link:z.link,
 				id:z.streamkey,
@@ -886,19 +904,21 @@ var cMan={
 				start_at:0,
 				viewers:Number.parseInt(z.viewers)
 			};*/
-			c={
-				link:z.channel.url,
-				id:z.channel.id,
-				chatId:z.id,
-				name:z.channel.title,
-				thumbnail:z.channel.thumb,
-				rating:0,
-				description:'',
-				category:{name:(z.channel.games.length>0?z.channel.games[0].title:'GG')},
-				streamer:{id:'g_'+z.id,name:z.key},
-				start_at:z.broadcast_started,
-				viewers:Number.parseInt(z.viewers)
+			this.contents.gg[x]={
+				'cggio':1,
+				'link':z.channel.url,
+				'id':z.channel.id,
+				'chatId':z.id,
+				'name':z.channel.title,
+				'thumbnail':z.channel.thumb,
+				'rating':0,
+				'description':'',
+				'category':{'name':(z.channel.games.length>0?z.channel.games[0].title:'GG')},
+				'streamer':{'id':'g_'+z.id,'name':z.key},
+				'start_at':z.broadcast_started,
+				'viewers':Number.parseInt(z.viewers)
 			};
+			c=this.contents.gg[x];
 			if(this.addChan(c)&&this.T_VALUE>0){
 				let nm=c.streamer.name,cid=c.streamer.id;
 				if(FAV.hasOwnProperty(nm)){
@@ -913,32 +933,30 @@ var cMan={
 			}
 		}
 		let con=this.contents.fun,d30=this.T_VALUE%30;
-		if(con!==void 0&&con!==null){
-			for(let i=0,l=con.length,cid,nm,c;i<l;i++){
-				c=con[i];
-				//if(!con[i].thumbnail.startsWith('http://funstream.tv'))con[i].thumbnail='http://funstream.tv'+con[i].thumbnail;
-				//con[i].thumbnail='http://funstream.tv'+con[i].image;
-				c.streamer=c.owner;
-				if(this.addChan(c)&&this.T_VALUE>0){
-					cid=c.streamer.id.toString();
-					nm=c.streamer.name;
-					if(FAV.hasOwnProperty(nm)){
-						adLog2(nm,'start',cid);
-						graphsendi(nm)
-					}
-					TRAY.not(nm+' запустИл стрим '+c.name,'dodgerblue',c,0)
+		//if(con!==void 0&&con!==null){
+		for(let i=0,l=con.length,cid,nm,c;i<l;i++){
+			c=con[i];
+			c.streamer=c.owner;
+			if(this.addChan(c)&&this.T_VALUE>0){
+				cid=c.streamer.id.toString();
+				nm=c.streamer.name;
+				if(FAV.hasOwnProperty(nm)){
+					adLog2(nm,'start',cid);
+					graphsendi(nm)
 				}
-			}
-			if(this.T_VALUE>0&&d30===0){
-				let c=0;
-				for(let i=0,l=con.length,n;i<l;i++){
-					n=this.chn[con[i].streamer.id.toString()];
-					if(n===void 0)continue;
-					if(this.obnovDesc(n,con[i])){this.setFavHid(n);c++}
-				}
-				if(c>0)OPOV.serv('Обновление заголовков: '+c,null)
+				TRAY.not(nm+' запустИл стрим '+c.name,'dodgerblue',c,0)
 			}
 		}
+		if(this.T_VALUE>0&&d30===0){
+			let c=0;
+			for(let i=0,l=con.length,n;i<l;i++){
+				n=this.chn[con[i].streamer.id.toString()];
+				if(n===void 0)continue;
+				if(this.obnovDesc(n,con[i])){this.setFavHid(n);c++}
+			}
+			if(c>0)OPOV.serv('Обновленo fun-заголовков: '+c,null)
+		}
+
 		if(d30===0){
 			let ch,c=0;
 			for(let x in this.contents.tw){
@@ -946,26 +964,20 @@ var cMan={
 				ch=this.chn['t_'+x];
 				if(ch.isup>0&&this.obnovDesc(ch,this.contents.tw[x]))c++
 			}
-			if(c>0)OPOV.serv('Обновление twitch-заголовков: '+c,null)
+			if(c>0)OPOV.serv('Обновленo tw-заголовков: '+c,null);
+			
+			c=0;
+			for(let x in this.contents.gg){
+				if(!this.contents.gg[x].hasOwnProperty.cggio)continue;//||!this.chn.hasOwnProperty(this.contents.gg[x].streamer.id)
+				if(this.obnovDesc(this.chn[this.contents.gg[x].streamer.id],this.contents.gg[x]))c++
+			}
+			if(c>0)OPOV.serv('Обновленo gg-заголовков: '+c,null)
 		}
 		this.all();
 		this.calc();
 		if(this.enabled)this.makeTable();
 		this.chanMessNum=0;
 		this.resetContent()
-	},
-	'calc':function(){
-		let axm=[0,'Funchan'];
-		for(let x=0,h;x<2;x++){
-			h=this.chnls[x];
-			for(let i=0,l=h.length,c;i<l;i++){
-				c=h[i];
-				if(c.dcount>axm[0])axm=[c.dcount,c.name];
-				c.ddcount=c.dcount;
-				c.dcount=0
-			}
-		}
-		D.title=axm[1]+' | '+axm[0]
 	},
 	'incomintw':function(){
 		/*let n='';
@@ -1060,6 +1072,7 @@ var cMan={
 			catch(e){
 				console.log(requ.target.responseText);
 				OPOV.serv('Ошибка при обработке запроса FUN контента',null);
+				this.contents.fun=[];
 				this.checkReady('fun');
 				return
 			}
@@ -1195,14 +1208,15 @@ var cMan={
 				}
 			}
 		}
-		let j,k;
+		let j,k,o=0;
 		for(let i in this.chn){
 			j=this.chn[i];
 			if(j.service!==2){
 				if(this.rTimes-j.tvalue>600000&&(j.un[0]===0||j.service===1)){
 					this.div1h.removeChild(j.div);
 					this.chanCount--;
-					this.chnls[j.chnlsId].splice(this.chnls[j.chnlsId].indexOf(j),1);
+					this.chnls[j.chnlsId].splice(this.chnls[j.chnlsId].indexOf(j),1);;
+					o++;
 					delete this.chn[i]
 				}
 				else{
@@ -1212,6 +1226,7 @@ var cMan={
 				}
 			}
 		}
+		if(o>0)OPOV.serv('Каналов удалено: ' + o,10000);
 	},
 	'subscribe': [],
 	'subscriber': [],
