@@ -601,7 +601,7 @@ var cMan={
 		this.intervals.info=setInterval(()=>{this.sock.send('2')},30000);
 		this.intervals.timeout=setInterval(i=>{
 			if((new Date()).getTime()-this.timeout>40000){
-//			console.log('list',(new Date()).getTime()-this.timeout);
+//console.log('list',(new Date()).getTime()-this.timeout);
 				this.recon()
 			}
 		},45000)
@@ -1025,8 +1025,8 @@ var cMan={
 					j=reso[i],h=j.channel;
 					o.push(h.name);
 					this.contents.tw[h.name]={
-						'id':h.name, 'start_at':0, 'created_at':j.created_at, 'streamer':{'name':h.name, 'id':'t_'+h.name},'players':null, 'thumbnail':j.preview.medium, 'tw': true,
-						'name':h.status, 'description':'', 'category':{'name':h.game}, 'viewers':j.viewers, 'l':j.is_playlist
+						'id':h.name, 'start_at':0, 'created_at':j.created_at, 'streamer':{'name':h.name, 'id':'t_'+h.name},'players':null,
+						'thumbnail':j.preview.medium, 'tw': true, 'name':h.status, 'description':'', 'category':{'name':h.game}, 'viewers':j.viewers, 'l':j.is_playlist
 					}
 					this.addChan(this.contents.tw[h.name])
 				}
@@ -1176,9 +1176,18 @@ var cMan={
 				for(let i=z.length,c;--i>-1;){
 					c=z[i];
 					c.div.style.order=n++;
-					if(c.service===1&&(c.un[0]>1||FAV.hasOwnProperty(c.name))){c.div.style.display='flex';cnt++}
-					else if(c.service===0&&(c.un[0]>0||FAV.hasOwnProperty(c.name))){c.div.style.display='flex';cnt++}
-					else c.div.style.display='none'
+					if(c.service===1){
+						if(c.un[0]>1||FAV.hasOwnProperty(c.name)){c.div.style.display='flex';cnt++}
+						else c.div.style.display='none'
+					}
+					else if(c.service===0){
+						if(c.un[0]>0||FAV.hasOwnProperty(c.name)){c.div.style.display='flex';cnt++}
+						else c.div.style.display='none'
+					}
+					else{
+						if(c.un[0]>0){c.div.style.display='flex';cnt++}
+						else c.div.style.display='none'
+					}
 				}
 			}
 		}
@@ -2462,7 +2471,7 @@ function mChats(){
 		let dt=new Date(i);
 		return dt.getHours().totwo()+':'+dt.getMinutes().totwo()+':'+dt.getSeconds().totwo()
 	}
-	this.restTime=function(t){//depr
+	/*this.restTime=function(t){//depr
 		t=(new Date()).getTime()/1000-t;
 		let h=Math.floor(t/3600);
 		t-=h*3600;
@@ -2473,7 +2482,7 @@ function mChats(){
 	this.transDate=function(d){//depr
 		d=d.match(/(\d\d\d\d)-(\d\d)-(\d\d) (\d\d):(\d\d):(\d\d)/);
 		return new Date(d[1],d[2]-1,d[3],d[4],d[5],d[6]).getTime()/1000
-	}
+	}*/
 	this.amoGG=function(e,w){
 		let o=JSON.parse(e.data);
 		if(o.type==='message'){
@@ -2624,11 +2633,11 @@ function mChats(){
 		}
 		messtochat.MSG.value=''
 	}
-	this.wsSendMafia=function(w, pid, msg){
+	/*this.wsSendMafia=function(w, pid, msg){
 		if(w.wsChat === 1){
 			w.sock.send(JSON.stringify({'type':'send_private_message','data':{'channel_id':w.wsChatChannelId,'user_id': pid,'text':msg}}))
 		}
-	}
+	}*/
 	this.getHistory=function(id,ids,from,to){
 		//console.log('426'+JSON.stringify(['/chat/history/time',{'channel': 'stream/'+ids, 'from': from, 'to': to}]))
 		//428["/chat/history",{"channel":"stream/205","amount":100,"query":{"conditions":[{"field":"id","operation":"<","value":["38615373"],"glue":"and"},{"field":"type","operation":"<>","value":["announce"],"glue":"and"}],"groups":[],"glue":"and"}}]
@@ -2772,10 +2781,7 @@ function mChats(){
 	}
 	this.setColorOfNick2=function(chat,bb,n,img){
 		let c,pp;
-		if(chat.nickColors2.hasOwnProperty(n)){
-			c=chat.nickColors[n];
-			pp=chat.nickColors2[n]
-		}
+		if(chat.nickColors2.hasOwnProperty(n)){c=chat.nickColors[n];pp=chat.nickColors2[n]}
 		else{
 			let cc=this.getC(n);
 			let min=Math.min.apply(Math,cc),abs=[];
@@ -3818,14 +3824,14 @@ messtochat.MSG.onkeypress=function(e){
 					return
 				}
 				//else if(m==='t'||m==='е')Toganash();
-				else if(m==='mafia'){
+				/*else if(m==='mafia'){
 					if(id!==''){
 						if(mch.windows.has(id)){
 							let chat=mch.windows.get(id);
 							if(chat.wsChat === 1 && !chat.hasOwnProperty('mafia'))chat.mafia = new Mafia(mch, chat);
 						}
 					}
-				}
+				}*/
 				else if(m==='m'||m==='ь')makeCnv();
 				else if((m==='j'||m==='о')&&w!==void 0)makeCnvSize(w);
 				//else if(m==='l'||m==='д')cMan.linker(true);
@@ -4104,576 +4110,3 @@ document.addEventListener('DOMContentLoaded',()=>{
 		localStorage.victor=JSON.stringify(this.players)
 	}
 }*/
-
-function Mafia(mch, chat) {
-	this.chat = chat;
-	this.mch = mch;
-	
-	this.playerList = null;
-	this.intervals = null;
-	this.started = null;// -1 - sleep, 0 - reg, 1 - game
-	this.winType = null;
-	this.timer = null;
-	this.phase = null; // 0 - reg, 1 - night, 2 - voice
-	
-	this.origIntervals = [20, 30, 20];//reg,night,voice
-	
-	this.send = function(pid, string){
-		this.mch.wsSendMafia(this.chat, pid, '💬 '+string)
-		console.log(pid, string)
-	};
-	this.sendToAll = function(str){//всем кроме мёртвых
-		for(let i = 0, l = this.playerList.length; i<l; i++){
-			if(this.playerList[i].dead) continue;
-			this.send(this.playerList[i].id, str)
-		}
-	};
-	this.sendToAll1 = function(str){//всем кроме мёртвых и ДМ
-		for(let i = 0, l = this.playerList.length; i<l; i++){
-			if(this.playerList[i].dead || this.playerList[i].roleId === 0) continue;
-			this.send(this.playerList[i].id, str)
-		}
-	};
-	this.sendToAll2 = function(str){//всем
-		for(let i = 0, l = this.playerList.length; i<l; i++) this.send(this.playerList[i].id, str)
-	};
-	this.sendToAll3 = function(id, str){//всем кроме одного
-		for(let i = 0, l = this.playerList.length; i<l; i++){
-			if(id !== this.playerList[i].id) this.send(this.playerList[i].id, str)
-		}
-	};
-	this.sendToAllCommsnds = function(){//список команд всем кроме мёртвых
-		for(let i = 0, l = this.playerList.length; i<l; i++){
-			if(this.playerList[i].dead) continue;
-			this.send(this.playerList[i].id, this.comm[ this.playerList[i].roleId ])
-		}
-	}
-	this.sendToAllList = function(){
-		let string = '';
-		for(let i = 0, l = this.playerList.length, j = 1; i<l; i++){
-			if(this.playerList[i].dead) continue;
-			string += (j++) + '.' + this.playerList[i].name + ' '
-		}
-		this.sendToAll1(string);
-	};
-	this.income = function(msg){
-		let sMsg = msg.text.match(/^!(.*)/);
-		if(sMsg !== null){
-			sMsg = sMsg[1];
-			let command = sMsg.match(/^(\d+)/);
-			if(command !== null){
-				let cmd = sMsg.match(/^(\d+) ?(.*)?/);
-				if(cmd !== null && this.phase === 2) this.chooseStringup(msg.user_id, cmd[1])
-			}
-			else {
-				command = sMsg.match(/^([а-яА-Я]+) ?(.*)?/);
-				if(command !== null){
-					if(command[1] === 'р'){
-						if(this.started === -1) this.init();
-						if(this.reg(msg.user_id, msg.user_name)) {
-							this.send(msg.user_id, 'Вы в игре. Жди ночь. ( Все комманды вводятся через приватное сообщение. Пример: @Asoas, !проверить 1 )');
-							if(this.playerList.length < 5) this.sendToAll3(msg.user_id, '{' + msg.user_name + '} в игре.');
-						}
-					}
-					else{
-						if(command[2] !== void 0) {
-							let ph = command[1], cmd = command[2].split(' ');
-							if(ph === 'убить') this.chooseVictim(msg.user_id, 'kill', cmd[0], cmd[1])
-							else if(ph === 'проверить') this.chooseVictim(msg.user_id, 'check', cmd[0], cmd[1])
-							else if(ph === 'проклясть') this.chooseVictim(msg.user_id, 'curse', cmd[0], cmd[1])
-							else if(ph === 'лечить') this.chooseVictim(msg.user_id, 'heal', cmd[0], cmd[1])
-						}
-					}
-				}
-			}
-		}
-	}
-	this.getCountOfPlayers = function() {
-		let c = 0;
-		for(let i = 0, l = this.playerList.length; i < l; i++){
-			if(!this.playerList[i].dead) c++
-		}
-		return c
-	}
-	this.checkGame = function(type) {
-		let p = [0, 0, 0, 0, 0];
-		//0-молодец,1-мафия,2-иван,3-доктор,4-маньяк
-		//wintype: 1 - bad, 2 - good, 3 - neutral, 4 - ничья
-		for(let i=0, l=this.playerList.length; i<l; i++){
-			if(this.playerList[i].dead) continue;
-			p[ this.playerList[i].roleId ]++
-		}
-		if(type === 'after night') {
-			console.log(p)
-			if(this.getCountOfPlayers() === 0) {
-				this.winType = 4;
-			}
-			else if(p[1] === 1 && p[2] === 0 && p[4] === 0 && (p[3] + p[0]) < 2) {
-				this.winType = 1;
-			}
-			else if(this.getCountOfPlayers() === 2 && ((p[1] === 1 && p[2] === 1) || (p[1] === 1 && p[4] === 1) || (p[2] === 1 && p[4] === 1))) {
-				this.winType = 4;
-			}
-			else if(p[1] === 0 && p[4] === 0) {
-				this.winType = 2;
-			}
-			else if(p[4] === 1 && p[1] === 0 && p[2] === 0 && (p[3] + p[0]) < 2) {
-				this.winType = 3;
-			}
-		}
-		else if(type === 'after voice') {
-			console.log(p)
-			if(this.getCountOfPlayers() === 0) {
-				this.winType = 4;
-			}
-			else if(p[1] === 1 && p[2] === 0 && p[4] === 0 && (p[3] + p[0]) < 2) {
-				this.winType = 1;
-			}
-			else if(this.getCountOfPlayers() === 2 && ((p[1] === 1 && p[2] === 1) || (p[1] === 1 && p[4] === 1) || (p[2] === 1 && p[4] === 1))) {
-				this.winType = 4;
-			}
-			else if(p[1] === 0 && p[4] === 0) {
-				this.winType = 2;
-			}
-			else if(p[4] === 1 && p[1] === 0 && p[2] === 0 && (p[3] + p[0]) < 2) {
-				this.winType = 3;
-			}
-		}
-		if(this.winType > 0) return false;
-		return true
-	}
-	this.checkInGame = function(pid){
-		for(let i=0, l = this.playerList.length; i<l; i++){
-			if(this.playerList[i].id === pid) return true
-		}
-		return false
-	}
-	this.chooseStringup = function(pid, digit){
-		if(!Number.isFinite(digit)){
-			digit = Number.parseInt(digit);
-			if(Number.isNaN(digit)) return false;
-		}
-		digit = digit - 1;
-		if(this.started === 1){
-			if(this.phase === 2){
-				if(this.checkInGame(pid)){
-					if(digit < this.playerList.length && digit >= 0 && !this.getFromList(digit).dead){
-						let p = this.getPlayer(pid);
-						if(!p.dead && p.stringup === null) {
-							p.stringup = this.getFromList( digit );
-							this.sendToAll('{' + p.name + '} голосует за {' + p.stringup.name + '}');
-							
-							let t = true;
-							for(let i = 0, l = this.playerList.length; i < l; i++){
-								if(this.playerList[i].dead) continue;
-								if(this.playerList[i].stringup === null) { t = false; break }
-							}
-							if(t) this.turbo();
-							else this.slow();
-							return true
-						}
-					}
-				}
-			}
-		}
-		return false
-	}
-	this.getFromList = function(nid) {
-		for(let i = 0, l=this.playerList.length; i < l; i++){
-			if(this.playerList[i].dead) continue;
-			if(nid-- === 0) return this.playerList[i]
-		}
-		return null
-	}
-	this.chooseVictim = function(pid, type, digit, phrase){
-		if(!Number.isFinite(digit)){
-			digit = Number.parseInt(digit);
-			if(Number.isNaN(digit)) return false;
-		}
-		digit = digit - 1;
-		if(phrase === void 0) phrase = '';
-		if(this.started === 1 && this.phase === 1 && this.checkInGame(pid)){
-			let p = this.getPlayer(pid);
-			if(!p.dead && p.choose === null && p.roleType === 1 && this.checkTurn(p, digit, type)){
-				p.choose = this.getFromList(digit);
-				p.choosePhrase = phrase;
-				p.chooseType = type;
-				this.send(pid, 'Вас понял. Жди утро.');
-				
-				let t = true;
-				for(let i=0, l=this.playerList.length; i<l; i++){
-					if(this.playerList[i].dead) continue;
-					if(this.playerList[i].roleType === 1 && this.playerList[i].choose === null) {
-						t = false
-						break
-					}
-				}
-				if(t) this.turbo();
-				else this.slow();
-				return true
-			}
-		}
-		return false
-	}
-	this.checkTurn = function(p, d, t) {
-		if(d <= this.playerList.length && d >= 0 && !this.getFromList(d).dead) {
-			if(t === 'kill') {
-				if(p.roleId === 1 || p.roleId === 2 || p.roleId === 4) return true
-			}
-			else if(t === 'check') {
-				if(p.roleId === 2) return true
-			}
-			else if(t === 'heal') {
-				if(p.roleId === 3) return true
-			}
-			else if(t === 'curse') {
-				if(p.roleId === 4) return true
-			}
-		}
-		return false
-	}
-	this.getPlayer = function(pid){
-		for(let i = 0, l=this.playerList.length; i < l; i++){
-			if(this.playerList[i].id === pid) return this.playerList[i]
-		}
-		return void 0
-	}
-	this.reg = function(pid, name){
-		if(this.started === 0 && this.playerList.length < 5) {
-			if(!this.checkInGame(pid)){
-				let l = this.playerList.length;
-				this.playerList.push({
-					'id': pid,
-					'name': name,
-					'choose': null,
-					'stringup': null,
-					'stringupCounter': 0,
-					'chooseType': null,
-					'choosePhrase': '',
-					'roleType': 0,
-					'roleId': 0,
-					'healed': false,
-					'cursed': false,
-					'dead': false,
-					'die': false
-				});
-				if(l === 5) this.turbo();
-				else if(l < 3) this.brake();
-				return true
-			}
-		}
-		return false
-	}
-	//0-молодец,1-мафия,2-иван,3-доктор,4-маньяк
-	this.roles = [
-		['добрый молодец', '', '', 'доброго молодца', ''],
-		['Соловей-разбойник', 'разбойник пытался убить', 'убит разбойником', 'разбойника', ''],
-		['Иван-Царевич', 'Иван-Царевич пытались убить', 'убит Иваном-Царевичем', 'Ивана-Царевича', ''],
-		['Василиса Премудрая', '', '', 'Василису Премудрую', ''],
-		['Лихо одноглазое', 'Лихо одноглазое пыталось убить', 'убит Лихом одноглазым', 'Лихо одноглазое', 'Лихом одноглазым']
-	];
-	this.comm = [
-		'Ваши действия: ждите окончания ночи',
-		'Ваши действия: !убить <номер>',
-		'Ваши действия: !убить <номер> или !проверить <номер>',
-		'Ваши действия: !лечить <номер>',
-		'Ваши действия: !проклясть <номер>'
-	];
-	this.desc = [
-		'Ваша задача одолеть зло. Ночью вы спите, а днём голосуете.',
-		'Ваша задача одолеть добро. Ночью вы убиваете, а днём голосуете.',
-		'Ваша задача одолеть зло. Ночью вы проверяете или убиваете, а днём голосуете.',
-		'Ваша задача одолеть зло. Ночью вы лечите, а днём голосуете.',
-		'Ваша задача одолеть всех. Ночью вы проклинаете или убиваете, а днём голосуете.',
-	]
-	this.calcRegResult=function(){
-		if(this.playerList.length > 2){
-			this.startGame();
-			return true;
-		}
-		return false
-	}
-	this.startGame = function() {
-		this.started = 1;
-		let pl = this.playerList.length, list = [], roles = [];
-		if(pl === 5) roles = [0,1,2,3,4];
-		else if(pl === 4) roles = [0,1,2,3];
-		else if(pl === 3) roles = [0,1,2];
-		let pr = roles.length;
-		
-		for(let i = 0; i < pl; i++) list[i] = i;
-		
-		for(let r1, r2; pl > 0;) {
-			rl = rand(0, pl - 1);
-			rr = rand(0, pr - 1);
-			//rl = pl - 1;
-			//rr = pr - 1;
-			this.playerList[ list[rl] ].roleId = roles[rr];
-			this.send(this.playerList[ list[rl] ].id, 'Вы ' + this.getRole(roles[rr], 0) + '. ' + this.desc[ roles[rr] ]);
-			if(roles[rr] > 0) this.playerList[ list[rl] ].roleType = 1;
-			list.splice(rl, 1);
-			roles.splice(rr, 1);
-			pl--;
-			pr--
-		}
-	}
-	this.calcVoiceResult = function() {
-		for(let i = 0, l = this.playerList.length, p; i<l; i++){
-			p = this.playerList[i];
-			if(p.dead) continue;
-			if(p.stringup === null) continue;
-			p.stringup.stringupCounter++;
-		}
-		let result = [void 0, 0];
-		for(let i = 0, l = this.playerList.length, p; i<l; i++){
-			p = this.playerList[i];
-			if(p.dead) continue;
-			if(p.stringupCounter > result[1]) result = [p, p.stringupCounter];
-			else if(p.stringupCounter === result[1]) result[0] = void 0
-		}
-		if(result[0] !== void 0) {
-			this.stringup(result[0])
-		}
-		else this.sendToAll('Никого не смогли выбрать.');
-		for(let i = 0, l = this.playerList.length, p; i<l; i++){
-			p = this.playerList[i];
-			if(p.dead) continue;
-			p.stringupCounter = 0;
-			p.stringup = null;
-			
-		}
-	}
-	this.calcVictimResult = function(){
-		for(let i = 0, l = this.playerList.length, p; i<l; i++){
-			p = this.playerList[i];
-			if(!p.dead && !p.die && p.roleType === 1 && p.choose === null){
-				this.suicied(p);
-			}
-		}
-		for(let i = 0, l = this.playerList.length, p; i<l; i++){
-			p = this.playerList[i];
-			if(p.dead) continue;
-			if(p.roleId === 4){
-				if(p.chooseType === 'kill') this.killer(p);
-				else if(p.chooseType === 'curse') this.curser(p);
-				break
-			}
-		}
-		for(let i = 0, l = this.playerList.length, p; i<l; i++){
-			p = this.playerList[i];
-			if(p.dead) continue;
-			if(p.roleId === 3){
-				if(p.chooseType === 'heal') this.healer(p);
-				break
-			}
-		}
-		for(let i = 0, l = this.playerList.length, p; i<l; i++){
-			p = this.playerList[i];
-			if(p.dead) continue;
-			if(p.roleId === 1){
-				if(p.chooseType === 'kill') this.killer(p);
-				break
-			}
-		}
-		for(let i = 0, l = this.playerList.length, p; i<l; i++){
-			p = this.playerList[i];
-			if(p.dead) continue;
-			if(p.roleId === 2){
-				if(p.chooseType === 'kill') this.killer(p);
-				else if(p.chooseType === 'check') this.checker(p);
-				break
-			}
-		}
-		
-		for(let i = 0, l=this.playerList.length, p; i<l; i++){
-			p = this.playerList[i];
-			if(p.dead) continue;
-			if(p.die) { p.die = false; p.dead = true }
-			if(p.cursed) { p.cursed = false; p.dead = true }
-			if(p.dead) continue;
-			p.healed = false;
-			if(p.roleType === 1){
-				p.choose = null;
-				p.chooseType = null;
-				p.choosePhrase = '';
-			}
-		}
-	}
-	this.suicied = function(p) {
-		this.sendToAll(this.getRole(p.roleId, 0) + ' {' + p.name + '} заснул и не проснулся.');
-		p.die = true;
-		//this.send(v.roleId, 'Вы пропустили ход.')
-	}
-	this.stringup = function(v) {
-		let p = this.getPlayer(v.id);
-		this.sendToAll(this.getRole(p.roleId, 0) + ' {' + p.name + '} повешен.');
-		p.dead = true;
-	}
-	this.killer = function(p) {
-		let v = p.choose;
-		if(v.healed) {
-			v.healed = false
-			this.sendToAll(this.getRole(p.roleId, 1) + ' {' + v.name + '}, но он был вылечен Василисой Премудрой. ' + (p.choosePhrase !== '' ? '(' + p.choosePhrase + ')' : ''))
-			if(v.cursed) {
-				p.die = true;
-				this.sendToAll(this.getRole(p.roleId, 0) + ' {' + p.name + '} умер от проклятия.')
-			}
-		}
-		else {
-			v.die = true;
-			this.sendToAll(this.getRole(v.roleId, 0) + ' {' + v.name + '} ' + this.getRole(p.roleId, 2) + '. ' + (p.choosePhrase !== '' ? '(' + p.choosePhrase + ')' : ''))
-			if(v.cursed) {
-				this.sendToAll(this.getRole(p.roleId, 0) + ' {' + p.name + '} умер от проклятия.')
-			};
-			//this.send(v.roleId, 'Вы погибли.')
-		}
-	}
-	this.healer = function(p) {
-		let v = p.choose;
-		if(v.cursed) {
-			p.die = true;
-			v.healed = true;
-			this.sendToAll(this.getRole(p.roleId, 0) + ' лечит {' + v.name + '}.' + (p.choosePhrase !== '' ? '(' + p.choosePhrase + ')' : ''));
-		this.sendToAll(this.getRole(p.roleId, 0) + ' {' + p.name + '} умер от проклятия.')
-		}
-		else {
-			this.sendToAll(this.getRole(p.roleId, 0) + ' лечит {' + v.name + '}.' + (p.choosePhrase !== '' ? '(' + p.choosePhrase + ')' : ''));
-			v.healed = true
-		}
-	}
-	this.checker = function(p) {
-		let v = p.choose;
-		if(v.cursed) {
-			p.die = true;
-			this.sendToAll(this.getRole(p.roleId, 0) + ' проверяет {' + v.name + '}.' + (p.choosePhrase !== '' ? '(' + p.choosePhrase + ')' : ''));
-			this.sendToAll(this.getRole(p.roleId, 0) + ' {' + p.name + '} погиб от проклятия.')
-		}
-		else {
-			this.sendToAll(this.getRole(p.roleId, 0) + ' проверяет {' + v.name + '}.' + (p.choosePhrase !== '' ? '(' + p.choosePhrase + ')' : ''));
-			this.send(p.id, '{' + v.name + '} это ' + this.getRole(v.roleId, 0))
-		}
-	}
-	this.curser = function(p) {
-		let v = p.choose;
-		this.sendToAll(this.getRole(v.roleId, 0) + ' {' + v.name + '} проклят ' + this.getRole(p.roleId, 4) + '. ' + (p.choosePhrase !== '' ? '(' + p.choosePhrase + ')' : ''))
-		v.cursed = true;
-		//this.send(v.roleId, 'Вы погибли от проклятия.')
-	}
-	this.getRole = function(rid, type) {
-		return this.roles[rid][type]
-	}
-	this.turbo = function(){
-		this.intervals[ this.phase ] = this.origIntervals[ this.phase ]
-	}
-	this.brake = function() {
-		this.intervals[this.phase] = 0;
-	}
-	this.slow = function() {
-		this.intervals[this.phase] -= 5;
-	}
-	this.engine = function(){
-		if(this.phase === 0){//reg
-			if(++this.intervals[0] >= this.origIntervals[0]){//night
-				if(this.calcRegResult()){
-					this.sendToAll('Наступила ночь.');
-					this.sendToAllCommsnds();
-					this.sendToAllList();
-					this.phase = 1;
-					this.intervals[1] = 0
-				}
-				else this.endGame();
-			}
-		}
-		else if(this.phase === 1){//night
-			if(++this.intervals[1] >= this.origIntervals[1]){//voice
-				this.calcVictimResult();
-				if(this.checkGame('after night')){
-					this.sendToAll('Наступило утро. Голосуй. Команда: !<номер>');
-					this.sendToAllList();
-					this.phase = 2;
-					this.intervals[2] = 0
-				}
-				else this.endGame();
-			}
-		}
-		else if(this.phase === 2){//voice
-			if(++this.intervals[2] >= this.origIntervals[2]){//night
-				this.calcVoiceResult();
-				if(this.checkGame('after voice')){
-					this.sendToAll('Наступила ночь. Выбирай жертву.');
-					this.sendToAllList();
-					this.phase = 1;
-					this.intervals[1] = 0
-				}
-				else this.endGame();
-			}
-		}
-		
-	}
-	this.robin = function(str, s) {
-		return (str !== '' ? ', ' : '') + s
-	}
-	this.endGame = function() {
-		if(this.winType === 0) this.sendToAll2('Игры не будет. Необходимо 3-5 игроков.')
-		else {
-			let winers = '', losers = '';
-			for(let i = 0, l = this.playerList.length, p; i<l; i++){
-				p = this.playerList[i];
-				if(p.dead) losers += this.robin(losers, p.name);
-				else {
-					if(this.winType === 1) {
-						if(p.roleId === 1) winers += this.robin(winers, p.name);
-						else losers += this.robin(losers, p.name)
-					}
-					else if(this.winType === 2) {
-						if(p.roleId === 0 || p.roleId === 2 || p.roleId === 3) winers += this.robin(winers, p.name);
-						else losers += this.robin(losers, p.name)
-					}
-					else if(this.winType === 2) {
-						if(p.roleId === 0 || p.roleId === 2 || p.roleId === 3) winers += this.robin(winers, p.name);
-						else losers += this.robin(losers, p.name)
-					}
-					else if(this.winType === 3) {
-						if(p.roleId === 4) winers += this.robin(winers, p.name);
-						else losers += this.robin(losers, p.name)
-					}
-					else if(this.winType === 4) winers += this.robin(winers, p.name);
-					else losers += this.robin(losers, p.name)
-				}
-			}
-			if(this.winType === 1) {
-				this.sendToAll2('Игры окончена. Зло победило. Победители: ' + winers + ', проигравшие: ' + losers)
-			}
-			else if(this.winType === 2) {
-				this.sendToAll2('Игры окончена. Добро победило. Победители: ' + winers + ', проигравшие: ' + losers)
-			}
-			else if(this.winType === 3) {
-				this.sendToAll2('Игры окончена. Нейтралы победили. Победители: ' + winers + ', проигравшие: ' + losers)
-			}
-			else if(this.winType === 4) {
-				this.sendToAll2('Игра окончена. Ничья. Победители: ' + winers + ', проигравшие: ' + losers)
-			}
-		}
-		this.reset()
-	}
-	this.reset = function() {
-		clearInterval(this.timer);
-		this.started = -1;
-		this.playerList = [];
-		this.timer = null;
-		this.phase = 0;
-		this.intervals = [0, 0, 0];
-		this.winType = 0;
-		console.log('mafia reset')
-	}
-	
-	this.reset();
-	console.log('mafia there!')
-}
-//function rand(min,max){return Math.floor(Math.random()*(max-min+1))+min}
-Mafia.prototype.init = function(){
-	console.log('mafia start')
-	//this.reset();
-	this.started = 0;
-	this.timer = setInterval(this.engine.bind(this), 1000);
-}
