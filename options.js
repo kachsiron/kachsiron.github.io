@@ -2763,24 +2763,25 @@ function mChats(){
 		let c,pp;
 		if(chat.nickColors2.hasOwnProperty(n)){
 			c=chat.nickColors[n];
-			pp=chat.nickColors2[n];
+			pp=chat.nickColors2[n]
 		}
 		else{
 			let cc=this.getC(n);
+			let min=Math.min.apply(cc),abs=[];
+			for(let i=3;--i>-1;)abs[i]=cc[i]-min[i];
 			c='rgb('+Math.round(cc[0])+','+Math.round(cc[1])+','+Math.round(cc[2])+')';
 			chat.nickColors[n]=c;
 			
 			pp=[1000,0];
 			for(let i = 0, l = pokemon.length, k; i < l; i++){
 				k=0;
-				for(let j = 0; j < 3; j++) k += Math.abs(cc[j] - pokemon[i][2][j]);
-				//for(let j = 0; j < 3; j++) k += q[j];
+				for(let j = 0; j < 3; j++) k += Math.abs(abs[j] - pokemon[i][2][j]);
 				if(k < pp[0]) pp = [k, i]
 			}
 			pp = pp[1];
 			chat.nickColors2[n] = pp
 		}
-		img.title=pokemon[pp][0] + ' ' +c+' '+pokemon[pp][2][0]+','+pokemon[pp][2][1]+','+pokemon[pp][2][2];
+		img.title=pokemon[pp][0]+' '+c+' '+pokemon[pp][2][0]+','+pokemon[pp][2][1]+','+pokemon[pp][2][2];
 		img.style.backgroundImage = 'url("https://kachsiron.github.io/imgs/canvasPokemon.png")';
 		img.style.backgroundPosition = pokemon[pp][1][0] + 'px ' + pokemon[pp][1][1] + 'px';
 		img.style.marginBottom=pokemon[pp][3]+'px';
