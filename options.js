@@ -773,6 +773,23 @@ var cMan={
 		}*/
 		return false
 	},
+	'obnovDescForFun':function(c,o){
+		//c.desc=o.description;
+		//c.span.cat.style.fontWeight=(c.desc!==''?'bold':'normal');
+		if(c.title!==o.name){
+			console.log(o)
+			c.title=o.name;
+			c.span.title.title=c.title;
+			c.span.title.innerHTML=c.title;
+			return true
+		}
+		/*if(c.cat!==o.category.name){
+			c.cat=o.category.name;
+			c.span.cat.textContent=c.cat;
+			return true
+		}*/
+		return false
+	},
 	'obnovChan':function(o,r){
 		o.tvalue=this.rTimes;
 		o.rate=r
@@ -904,6 +921,7 @@ var cMan={
 				start_at:0,
 				viewers:Number.parseInt(z.viewers)
 			};*/
+			if(!z.hasOwnProperty('channel'))console.log(z)
 			this.contents.gg[x]={
 				'cggio':1,
 				'link':z.channel.url,
@@ -952,7 +970,7 @@ var cMan={
 			for(let i=0,l=con.length,n;i<l;i++){
 				n=this.chn[con[i].streamer.id.toString()];
 				if(n===void 0)continue;
-				if(this.obnovDesc(n,con[i])){this.setFavHid(n);c++}
+				if(this.obnovDescForFun(n,con[i])){this.setFavHid(n);c++}
 			}
 			if(c>0)OPOV.serv('Обновленo fun-заголовков: '+c,null)
 		}
