@@ -757,12 +757,17 @@ var cMan={
 	},
 	'obnovDesc':function(c,o){
 		if(c.title!==o.name){
-			if(!o.hasOwnProperty('category'))console.log(o)
 			c.title=o.name;
 			c.span.title.title=c.title;
 			c.span.title.innerHTML=c.title;
-			c.cat=o.category.name;
-			c.span.cat.textContent=c.cat;
+			if(o.category!==null){
+				c.cat=o.category.name;
+				c.span.cat.textContent=c.cat;
+			}
+			else{
+				c.cat='';
+				c.span.cat.textContent='';
+			}
 			return true
 		}
 		return false
@@ -2777,8 +2782,7 @@ function mChats(){
 			for(let i=3;--i>-1;)abs[i]=cc[i]-min;
 			c='rgb('+Math.round(cc[0])+','+Math.round(cc[1])+','+Math.round(cc[2])+')';
 			chat.nickColors[n]=c;
-			
-			pp=[1000,0];
+			pp=[Number.POSITIVE_INFINITY,0];
 			for(let i = 0, l = pokemon.length, k; i < l; i++){
 				k=0;
 				for(let j = 0; j < 3; j++) k += Math.pow(abs[j] - pokemon[i][2][j],2);
