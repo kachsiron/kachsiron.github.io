@@ -757,6 +757,7 @@ var cMan={
 	},
 	'obnovDesc':function(c,o){
 		if(c.title!==o.name){
+			if(!o.hasOwnProperty('category'))console.log(o)
 			c.title=o.name;
 			c.span.title.title=c.title;
 			c.span.title.innerHTML=c.title;
@@ -894,6 +895,7 @@ var cMan={
 		this.setTime();
 		for(let x=0,l=this.contents.gg.length,c,z;x<l;x++){
 			if(this.contents.gg[x].viewers==='0')continue;
+			if(!this.contents.gg[x].hasOwnProperty('channel'))continue;
 			z=this.contents.gg[x];
 			/*c={
 				link:z.link,
@@ -908,7 +910,6 @@ var cMan={
 				start_at:0,
 				viewers:Number.parseInt(z.viewers)
 			};*/
-			if(!z.hasOwnProperty('channel'))console.log(z)
 			this.contents.gg[x]={
 				'cggio':1,
 				'link':z.channel.url,
@@ -2772,7 +2773,7 @@ function mChats(){
 		}
 		else{
 			let cc=this.getC(n);
-			let min=Math.min.apply(cc),abs=[];
+			let min=Math.min.apply(Math,cc),abs=[];
 			for(let i=3;--i>-1;)abs[i]=cc[i]-min;
 			c='rgb('+Math.round(cc[0])+','+Math.round(cc[1])+','+Math.round(cc[2])+')';
 			chat.nickColors[n]=c;
@@ -2780,7 +2781,7 @@ function mChats(){
 			pp=[1000,0];
 			for(let i = 0, l = pokemon.length, k; i < l; i++){
 				k=0;
-				for(let j = 0; j < 3; j++) k += Math.abs(abs[j] - pokemon[i][2][j]);
+				for(let j = 0; j < 3; j++) k += Math.pow(abs[j] - pokemon[i][2][j],2);
 				if(k < pp[0]) pp = [k, i]
 			}
 			pp = pp[1];
