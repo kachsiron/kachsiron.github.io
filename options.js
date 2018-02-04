@@ -1148,11 +1148,14 @@ var cMan={
 			for(let i=z.length,c;--i>-1;){
 				c=z[i];
 				c.span.p.textContent=c.un[0];
-				if(c.service===1)continue;
-				if(c.service===2){c.span.act.style.opacity=(c.isup>0?1:0);continue}
+				if(c.service===1){
+					c.span.act.style.opacity=(c.tvalue===this.rTimes?'1':'0');
+					continue;
+				}
+				//if(c.service===2){c.span.act.style.opacity=(c.isup>0?1:0);continue}
 				c.span.count.textContent=c.count;
 				c.span.m.textContent=c.ddcount;
-				c.span.act.style.opacity=((c.tvalue===this.rTimes&&!c.temp)?1:0);
+				c.span.act.style.opacity=((c.tvalue===this.rTimes&&!c.temp)?'1':'0');
 				c.span.rate.innerHTML=c.rate
 			}
 		}
