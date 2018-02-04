@@ -2658,7 +2658,7 @@ function mChats(){
 		},
 		'make':function(d){
 			d.onclick=function(){
-				let t=this.style.opacity==='0'?true:false);
+				let t=(this.style.opacity==='0'?true:false);
 				this.style.opacity=(t?'1':'0');
 				this.style.whiteSpace=(t?'':'nowrap');
 			}
