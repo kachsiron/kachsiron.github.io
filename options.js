@@ -1153,6 +1153,7 @@ var cMan={
 					continue;
 				}
 				//if(c.service===2){c.span.act.style.opacity=(c.isup>0?1:0);continue}
+				else if(c.service===2)continue;
 				c.span.count.textContent=c.count;
 				c.span.m.textContent=c.ddcount;
 				c.span.act.style.opacity=((c.tvalue===this.rTimes&&!c.temp)?'1':'0');
