@@ -2297,8 +2297,9 @@ function mChats(){
 		this.sam('[<u>соединение</u>]',w,true,0);
 		GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/api/channels/'+w.wsChatChannelId+'/chat_properties?on_site=1',onload:requ=>{try{
 			requ=JSON.parse(requ.target.responseText).web_socket_servers[0];
+			let ws;
 			if(/twitch/.test(requ)){
-				w.sock=new WebSocket('wss://'+requ.replace(':80',''));
+				ws='wss://'+requ.replace(':80','');
 				/*w.sockpubsub=new WebSocket('wss://pubsub-edge.twitch.tv/v1');
 				w.sockpubsub.onerror=function(e){console.log('error',e);OPOV.serv('Ошибка в pubsub сокете. Смотри в консоль',10000)};
 				w.sockpubsub.onopen=()=>{
@@ -2307,7 +2308,11 @@ function mChats(){
 				}
 				w.sockpubsub.onmessage=e=>{i.amoTwitchPubsub(e,w)};*/
 			}
-			else w.sock=new WebSocket('ws://'+requ);
+			else ws='ws://'+requ;
+			
+			w.sock=new WebSocket(ws);
+			this.sam('[<u>'+ws+'</u>]',w,true,0);
+			
 			w.sock.onerror=function(e){console.log('error',e);OPOV.serv('Ошибка в сокете. Смотри в консоль',10000)};
 			w.sock.onmessage=e=>{i.amoTwitch(e,w)};
 			w.sock.onopen=()=>{
@@ -2317,7 +2322,8 @@ function mChats(){
 				w.sock.send('CAP REQ :twitch.tv/tags twitch.tv/commands');
 				w.sock.send('PASS '+TWITCHPASS);
 				w.sock.send('NICK '+MYNICK[2]);
-				w.sock.send('JOIN #'+w.wsChatChannelId)
+				w.sock.send('JOIN #'+w.wsChatChannelId);
+				this.sam('[<u>JOIN #'+w.wsChatChannelId+'</u>]',w,true,0);
 			}
 		}catch(e){console.log(e);OPOV.serv('Twitch. Ошибка при получении ссылки на irc-сервер',10000)}}})
 	}
@@ -2547,6 +2553,7 @@ function mChats(){
 	this.amoTwitch=function(e,w){
 		let r=e.data.match(rgxpChatTwitch[2]);
 		if(r[1]==='@'){
+//this.sam('[<u>'+r[2]+'</u>]',w,true,0);
 			let nick=r[2].match(rgxpChatTwitch[3]);
 			if(nick===null||nick[1]==='')nick=r[2].match(rgxpChatTwitch[4]);
 
