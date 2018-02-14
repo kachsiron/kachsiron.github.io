@@ -2294,7 +2294,7 @@ function mChats(){
 	}
 	this.openSocketTwitch=function(w,i){
 		//if(this.twitchSmiles===null)//https://api.twitch.tv/kraken/chat/emoticon_images?on_site=1&emotesets=0,2490,2774,2808,3902,7301,13715
-		this.sam('[<u>соединение</u>]',w,true,0);
+		this.sam('[<u>соединение</u>]',w,false);
 		GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/api/channels/'+w.wsChatChannelId+'/chat_properties?on_site=1',onload:requ=>{try{
 			requ=JSON.parse(requ.target.responseText).web_socket_servers[0];
 			let ws;
@@ -2311,7 +2311,7 @@ function mChats(){
 			else ws='ws://'+requ;
 			
 			w.sock=new WebSocket(ws);
-			this.sam('[<u>'+ws+'</u>]',w,true,0);
+			this.sam('[<u>'+ws+'</u>]',w,false);
 			
 			w.sock.onerror=function(e){console.log('error',e);OPOV.serv('Ошибка в сокете. Смотри в консоль',10000)};
 			w.sock.onmessage=e=>{i.amoTwitch(e,w)};
@@ -2323,7 +2323,7 @@ function mChats(){
 				w.sock.send('PASS '+TWITCHPASS);
 				w.sock.send('NICK '+MYNICK[2]);
 				w.sock.send('JOIN #'+w.wsChatChannelId);
-				this.sam('[<u>JOIN #'+w.wsChatChannelId+'</u>]',w,true,0);
+				this.sam('[<u>JOIN #'+w.wsChatChannelId+'</u>]',w,false);
 			}
 		}catch(e){console.log(e);OPOV.serv('Twitch. Ошибка при получении ссылки на irc-сервер',10000)}}})
 	}
@@ -2561,7 +2561,7 @@ function mChats(){
 			if(r[0]!==null&&r[1]!==null)this.am({timestamp:new Date(),user_name:r[0][1],text:r[1][1],sub:r[2][1]},w,false)
 		}
 		else if(r[1]===':'){
-			if(rgxpChatTwitch[7].test(r[2])) this.sam('[<u>авторизованы</u>]',w,true,2);
+			if(rgxpChatTwitch[7].test(r[2])) this.sam('[<u>авторизованы</u>]',w,false);
 			w.titleDiv.style.backgroundColor='black'
 		}
 	}
