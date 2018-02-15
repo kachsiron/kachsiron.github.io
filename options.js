@@ -533,6 +533,12 @@ var cMan={
 		deleteFromList(c,'',2);
 		this.setFavHid(this.chn[c])
 	},
+	'getTwPlayerFromGg':function(c){
+		GMX({method:'GET',url:this.chn[c].link,onload:requ=>{
+			requ=requ.target;
+
+		}})
+	},
 	'getcn':function(c){//получить имя стримера по айди
 		if(this.chn.hasOwnProperty(c))return this.chn[c].name;
 		return (DNS[c]?DNS[c][0]:c)
@@ -1475,7 +1481,7 @@ var scMenu={
 		this.menu[0].style.zIndex=this.menu[1].style.zIndex=this.menu[2].style.zIndex=this.menu[3].style.zIndex=4;
 		this.scmb[0].style.backgroundColor='#444';
 		this.scmb[0].style.color='white';
-		//this.setb(1,'&nbsp;Get Plrs (sc2tv)');
+		this.setb(2,'&nbsp;Get TwPlr (gg)');
 		this.setb(1,'&#9733;ListTwitch&#9733;');
 		this.setb(5,'&#10007;ListHide&#10007;');
 		this.setb(6,'&#9733;ListFavorite&#9733;');
@@ -1488,6 +1494,7 @@ var scMenu={
 			//t.scmb[1].onclick=function(){cMan.getPlrs(t.chanID)};
 			t.scmb[0].onclick=t.scmb[7].onclick=t.close.bind(t);
 			t.scmb[1].onclick=e=>t.makeListTwitch(e);
+			t.scmb[2].onclick=()=>{cMan.getTwPlayerFromGg(t.chanID);t.close()};
 			t.scmb[3].onclick=()=>{cMan.addToHide(t.chanID);t.close()};
 			t.scmb[4].onclick=()=>{cMan.addToFavo(t.chanID);t.close()};
 			t.scmb[5].onclick=e=>t.makeList(1,e);
@@ -1566,6 +1573,7 @@ var scMenu={
 		//scmb[2].removeAttribute('alt');
 		//scmb[2].innerHTML=(chatTimer===alt?'&#9672;':'&nbsp;')+'Chat';
 		//this.seth(1,cMan.chn[alt].service===0?'':'none');
+		this.seth(2,cMan.chn[alt].service===1?'':'none');
 		this.seth(13,cMan.chn[alt].service===0?'':'none');
 		this.setb(3,'<span style="color:'+(HID.hasOwnProperty(fgd)?'gray">&#10004;Un':'maroon">&#10007;')+'Hide</span>');
 		this.setb(4,'<span style="color:'+(FAV.hasOwnProperty(fgd)?'gray">&#9734;Un':'red">&#9733;')+'Favorite</span>');
