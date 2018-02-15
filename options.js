@@ -534,9 +534,19 @@ var cMan={
 		this.setFavHid(this.chn[c])
 	},
 	'getTwPlayerFromGg':function(c){
+		let opv=OPOV.serv('Запрос twitch channel from GG...');
 		GMX({method:'GET',url:this.chn[c].link,onload:requ=>{
-			requ=requ.target;
-
+			requ=requ.target.responseText.match(rgxpServ[4]);
+			if(requ!==null){
+				requ='p'+requ[1];
+				OPOV.serv('ключ найден: '+requ+'...',0,opv);
+				GMX({method:'POST',url:'https://goodgame.ru/ajax/player/get/',data:'key='+requ,headers:{"Content-Type":"application/x-www-form-urlencoded"},onload:requ2=>{
+					scp.players.get(c).strms.push({'name':'TW','code':JSON.parse(requ2.target.responseText).content});
+					scp.remakeMark();
+					OPOV.serv('Готово',3000,opv,true);
+				}})
+			}
+			else OPOV.serv('ключ не найден!',3000,opv,true);
 		}})
 	},
 	'getcn':function(c){//получить имя стримера по айди
@@ -1573,7 +1583,7 @@ var scMenu={
 		//scmb[2].removeAttribute('alt');
 		//scmb[2].innerHTML=(chatTimer===alt?'&#9672;':'&nbsp;')+'Chat';
 		//this.seth(1,cMan.chn[alt].service===0?'':'none');
-		this.seth(2,cMan.chn[alt].service===1?'':'none');
+		this.seth(2,cMan.chn[alt].service===1&&scp.players.has(alt)?'':'none');
 		this.seth(13,cMan.chn[alt].service===0?'':'none');
 		this.setb(3,'<span style="color:'+(HID.hasOwnProperty(fgd)?'gray">&#10004;Un':'maroon">&#10007;')+'Hide</span>');
 		this.setb(4,'<span style="color:'+(FAV.hasOwnProperty(fgd)?'gray">&#9734;Un':'red">&#9733;')+'Favorite</span>');
@@ -3747,7 +3757,7 @@ rgxpServ=[
 	null,// /<.*?>/g,
 	null,// /[^a-zа-я]/gi,
 	/^([^\s]*)\s?(.*)?/,
-	null,
+	/value="(.*?)">[\s]*?<label for="player2">Twitch/m,
 	/<div class="list-block">(?:.|\s)*?<div class="list-footer">/g,
 	/<h2><a href="(.*?)">(.*?)<\/a><\/h2>/m,
 	/<strong>Начало: <\/strong><span>(.*?)<\/span>/m,
