@@ -3395,12 +3395,12 @@ function scrollHider(){
 	scrlh=null;
 }
 function nameToUrl(n){return n.replace(rgxpChan[7],'').replace(/-/g,'').replace(rgxpChan[8],'-').toLowerCase()}
-function graphsendi(n){try{
+function graphsendi(n){
 	if(graph){
-		//ACAPELA.s(n + ' запустился')
-		zvuk[0].play();
+		ACAPELA.s(n + ' запустился')
+		//zvuk[0].play();
 	}
-}catch(e){console.log(e);alert('acapela error')}}
+}
 function objSize(o){let c=0;for(i in o)c++;return c}
 var tw_list=function(r){
 	GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/kraken/streams?game='+r,onload:requ=>{
@@ -4043,11 +4043,11 @@ B(messtochat.ID); B(messtochat.MSG);
 B(divLog2);B(divLog);B(smilepadik);
 zvuk[0].appendChild(zvuk[1]);B(zvuk[0]);
 //zvuk[2].appendChild(zvuk[3]);B(zvuk[2]);
-var scp,mch;/*,ACAPELA={
+var scp,mch,ACAPELA={
 	//'f':C('IFRAME'),
-	'f':null,
+	//'f':null,
 	'init':function(){
-		this.f=window.open("http://www.acapela-group.com/demo-tts/DemoHTML5Form_V2.php?langdemo=Powered+by+%3Ca+href%3D%22http%3A%2F%2Fwww.acapela-vaas.com%22%3EAcapela+Voice+as+a+Service%3C%2Fa%3E.+For+demo+and+evaluation+purpose+only%2C+for+commercial+use+of+generated+sound+files+please+go+to+%3Ca+href%3D%22http%3A%2F%2Fwww.acapela-box.com%22%3Ewww.acapela-box.com%3C%2Fa%3E");
+		//this.f=window.open("http://www.acapela-group.com/demo-tts/DemoHTML5Form_V2.php?langdemo=Powered+by+%3Ca+href%3D%22http%3A%2F%2Fwww.acapela-vaas.com%22%3EAcapela+Voice+as+a+Service%3C%2Fa%3E.+For+demo+and+evaluation+purpose+only%2C+for+commercial+use+of+generated+sound+files+please+go+to+%3Ca+href%3D%22http%3A%2F%2Fwww.acapela-box.com%22%3Ewww.acapela-box.com%3C%2Fa%3E");
 		//this.f.style.setProperty('width','0');
 		//this.f.style.setProperty('height','0');
 		//this.f.style.setProperty('border','0');
@@ -4055,8 +4055,21 @@ var scp,mch;/*,ACAPELA={
 		//this.s('Check!')
 	},
 	//'s':function(msg){this.f.contentWindow.postMessage(msg,'http://www.acapela-group.com/')}
-	's':function(msg){this.f.postMessage(msg,'http://www.acapela-group.com/')}
-};*/
+	//'s':function(msg){this.f.postMessage(msg,'http://www.acapela-group.com/')}
+	's':function(msg){
+		let formData=new FormData();
+		formData.append('MyLanguages','sonid26');
+		formData.append('MySelectedVoice','Alyona');
+		formData.append('MyTextForTTS',msg);
+		formData.append('t','1');
+		formData.append('SendToVaaS','');
+		GMX({timeout:5000,method:'POST',data:formData,url:'http://www.acapela-group.com/demo-tts/DemoHTML5Form_V2.php?langdemo=Powered+by+<a+href="http://www.acapela-vaas.com">Acapela+Voice+as+a+Service</a>.+For+demo+and+evaluation+purpose+only,+for+commercial+use+of+generated+sound+files+please+go+to+<a+href="http://www.acapela-box.com">www.acapela-box.com</a>',onload:requ=>{
+			let a=new Audio();
+			a.src=requ.target.responseText.match(/var myPhpVar = '(.*?)';/,/(.*?) - (.*)/)[1];
+			a.play()
+		}});
+	}
+};
 document.addEventListener('DOMContentLoaded',()=>{
 	scp=new ScPlayer();
 	mch=new mChats();
@@ -4071,7 +4084,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 	cMan.getcl();
 	cMan.launch();
 	vasya.init()
-	//ACAPELA.init()
+	ACAPELA.init()
 });
 
 /*function Victor(mch, chat) {
