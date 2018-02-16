@@ -2292,7 +2292,7 @@ function mChats(){
 		
 		w.idle.timer=setInterval(this.idleTimer2.bind(w.idle),w.idle.interval);
 		w.idle.copy=w.idle.ctx.getImageData(0, 0, 1, 1);
-		this.idleTimer2.call(w.idle);
+		//this.idleTimer2.call(w.idle);
 	}
 	this.openSocket=function(w){//gg
 		this.sam('[<u>соединение</u>]',w,true,0);
