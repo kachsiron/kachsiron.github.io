@@ -4070,7 +4070,7 @@ function ACAPELA(msg){
 				a.src=requ.target.responseText.match(/var myPhpVar = '(.*?)';/,/(.*?) - (.*)/)[1];
 				a.play();
 			}catch(e){
-				reject()
+				rej()
 			}
 		}});
 	})
