@@ -3397,45 +3397,10 @@ function scrollHider(){
 function nameToUrl(n){return n.replace(rgxpChan[7],'').replace(/-/g,'').replace(rgxpChan[8],'-').toLowerCase()}
 function graphsendi(n){try{
 	if(graph){
-		zvuk[0].play();
-		//ACAPELA.s('reload');
-		//setTimeout(ACAPELA.s.bind(ACAPELA,n+' запустился'),3999);
+		ACAPELA.s(n + ' запустился')
+		//zvuk[0].play();
 	}
 }catch(e){console.log(e);alert('acapela error')}}
-/*function sendi(txt){
-	let formData=new FormData();
-	formData.append('MyLanguages','sonid26');
-	formData.append('MySelectedVoice','Alyona');
-	formData.append('MyTextForTTS',txt);
-	formData.append('t','1');
-	formData.append('SendToVaaS','');
-	let tryes=5;
-
-	let xhr = new XMLHttpRequest();
-	xhr.timeout=15000;
-	xhr.open('POST', 'http://www.acapela-group.com/demo-tts/DemoHTML5Form_V2.php?langdemo=Powered+by+<a+href="http://www.acapela-vaas.com">Acapela+Voice+as+a+Service</a>.+For+demo+and+evaluation+purpose+only,+for+commercial+use+of+generated+sound+files+please+go+to+<a+href="http://www.acapela-box.com">www.acapela-box.com</a>', true);
-	xhr.onload=function(){
-		console.log(this.responseText)
-		let au=new Audio();
-		au.src=this.responseText.match(/var myPhpVar = '(.*?)';/)[1];
-		au.play();
-	}
-	xhr.send(formData);
-	return;
-
-	GMX({timeout:15000,method:'POST',data:formData,url:'http://www.acapela-group.com/demo-tts/DemoHTML5Form_V2.php?langdemo=Powered+by+<a+href="http://www.acapela-vaas.com">Acapela+Voice+as+a+Service</a>.+For+demo+and+evaluation+purpose+only,+for+commercial+use+of+generated+sound+files+please+go+to+<a+href="http://www.acapela-box.com">www.acapela-box.com</a>',onload:requ=>{try{
-	GMX({timeout:15000,method:'GET',data:formData,url:'https://tts.global.ivonacloud.com/CreateSpeech?Voice.Name=Tatyana&Input.Type=text/plain&OutputFormat.Codec=MP3&Voice.Language=ru-RU&Input.Data=Привет, меня зовут Татьяна.&
-	OutputFormat.SampleRate=22050&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20161209T141120Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=GDNAI2EMTPXZH7ONBHZQ/20161209/global/tts/aws4_request&X-Amz-Signature=9471916092cb8f25d5e274eee475695f8622ae7434cbc086c81518f710e4512e',onload:requ=>{
-		let au=new Audio();
-		//au.type = 'type/mpeg';
-		au.src=requ.responseText.match(/var myPhpVar = '(.*?)';/)[1];
-		au.play();
-		//au.onloadedmetadata=()=>{}
-	},ontimeout:()=>{
-		if(--tryes===0)OPOV.serv('Acapela timeout',0);
-		else sendi(txt)
-	}})
-}*/
 function objSize(o){let c=0;for(i in o)c++;return c}
 var tw_list=function(r){
 	GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/kraken/streams?game='+r,onload:requ=>{
@@ -4078,30 +4043,18 @@ B(messtochat.ID); B(messtochat.MSG);
 B(divLog2);B(divLog);B(smilepadik);
 zvuk[0].appendChild(zvuk[1]);B(zvuk[0]);
 //zvuk[2].appendChild(zvuk[3]);B(zvuk[2]);
-var scp,mch;/*,ACAPELA={
+var scp,mch,ACAPELA={
 	'f':C('IFRAME'),
 	'init':function(){
-		this.f.src='http://www.acapela-group.com/';
+		this.f.src="http://www.acapela-group.com/demo-tts/DemoHTML5Form_V2.php?langdemo=Powered+by+%3Ca+href%3D%22http%3A%2F%2Fwww.acapela-vaas.com%22%3EAcapela+Voice+as+a+Service%3C%2Fa%3E.+For+demo+and+evaluation+purpose+only%2C+for+commercial+use+of+generated+sound+files+please+go+to+%3Ca+href%3D%22http%3A%2F%2Fwww.acapela-box.com%22%3Ewww.acapela-box.com%3C%2Fa%3E";
 		this.f.style.setProperty('width','0');
 		this.f.style.setProperty('height','0');
 		this.f.style.setProperty('border','0');
-		B(this.f)
+		B(this.f);
+		this.s('Check!')
 	},
 	's':function(msg){this.f.contentWindow.postMessage(msg,'http://www.acapela-group.com/')}
-	's':function(msg){
-		let formData=new FormData();
-		formData.append('MyLanguages','sonid26');
-		formData.append('MySelectedVoice','Alyona');
-		formData.append('MyTextForTTS',msg);
-		formData.append('t','1');
-		formData.append('SendToVaaS','');
-		GMX({timeout:5000,method:'POST',data:formData,url:'http://www.acapela-group.com/demo-tts/DemoHTML5Form_V2.php?langdemo=Powered+by+<a+href="http://www.acapela-vaas.com">Acapela+Voice+as+a+Service</a>.+For+demo+and+evaluation+purpose+only,+for+commercial+use+of+generated+sound+files+please+go+to+<a+href="http://www.acapela-box.com">www.acapela-box.com</a>',onload:requ=>{
-			let a=new Audio();
-			a.src=requ.target.responseText.match(/var myPhpVar = '(.*?)';/,/(.*?) - (.*)/)[1];
-			a.play()
-		}});
-	}
-};*/
+};
 document.addEventListener('DOMContentLoaded',()=>{
 	scp=new ScPlayer();
 	mch=new mChats();
@@ -4116,7 +4069,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 	cMan.getcl();
 	cMan.launch();
 	vasya.init()
-	//ACAPELA.init()
+	ACAPELA.init()
 });
 
 /*function Victor(mch, chat) {
