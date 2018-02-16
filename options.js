@@ -4044,16 +4044,17 @@ B(divLog2);B(divLog);B(smilepadik);
 zvuk[0].appendChild(zvuk[1]);B(zvuk[0]);
 //zvuk[2].appendChild(zvuk[3]);B(zvuk[2]);
 var scp,mch,ACAPELA={
-	'f':C('IFRAME'),
+	//'f':C('IFRAME'),
 	'init':function(){
-		this.f.src="http://www.acapela-group.com/demo-tts/DemoHTML5Form_V2.php?langdemo=Powered+by+%3Ca+href%3D%22http%3A%2F%2Fwww.acapela-vaas.com%22%3EAcapela+Voice+as+a+Service%3C%2Fa%3E.+For+demo+and+evaluation+purpose+only%2C+for+commercial+use+of+generated+sound+files+please+go+to+%3Ca+href%3D%22http%3A%2F%2Fwww.acapela-box.com%22%3Ewww.acapela-box.com%3C%2Fa%3E";
-		this.f.style.setProperty('width','0');
-		this.f.style.setProperty('height','0');
-		this.f.style.setProperty('border','0');
-		B(this.f);
+		this.f=window.open("http://www.acapela-group.com/demo-tts/DemoHTML5Form_V2.php?langdemo=Powered+by+%3Ca+href%3D%22http%3A%2F%2Fwww.acapela-vaas.com%22%3EAcapela+Voice+as+a+Service%3C%2Fa%3E.+For+demo+and+evaluation+purpose+only%2C+for+commercial+use+of+generated+sound+files+please+go+to+%3Ca+href%3D%22http%3A%2F%2Fwww.acapela-box.com%22%3Ewww.acapela-box.com%3C%2Fa%3E");
+		//this.f.style.setProperty('width','0');
+		//this.f.style.setProperty('height','0');
+		//this.f.style.setProperty('border','0');
+		//B(this.f);
 		this.s('Check!')
 	},
-	's':function(msg){this.f.contentWindow.postMessage(msg,'http://www.acapela-group.com/')}
+	//'s':function(msg){this.f.contentWindow.postMessage(msg,'http://www.acapela-group.com/')}
+	's':function(msg){this.f.postMessage(msg,'http://www.acapela-group.com/')}
 };
 document.addEventListener('DOMContentLoaded',()=>{
 	scp=new ScPlayer();
