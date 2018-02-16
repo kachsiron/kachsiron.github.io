@@ -3755,7 +3755,7 @@ smiles={},smilesGG={},graph=true,
 smilepadik=C('DIV'),messtochat={'MSG':C('INPUT'),'ID':C('INPUT'),'UID':null},
 grBut=C('BUTTON'),
 divLog=C('DIV'),divLog2=C('DIV'),
-zvuk=[C('audio'),C('source'),C('audio'),C('source')];
+//zvuk=[C('audio'),C('source'),C('audio'),C('source')];
 vasya.ctx=vasya.cnv.getContext('2d');
 vasya.init=function(){vasya.cnd=false,vasya.data={},vasya.startPoint=0,vasya.max=0}
 
@@ -3772,10 +3772,10 @@ with(divLog2.style){overflowX='hidden';width='125px';position='absolute';top=0;r
 divLog.innerHTML='<div></div>';
 grBut.textContent='on';
 makeCnvSize('400 200');
-zvuk[0].src=MF[0];
-zvuk[1].setAttribute('preload','preload');zvuk[1].type='audio/ogg';
+//zvuk[0].src=MF[0];
+//zvuk[1].setAttribute('preload','preload');zvuk[1].type='audio/ogg';
 vasya.ctx.font='8px Verdana';
-zvuk[0].volume=0.5;
+//zvuk[0].volume=0.5;
 
 //О Б Р А Б О Т Ч И К И
 D.body.onkeypress=function(e){if(e.keyCode===13)messtochat.MSG.focus()}
@@ -4041,21 +4041,21 @@ GodVille.sounds[4].appendChild(GodVille.sounds[5]);B(GodVille.sounds[4]);
 B(vasya.div); B(grBut);
 B(messtochat.ID); B(messtochat.MSG);
 B(divLog2);B(divLog);B(smilepadik);
-zvuk[0].appendChild(zvuk[1]);B(zvuk[0]);
+//zvuk[0].appendChild(zvuk[1]);B(zvuk[0]);
 //zvuk[2].appendChild(zvuk[3]);B(zvuk[2]);
 var scp,mch,ACAPELA={
-	//'f':C('IFRAME'),
-	//'f':null,
+	/*'f':C('IFRAME'),
+	'f':null,
 	'init':function(){
-		//this.f=window.open("http://www.acapela-group.com/demo-tts/DemoHTML5Form_V2.php?langdemo=Powered+by+%3Ca+href%3D%22http%3A%2F%2Fwww.acapela-vaas.com%22%3EAcapela+Voice+as+a+Service%3C%2Fa%3E.+For+demo+and+evaluation+purpose+only%2C+for+commercial+use+of+generated+sound+files+please+go+to+%3Ca+href%3D%22http%3A%2F%2Fwww.acapela-box.com%22%3Ewww.acapela-box.com%3C%2Fa%3E");
-		//this.f.style.setProperty('width','0');
-		//this.f.style.setProperty('height','0');
-		//this.f.style.setProperty('border','0');
-		//B(this.f);
-		//this.s('Check!')
+		this.f=window.open("http://www.acapela-group.com/demo-tts/DemoHTML5Form_V2.php?langdemo=Powered+by+%3Ca+href%3D%22http%3A%2F%2Fwww.acapela-vaas.com%22%3EAcapela+Voice+as+a+Service%3C%2Fa%3E.+For+demo+and+evaluation+purpose+only%2C+for+commercial+use+of+generated+sound+files+please+go+to+%3Ca+href%3D%22http%3A%2F%2Fwww.acapela-box.com%22%3Ewww.acapela-box.com%3C%2Fa%3E");
+		this.f.style.setProperty('width','0');
+		this.f.style.setProperty('height','0');
+		this.f.style.setProperty('border','0');
+		B(this.f);
+		this.s('Check!')
 	},
-	//'s':function(msg){this.f.contentWindow.postMessage(msg,'http://www.acapela-group.com/')}
-	//'s':function(msg){this.f.postMessage(msg,'http://www.acapela-group.com/')}
+	's':function(msg){this.f.contentWindow.postMessage(msg,'http://www.acapela-group.com/')}
+	's':function(msg){this.f.postMessage(msg,'http://www.acapela-group.com/')}*/
 	's':function(msg){
 		let formData=new FormData();
 		formData.append('MyLanguages','sonid26');
@@ -4084,7 +4084,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 	cMan.getcl();
 	cMan.launch();
 	vasya.init()
-	ACAPELA.init()
+	//ACAPELA.init()
 });
 
 /*function Victor(mch, chat) {
