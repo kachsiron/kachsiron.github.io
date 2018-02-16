@@ -3397,8 +3397,8 @@ function scrollHider(){
 function nameToUrl(n){return n.replace(rgxpChan[7],'').replace(/-/g,'').replace(rgxpChan[8],'-').toLowerCase()}
 function graphsendi(n){try{
 	if(graph){
-		ACAPELA.s(n + ' запустился')
-		//zvuk[0].play();
+		//ACAPELA.s(n + ' запустился')
+		zvuk[0].play();
 	}
 }catch(e){console.log(e);alert('acapela error')}}
 function objSize(o){let c=0;for(i in o)c++;return c}
@@ -4043,7 +4043,7 @@ B(messtochat.ID); B(messtochat.MSG);
 B(divLog2);B(divLog);B(smilepadik);
 zvuk[0].appendChild(zvuk[1]);B(zvuk[0]);
 //zvuk[2].appendChild(zvuk[3]);B(zvuk[2]);
-var scp,mch,ACAPELA={
+var scp,mch;/*,ACAPELA={
 	//'f':C('IFRAME'),
 	'f':null,
 	'init':function(){
@@ -4052,11 +4052,11 @@ var scp,mch,ACAPELA={
 		//this.f.style.setProperty('height','0');
 		//this.f.style.setProperty('border','0');
 		//B(this.f);
-		this.s('Check!')
+		//this.s('Check!')
 	},
 	//'s':function(msg){this.f.contentWindow.postMessage(msg,'http://www.acapela-group.com/')}
 	's':function(msg){this.f.postMessage(msg,'http://www.acapela-group.com/')}
-};
+};*/
 document.addEventListener('DOMContentLoaded',()=>{
 	scp=new ScPlayer();
 	mch=new mChats();
@@ -4071,7 +4071,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 	cMan.getcl();
 	cMan.launch();
 	vasya.init()
-	ACAPELA.init()
+	//ACAPELA.init()
 });
 
 /*function Victor(mch, chat) {
