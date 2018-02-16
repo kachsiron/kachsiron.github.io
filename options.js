@@ -4056,15 +4056,15 @@ var scp,mch;/*,ACAPELA={
 	's':function(msg){this.f.contentWindow.postMessage(msg,'http://www.acapela-group.com/')}
 	's':function(msg){this.f.postMessage(msg,'http://www.acapela-group.com/')}
 };*/
-async function ACAPELA(msg){
-	let formData=new FormData();
-	formData.append('MyLanguages','sonid26');
-	formData.append('MySelectedVoice','Alyona');
-	formData.append('MyTextForTTS',msg);
-	formData.append('t','1');
-	formData.append('SendToVaaS','');
-	return new Promise((resolve, reject) => {
-		GMX({timeout:5000,ontimeout:reject,onerror:reject,method:'POST',data:formData,url:'http://www.acapela-group.com/demo-tts/DemoHTML5Form_V2.php?langdemo=Powered+by+<a+href="http://www.acapela-vaas.com">Acapela+Voice+as+a+Service</a>.+For+demo+and+evaluation+purpose+only,+for+commercial+use+of+generated+sound+files+please+go+to+<a+href="http://www.acapela-box.com">www.acapela-box.com</a>',onload:requ=>{
+function ACAPELA(msg){
+	return new Promise((res, rej)=>{
+		let formData=new FormData();
+		formData.append('MyLanguages','sonid26');
+		formData.append('MySelectedVoice','Alyona');
+		formData.append('MyTextForTTS',msg);
+		formData.append('t','1');
+		formData.append('SendToVaaS','');
+		GMX({timeout:5000,ontimeout:rej,onerror:rej,method:'POST',data:formData,url:'http://www.acapela-group.com/demo-tts/DemoHTML5Form_V2.php?langdemo=Powered+by+<a+href="http://www.acapela-vaas.com">Acapela+Voice+as+a+Service</a>.+For+demo+and+evaluation+purpose+only,+for+commercial+use+of+generated+sound+files+please+go+to+<a+href="http://www.acapela-box.com">www.acapela-box.com</a>',onload:requ=>{
 			try{
 				let a=new Audio();
 				a.src=requ.target.responseText.match(/var myPhpVar = '(.*?)';/,/(.*?) - (.*)/)[1];
