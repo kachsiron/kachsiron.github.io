@@ -1473,7 +1473,7 @@ var cMan={
 //М Е Н Ю Ш К А   удалено 2 9 8
 var scMenu={
 	'scmb':[],
-	'menu':[C('DIV'),C('DIV'),C('DIV'),C('DIV')],
+	'menu':[C('DIV'),C('DIV'),C('DIV'),C('DIV'),C('DIV')],
 	'chanID':'-1',
 	'CID':0,
 	'close':function(){
@@ -1482,19 +1482,19 @@ var scMenu={
 	},
 	'init':function(){
 		//for(let x=0,y=[0,1,12,7,3,4,5,6,10,13,11];x<14;x++){
-		for(let x=0,y=[0,7,3,4,5,6,13,1,2];x<9;x++){
+		for(let x=0,y=[0,7,3,4,5,6,13,1,2,8];x<9;x++){
 			this.scmb[y[x]]=C('DIV');
 			//if(y[x]===9)scmb[y[x]].style.borderBottom='1px dotted #444';
 			this.scmb[y[x]].setAttribute('class','limenu');
 			this.menu[0].appendChild(this.scmb[y[x]])
 		}
-		this.menu[0].style.zIndex=this.menu[1].style.zIndex=this.menu[2].style.zIndex=this.menu[3].style.zIndex=4;
 		this.scmb[0].style.backgroundColor='#444';
 		this.scmb[0].style.color='white';
 		this.setb(2,'&nbsp;Get TwPlr (gg)');
 		this.setb(1,'&#9733;ListTwitch&#9733;');
 		this.setb(5,'&#10007;ListHide&#10007;');
 		this.setb(6,'&#9733;ListFavorite&#9733;');
+		this.setb(8,'&#9733;ListHide&#9733;');
 		//this.setb(13,'&nbsp;Get Description (sc2tv)');
 		//scmb[8].onclick=function(){scmb[8].innerHTML=(checkFB(gA(scMenu[0]))!==-1?'&nbsp;':'&#9672;')+'Fast Button';makeFB(gA(scMenu[0]))}
 		//scmb[9].innerHTML='&nbsp;Vote';scmb[9].onclick=function(){nFeed(gA(scMenu[0]))}
@@ -1509,12 +1509,40 @@ var scMenu={
 			t.scmb[4].onclick=()=>{cMan.addToFavo(t.chanID);t.close()};
 			t.scmb[5].onclick=e=>t.makeList(1,e);
 			t.scmb[6].onclick=e=>t.makeList(2,e);
+			t.scmb[8].onclick=e=>t.makeHideList(e);
 			//t.scmb[13].onclick=function(){nDesc(t.chanID)}
 		})(this);
-		for(let x=0;x<4;x++){
-			with(this.menu[x].style){position='absolute';fontSize='116.6%';border='3px solid #444';borderTopLeftRadius='5px';borderTopRightRadius='5px';backgroundColor='white';color='black';display='none'}
+		for(let x=0;x<5;x++){
+			with(this.menu[x].style){zIndex=4;position='absolute';fontSize='116.6%';border='3px solid #444';borderTopLeftRadius='5px';borderTopRightRadius='5px';backgroundColor='white';color='black';display='none'}
 			B(this.menu[x])
 		}
+	},
+	'makeHideList':function(e){
+		this.close();
+		let m=this.menu[4];
+		m.style.display='block';
+		m.innerHTML='';
+		let div=C('DIV'),div2,j=0,ff=JSON.parse(localStorage.hidGenre);
+		div.className='limenu';
+		div.style.backgroundColor='#444';
+		div.style.color='white';
+		m.appendChild(div);
+		div.onclick=()=>m.style.display='none';
+		for(let key in ff){
+			div2=C('DIV');
+			div2.className='limenu';
+			div2.innerHTML='&nbsp;'+key+'&nbsp;';
+			div2.onclick=()=>{
+				delete hidGenre[key];
+				localStorage.hidGenre=JSON.stringify(hidGenre);
+				this.makeHideList(e)
+			};
+			m.appendChild(div2);
+			j++
+		}
+		div.innerHTML='&nbsp;HideList'+'('+j+')&nbsp;';
+		m.style.left=e.pageX+'px';
+		m.style.top=this.gpgy(e.pageY,m.offsetHeight)
 	},
 	'makeListTwitch':function(e){
 		this.close();
