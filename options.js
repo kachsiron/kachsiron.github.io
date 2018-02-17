@@ -1482,7 +1482,7 @@ var scMenu={
 	},
 	'init':function(){
 		//for(let x=0,y=[0,1,12,7,3,4,5,6,10,13,11];x<14;x++){
-		for(let x=0,y=[0,7,3,4,5,6,13,1,2,8];x<10;x++){
+		for(let x=0,y=[0,7,3,4,5,6,13,1,8,2];x<10;x++){
 			this.scmb[y[x]]=C('DIV');
 			//if(y[x]===9)scmb[y[x]].style.borderBottom='1px dotted #444';
 			this.scmb[y[x]].setAttribute('class','limenu');
