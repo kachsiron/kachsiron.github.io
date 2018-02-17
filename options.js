@@ -4089,7 +4089,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 	getCookie();
 	cMan.getcl();
 	cMan.launch();
-	vasya.init()
+	vasya.init();
+	window.open('http://www.acapela-group.com/','');
 	//ACAPELA.init()
 });
 
