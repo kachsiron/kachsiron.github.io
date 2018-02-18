@@ -1481,10 +1481,8 @@ var scMenu={
 		this.chanID='-1'
 	},
 	'init':function(){
-		//for(let x=0,y=[0,1,12,7,3,4,5,6,10,13,11];x<14;x++){
 		for(let x=0,y=[0,7,3,4,5,6,13,1,8,2];x<10;x++){
 			this.scmb[y[x]]=C('DIV');
-			//if(y[x]===9)scmb[y[x]].style.borderBottom='1px dotted #444';
 			this.scmb[y[x]].setAttribute('class','limenu');
 			this.menu[0].appendChild(this.scmb[y[x]])
 		}
@@ -1495,13 +1493,7 @@ var scMenu={
 		this.setb(5,'&#10007;ListHide&#10007;');
 		this.setb(6,'&#9733;ListFavorite&#9733;');
 		this.setb(8,'&#9733;ListHide&#9733;');
-		//this.setb(13,'&nbsp;Get Description (sc2tv)');
-		//scmb[8].onclick=function(){scmb[8].innerHTML=(checkFB(gA(scMenu[0]))!==-1?'&nbsp;':'&#9672;')+'Fast Button';makeFB(gA(scMenu[0]))}
-		//scmb[9].innerHTML='&nbsp;Vote';scmb[9].onclick=function(){nFeed(gA(scMenu[0]))}
-		//this.setb(10,'&nbsp;Get Info');
-		//this.scmb[10].onclick=function(){nInfo(this.chanID)}.bind(this);
 		(function(t){
-			//t.scmb[1].onclick=function(){cMan.getPlrs(t.chanID)};
 			t.scmb[0].onclick=t.scmb[7].onclick=t.close.bind(t);
 			t.scmb[1].onclick=e=>t.makeListTwitch(e);
 			t.scmb[2].onclick=()=>{cMan.getTwPlayerFromGg(t.chanID);t.close()};
@@ -1510,7 +1502,6 @@ var scMenu={
 			t.scmb[5].onclick=e=>t.makeList(1,e);
 			t.scmb[6].onclick=e=>t.makeList(2,e);
 			t.scmb[8].onclick=e=>t.makeHideList(e);
-			//t.scmb[13].onclick=function(){nDesc(t.chanID)}
 		})(this);
 		for(let x=0;x<5;x++){
 			with(this.menu[x].style){zIndex=4;position='absolute';fontSize='116.6%';border='3px solid #444';borderTopLeftRadius='5px';borderTopRightRadius='5px';backgroundColor='white';color='black';display='none'}
@@ -1573,20 +1564,20 @@ var scMenu={
 	},
 	'makeList':function(i,e){
 		this.close();
-		this.menu[i].style.display='block';
-		this.menu[i].innerHTML='';
+		let m=this.menu[i];
+		m.style.display='block';
+		m.innerHTML='';
 		let div=C('DIV'),div2,j=0,ff;
 		if(i===1)ff=JSON.parse(localStorage.hid),dt=(new Date()).getTime();
 		else ff=JSON.parse(localStorage.fav);
 		div.className='limenu';
 		div.style.backgroundColor='#444';
 		div.style.color='white';
-		this.menu[i].appendChild(div);
-		div.onclick=()=>{this.menu[i].style.display='none'};
+		m.appendChild(div);
+		div.onclick=()=>m.style.display='none';
 		for(let key in ff){
 			div2=C('DIV');
 			div2.className='limenu';
-			//div2.setAttribute('alt',key);
 			div2.innerHTML='&nbsp;'+key+(i===1?' | <span'+(dt-ff[key]>1209600000?' style="color:red"':'')+'>'+(new Date(ff[key])+'</span>').toLocaleString():'')+'&nbsp;';
 			div2.onclick=function(key,i,e){
 				deleteFromList('-1',key,i);
@@ -1594,12 +1585,12 @@ var scMenu={
 				if(c!==null)cMan.setFavHid(c);
 				this.makeList(i,e)
 			}.bind(this,key,i,e);
-			this.menu[i].appendChild(div2);
+			m.appendChild(div2);
 			j++
 		}
 		div.innerHTML='&nbsp;List'+(i===1?'Hide':'Favorite')+'('+j+')&nbsp;';
-		this.menu[i].style.left=e.pageX+'px';
-		this.menu[i].style.top=this.gpgy(e.pageY,this.menu[i].offsetHeight)
+		m.style.left=e.pageX+'px';
+		m.style.top=this.gpgy(e.pageY,m.offsetHeight)
 	},
 	'gpgy':function(y,o){
 		if(y+o>window.innerHeight+window.scrollY)y-=y+o-window.innerHeight-window.scrollY;
@@ -3863,7 +3854,6 @@ messtochat.MSG.onkeypress=function(e){
 					messtochat.MSG.value=w;
 					return
 				}
-				//else if(m==='t'||m==='е')Toganash();
 				/*else if(m==='mafia'){
 					if(id!==''){
 						if(mch.windows.has(id)){
@@ -3875,7 +3865,6 @@ messtochat.MSG.onkeypress=function(e){
 				else if(m==='m'||m==='ь')makeCnv();
 				else if((m==='j'||m==='о')&&w!==void 0)makeCnvSize(w);
 				//else if(m==='l'||m==='д')cMan.linker(true);
-				//else if(m==='т'||m==='n')recentNews();
 				else if(m==='ф'||m==='a')FORMELA.filter(true,w);
 				//else if(m==='куки')getCookie();
 				else if(m==='tfav'){
@@ -3913,8 +3902,6 @@ messtochat.MSG.onkeypress=function(e){
 					return
 				}*/
 				else if(m==='save'){
-					//let s=JSON.parse(localStorage.fav);
-					//for(let t in s)delete s[t].s;
 					window.prompt('fav hid hidGenre tfav', localStorage.fav + '}{' + localStorage.hid + '}{' + localStorage.hidGenre + '}{' + localStorage.dns + '}{' + localStorage.tfav)
 				}
 				else if(m==='load'){
@@ -3950,8 +3937,8 @@ messtochat.MSG.onkeypress=function(e){
 				else if(m==='t')mch.load_twitch_smiles();
 				else if(m==='tw'&&w!==void 0)tw_list(w);//список стримов по категории
 				else if(m==='gdv'&&w!==void 0){
-					if(w === 'str') GodVille.grun();
-					else if(w === 'stp') GodVille.gstop();
+					if(w==='str') GodVille.grun();
+					else if(w==='stp') GodVille.gstop();
 				}
 				else if(m==='фав'&&w!==void 0){
 					deleteFromList('-1',w,2);
@@ -4020,7 +4007,7 @@ window.onunload=saveHid;
 
 // G O D V I L L E
 var GodVille = {
-	'sounds': [C('audio'),C('source'),C('audio'),C('source'),C('audio'),C('source')],
+	//'sounds': [C('audio'),C('source'),C('audio'),C('source'),C('audio'),C('source')],
 	'h_notice': true,
 	'g_notice': true,
 	'timer': null,
@@ -4029,7 +4016,7 @@ var GodVille = {
 GodVille.func = function() {
 	GMX({method:'GET',url:'https://godville.net/gods/api/%D0%92%D1%83%D0%BA%D1%83%D0%BF%D0%BA%D0%B0%D0%BA%D0%B5/529007a4e508',onload:e=>{try{
 		e = JSON.parse(e.target.responseText);
-		OPOV.serv(e.health + '/' + e.max_health + ', ' + e.distance + 'шт, ' + e.inventory_num + '/' + e.inventory_max_num + ', qs' + e.quest_progress + ', lv' + e.exp_progress + ', gp' + e.godpower, 20000);
+		/*OPOV.serv(e.health + '/' + e.max_health + ', ' + e.distance + 'шт, ' + e.inventory_num + '/' + e.inventory_max_num + ', qs' + e.quest_progress + ', lv' + e.exp_progress + ', gp' + e.godpower, 20000);
 		OPOV.serv(e.diary_last, 20000);
 		if(e.health <= 40) {
 			if(GodVille.h_notice) {
@@ -4047,13 +4034,14 @@ GodVille.func = function() {
 		else GodVille.g_notice = true;
 		if(GodVille.lph !== e.diary_last && /«|»/.test(e.diary_last)) {
 			GodVille.sounds[4].play();
-		}
+		}*/
+		if(GodVille.lph !== e.diary_last)ACAPELA(e.diary_last)
 		GodVille.lph = e.diary_last;
 	}catch(err){OPOV.serv('Не удалось годвильнуть',0);console.log(err)}}})
 }
 GodVille.grun = function() { GodVille.timer = setInterval(GodVille.func, 59999) }
 GodVille.gstop = function() { clearInterval(GodVille.timer) }
-GodVille.sounds[0].src=MF[1];
+/*GodVille.sounds[0].src=MF[1];
 GodVille.sounds[2].src=MF[2];
 GodVille.sounds[4].src=MF[3];
 GodVille.sounds[1].setAttribute('preload','preload');GodVille.sounds[1].type='audio/ogg';
@@ -4061,7 +4049,7 @@ GodVille.sounds[3].setAttribute('preload','preload');GodVille.sounds[3].type='au
 GodVille.sounds[5].setAttribute('preload','preload');GodVille.sounds[5].type='audio/ogg';
 GodVille.sounds[0].appendChild(GodVille.sounds[1]);B(GodVille.sounds[0]);
 GodVille.sounds[2].appendChild(GodVille.sounds[3]);B(GodVille.sounds[2]);
-GodVille.sounds[4].appendChild(GodVille.sounds[5]);B(GodVille.sounds[4]);
+GodVille.sounds[4].appendChild(GodVille.sounds[5]);B(GodVille.sounds[4]);*/
 //GodVille.grun();
 
 //Д О Б А В Л Е Н И Е   Н А   С Т Р А Н И Ц У
