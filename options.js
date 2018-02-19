@@ -55,6 +55,10 @@ function deleteFromList2(g){
 		return s
 	}
 	if(hidGenre.hasOwnProperty(g))delete hidGenre[g];else hidGenre[g]=1;
+	let k=Object.keys(hidGenre);
+	k.sort();
+	hidGenre={};
+	for(let i=0,l=k.length;i<l;i++)hidGenre[k[i]]=1;
 	localStorage.hidGenre=JSON.stringify(hidGenre);
 	return ''
 }
