@@ -49,17 +49,21 @@ function deleteFromList(alt,cn,i){
 	//for(let key in cMan.chn)cMan.chn[key].name=cMan.getc(key,cMan.chn[key].name2)
 }
 function deleteFromList2(g){
-	if(g===void 0){
+	/*if(g===void 0){
 		let s='';
 		for(let k in hidGenre)s+=k+';';
 		return s
-	}
-	if(hidGenre.hasOwnProperty(g))delete hidGenre[g];else hidGenre[g]=1;
-	let k=Object.keys(hidGenre);
-	k.sort();
-	hidGenre={};
-	for(let i=0,l=k.length;i<l;i++)hidGenre[k[i]]=1;
+	}*/
+	let i=hidGenre.indexOf(g);
+	if(i!==-1)hidGenre.splice(i,1);else hidGenre.push(g);
+	hidGenre.sort();
+	//if(hidGenre.hasOwnProperty(g))delete hidGenre[g];else hidGenre[g]=1;
+	//let k=Object.keys(hidGenre);
+	//k.sort();
+	//hidGenre={};
+	//for(let i=0,l=k.length;i<l;i++)hidGenre[k[i]]=1;
 	localStorage.hidGenre=JSON.stringify(hidGenre);
+	hidGenreTransform();
 	return ''
 }
 
@@ -848,7 +852,7 @@ var cMan={
 			c.span.name.style.color=((c.fav&&h)?'brown':c.fav?'red':h?'gray':'white');
 		}
 		else if(c.service===1){
-			let h=HID.hasOwnProperty(c.name)||hidGenre.hasOwnProperty(c.cat)
+			let h=HID.hasOwnProperty(c.name)||hidGenreFind(c.cat);//.hasOwnProperty(c.cat)
 			c.hid=h;
 			c.fav=FAV.hasOwnProperty(c.name);
 			c.span.name.style.color=((c.fav&&h)?'brown':c.fav?'red':h?'gray':'white');
@@ -1524,13 +1528,15 @@ var scMenu={
 		div.style.color='white';
 		m.appendChild(div);
 		div.onclick=()=>m.style.display='none';
-		for(let key in ff){
+		for(let key=0,kl=ff.length;key<kl;key++){
 			div2=C('DIV');
 			div2.className='limenu';
 			div2.innerHTML='&nbsp;'+key+'&nbsp;';
 			div2.onclick=()=>{
-				delete hidGenre[key];
+				//delete hidGenre[key];
+				hidGenre.splice(key,1);
 				localStorage.hidGenre=JSON.stringify(hidGenre);
+				hidGenreTransform();
 				this.makeHideList(e)
 			};
 			m.appendChild(div2);
@@ -3621,6 +3627,16 @@ function saveHid(){
 	}
 	localStorage.hid=JSON.stringify(HID);localStorage.dns=JSON.stringify(DNS);OPOV.serv('Чёрный список и DNS сохранены',3000)
 }
+function hidGenreTransform(){
+	HGR=[];
+	for(let i=0,l=hidGenre.length;i<l;i++)HGR[i]=new RegExp(hidGenre[i],'i');
+}
+function hidGenreFind(g){
+	for(let i=HGR.length;--i>=-1;){
+		if(HGR[i].test(g))return true
+	}
+	return false
+}
 
 var FORMELA={
 	't':null,'r':null,'f':null,'div':C('DIV'),
@@ -3699,8 +3715,10 @@ function getCookie(){
 }
 
 //З А Г Р У З К А   Д А Н Н Ы Х
-if(localStorage.fav===void 0){var TFAV={},FAV={},HID={'main':1},hidGenre={'DotA 2':1},DNS={};localStorage.fav=JSON.stringify(FAV);localStorage.tfav=JSON.stringify(TFAV);localStorage.hid=JSON.stringify(HID);localStorage.dns=JSON.stringify(DNS);localStorage.hidGenre=JSON.stringify(hidGenre)}
+if(localStorage.fav===void 0){var TFAV={},FAV={},HID={'main':1},hidGenre=['dota'],DNS={};localStorage.fav=JSON.stringify(FAV);localStorage.tfav=JSON.stringify(TFAV);localStorage.hid=JSON.stringify(HID);localStorage.dns=JSON.stringify(DNS);localStorage.hidGenre=JSON.stringify(hidGenre)}
 else{var TFAV=JSON.parse(localStorage.tfav),FAV=JSON.parse(localStorage.fav),HID=JSON.parse(localStorage.hid),DNS=JSON.parse(localStorage.dns),hidGenre=JSON.parse(localStorage.hidGenre)}
+var HGR=[];
+hidGenreTransform();
 
 //Г Л О Б А Л Ь Н Ы Е   П Е Р Е М Е Н Н Ы Е
 var MYNICK=['Pibamba','Asoas','pibamba'],NICKRGXP=[new RegExp(MYNICK[0]),new RegExp(MYNICK[1]),new RegExp(MYNICK[2],'i')],GGTOKEN='',GGUSERID='8262',FUNUSERID=33474,TWITCHPASS='oauth:b2vn20rwfsulbdr5d2hh0nbnkz166x',TWCLIENTID='84jehke2li8043e6gi26zbcb7ic4tt5',
@@ -3918,7 +3936,8 @@ messtochat.MSG.onkeypress=function(e){
 					localStorage.hidGenre=s[2];
 					DNS=JSON.parse(s[3]);
 					localStorage.dns=s[3];
-					localStorage.tfav=s[4]
+					localStorage.tfav=s[4];
+					hidGenreTransform()
 				}
 				else if(m==='imp'){
 					scp.importing(w.replace(/https?:\/\/.*?\//,''));//добавить твитч канал по нику
