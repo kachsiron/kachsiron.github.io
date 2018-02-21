@@ -3632,7 +3632,7 @@ function hidGenreTransform(){
 	for(let i=0,l=hidGenre.length;i<l;i++)HGR[i]=new RegExp(hidGenre[i],'i');
 }
 function hidGenreFind(g){
-	for(let i=HGR.length;--i>=-1;){
+	for(let i=HGR.length;--i>-1;){
 		if(HGR[i].test(g))return true
 	}
 	return false
