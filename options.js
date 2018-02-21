@@ -1531,7 +1531,7 @@ var scMenu={
 		for(let key=0,kl=ff.length;key<kl;key++){
 			div2=C('DIV');
 			div2.className='limenu';
-			div2.innerHTML='&nbsp;'+key+'&nbsp;';
+			div2.innerHTML='&nbsp;'+ff[key]+'&nbsp;';
 			div2.onclick=()=>{
 				//delete hidGenre[key];
 				hidGenre.splice(key,1);
