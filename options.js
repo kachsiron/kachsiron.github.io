@@ -680,6 +680,7 @@ var cMan={
 			'div':C('DIV'),
 			'hid':false,
 			'fav':false,
+			'count':0,
 			'span':{
 				'time':C('DIV'),
 				'act':C('DIV'),
@@ -725,7 +726,7 @@ var cMan={
 			else{
 				chn.service=0;
 				chn.rate=o.rating;
-				chn.count=0;
+				//chn.count=0;
 				chn.dcount=0;
 				chn.ddcount=0;
 				/*chn.span.rate.onclick=function(e){
@@ -1173,13 +1174,14 @@ var cMan={
 			for(let i=z.length,c;--i>-1;){
 				c=z[i];
 				c.span.p.textContent=c.un[0];
+				c.span.count.textContent=c.count++;
 				if(c.service===1){
 					c.span.act.style.opacity=(c.tvalue===this.rTimes?'1':'0');
 					continue;
 				}
 				//if(c.service===2){c.span.act.style.opacity=(c.isup>0?1:0);continue}
 				else if(c.service===2)continue;
-				c.span.count.textContent=c.count;
+				
 				c.span.m.textContent=c.ddcount;
 				c.span.act.style.opacity=((c.tvalue===this.rTimes&&!c.temp)?'1':'0');
 				c.span.rate.innerHTML=c.rate
@@ -1327,7 +1329,7 @@ var cMan={
 				if(FAV.hasOwnProperty(name)&&cMan.getcn(cid)!==name)adLog2(name,'→'+cMan.getcn(cid),cid);
 				let chn=this.chn[cid];
 				chn.mvalue=s.time;
-				chn.count++;
+				//chn.count++;
 				chn.dcount++;
 				this.chanMessNum++;
 				if(!this.ALLP.hasOwnProperty(name)){
@@ -1501,7 +1503,7 @@ var scMenu={
 		this.setb(1,'&#9733;ListTwitch&#9733;');
 		this.setb(5,'&#10007;ListHide&#10007;');
 		this.setb(6,'&#9733;ListFavorite&#9733;');
-		this.setb(8,'&#9733;ListHide&#9733;');
+		this.setb(8,'&#10007;ListHideGenre&#10007;');
 		(function(t){
 			t.scmb[0].onclick=t.scmb[7].onclick=t.close.bind(t);
 			t.scmb[1].onclick=e=>t.makeListTwitch(e);
@@ -1542,7 +1544,7 @@ var scMenu={
 			m.appendChild(div2);
 			j++
 		}
-		div.innerHTML='&nbsp;HideList'+'('+j+')&nbsp;';
+		div.innerHTML='&nbsp;ListHideGenre'+'('+j+')&nbsp;';
 		m.style.left=e.pageX+'px';
 		m.style.top=this.gpgy(e.pageY,m.offsetHeight)
 	},
@@ -2547,8 +2549,8 @@ function mChats(){
 			if(o.data.hasOwnProperty('private')){
 				o.data.user_name=o.data.user.nickname;
 				o.data.timestamp=Math.round((new Date()).getTime()/1000);
-				w.mafia.income({'user_name':o.data.user_name,'user_id':o.data.user.id,'text':o.data.text});
-				o.data.text='[<u>приватное сообщение</u>] ' + o.data.text;
+//w.mafia.income({'user_name':o.data.user_name,'user_id':o.data.user.id,'text':o.data.text});
+				o.data.text='[<u>приватное сообщение</u>] '+o.data.text;
 				this.amgg(o.data,w,false);
 			}
 			else this.amgg(o.data,w,false);
@@ -3877,14 +3879,14 @@ messtochat.MSG.onkeypress=function(e){
 					messtochat.MSG.value=w;
 					return
 				}
-				/*else if(m==='mafia'){
-					if(id!==''){
-						if(mch.windows.has(id)){
-							let chat=mch.windows.get(id);
-							if(chat.wsChat === 1 && !chat.hasOwnProperty('mafia'))chat.mafia = new Mafia(mch, chat);
-						}
-					}
-				}*/
+/*else if(m==='mafia'){
+	if(id!==''){
+		if(mch.windows.has(id)){
+			let chat=mch.windows.get(id);
+			if(chat.wsChat === 1 && !chat.hasOwnProperty('mafia'))chat.mafia = new Mafia(mch, chat);
+		}
+	}
+}*/
 				else if(m==='m'||m==='ь')makeCnv();
 				else if((m==='j'||m==='о')&&w!==void 0)makeCnvSize(w);
 				//else if(m==='l'||m==='д')cMan.linker(true);
