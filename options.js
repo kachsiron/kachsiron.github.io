@@ -1174,7 +1174,7 @@ var cMan={
 			for(let i=z.length,c;--i>-1;){
 				c=z[i];
 				c.span.p.textContent=c.un[0];
-				c.span.count.textContent=c.count++;
+				c.span.count.textContent=c.count;
 				if(c.service===1){
 					c.span.act.style.opacity=(c.tvalue===this.rTimes?'1':'0');
 					continue;
@@ -1272,6 +1272,7 @@ var cMan={
 					delete this.chn[i]
 				}
 				else{
+					j.count++;
 					if(j.service===0){
 						k=j.un[0]-j.un[2];
 						if(k>4&&j.un[0]>j.un[2]*1.25)OPOV.serv('Скачок на канале стримера <span style="color:red">'+j.name+'</span>. '+j.un[2]+'=>'+j.un[0],10000);
