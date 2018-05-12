@@ -1057,7 +1057,7 @@ var cMan={
 					this.addChan(this.contents.tw[h.name])
 				}
 				for(let x in this.contents.tw){
-					if(o.indexOf(x)!==-1)continue;
+					if(o.includes(x))continue;
 					this.contents.tw[x]={
 						'id':x, 'start_at':0, 'created_at':null, 'streamer':{'name':x, 'id':'t_'+x}, 'players':null,
 						'thumbnail':'', 'tw': true,'name':'', 'description':'', 'name': '', 'category':{'name':''}, 'viewers':0, 'l':true
@@ -1292,7 +1292,7 @@ var cMan={
 				if(suv!==-1)mch.am({timestamp:s.time,user_name:s.from.name,text:s.text,to:s.to,id:s.from.id},this.subscriber[suv],false)
 			}
 		}
-		if(this.subscribe.indexOf(a)!==-1)return;
+		if(this.subscribe.includes(a))return;
 		this.subscribe.push(a);
 		this.subscriber.push(b)
 	},
@@ -2944,7 +2944,8 @@ function mChats(){
 		//if(!ve&&chat.idle.timer===null)chat.idle.timer=setInterval(this.idleTimer.bind(chat.idle),1000);
 		let bs,dt,n=e.user_name,iv,dd=C('DIV'),co=C('SUB'),cos=C('SPAN'),bb=C('SPAN'),b=C('SPAN'),mimg=C('DIV'),bnick=null,cf=false;
 		bb.className='mc_nick';dd.className='mc_message';mimg.className='pokeImage';cos.className='subspan';
-		iv=e.text.replace(rgxpChatGG[0],'$1');
+		iv=this.escapeHtml(e.text);
+		iv=iv.replace(rgxpChatGG[0],'$1');
 		bnick=iv.match(rgxpChatGG[1]);
 		dt=e.timestamp*1000;
 		
@@ -3227,7 +3228,7 @@ function mChats(){
 			v.appendChild(s);
 			if(cMan.ALLP.hasOwnProperty(n)){
 				s=C('SMALL');
-				s.style.color=(cMan.ALLP[n][1].indexOf(w.id)!==-1?'red':'gray');
+				s.style.color=(cMan.ALLP[n][1].includes(w.id)?'red':'gray');
 				s.textContent=' ('+cMan.ALLP[n][2]+') ';
 				let h='';
 				for(let x=0;x<cMan.ALLP[n][2];x++)h+=cMan.getcn(cMan.ALLP[n][1][x])+'<br>';
@@ -3239,7 +3240,7 @@ function mChats(){
 		}
 	}
 	this.sm_replacer=function(str,p1){
-		if(this.twitchSmiles.hasOwnProperty(p1[0])&&this.twitchSmiles[ p1[0] ].indexOf(p1)!==-1)return '☺';
+		if(this.twitchSmiles.hasOwnProperty(p1[0])&&this.twitchSmiles[ p1[0] ].includes(p1))return '☺';
 		return p1
 	}
 	this.load_twitch_smiles=function(){
