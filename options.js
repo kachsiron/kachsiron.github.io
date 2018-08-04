@@ -970,18 +970,19 @@ var cMan={
 			}
 		}
 		let con=this.contents.fun,d30=this.T_VALUE%30;
-		//if(con!==void 0&&con!==null){
-		for(let i=0,l=con.length,cid,nm,c;i<l;i++){
-			c=con[i];
-			c.streamer=c.owner;
-			if(this.addChan(c)&&this.T_VALUE>0){
-				cid=c.streamer.id.toString();
-				nm=c.streamer.name;
-				if(FAV.hasOwnProperty(nm)){
-					adLog2(nm,'start',cid);
-					graphsendi(nm)
+		if(con!==null){
+			for(let i=0,l=con.length,cid,nm,c;i<l;i++){
+				c=con[i];
+				c.streamer=c.owner;
+				if(this.addChan(c)&&this.T_VALUE>0){
+					cid=c.streamer.id.toString();
+					nm=c.streamer.name;
+					if(FAV.hasOwnProperty(nm)){
+						adLog2(nm,'start',cid);
+						graphsendi(nm)
+					}
+					TRAY.not(nm+' запустИл стрим '+c.name,'dodgerblue',c,0)
 				}
-				TRAY.not(nm+' запустИл стрим '+c.name,'dodgerblue',c,0)
 			}
 		}
 		if(this.T_VALUE>0&&d30===0){
