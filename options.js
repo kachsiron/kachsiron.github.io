@@ -1,5 +1,3 @@
-import {hello} from 'module';
-let val = hello();
 function GMX(o){
 	let xhr=new XMLHttpRequest();
 	xhr.open(o.method, o.url, true);
