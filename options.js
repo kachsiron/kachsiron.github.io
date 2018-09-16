@@ -2056,6 +2056,8 @@ function mChats(){
 		'нуу':'manul',
 		'хмхм':'hmhm',
 		'еаа':'fyeah',
+		'крт':'great',
+		'нзн':'idk',
 		'уаа':'cry',
 		'бм':'bm',
 		'густа':'gusta',
