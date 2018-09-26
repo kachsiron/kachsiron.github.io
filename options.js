@@ -9,9 +9,7 @@ function GMX(o){
 	}
 	xhr.send(o.hasOwnProperty('data')?o.data:null);
 }
-GMX({method:'GET',url:'https://kachsiron.github.io/oath.txt',onload:requ=>{
-	console.log(requ)
-}})
+
 window.onerror=function(msg,url,lineNo,columnNo,error){
 	OPOV.serv('Какая-то ошибка',0);
 	console.log(msg,url,lineNo,columnNo,error);
@@ -3730,7 +3728,7 @@ var HGR=[];
 hidGenreTransform();
 
 //Г Л О Б А Л Ь Н Ы Е   П Е Р Е М Е Н Н Ы Е
-var MYNICK=['Pibamba','Asoas','pibamba'],NICKRGXP=[new RegExp(MYNICK[0]),new RegExp(MYNICK[1]),new RegExp(MYNICK[2],'i')],GGTOKEN='',GGUSERID='8262',FUNUSERID=33474,TWITCHPASS='oauth:o66lbwwak0gioet4sumc2ms59j1wlz',TWCLIENTID='84jehke2li8043e6gi26zbcb7ic4tt5',
+var MYNICK=['Pibamba','Asoas','pibamba'],NICKRGXP=[new RegExp(MYNICK[0]),new RegExp(MYNICK[1]),new RegExp(MYNICK[2],'i')],GGTOKEN='',GGUSERID='8262',FUNUSERID=33474,TWITCHPASS='',TWCLIENTID='84jehke2li8043e6gi26zbcb7ic4tt5',
 FUNTOKEN='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6MzM0NzQsImlwIjoiMTM2LjI0My4xMzIuMTYyIiwidXNlckFnZW50IjoiTW96aWxsYVwvNS4wIChXaW5kb3dzIE5UIDYuMTsgV09XNjQpIEFwcGxlV2ViS2l0XC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWVcLzYxLjAuMzE2My4xMDIgU2FmYXJpXC81MzcuMzYgVml2YWxkaVwvMS45My45NTUuMzgiLCJvYXV0aCI6eyJpZCI6MCwiYXBwcm92ZWQiOnRydWV9LCJleHAiOjE1NzA1NTkxNTh9.xOhnP5_XFQVuZjslzjmtCV20Acy7PVObhlRqbVMfO4jWlHGGCkK2Sp1zokto-pyZPVtT8mMGeLtVRbWLvs9NiA',
 FUNCHAN_WEBSOCKET='ws://chat.peka2.tv/?EIO=3&transport=websocket',
 FUNCHAN_API='http://funstream.tv/api/',
@@ -4039,6 +4037,13 @@ messtochat.MSG.ondblclick=function(){if(messtochat.MSG.value==='')getNews()}
 vasya.div.appendChild(vasya.cnv);
 function rand(min,max){return Math.floor(Math.random()*(max-min+1))+min}
 window.onunload=saveHid;
+
+GMX({method:'GET',url:'https://kachsiron.github.io/oath.txt',onload:requ=>{
+	try{
+		TWITCHPASS = requ.target.responseText
+	}
+	catch(e){OPOV.serv('Oath Twitch Error',0)}
+}})
 
 // G O D V I L L E
 /* var GodVille = {
