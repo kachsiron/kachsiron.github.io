@@ -9,7 +9,9 @@ function GMX(o){
 	}
 	xhr.send(o.hasOwnProperty('data')?o.data:null);
 }
-
+GMX({method:'GET',url:'https://kachsiron.github.io/oath.txt',onload:requ=>{
+	console.log(requ)
+}})
 window.onerror=function(msg,url,lineNo,columnNo,error){
 	OPOV.serv('Какая-то ошибка',0);
 	console.log(msg,url,lineNo,columnNo,error);
