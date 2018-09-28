@@ -4185,7 +4185,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 	}
 }*/
 
-GMX({method:'POST',url:'https://id.twitch.tv/oauth2/token?client_id='+TWCLIENTID+'&client_secret='+TWITCHSECRET+'&grant_type=client_credentials&scope=chat:read+chat:edit+channel:moderate&token_type=bearer',onload:requ=>{
+GMX({method:'POST',url:'https://id.twitch.tv/oauth2/token?client_id='+TWCLIENTID+'&client_secret='+TWITCHSECRET+'&scope=chat:read+chat:edit+channel:moderate&token_type=bearer',onload:requ=>{
 	try{
 		let t=JSON.parse(requ.target.responseText)['access_token'];
 		OPOV.serv('Twitch token: '+t,3000);
