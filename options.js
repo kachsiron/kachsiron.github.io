@@ -4188,7 +4188,7 @@ GMX({method:'POST',url:'https://id.twitch.tv/oauth2/token?client_id='+TWCLIENTID
 	try{
 		let t=JSON.parse(requ.target.responseText)['access_token'];
 		OPOV.serv('Twitch token: '+t,3000);
-		TWITCHPASS='auth'+t
+		TWITCHPASS='auth:'+t
 	}
 	catch(e){OPOV.serv('TWITCH TOKEN ERROR',0)}
 }})
