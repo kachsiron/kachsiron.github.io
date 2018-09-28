@@ -2606,6 +2606,7 @@ function mChats(){
 	this.amoTwitchPubsub=function(e,w){console.log(e)}
 	this.amoTwitch=function(e,w){
 		let r=e.data.match(rgxpChatTwitch[2]);
+		console.log(e.data)
 		if(r[1]==='@'){
 //this.sam('[<u>'+r[2]+'</u>]',w,true,0);
 			let nick=r[2].match(rgxpChatTwitch[3]);
