@@ -3722,17 +3722,13 @@ function getCookie(){
 }
 
 //З А Г Р У З К А   Д А Н Н Ы Х
-var TWITCHPASS='';
-if(localStorage.fuckTwitch!==void 0){
-	TWITCHPASS=localStorage.fuckTwitch
-}
 if(localStorage.fav===void 0){var TFAV={},FAV={},HID={'main':1},hidGenre=['dota'],DNS={};localStorage.fav=JSON.stringify(FAV);localStorage.tfav=JSON.stringify(TFAV);localStorage.hid=JSON.stringify(HID);localStorage.dns=JSON.stringify(DNS);localStorage.hidGenre=JSON.stringify(hidGenre)}
 else{var TFAV=JSON.parse(localStorage.tfav),FAV=JSON.parse(localStorage.fav),HID=JSON.parse(localStorage.hid),DNS=JSON.parse(localStorage.dns),hidGenre=JSON.parse(localStorage.hidGenre)}
 var HGR=[];
 hidGenreTransform();
 
 //Г Л О Б А Л Ь Н Ы Е   П Е Р Е М Е Н Н Ы Е
-var MYNICK=['Pibamba','Asoas','pibamba'],NICKRGXP=[new RegExp(MYNICK[0]),new RegExp(MYNICK[1]),new RegExp(MYNICK[2],'i')],GGTOKEN='',GGUSERID='8262',FUNUSERID=33474,TWCLIENTID='84jehke2li8043e6gi26zbcb7ic4tt5',
+var MYNICK=['Pibamba','Asoas','pibamba'],NICKRGXP=[new RegExp(MYNICK[0]),new RegExp(MYNICK[1]),new RegExp(MYNICK[2],'i')],GGTOKEN='',GGUSERID='8262',FUNUSERID=33474,TWITCHPASS='',TWCLIENTID='84jehke2li8043e6gi26zbcb7ic4tt5',
 FUNTOKEN='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6MzM0NzQsImlwIjoiMTM2LjI0My4xMzIuMTYyIiwidXNlckFnZW50IjoiTW96aWxsYVwvNS4wIChXaW5kb3dzIE5UIDYuMTsgV09XNjQpIEFwcGxlV2ViS2l0XC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWVcLzYxLjAuMzE2My4xMDIgU2FmYXJpXC81MzcuMzYgVml2YWxkaVwvMS45My45NTUuMzgiLCJvYXV0aCI6eyJpZCI6MCwiYXBwcm92ZWQiOnRydWV9LCJleHAiOjE1NzA1NTkxNTh9.xOhnP5_XFQVuZjslzjmtCV20Acy7PVObhlRqbVMfO4jWlHGGCkK2Sp1zokto-pyZPVtT8mMGeLtVRbWLvs9NiA',
 FUNCHAN_WEBSOCKET='ws://chat.peka2.tv/?EIO=3&transport=websocket',
 FUNCHAN_API='http://funstream.tv/api/',
@@ -3901,10 +3897,6 @@ messtochat.MSG.onkeypress=function(e){
 				//else if(m==='l'||m==='д')cMan.linker(true);
 				else if(m==='ф'||m==='a')FORMELA.filter(true,w);
 				//else if(m==='куки')getCookie();
-				else if(m==='fuck'&&w!==void 0){
-					localStorage.fuckTwitch=w;
-					TWITCHPASS=w
-				}
 				else if(m==='tfav'){
 					w=w.toLowerCase();
 					if(!TFAV.hasOwnProperty(w)){
@@ -4045,13 +4037,6 @@ messtochat.MSG.ondblclick=function(){if(messtochat.MSG.value==='')getNews()}
 vasya.div.appendChild(vasya.cnv);
 function rand(min,max){return Math.floor(Math.random()*(max-min+1))+min}
 window.onunload=saveHid;
-
-/* GMX({method:'GET',url:'https://kachsiron.github.io/oath.txt',onload:requ=>{
-	try{
-		TWITCHPASS = requ.target.responseText
-	}
-	catch(e){OPOV.serv('Oath Twitch Error',0)}
-}}) */
 
 // G O D V I L L E
 /* var GodVille = {
@@ -4198,3 +4183,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 		localStorage.victor=JSON.stringify(this.players)
 	}
 }*/
+
+GMX({method:'POST',url:'https://id.twitch.tv/oauth2/token?client_id='+TWCLIENTID+'&client_secret=6lgcbw7sh2bcgaih5q1fb5veyk8jur&grant_type=client_credentials&scope=user:edit',onload:requ=>{
+	try{TWITCHPASS=JSON.parse(requ.target.responseText)['access_token']}
+	catch(e){OPOV.serv('TWITCH TOKEN ERROR',0)}
+}})
