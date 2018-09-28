@@ -2374,7 +2374,6 @@ function mChats(){
 				w.interval2=setInterval(i.getTwitchChatterCount.bind({i:i,w:w}),60000);
 				i.getTwitchChatterCount.call({i:i,w:w});
 				w.sock.send('CAP REQ :twitch.tv/tags twitch.tv/commands');
-				console.log(TWITCHPASS)
 				w.sock.send('PASS '+TWITCHPASS);
 				w.sock.send('NICK '+MYNICK[2]);
 				w.sock.send('JOIN #'+w.wsChatChannelId);
@@ -4186,7 +4185,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 	}
 }*/
 
-GMX({method:'POST',url:'https://id.twitch.tv/oauth2/token?client_id='+TWCLIENTID+'&client_secret='+TWITCHSECRET+'&grant_type=client_credentials&scope=chat_login',onload:requ=>{
+GMX({method:'POST',url:'https://id.twitch.tv/oauth2/token?client_id='+TWCLIENTID+'&client_secret='+TWITCHSECRET+'&grant_type=client_credentials&scope=chat:read+chat:edit+channel:moderate&token_type=bearer',onload:requ=>{
 	try{
 		let t=JSON.parse(requ.target.responseText)['access_token'];
 		OPOV.serv('Twitch token: '+t,3000);
