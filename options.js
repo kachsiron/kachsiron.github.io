@@ -2348,6 +2348,10 @@ function mChats(){
 	}
 	this.openSocketTwitch=function(w,i){
 		//if(this.twitchSmiles===null)//https://api.twitch.tv/kraken/chat/emoticon_images?on_site=1&emotesets=0,2490,2774,2808,3902,7301,13715
+		if(TWITCHPASS===''){
+			window.open('https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=q6batx0epp608isickayubi39itsckt&redirect_uri=https://twitchapps.com/tmi/&scope=chat:read+chat:edit+channel:moderate+chat_login', 'Fuck', '')
+			TWITCHPASS=window.prompt('Введи пуроль');
+		}
 		this.sam('[<u>соединение</u>]',w,false);
 		GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/api/channels/'+w.wsChatChannelId+'/chat_properties?on_site=1',onload:requ=>{try{
 			requ=JSON.parse(requ.target.responseText).web_socket_servers[0];
@@ -2606,7 +2610,6 @@ function mChats(){
 	this.amoTwitchPubsub=function(e,w){console.log(e)}
 	this.amoTwitch=function(e,w){
 		let r=e.data.match(rgxpChatTwitch[2]);
-		console.log(e.data)
 		if(r[1]==='@'){
 //this.sam('[<u>'+r[2]+'</u>]',w,true,0);
 			let nick=r[2].match(rgxpChatTwitch[3]);
@@ -3729,7 +3732,7 @@ var HGR=[];
 hidGenreTransform();
 
 //Г Л О Б А Л Ь Н Ы Е   П Е Р Е М Е Н Н Ы Е
-var MYNICK=['Pibamba','Asoas','pibamba'],NICKRGXP=[new RegExp(MYNICK[0]),new RegExp(MYNICK[1]),new RegExp(MYNICK[2],'i')],GGTOKEN='',GGUSERID='8262',FUNUSERID=33474,TWITCHPASS='',TWCLIENTID='84jehke2li8043e6gi26zbcb7ic4tt5',TWITCHSECRET='6lgcbw7sh2bcgaih5q1fb5veyk8jur',
+var MYNICK=['Pibamba','Asoas','pibamba'],NICKRGXP=[new RegExp(MYNICK[0]),new RegExp(MYNICK[1]),new RegExp(MYNICK[2],'i')],GGTOKEN='',GGUSERID='8262',FUNUSERID=33474,TWITCHPASS='',TWCLIENTID='84jehke2li8043e6gi26zbcb7ic4tt5',//TWITCHSECRET='6lgcbw7sh2bcgaih5q1fb5veyk8jur',
 FUNTOKEN='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6MzM0NzQsImlwIjoiMTM2LjI0My4xMzIuMTYyIiwidXNlckFnZW50IjoiTW96aWxsYVwvNS4wIChXaW5kb3dzIE5UIDYuMTsgV09XNjQpIEFwcGxlV2ViS2l0XC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWVcLzYxLjAuMzE2My4xMDIgU2FmYXJpXC81MzcuMzYgVml2YWxkaVwvMS45My45NTUuMzgiLCJvYXV0aCI6eyJpZCI6MCwiYXBwcm92ZWQiOnRydWV9LCJleHAiOjE1NzA1NTkxNTh9.xOhnP5_XFQVuZjslzjmtCV20Acy7PVObhlRqbVMfO4jWlHGGCkK2Sp1zokto-pyZPVtT8mMGeLtVRbWLvs9NiA',
 FUNCHAN_WEBSOCKET='ws://chat.peka2.tv/?EIO=3&transport=websocket',
 FUNCHAN_API='http://funstream.tv/api/',
@@ -4185,11 +4188,11 @@ document.addEventListener('DOMContentLoaded',()=>{
 	}
 }*/
 
-GMX({method:'POST',url:'https://id.twitch.tv/oauth2/token?client_id='+TWCLIENTID+'&client_secret='+TWITCHSECRET+'&scope=chat:read+chat:edit+channel:moderate&token_type=bearer',onload:requ=>{
+/* GMX({method:'POST',url:'https://id.twitch.tv/oauth2/token?client_id='+TWCLIENTID+'&client_secret='+TWITCHSECRET+'&grant_type=client_credentials&scope=chat_login',onload:requ=>{
 	try{
 		let t=JSON.parse(requ.target.responseText)['access_token'];
 		OPOV.serv('Twitch token: '+t,3000);
 		TWITCHPASS='oauth:'+t
 	}
 	catch(e){OPOV.serv('TWITCH TOKEN ERROR',0)}
-}})
+}}) */
