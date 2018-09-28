@@ -2606,7 +2606,6 @@ function mChats(){
 	this.amoTwitchPubsub=function(e,w){console.log(e)}
 	this.amoTwitch=function(e,w){
 		let r=e.data.match(rgxpChatTwitch[2]);
-		console.log(e.data)
 		if(r[1]==='@'){
 //this.sam('[<u>'+r[2]+'</u>]',w,true,0);
 			let nick=r[2].match(rgxpChatTwitch[3]);
@@ -4187,8 +4186,9 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 GMX({method:'POST',url:'https://id.twitch.tv/oauth2/token?client_id='+TWCLIENTID+'&client_secret=6lgcbw7sh2bcgaih5q1fb5veyk8jur&grant_type=client_credentials&scope=user:edit',onload:requ=>{
 	try{
-		TWITCHPASS=JSON.parse(requ.target.responseText)['access_token']
-		OPOV.serv('TWITCH TOKEN: '+TWITCHPASS,0)
+		let t=JSON.parse(requ.target.responseText)['access_token'];
+		OPOV.serv('Twitch token: '+t,3000);
+		TWITCHPASS='auth'+t
 	}
 	catch(e){OPOV.serv('TWITCH TOKEN ERROR',0)}
 }})
