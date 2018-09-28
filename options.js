@@ -2374,6 +2374,7 @@ function mChats(){
 				w.interval2=setInterval(i.getTwitchChatterCount.bind({i:i,w:w}),60000);
 				i.getTwitchChatterCount.call({i:i,w:w});
 				w.sock.send('CAP REQ :twitch.tv/tags twitch.tv/commands');
+				console.log(TWITCHPASS)
 				w.sock.send('PASS '+TWITCHPASS);
 				w.sock.send('NICK '+MYNICK[2]);
 				w.sock.send('JOIN #'+w.wsChatChannelId);
@@ -3729,7 +3730,7 @@ var HGR=[];
 hidGenreTransform();
 
 //Г Л О Б А Л Ь Н Ы Е   П Е Р Е М Е Н Н Ы Е
-var MYNICK=['Pibamba','Asoas','pibamba'],NICKRGXP=[new RegExp(MYNICK[0]),new RegExp(MYNICK[1]),new RegExp(MYNICK[2],'i')],GGTOKEN='',GGUSERID='8262',FUNUSERID=33474,TWITCHPASS='',TWCLIENTID='84jehke2li8043e6gi26zbcb7ic4tt5',
+var MYNICK=['Pibamba','Asoas','pibamba'],NICKRGXP=[new RegExp(MYNICK[0]),new RegExp(MYNICK[1]),new RegExp(MYNICK[2],'i')],GGTOKEN='',GGUSERID='8262',FUNUSERID=33474,TWITCHPASS='',TWCLIENTID='84jehke2li8043e6gi26zbcb7ic4tt5',TWITCHSECRET='6lgcbw7sh2bcgaih5q1fb5veyk8jur',
 FUNTOKEN='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6MzM0NzQsImlwIjoiMTM2LjI0My4xMzIuMTYyIiwidXNlckFnZW50IjoiTW96aWxsYVwvNS4wIChXaW5kb3dzIE5UIDYuMTsgV09XNjQpIEFwcGxlV2ViS2l0XC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWVcLzYxLjAuMzE2My4xMDIgU2FmYXJpXC81MzcuMzYgVml2YWxkaVwvMS45My45NTUuMzgiLCJvYXV0aCI6eyJpZCI6MCwiYXBwcm92ZWQiOnRydWV9LCJleHAiOjE1NzA1NTkxNTh9.xOhnP5_XFQVuZjslzjmtCV20Acy7PVObhlRqbVMfO4jWlHGGCkK2Sp1zokto-pyZPVtT8mMGeLtVRbWLvs9NiA',
 FUNCHAN_WEBSOCKET='ws://chat.peka2.tv/?EIO=3&transport=websocket',
 FUNCHAN_API='http://funstream.tv/api/',
@@ -4185,7 +4186,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 	}
 }*/
 
-GMX({method:'POST',url:'https://id.twitch.tv/oauth2/token?client_id='+TWCLIENTID+'&client_secret=6lgcbw7sh2bcgaih5q1fb5veyk8jur&grant_type=client_credentials&scope=chat_login',onload:requ=>{
+GMX({method:'POST',url:'https://id.twitch.tv/oauth2/token?client_id='+TWCLIENTID+'&client_secret='+TWITCHSECRET+'&grant_type=client_credentials&scope=chat_login',onload:requ=>{
 	try{
 		let t=JSON.parse(requ.target.responseText)['access_token'];
 		OPOV.serv('Twitch token: '+t,3000);
