@@ -3063,7 +3063,7 @@ function mChats(){
 		else{// T W I T C H
 			iv=this.escapeHtml(e.text);
 			let bnick2=null,nn=n.toLowerCase();
-			iv=iv.replace(rgxpChatTwitch[8],this.sm_replacer.bind(this));
+			iv=iv.replace(rgxpChatTwitch[8],this.sm_replacer.bind(this)).replace(rgxpChatTwitch[11],'');
 			bnick=iv.match(rgxpChatTwitch[1]);
 			dt=e.timestamp.getHours().totwo()+':'+e.timestamp.getMinutes().totwo()+':'+e.timestamp.getSeconds().totwo();
 			
@@ -3799,7 +3799,8 @@ rgxpChatTwitch=[
 	/:Welcome, GLHF!/,
 	/((?=[a-z0-9]*[A-Z])[A-Za-z0-9]{3,})/g,
 	/☺/g,
-	/^.*?;subscriber=(.*?);/ //^jtv MODE #.*? -(.) (.*)$/
+	/^.*?;subscriber=(.*?);/, //^jtv MODE #.*? -(.) (.*)$/
+	/ ?☺ ?/g
 ],
 RGXP_B=/\[b\](.*?):\[\/b\]/g,RGXP_HTTP=/(([a-z]{2,5}):\/\/([^\/]+\.)*([^\/]+\.[^\/ ]+)\/?([^: ]*))/gi,
 vasya={div:C('DIV'),cnv:C('CANVAS')},
@@ -3993,8 +3994,6 @@ messtochat.MSG.onkeypress=function(e){
 						for(let i in JSON.parse(requ.target.responseText))scp.mkpGG('g_'+i,i,w)
 					}catch(e){OPOV.serv('Не удалось загрузить плеер '+w,0);console.log(e)}}})
 				}
-//else if(m==='п'&&w!==void 0){messtochat.MSG.value='идёт перевод...';perevodchik(cmd[2],'ru-en');return}
-//else if(m==='g'&&w!==void 0){messtochat.MSG.value='идёт перевод...';perevodchik(cmd[2],'en-ru');return}
 				messtochat.MSG.value=''
 			}
 			else if(id!==''){
