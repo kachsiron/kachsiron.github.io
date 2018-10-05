@@ -2350,7 +2350,7 @@ function mChats(){
 		//if(this.twitchSmiles===null)//https://api.twitch.tv/kraken/chat/emoticon_images?on_site=1&emotesets=0,2490,2774,2808,3902,7301,13715
 		if(TWITCHPASS===''){
 			window.open('https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=q6batx0epp608isickayubi39itsckt&redirect_uri=https://twitchapps.com/tmi/&scope=chat:read+chat:edit+channel:moderate+chat_login', 'Fuck', '')
-			TWITCHPASS=window.prompt('Введи пуроль');
+			setTimeout(()=>{TWITCHPASS=window.prompt('Введи пуроль')},4444)
 		}
 		this.sam('[<u>соединение</u>]',w,false);
 		GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/api/channels/'+w.wsChatChannelId+'/chat_properties?on_site=1',onload:requ=>{try{
