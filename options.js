@@ -4143,7 +4143,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 	cMan.getcl();
 	cMan.launch();
 	vasya.init();
-	window.open('http://www.acapela-group.com/','');
+	//window.open('http://www.acapela-group.com/','');
 	//ACAPELA.init()
 });
 
