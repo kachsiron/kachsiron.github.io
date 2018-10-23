@@ -962,7 +962,7 @@ var cMan={
 					adLog2(nm,'start',cid);
 					graphsendi(nm)
 				}
-				TRAY.not(nm+' запУстил стрим '+c.name,'green',c,1)
+				if(!HID.hasOwnProperty(nm))TRAY.not(nm+' запУстил стрим '+c.name,'green',c,1)
 				/*if(this.GGFAV.indexOf(c.streamer.name)!==-1){
 					OPOV.serv(c.streamer.name+' запустился',60000);
 					graphsendi(c.streamer.name)
@@ -981,7 +981,7 @@ var cMan={
 						adLog2(nm,'start',cid);
 						graphsendi(nm)
 					}
-					TRAY.not(nm+' запустИл стрим '+c.name,'dodgerblue',c,0)
+					if(!HID.hasOwnProperty(nm))TRAY.not(nm+' запустИл стрим '+c.name,'dodgerblue',c,0)
 				}
 			}
 		}
