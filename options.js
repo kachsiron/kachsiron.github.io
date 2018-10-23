@@ -336,6 +336,15 @@ var grBut2={
 			span.appendChild(x);
 		}
 		smilepadik.appendChild(span);
+		
+		span=C('IFRAME');
+		span.src='https://steamdb.info/embed/?appid=440';
+		span.setAttribute('height','398px');
+		span.setAttribute('width','100%');
+		span.setAttribute('scrolling','no');
+		span.setAttribute('frameborder','0');
+		smilepadik.appendChild(span);
+		
 		this.button.textContent='fs';
 		this.buttonMenu.textContent='m';
 		this.buttonMenu.type=this.button.type='button';
