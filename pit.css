@@ -4,7 +4,7 @@ body{background-color:black;color:#70b8ff;font-family:Verdana}
 #winv{}
 #wbut{text-align:center}
 button{width:100px;font-family:monospace;font-weight:bold}
-input[type="text"],select,option{width:150px;font-family:monospace}
+input[type="text"],input[type="number"],select,option{width:150px;font-family:monospace}
 .inv{width:750px;display:flex;flex-flow:row wrap;align-items:center;justify-content:center}
 .recept{position:relative;animation:fade 333ms 1 linear;animation-fill-mode:forwards;display:flex;flex-flow:row wrap;align-items:center;justify-content:flex-start}
 .icon{width:50px;height:50px;display:inline-block}
