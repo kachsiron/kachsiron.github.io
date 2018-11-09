@@ -16,11 +16,35 @@ var but = document.createElement('BUTTON');
 var but2 = document.createElement('BUTTON');
 var saveBut = document.createElement('BUTTON');
 var chk = document.createElement('INPUT');
+var rangerInput = document.createElement('INPUT');
 var chkLabel = document.createElement('LABEL');
 var wiki = document.createElement('A');
 var selecd = { 'cooker': document.createElement('SELECT'), 'lab': document.createElement('SELECT') }, selectd_opt = { 'cooker': ['','Biotech','Medical','Necro Tech'], 'lab': ['','Medical','Computer','Biotech','Traps','Electronics','Necro Tech','Engineering','Mechanical'] };
-var ranger = document.createElement('INPUT');
-function lenin() { ranger.value = 140; resetList(); calcu(curkedah); listSearching() }
+
+var ranger = {
+	'Biotech': 150,
+	'Necro Tech': 150,
+	'Medical': 150,
+	'Computer': 150,
+	'Traps': 150,
+	'Electronics': 150,
+	'Engineering': 150,
+	'Mechanical': 150
+}
+rangerInput.onchange=function(){
+	ranger[selecd[curkedah].value] = Number.parseInt(rangerInput.value);
+	lenin()
+}
+function lenin() {
+	if(selecd[curkedah].value !== 'none') rangerInput.value = ranger[selecd[curkedah].value];
+	else{
+		rangerInput.disabled = disabled;
+		rangerInput.value = ''
+	}
+	resetList();
+	calcu(curkedah);
+	listSearching()
+}
 for(let i in selecd) {
 	selecd[i].setAttribute('size', 1);
 	selecd[i].onchange = lenin;
@@ -31,12 +55,6 @@ for(let i in selecd) {
 		selecd[i].appendChild(o)
 	}
 }
-ranger.type = 'range';
-ranger.setAttribute('min', 0);
-ranger.setAttribute('max', 140);
-ranger.setAttribute('step', 5);
-ranger.value = 140;
-
 wiki.href = 'http://sword-of-the-stars-the-pit.wikia.com';
 wiki.id = 'copywiki';
 wiki.textContent = 'sword-of-the-stars-the-pit.wikia.com';
@@ -44,6 +62,7 @@ listSearch.placeholder = 'Filter by ingredient';
 listSearch.type = 'text';
 chk.type='checkbox';
 chk.id='chk';
+rangerInput.type='number';
 chkLabel.setAttribute('for', 'chk');
 chkLabel.textContent='Favorites';
 winv.id='winv';
@@ -56,7 +75,7 @@ function listSearchReset(type) {
 	resultData[type].forEach(e => { e.element.style.display = '' });
 }
 function listSearching() {
-	ranger.disabled = listSearch.disabled = selecd[curkedah].disabled = (resultData[curkedah].length === 0 && selecd.cooker.options.selectedIndex + selecd.lab.options.selectedIndex === 0);
+	listSearch.disabled = selecd[curkedah].disabled = (resultData[curkedah].length === 0 && selecd.cooker.options.selectedIndex + selecd.lab.options.selectedIndex === 0);
 	let value = listSearch.value;
 	if(value === '') listSearchReset(curkedah);
 	else {
@@ -112,7 +131,7 @@ function calcu(type) {
 		for(let r = 0, rl = fav[type].length; r < rl; r++) {
 			let b = 0, n = [], rt = R[type][ fav[type][r] ];
 			if(selecd[type].value !== 'none' && selecd[type].value !== rt.skill) continue;
-			if(Number.parseInt(ranger.value) < rt.value) continue;
+			if(ranger[selecd[type].value] < rt.value) continue;
 			for(let i = 1, l = rt.items.length; i < l; i++) {
 				if(myinv[type].indexOf(rt.items[i]) !== -1) {
 					b++;
@@ -127,7 +146,7 @@ function calcu(type) {
 		for(let r in R[type]) {
 			let b = 0, n = [], rt = R[type][r];
 			if(selecd[type].value !== 'none' && selecd[type].value !== rt.skill) continue;
-			if(Number.parseInt(ranger.value) < rt.value) continue;
+			if(ranger[selecd[type].value] < rt.value) continue;
 			for(let i = 1, l = rt.items.length; i < l; i++) {
 				if(myinv[type].indexOf(rt.items[i]) !== -1) {
 					b++;
@@ -248,12 +267,11 @@ but.onclick=butik.bind({'type':'cooker'})
 but2.onclick=butik.bind({'type':'lab'})
 butik.call({'type':'cooker'});
 chk.onchange=lenin;
-ranger.onchange=lenin;
 listSearching();
 list.appendChild(listSearch);
 list.appendChild(selecd.cooker);
 list.appendChild(selecd.lab);
-list.appendChild(ranger);
+list.appendChild(rangerInput);
 list.appendChild(chk);
 list.appendChild(chkLabel);
 list.appendChild(listRes);
