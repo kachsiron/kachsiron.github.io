@@ -162,7 +162,7 @@ function calcu(type) {
 	}
 	result.sort((a,b)=>{
 		if(a.d===b.d)return b.b-a.b;
-		return b.d-a.d
+		return a.d-b.d
 	});
 	for(let i = 0, l = result.length, d, rd, r, e, fb, sp; i < l; i++) {
 		d = document.createElement('DIV');
