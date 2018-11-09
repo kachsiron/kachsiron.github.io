@@ -133,8 +133,9 @@ function calcu(type) {
 	if(chk.checked) {
 		for(let r = 0, rl = fav[type].length; r < rl; r++) {
 			let b = 0, n = [], rt = R[type][ fav[type][r] ];
-			if(selecd[type].value !== 'none' && selecd[type].value !== rt.skill) continue;
-			if(ranger[selecd[type].value] < rt.value) continue;
+			if(selecd[type].value !== 'none') {
+				if(ranger[selecd[type].value] < rt.value || selecd[type].value !== rt.skill) continue;
+			}
 			for(let i = 1, l = rt.items.length; i < l; i++) {
 				if(myinv[type].indexOf(rt.items[i]) !== -1) {
 					b++;
@@ -148,8 +149,9 @@ function calcu(type) {
 	else{
 		for(let r in R[type]) {
 			let b = 0, n = [], rt = R[type][r];
-			if(selecd[type].value !== 'none' && selecd[type].value !== rt.skill) continue;
-			if(ranger[selecd[type].value] < rt.value) continue;
+			if(selecd[type].value !== 'none') {
+				if(ranger[selecd[type].value] < rt.value || selecd[type].value !== rt.skill) continue;
+			}
 			for(let i = 1, l = rt.items.length; i < l; i++) {
 				if(myinv[type].indexOf(rt.items[i]) !== -1) {
 					b++;
