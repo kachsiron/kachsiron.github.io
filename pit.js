@@ -132,7 +132,7 @@ function calcu(type) {
 		}
 	}
 	result.sort((a,b)=>{return b.b-a.b});
-	for(let i = 0, l = result.length, d, rd, r, e, fb; i < l; i++) {
+	for(let i = 0, l = result.length, d, rd, r, e, fb, sp; i < l; i++) {
 		d = document.createElement('DIV');
 		fb = document.createElement('DIV');
 		d.className = 'recept';
@@ -164,7 +164,13 @@ function calcu(type) {
 		d.appendChild(rd);
 		rd = document.createElement('DIV');
 		rd.className='desc';
-		rd.textContent=R[type][r].desc;
+		sp = document.createElement('SPAN');
+		sp.className='descskill';
+		sp.textContent='Skill: ' + R[type][r].skill + ' ' + R[type][r].value + ' ';
+		rd.appendChild(sp);
+		sp = document.createElement('SPAN');
+		sp.textContent='Effect: ' + R[type][r].desc;
+		rd.appendChild(sp);
 		d.appendChild(rd);
 		fb.title='Add to Favorites';
 		fb.onclick=function(){
