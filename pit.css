@@ -14,6 +14,7 @@ input[type="text"],select,option{width:200px;font-family:monospace}
 .item_desc{font-size:55%;text-align:center}
 .active{background-color:#783e48}
 .desc{padding:3px;width:100%;border-bottom:3px solid dodgerblue}
+.descskill{color:lime}
 #list{border-left:3px solid dodgerblue; width:600px}
 .active_button{color:red}
 .inactive_item{opacity:0.5}
