@@ -112,7 +112,7 @@ function calcu(type) {
 		for(let r = 0, rl = fav[type].length; r < rl; r++) {
 			let b = 0, n = [], rt = R[type][ fav[type][r] ];
 			if(selecd[type].value !== 'none' && selecd[type].value !== rt.skill) continue;
-			if(Integer.parseInt(ranger.value) < rt.value) continue;
+			if(Number.parseInt(ranger.value) < rt.value) continue;
 			for(let i = 1, l = rt.items.length; i < l; i++) {
 				if(myinv[type].indexOf(rt.items[i]) !== -1) {
 					b++;
@@ -127,7 +127,7 @@ function calcu(type) {
 		for(let r in R[type]) {
 			let b = 0, n = [], rt = R[type][r];
 			if(selecd[type].value !== 'none' && selecd[type].value !== rt.skill) continue;
-			if(Integer.parseInt(ranger.value) < rt.value) continue;
+			if(Number.parseInt(ranger.value) < rt.value) continue;
 			for(let i = 1, l = rt.items.length; i < l; i++) {
 				if(myinv[type].indexOf(rt.items[i]) !== -1) {
 					b++;
