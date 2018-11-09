@@ -9,796 +9,994 @@ var C = {"Aggresive Antibiotics":[0,0],"Anti-Bodies":[-50,0],"Moldy Bread":[-100
 var R = {
 	"cooker": [{
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 70. Effect: Aggresive Antibiotics x2. Cures up to Lvl 4 Disease",
+			"value": 70,
+			"desc": "Aggresive Antibiotics x2. Cures up to Lvl 4 Disease",
 			"items": ["Aggresive Antibiotics", "Anti-Bodies", "Moldy Bread"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 75. Effect: +100 food",
+			"value": 75,
+			"desc": "+100 food",
 			"items": ["Infini Food", "Ancient Herbs", "Pineal Gland", "Giant Mitochondria"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 100. Effect: +400% PSI Regeneration for 100 turns, deals 10 damage if used by human or tarka",
+			"value": 100,
+			"desc": "+400% PSI Regeneration for 100 turns, deals 10 damage if used by human or tarka",
 			"items": ["Amino Goop", "Pineal Gland", "Pineal Gland", "Exotic Proteins", "Mutagens"]
 	}, {
 			"skill": "Medical",
-			"desc": "Skill: Medical 50. Effect: Anti-Venom x3. Cures up to 3 levels of Poison.",
+			"value": 50,
+			"desc": "Anti-Venom x3. Cures up to 3 levels of Poison.",
 			"items": ["Anti-Venom", "Poison Gland", "Serum"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 65. Effect: +85 food (+35 over ingredients)",
+			"value": 65,
+			"desc": "+85 food (+35 over ingredients)",
 			"items": ["Bacon and Eggs", "Star-bacon", "Egg"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 65 (Can not be made with EZ Cooker). Effect: +135 food (+70 over ingredients), drops 1 Bone Slivers after consumption",
+			"value": 65,
+			"desc": "+135 food (+70 over ingredients), drops 1 Bone Slivers after consumption. Can not be made with EZ Cooker",
 			"items": ["Baked Avian", "Scent Gland", "Avian Carcass"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 75. Effect: Protection vs Acid (Proteans, etc.) for 6 turns. Does not fade with time. Stacks with itself.",
+			"value": 75,
+			"desc": "Protection vs Acid (Proteans, etc.) for 6 turns. Does not fade with time. Stacks with itself.",
 			"items": ["Base Paste", "Fat Strips", "Fat Strips", "Bone Slivers"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 110. Effect: for 20 turns increases Speed by 1, might by 20, melee damage dealt by 100%, all damage taken by 50%, grants 1 additional attack per moment and causes Berserk for 20 turns. After expiring Slows character for 5 turns.",
+			"value": 110,
+			"desc": "for 20 turns increases Speed by 1, might by 20, melee damage dealt by 100%, all damage taken by 50%, grants 1 additional attack per moment and causes Berserk for 20 turns. After expiring Slows character for 5 turns.",
 			"items": ["Berserker Serum", "Adrenal Sack", "Serum", "Pineal Gland", "Giant Mitochondria"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 100. Effect: +300 food (+185 over ingredients), restores 100 health and 100 psi, +50 max food capacity, increases random stat (might/finesse/brains) by 1, leaves 1 Bone Slivers and 3 Leftovers after consumption. Can inflict unconscious state for 5-10 turns.",
+			"value": 100,
+			"desc": "+300 food (+185 over ingredients), restores 100 health and 100 psi, +50 max food capacity, increases random stat (might/finesse/brains) by 1, leaves 1 Bone Slivers and 3 Leftovers after consumption. Can inflict unconscious state for 5-10 turns.",
 			"items": ["Bird of Feasting", "Avian Carcass", "Ancient Herbs", "Edible Roots", "Apples", "Morrigi Flavor Oils"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 75. Effect: +120 food (+40 over ingredients) ",
+			"value": 75,
+			"desc": "+120 food (+40 over ingredients) ",
 			"items": ["Blandwich", "Moldy Bread", "Raw Meat", "Rotten Cheese"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 120. Effect: +50 food and restores 50 Psi Points",
+			"value": 120,
+			"desc": "+50 food and restores 50 Psi Points",
 			"items": ["Brain Soup", "Pineal Gland", "Pineal Gland", "Hiver Brain Crystal", "Exotic Proteins", "Giant Mitochondria"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 105. Effect: +110 food (same as ingredients), restores 80 health and 80 psi",
+			"value": 105,
+			"desc": "+110 food (same as ingredients), restores 80 health and 80 psi",
 			"items": ["Brutella", "Hofnuts", "Hofnuts", "Melosian Chocolate"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 75. Effect: +190 food (+10 over ingredients), restores 80 health and 80 psi",
+			"value": 75,
+			"desc": "+190 food (+10 over ingredients), restores 80 health and 80 psi",
 			"items": ["Brutwich", "Brutella", "Tarka Warbread"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 75. Effect: +145 food (+20 over ingredients), +120 food to Liir (+25 above ingredients), non-edible by humans",
+			"value": 75,
+			"desc": "+145 food (+20 over ingredients), +120 food to Liir (+25 above ingredients), non-edible by humans",
 			"items": ["Bugboy", "Kirt'ch Grubs", "Kutar Oatmix"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 85. Effect: +65 food (+10 over ingredients), leaves 1 Bone after consumption",
+			"value": 85,
+			"desc": "+65 food (+10 over ingredients), leaves 1 Bone after consumption",
 			"items": ["Burnt Ribs", "Ribs"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 100. Effect: +150 food (-170 below ingredients), restores 200 health, grants 500 experience",
+			"value": 100,
+			"desc": "+150 food (-170 below ingredients), restores 200 health, grants 500 experience",
 			"items": ["Chocolate Fondue", "Chocolate Eggs", "Chocolate Eggs", "Bone Slivers", "Tarka Warbread", "Morrigi Flavor Oils"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 90. Effect: +165 food (+40 over ingredients), Restores 60 health, leaves 1 Bone Slivers after consumption",
+			"value": 90,
+			"desc": "+165 food (+40 over ingredients), Restores 60 health, leaves 1 Bone Slivers after consumption",
 			"items": ["Cluck L'orange", "Avian Carcass", "Nova Fruit", "Nova Fruit"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 20. Effect: +50 food (+20 over ingredients)",
+			"value": 20,
+			"desc": "+50 food (+20 over ingredients)",
 			"items": ["Cooked Meat", "Raw Meat"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 115. Effect: Completely cures Poison, but gives double hunger rate for 25 rounds.",
+			"value": 115,
+			"desc": "Completely cures Poison, but gives double hunger rate for 25 rounds.",
 			"items": ["Counter Poison", "Serum", "Shrooms", "M'kkosian Fungus Shards", "M'kkosian Fungus Shards"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 80. Effect: Cures 125 Radiation",
+			"value": 80,
+			"desc": "Cures 125 Radiation",
 			"items": ["Damper Patch", "Giant Mitochondria", "Scent Gland"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 75. Effect: +250 food (same as ingredients), +20 max food capacity",
+			"value": 75,
+			"desc": "+250 food (same as ingredients), +20 max food capacity",
 			"items": ["Deli Sotswich", "TLC Salad", "Tarka Warbread"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 85. Effect: +150 food (+50 over ingredients), boosts next Disease check",
+			"value": 85,
+			"desc": "+150 food (+50 over ingredients), boosts next Disease check",
 			"items": ["Dembo Jam", "Laybliss Berries", "Laybliss Berries", "Laybliss Berries", "Laybliss Berries"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 95. Effect: Humans and Liir gain 45 natural Armor and are Slowed for 100 moments",
+			"value": 95,
+			"desc": "Humans and Liir gain 45 natural Armor and are Slowed for 100 moments",
 			"items": ["Dermal Enzymes", "Scale Cells", "Mutagens", "Exotic Proteins"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 65. Effect: +75 food (same as ingredients), boosts next Disease check",
+			"value": 65,
+			"desc": "+75 food (same as ingredients), boosts next Disease check",
 			"items": ["Dried Fruit", "Laybliss Berries", "Apples", "Bh'azhnazh Fruit"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 80. Effect: Egg Nog x2. +180 Food per Egg Nog, +360 food total (+310 over ingredients)",
+			"value": 80,
+			"desc": "Egg Nog x2. +180 Food per Egg Nog, +360 food total (+310 over ingredients)",
 			"items": ["Egg Nog", "Egg", "Egg", "Exotic Proteins"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 75. Effect: +50 food, +1 Move & boosts health regeneration by 200% for 100 turns",
+			"value": 75,
+			"desc": "+50 food, +1 Move & boosts health regeneration by 200% for 100 turns",
 			"items": ["Energy Drink", "Exotic Proteins", "Giant Mitochondria", "Primordial Soup"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 130. Effect: +450 food (+210 over base ingredients, or +50 over Sots + bacon), +15 food capacity",
+			"value": 130,
+			"desc": "+450 food (+210 over base ingredients, or +50 over Sots + bacon), +15 food capacity",
 			"items": ["Epic Bacon Sotswich", "Hero Sotswich", "Star-bacon", "Star-bacon", "Star-bacon", "Star-bacon"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 115. Effect: +200 food (+50 over ingredients), restores 50 health",
+			"value": 115,
+			"desc": "+200 food (+50 over ingredients), restores 50 health",
 			"items": ["Faux Roast", "Fungal Meat", "Fungal Meat", "Fungal Meat", "Bindings", "Bindings"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 90. Effect: +190 food (+75 over ingredients), +30 maximum food capacity",
+			"value": 90,
+			"desc": "+190 food (+75 over ingredients), +30 maximum food capacity",
 			"items": ["Fauxtato Salad", "Edible Roots", "Egg", "Lipid Optimizer"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 110. Effect: +55 food (-20 below ingredients), immunity to cold for 100 turns, food consumption becomes 0 for for 100 turns.",
+			"value": 110,
+			"desc": "+55 food (-20 below ingredients), immunity to cold for 100 turns, food consumption becomes 0 for for 100 turns.",
 			"items": ["Fire and Ice Truffles", "Ice Gems", "Nova Fruit", "Melosian Chocolate"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 80. Effect: +160 food (+40 over ingredients), restores 25 health",
+			"value": 80,
+			"desc": "+160 food (+40 over ingredients), restores 25 health",
 			"items": ["Fondue", "Safe Cheese", "Safe Cheese", "Bone Slivers", "Stale Bread"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 75. Effect: Food Pellet x2. +35 food per pellet (70 food in total, +55 over ingredients)",
+			"value": 75,
+			"desc": "Food Pellet x2. +35 food per pellet (70 food in total, +55 over ingredients)",
 			"items": ["Food Pellet", "Fat Strips", "Primordial Soup"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 55. Effect: +150 food (+30 over ingredients)",
+			"value": 55,
+			"desc": "+150 food (+30 over ingredients)",
 			"items": ["Fortifying Sandwich", "Safe Cheese", "Safe Meat", "Stale Bread"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 75. Effect: +90 food (+10 over ingredients)",
+			"value": 75,
+			"desc": "+90 food (+10 over ingredients)",
 			"items": ["Grilled Cheese", "Stale Bread", "Safe Cheese"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 75. Effect: Gives you 200 food and gave me a temporary(?) +1 Fineness or +1 power each time.",
+			"value": 75,
+			"desc": "Gives you 200 food and gave me a temporary(?) +1 Fineness or +1 power each time.",
 			"items": ["Gronch Heart Elixir", "Gronch Heart", "Giant Mitochondria", "Scent Gland"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 85. Effect: regenerates 10 health per turn for 20 turns.",
+			"value": 85,
+			"desc": "regenerates 10 health per turn for 20 turns.",
 			"items": ["Healing Salve", "Ancient Herbs", "Edible Roots"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 60. Effect: +300 food (+110 over ingredients)",
+			"value": 60,
+			"desc": "+300 food (+110 over ingredients)",
 			"items": ["Hero Sotswich", "Cooked Meat", "Hiver Cheese", "Tarka Warbread"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 70. Effect: Hoolari Soup x3. +65 food, +30 maximum food capacity",
+			"value": 70,
+			"desc": "Hoolari Soup x3. +65 food, +30 maximum food capacity",
 			"items": ["Hoolari Soup", "Hoolari Gourd", "Morrigi Flavor Oils"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 70. Effect: Hum Gum x3. Cures Confusion, Berserk, Stun and Fear.",
+			"value": 70,
+			"desc": "Hum Gum x3. Cures Confusion, Berserk, Stun and Fear.",
 			"items": ["Hum Gum", "Exotic Proteins", "Sonic Nodule"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 110. Effect: +35 food (-60 below ingredients), cures ALL statuses (Poison, Disease, Fear etc)",
+			"value": 110,
+			"desc": "+35 food (-60 below ingredients), cures ALL statuses (Poison, Disease, Fear etc)",
 			"items": ["Icedream Bar", "Ice Gems", "Ice Gems", "Laybliss Berries", "Bone Slivers"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 80. Effect: +200 food (+95 over ingredients), +1 might to Tarka male",
+			"value": 80,
+			"desc": "+200 food (+95 over ingredients), +1 might to Tarka male",
 			"items": ["Imperial Special", "Ko'Grappa Stonecrab", "Ku'Sulto Lobstercake", "Bh'azhnazh Fruit"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 90. Effect: +175 food (+35 food over base ingredients or +65 over Ribs and StarBeQue Sauce), 20% chance to increase Power by 1, leaves 1 Bone after consumption",
+			"value": 90,
+			"desc": "+175 food (+35 food over base ingredients or +65 over Ribs and StarBeQue Sauce), 20% chance to increase Power by 1, leaves 1 Bone after consumption",
 			"items": ["Maybe Back Ribs", "Starbeque Sauce", "Scent Gland", "Ribs", "Ribs"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 110. Effect: +1 food, food Consumption becomes 0 for 150 turns",
+			"value": 110,
+			"desc": "+1 food, food Consumption becomes 0 for 150 turns",
 			"items": ["Mitochondrial Stimulator", "Serum", "Giant Mitochondria", "Chemo Slugs", "Omni Gland"]
 	}, {
 			"skill": "Necro Tech",
-			"desc": "Skill: Necro Tech 85. Effect: ",
+			"value": 85,
+			"desc": "",
 			"items": ["Neural Webbing", "Raw Meat", "Acid Sack"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 105. Effect: Nutbutter x3. +100 food per Nutbutter, +300 food total (+200 over ingredients), restores 100 health and 10 psi",
+			"value": 105,
+			"desc": "Nutbutter x3. +100 food per Nutbutter, +300 food total (+200 over ingredients), restores 100 health and 10 psi",
 			"items": ["Nutbutter", "Hofnuts", "Hofnuts", "Morrigi Flavor Oils"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 65. Effect: +105 food (+15 over ingredients)",
+			"value": 65,
+			"desc": "+105 food (+15 over ingredients)",
 			"items": ["Omelette", "Safe Cheese", "Egg", "Egg"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 75. Effect: Grenade, causes Confusion and Berserk on Organics",
+			"value": 75,
+			"desc": "Grenade, causes Confusion and Berserk on Organics",
 			"items": ["Pheromone Bait", "Disease Extract", "Scent Gland"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 105. Effect: +300 food (+145 over ingredients), +1 to random stat (might/finesse/power/brain), can cause Lvl 6 Poison",
+			"value": 105,
+			"desc": "+300 food (+145 over ingredients), +1 to random stat (might/finesse/power/brain), can cause Lvl 6 Poison",
 			"items": ["Pit Stew", "Ancient Herbs", "Edible Roots", "Tainted Meat", "Tainted Meat", "Fat Strips"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 105. Effect: +40 food (-130 below ingredients), increases speed by 1 and gives 300% health regeneration for 50 turns.",
+			"value": 105,
+			"desc": "+40 food (-130 below ingredients), increases speed by 1 and gives 300% health regeneration for 50 turns.",
 			"items": ["Powabar", "Nutbutter", "Zytokot Fungibar", "Melosian Chocolate"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 115. Effect: +55 food and 10% chance to gain +1 Might",
+			"value": 115,
+			"desc": "+55 food and 10% chance to gain +1 Might",
 			"items": ["Protein Shake", "Egg", "Primordial Soup", "Raw Meat", "Exotic Proteins"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 40. Effect: +60 food (+30 over ingredients)",
+			"value": 40,
+			"desc": "+60 food (+30 over ingredients)",
 			"items": ["Pungent Meat", "Raw Meat", "Scent Gland"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 55. Effect: +115 food (+25 over ingredients)",
+			"value": 55,
+			"desc": "+115 food (+25 over ingredients)",
 			"items": ["Rib Sandwich", "Bread", "Burnt Ribs"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 90. Effect: +220 food (+130 over ingredients)",
+			"value": 90,
+			"desc": "+220 food (+130 over ingredients)",
 			"items": ["Roast Beast", "Bindings", "Bindings", "Raw Meat", "Raw Meat", "Raw Meat"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 55. Effect: +75 food (+20 over ingredients)",
+			"value": 55,
+			"desc": "+75 food (+20 over ingredients)",
 			"items": ["Sammich", "Bread", "Raw Meat"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 65. Effect: Sammich x5. +55 food per sammich, +275 food total (+110 over ingredients)",
+			"value": 65,
+			"desc": "Sammich x5. +55 food per sammich, +275 food total (+110 over ingredients)",
 			"items": ["Sammich", "Bread", "Baked Avian"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 75. Effect: +200 food, (+70 over ingredients), cures 150 Radiation and 3 levels of Poison.",
+			"value": 75,
+			"desc": "+200 food, (+70 over ingredients), cures 150 Radiation and 3 levels of Poison.",
 			"items": ["Seafood Platter", "Ku'Sulto Lobstercake", "Soylent Vines", "Wuuna Sea Cucumber"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 85. Effect: +180 (-110 below ingredients), restores 20 health and 20 psi",
+			"value": 85,
+			"desc": "+180 (-110 below ingredients), restores 20 health and 20 psi",
 			"items": ["Sks", "Nutbutter", "Dembo Jam", "Stale Bread"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 0 (recipe can't fail). Effect: +160 food (+40 over ingredients)",
+			"value": 0,
+			"desc": "+160 food (+40 over ingredients). Recipe can't fail.",
 			"items": ["Sotswich", "Cooked Meat", "Tarka Warbread"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 90. Effect: +125 food (+15 over ingredients), cures up to 5 levels of Poison, Disease and Radiation",
+			"value": 90,
+			"desc": "+125 food (+15 over ingredients), cures up to 5 levels of Poison, Disease and Radiation.",
 			"items": ["Spider Pie", "Ko'Grappa Stonecrab", "Egg", "Kirt'ch Grubs"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 85. Effect: +50 food (-20 below ingredients), cures ALL statuses (Poison, Disease, Fear etc), gives +1 move for 40 turns (stacks with Energy Drinks)",
+			"value": 85,
+			"desc": "+50 food (-20 below ingredients), cures ALL statuses (Poison, Disease, Fear etc), gives +1 move for 40 turns (stacks with Energy Drinks)",
 			"items": ["Star Coffee", "Energy Drink", "Medicinal Nuts"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 95. Effect: +280 food (+20 over ingredients), restores 150 health",
+			"value": 95,
+			"desc": "+280 food (+20 over ingredients), restores 150 health",
 			"items": ["Star Fondue", "Chozanti Brie", "Safe Cheese", "Tarka Warbread", "Bone Slivers", "Morrigi Flavor Oils"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 95. Effect: Ingredient",
+			"value": 95,
+			"desc": "Ingredient",
 			"items": ["Starbeque Sauce", "Nova Fruit", "Morrigi Flavor Oils", "Ancient Herbs", "Primordial Soup"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 80. Effect: +150 food (+90 over ingredients)",
+			"value": 80,
+			"desc": "+150 food (+90 over ingredients)",
 			"items": ["Steak N Shrooms", "Raw Meat", "Shrooms", "Shrooms"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 90. Effect: +1 Might if you pass Medical check of 60. 50% chance to drain 1 Brains if you fail check",
+			"value": 90,
+			"desc": "+1 Might if you pass Medical check of 60. 50% chance to drain 1 Brains if you fail check",
 			"items": ["Steroidal Enchancers", "Exotic Proteins", "Mutagens", "Scent Gland", "Vitamins"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 120. Effect: grants +50 might, +30 natural armour, -30 to all non-combat skills and +200 maximum HP for 100 turns. Inflicts lvl 2 Poison when effect ends.",
+			"value": 120,
+			"desc": "grants +50 might, +30 natural armour, -30 to all non-combat skills and +200 maximum HP for 100 turns. Inflicts lvl 2 Poison when effect ends.",
 			"items": ["Steroidal Venom", "Adrenal Sack", "Serum", "Poison Gland", "Scale Cells", "Chemo Slugs"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 75. Effect: +150 food (+20 over ingredients), cures Confusion and Stun",
+			"value": 75,
+			"desc": "+150 food (+20 over ingredients), cures Confusion and Stun",
 			"items": ["Stinkwich", "Moldy Bread", "Pungent Meat", "Chozanti Brie"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 80. Effect: +100 food (+30 over ingredients)",
+			"value": 80,
+			"desc": "+100 food (+30 over ingredients)",
 			"items": ["Stuffed Mushrooms", "Stale Bread", "Shrooms", "Shrooms"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 95. Effect: +200 food (+10 food over ingredients), +40 food capacity, leaves 1 Bone Slivers after consumption",
+			"value": 95,
+			"desc": "+200 food (+10 food over ingredients), +40 food capacity, leaves 1 Bone Slivers after consumption",
 			"items": ["TLC Salad", "Baked Avian", "Egg", "Lipid Optimizer"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 90. Effect: +125 food (-10 over ingredients), restores a 10 Psi, cures up to 1 lvl of Poison and Disease",
+			"value": 90,
+			"desc": "+125 food (-10 over ingredients), restores a 10 Psi, cures up to 1 lvl of Poison and Disease",
 			"items": ["Trail Mix", "Dried Fruit", "Melosian Chocolate", "Hofnuts"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 95. Effect: +200 food (+50 over ingredients)",
+			"value": 95,
+			"desc": "+200 food (+50 over ingredients)",
 			"items": ["Turkey Lasagna", "Leftovers", "Leftovers", "Hiver Cheese"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 95. Effect: +230 food (+60 over ingredients)",
+			"value": 95,
+			"desc": "+230 food (+60 over ingredients)",
 			"items": ["Unspeakable Hoagie", "Tarka Warbread", "Fungal Meat", "Chozanti Brie"]
 	}],
 	"lab": [{
 			"skill": "Necro Tech",
-			"desc": "Skill: Necro Tech 90. Effect: ",
+			"value": 90,
+			"desc": "",
 			"items": ["Lure", "Etthi Crystal", "Raw Meat", "Scent Gland", "Sonic Nodule"]
 	}, {
 			"skill": "Engineering",
-			"desc": "Skill: Engineering 100. Does 15x2 damage to doors and mechs",
+			"value": 100,
+			"desc": "Does 15x2 damage to doors and mechs",
 			"items": ["Seismic Gloves", "Vibranite", "Composite Cloth", "AM Cells", "Sonic Nodule", "Quantum Capacitors"]
 	}, {
 			"skill": "Electronics",
-			"desc": "Skill: Electronics 110. Effect: Armor. 95 armor, 60 durability. Cannot be repaired. Makes Shedding Carapace wearable by Humans, Tarka and Zuul.",
+			"value": 110,
+			"desc": "Armor. 95 armor, 60 durability. Cannot be repaired. Makes Shedding Carapace wearable by Humans, Tarka and Zuul.",
 			"items": ["Ablative Plate", "Shedding Carapace", "Bindings", "Bindings", "Electronic Parts"]
 	}, {
 			"skill": "Traps",
-			"desc": "Skill: Traps 65. Effect: Sets a Mine Trap on the floor. A good alternative if your Melee (Grenade) skill is much lower than your Traps skill.",
+			"value": 65,
+			"desc": "Sets a Mine Trap on the floor. A good alternative if your Melee (Grenade) skill is much lower than your Traps skill.",
 			"items": ["Mine Trap", "Cyber Connectors", "Grenade", "Sparker"]
 	}, {
 			"skill": "Engineering",
-			"desc": "Skill: Engineering 100. Effect: Armor. 40 armor, 40 durability, 75% dmg reduction from energy and laser weapons",
+			"value": 100,
+			"desc": "Armor. 40 armor, 40 durability, 75% dmg reduction from energy and laser weapons",
 			"items": ["Absorber Weave", "String Sinks", "Nano-Wire", "Superconductors", "Scaleskin", "Scaleskin"]
 	}, {
 			"skill": "Engineering",
-			"desc": "Skill: Engineering 100. Effect: Armor. Makes Absorption Scale wearable by Humans, Tarka, Hiver and Zuul. 30 armor, 30 durability, 50% dmg reduction from energy and laser weapons. Unlike Absorption Scale doesn't recharge energy weapons",
+			"value": 100,
+			"desc": "Armor. Makes Absorption Scale wearable by Humans, Tarka, Hiver and Zuul. 30 armor, 30 durability, 50% dmg reduction from energy and laser weapons. Unlike Absorption Scale doesn't recharge energy weapons",
 			"items": ["Absorption Plate", "Absorption Scale", "Graphene Plates", "Nano-Wire", "Chitin"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 110. Effect: Melee Weapon, replaces Fists. 8 damage, 100 penetration. Cannot be used as a weapon by Liir.",
+			"value": 110,
+			"desc": "Melee Weapon, replaces Fists. 8 damage, 100 penetration. Cannot be used as a weapon by Liir.",
 			"items": ["Adamantium Claws", "Adamantium Resin", "Living Steel Remnant", "Cyber Connectors", "Nano-Wire"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 115. Effect: Blade Weapon. 9-15 AoE damage, 150 penetration, 200 durability.",
+			"value": 115,
+			"desc": "Blade Weapon. 9-15 AoE damage, 150 penetration, 200 durability.",
 			"items": ["Adamantium Sword", "Adamantium Resin", "Lightning Blade", "Unstable Isotopes", "Bindings"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 125. Effect: If you pass Medical check of 115, Every time you kill an Organic monster you get 3 PSI Points (stack whit itself). Damage + Stunned and lose all past adrenal implant effects (PSI bonus per kill) if you fail check.",
+			"value": 125,
+			"desc": "If you pass Medical check of 115, Every time you kill an Organic monster you get 3 PSI Points (stack whit itself). Damage + Stunned and lose all past adrenal implant effects (PSI bonus per kill) if you fail check.",
 			"items": ["Adrenal Implant", "Mutagens", "Anti-Bodies", "Neural Transmitters", "Cyber Connectors"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 90. Effect: Rifle Weapon, breaks quickly but good for spending excess ammo. 6-10 damage, 50 penetration, 20 durability.",
+			"value": 90,
+			"desc": "Rifle Weapon, breaks quickly but good for spending excess ammo. 6-10 damage, 50 penetration, 20 durability.",
 			"items": ["Aykay Rifle", "Rifle Parts", "Structural Rods", "Servos", "Welding Goo", "Bindings"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 75. Effect: Repairs ballistic firearms. Effectiveness: 70%, 5 charges.",
+			"value": 75,
+			"desc": "Repairs ballistic firearms. Effectiveness: 70%, 5 charges.",
 			"items": ["Ballistic Repair Kit", "Rifle Parts", "Electronic Parts", "Servos"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 125. Effect: Pistol weapon, consumes 5 points from your food gauge instead of ammo. 10-13 damage, 80 penetration, 30 durability.",
+			"value": 125,
+			"desc": "Pistol weapon, consumes 5 points from your food gauge instead of ammo. 10-13 damage, 80 penetration, 30 durability.",
 			"items": ["Bio-Blaster", "Energy Tap", "Biocontroller", "Omni Gland", "Photonic Amplifier", "Scaleskin"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 110. Effect: Rifle Weapon. 3-6 damage (0 vs mecha), 40 penetration, 30 durability. Inflicts lvl 9 Poison. Uses Poison Darts as ammo.",
+			"value": 110,
+			"desc": "Rifle Weapon. 3-6 damage (0 vs mecha), 40 penetration, 30 durability. Inflicts lvl 9 Poison. Uses Poison Darts as ammo.",
 			"items": ["Blowdart Rifle", "Bone", "Bindings", "Compression Chamber", "Myomer Bundles", "Energy Cell"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 80. Effect: Rifle Weapon, shotgun type. Breaks quickly but good for spending excess ammo. 30-35 damage, 20 penetration, 15 durability.",
+			"value": 80,
+			"desc": "Rifle Weapon, shotgun type. Breaks quickly but good for spending excess ammo. 30-35 damage, 20 penetration, 15 durability.",
 			"items": ["Blunderbuss", "Rifle Parts", "Compression Chamber", "Welding Goo", "Sparker", "Duct Tape"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 85. Effect: Knife Weapon. 3-5 damage, 15 penetration, 10 health.",
+			"value": 85,
+			"desc": "Knife Weapon. 3-5 damage, 15 penetration, 10 health.",
 			"items": ["Bone Dagger", "Bone", "Bindings", "Razorteeth"]
 	}, {
 			"skill": "Electronics",
-			"desc": "Skill: Electronics 70. Effect: Bypass Circuit x2. +20% to next Electronics skill check. Multiple crafts are great to level Electronics.",
+			"value": 70,
+			"desc": "Bypass Circuit x2. +20% to next Electronics skill check. Multiple crafts are great to level Electronics.",
 			"items": ["Bypass Circuit", "Cybernetic Brain", "Electronic Parts"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 80. Effect: Caltrops x3. Grenade. Slows Organic movement by 1 in the area for 3 turns. 3 range, 2 damage, 5 penetration.",
+			"value": 80,
+			"desc": "Caltrops x3. Grenade. Slows Organic movement by 1 in the area for 3 turns. 3 range, 2 damage, 5 penetration.",
 			"items": ["Caltrops", "Casing Fragments", "Bone Slivers", "Bone Slivers", "Bindings", "Bindings"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 110. Effect: Armor. 80 armor, 180 durability.",
+			"value": 110,
+			"desc": "Armor. 80 armor, 180 durability.",
 			"items": ["Chitin Plate Armor", "Composite Cloth", "Chitin", "Chitin", "Chitin", "Bindings"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 110. Effect: ",
+			"value": 110,
+			"desc": "",
 			"items": ["Cleaver Assault Rifle", "Assault Rifle", "Quantum Splitter", "Welding Goo"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 105. Effect: consumes 1 ammo per 2 shots.",
+			"value": 105,
+			"desc": "consumes 1 ammo per 2 shots.",
 			"items": ["Cleaver Auto Pistol", "Auto Pistol", "Quantum Splitter", "Welding Goo"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 115. Effect: ",
+			"value": 115,
+			"desc": "",
 			"items": ["Cleaver Auto Rifle", "Auto Rifle", "Quantum Splitter", "Welding Goo"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 110. Effect: ",
+			"value": 110,
+			"desc": "",
 			"items": ["Cleaver Auto-Shotgun", "Auto-Shotgun", "Quantum Splitter", "Welding Goo"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 115. Effect: -5 Penetration, -1 Bio-Mod slot, +5 Clip Size, consumes 2 ammo per 3 shot volley.",
+			"value": 115,
+			"desc": "-5 Penetration, -1 Bio-Mod slot, +5 Clip Size, consumes 2 ammo per 3 shot volley.",
 			"items": ["Cleaver Machine Pistol", "Machine Pistol", "Quantum Splitter", "Welding Goo"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 110. Effect: -10 Penetration, -1 Bio-Mod slot, consumes 1 ammo per 2 shots.",
+			"value": 110,
+			"desc": "-10 Penetration, -1 Bio-Mod slot, consumes 1 ammo per 2 shots.",
 			"items": ["Cleaver Mag Pistol", "Mag Pistol", "Quantum Splitter", "Welding Goo"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 110. Effect: -10 Penetration, -1 Bio-Mod slot, consumes 2 ammo per 3 shot volley.",
+			"value": 110,
+			"desc": "-10 Penetration, -1 Bio-Mod slot, consumes 2 ammo per 3 shot volley.",
 			"items": ["Cleaver Mag Rifle", "Mag Rifle", "Quantum Splitter", "Welding Goo"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 105. Effect: -2 Damage, -10 Penetration, -1 Bio-Mod slot, consumes 5 ammo per 3 shot volley.",
+			"value": 105,
+			"desc": "-2 Damage, -10 Penetration, -1 Bio-Mod slot, consumes 5 ammo per 3 shot volley.",
 			"items": ["Cleaver Scattergun", "Scattergun", "Quantum Splitter", "Welding Goo"]
 	}, {
 			"skill": "Electronics",
-			"desc": "Skill: Electronics 65. Effect: Grenade which makes Mecha go Berserk.",
+			"value": 65,
+			"desc": "Grenade which makes Mecha go Berserk.",
 			"items": ["Cyber Scrambler", "Cybernetic Brain", "Electronic Parts", "Energy Cell"]
 	}, {
 			"skill": "Computer",
-			"desc": "Skill: Computer 65. Effect: Identifies a single random Bio mods. One use.",
+			"value": 65,
+			"desc": "Identifies a single random Bio mods. One use.",
 			"items": ["Diagnostic Chip", "Cybernetic Brain", "Logic Circuits"]
 	}, {
 			"skill": "Engineering",
-			"desc": "Skill: Engineering 105. Effect: ",
+			"value": 105,
+			"desc": "",
 			"items": ["Disruptor Plate", "Crusader Armor", "Composite Cloth", "Reflex Micro-furnace", "Duct Tape", "Duct Tape"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 60. Effect: Use next to doors to cause large damage to them.",
+			"value": 60,
+			"desc": "Use next to doors to cause large damage to them.",
 			"items": ["Door Spike", "Punch Claw", "Giant Mitochondria", "Shotgun Shells", "Shotgun Shells"]
 	}, {
 			"skill": "Engineering",
-			"desc": "Skill: Engineering 110. Effect: Emergency Teleporter x2. Teleports to a random, possibly unexplored area on the current Floor.",
+			"value": 110,
+			"desc": "Emergency Teleporter x2. Teleports to a random, possibly unexplored area on the current Floor.",
 			"items": ["Emergency Teleporter", "String Sinks", "Superconductors", "Tachyon Capacitors", "Quantum Capacitors", "Energy Cell"]
 	}, {
 			"skill": "Engineering",
-			"desc": "Skill: Engineering 105. Effect: -2 Damage, -5 Penetration, -1 Bio Mod Slot, Increased Ammo Capacity",
+			"value": 105,
+			"desc": "-2 Damage, -5 Penetration, -1 Bio Mod Slot, Increased Ammo Capacity",
 			"items": ["Enduro Laser Carbine", "Laser Carbine", "Quantum Capacitors", "Nano-Wire"]
 	}, {
 			"skill": "Engineering",
-			"desc": "Skill: Engineering 110. Effect: +5 Ammo Capacity, -10 Penetration, -1 Bio Mod Slot",
+			"value": 110,
+			"desc": "+5 Ammo Capacity, -10 Penetration, -1 Bio Mod Slot",
 			"items": ["Enduro Laser Pistol", "Laser Pistol", "Quantum Capacitors", "Nano-Wire"]
 	}, {
 			"skill": "Engineering",
-			"desc": "Skill: Engineering 105. Effect: -1 Bio Mod slot, -2 Damage, -10 Penetration, +15 Ammo Capacity",
+			"value": 105,
+			"desc": "-1 Bio Mod slot, -2 Damage, -10 Penetration, +15 Ammo Capacity",
 			"items": ["Enduro Laser Rifle", "Laser Rifle", "Quantum Capacitors", "Nano-Wire"]
 	}, {
 			"skill": "Engineering",
-			"desc": "Skill: Engineering 115. Effect: -1 Bio Mod slot, -2 Damage, -10 Penetration, +5 Ammo Capacity",
+			"value": 115,
+			"desc": "-1 Bio Mod slot, -2 Damage, -10 Penetration, +5 Ammo Capacity",
 			"items": ["Enduro Laser Sword", "Laser Sword", "Quantum Capacitors", "Nano-Wire"]
 	}, {
 			"skill": "Electronics",
-			"desc": "Skill: Electronics 65. Effect: Reloads most Rifle and Assault energy Weapons.",
+			"value": 65,
+			"desc": "Reloads most Rifle and Assault energy Weapons.",
 			"items": ["Energy Backpack", "Bindings", "Energy Cell", "Energy Cell", "Energy Cell", "Energy Cell"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 75. Effect: Repairs non-melee energy Weapons.",
+			"value": 75,
+			"desc": "Repairs non-melee energy Weapons.",
 			"items": ["Energy System Tuner", "Gun Parts", "Electronic Parts", "Optics", "Superconductors"]
 	}, {
 			"skill": "Necro Tech",
-			"desc": "Skill: Necro Tech 85. Effect: ",
+			"value": 85,
+			"desc": "",
 			"items": ["Etthi Vessel", "Etthi Crystal", "Etthi Crystal", "Neural Webbing", "Sonic Nodule"]
 	}, {
 			"skill": "Electronics",
-			"desc": "Skill: Electronics 105. Effect: Lets you register as a lab specimen to security elements for 10 turns or until the player attacks.",
+			"value": 105,
+			"desc": "Lets you register as a lab specimen to security elements for 10 turns or until the player attacks.",
 			"items": ["Faux Tag", "Electronic Parts", "Electronic Parts", "Specimen Tag", "System Transponder"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 80. Effect: ",
+			"value": 80,
+			"desc": "",
 			"items": ["Fear Lantern", "Hoolari Gourd", "Scent Gland", "Sparker", "Razorteeth"]
 	}, {
 			"skill": "Engineering",
-			"desc": "Skill: Engineering 100. Effect: Grenade which sets creatures on Fire.",
+			"value": 100,
+			"desc": "Grenade which sets creatures on Fire.",
 			"items": ["Firebomb", "Fuel Cell", "Fuel Cell", "Sparker", "Bindings"]
 	}, {
 			"skill": "Engineering",
-			"desc": "Skill: Engineering 100. Effect: Converting Rifle Rounds x100 into Flechette Rounds x90",
+			"value": 100,
+			"desc": "Converting Rifle Rounds x100 into Flechette Rounds x90",
 			"items": ["Flechette Rounds", "Superconductors", "Rifle Rounds"]
 	}, {
 			"skill": "Engineering",
-			"desc": "Skill: Engineering 120. Effect: Belt",
+			"value": 120,
+			"desc": "Belt",
 			"items": ["Force Field Belt", "Utility Belt", "String Sinks", "Superconductors", "Reflex Micro-Furnace", "Duct Tape"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 60. Effect: Goop Rounds x5. Reloads 3-P Restraint Gun",
+			"value": 60,
+			"desc": "Goop Rounds x5. Reloads 3-P Restraint Gun",
 			"items": ["Goop Rounds", "Pistol Rounds", "Pistol Rounds", "Exotic Proteins", "Giant Mitochondria"]
 	}, {
 			"skill": "Electronics",
-			"desc": "Skill: Electronics 100. Effect: Can walk over detected floor Traps and will not trigger undetected ones.",
+			"value": 100,
+			"desc": "Can walk over detected floor Traps and will not trigger undetected ones.",
 			"items": ["Grav Boots", "Combat Boots", "Superconductors", "Element X", "Energy Cell", "Bindings"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 85. Effect: Standard grenade. Can be converted into a Mine Trap.",
+			"value": 85,
+			"desc": "Standard grenade. Can be converted into a Mine Trap.",
 			"items": ["Grenade", "Casing Fragments", "Shotgun Shells", "Shotgun Shells", "Shotgun Shells", "Sparker"]
 	}, {
 			"skill": "Electronics",
-			"desc": "Skill: Electronics 90. Effect: Pistol weapon with Stun AoE.",
+			"value": 90,
+			"desc": "Pistol weapon with Stun AoE.",
 			"items": ["Hand Stunner", "Gun Parts", "Energy Cell", "Electronic Parts", "Sonic Nodule"]
 	}, {
 			"skill": "Electronics",
-			"desc": "Skill: Electronics 115. Effect: Absorbs one Von Neumann Probe attack or Disintegration Bay backlash.",
+			"value": 115,
+			"desc": "Absorbs one Von Neumann Probe attack or Disintegration Bay backlash.",
 			"items": ["Harmonic Resonator", "Adaptive Crystals", "String Sinks", "Superconductors"]
 	}, {
 			"skill": "Engineering",
-			"desc": "Skill: Engineering 110. Effect: ",
+			"value": 110,
+			"desc": "",
 			"items": ["Harpy Drone", "Photonic Amplifier", "Combat Processors", "Casing Fragments", "Reflex Micro-Furnace", "Element X"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 110. Effect: Heavy Weapon which requires specialised Armor to use.",
+			"value": 110,
+			"desc": "Heavy Weapon which requires specialised Armor to use.",
 			"items": ["Heavy Cannon", "Adamantium Resin", "Cannon Parts", "Reflex Micro-Furnace", "Servos", "Superconductors"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 90. Effect: Used to craft Silenced Auto Rifle and Silenced Machine Pistol.",
+			"value": 90,
+			"desc": "Used to craft Silenced Auto Rifle and Silenced Machine Pistol.",
 			"items": ["Heavy Silencer", "Rifle Parts", "Vibranite", "Scaleskin", "Scaleskin", "Duct Tape"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 70. Effect: Assault Weapon. Uses crafted ammo.",
+			"value": 70,
+			"desc": "Assault Weapon. Uses crafted ammo.",
 			"items": ["Heavy Slug-thrower", "Mag Rifle", "Reflex Micro-Furnace", "Nano-Wire", "Superconductors"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 85. Effect: Heavy Slugs x15. Reloads Heavy Slug Thrower.",
+			"value": 85,
+			"desc": "Heavy Slugs x15. Reloads Heavy Slug Thrower.",
 			"items": ["Heavy Slugs", "Element X", "Molecular Neutronium", "Shell Casings"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 110. Effect: ",
+			"value": 110,
+			"desc": "",
 			"items": ["Heavymag Assault Rifle", "Assault Rifle", "Casing Fragments", "Duct Tape"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 105. Effect: +10 Clip Size, -5 Accuracy",
+			"value": 105,
+			"desc": "+10 Clip Size, -5 Accuracy",
 			"items": ["Heavymag Auto Pistol", "Auto Pistol", "Casing Fragments", "Duct Tape"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 105. Effect: +8 Clip Size, -5 Accuracy, -1 Bio Mod Slot, +5 Durability",
+			"value": 105,
+			"desc": "+8 Clip Size, -5 Accuracy, -1 Bio Mod Slot, +5 Durability",
 			"items": ["Heavymag Auto Rifle", "Auto Rifle", "Casing Fragments", "Duct Tape"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 100. Effect: Increases clip to 30",
+			"value": 100,
+			"desc": "Increases clip to 30",
 			"items": ["Heavymag Auto-Shotgun", "Auto-Shotgun", "Casing Fragments", "Duct Tape"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 110. Effect:",
+			"value": 110,
+			"desc": "Effect:",
 			"items": ["Heavymag Gauss Pistol", "Mag Pistol", "Casing Fragments", "Duct Tape"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 105. Effect: +5 durability, +5 accuracy, expanded magazine",
+			"value": 105,
+			"desc": "+5 durability, +5 accuracy, expanded magazine",
 			"items": ["Heavymag Gauss Rifle", "Mag Rifle", "Casing Fragments", "Duct Tape"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 105. Effect: ",
+			"value": 105,
+			"desc": "",
 			"items": ["Heavymag Machine Pistol", "Machine Pistol", "Casing Fragments", "Duct Tape"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 105. Effect: ",
+			"value": 105,
+			"desc": "",
 			"items": ["Heavymag Scattergun", "Scattergun", "Casing Fragments", "Duct Tape"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 115. Effect: Converting Rifle Rounds x100 into High Calibre Rounds x60",
+			"value": 115,
+			"desc": "Converting Rifle Rounds x100 into High Calibre Rounds x60",
 			"items": ["High Calibre Rounds", "Shell Casings", "Rifle Rounds", "Welding Goo"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 100. Effect: High Explosive Rounds x60",
+			"value": 100,
+			"desc": "High Explosive Rounds x60",
 			"items": ["High Explosive Rounds", "Shell Casings", "Grenade", "Grenade", "Welding Goo"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 60. Effect: Use next to doors to inflict medium damage to them.",
+			"value": 60,
+			"desc": "Use next to doors to inflict medium damage to them.",
 			"items": ["Hinge Spike", "Acid Sack", "Heavy Claw", "Shotgun Shells"]
 	}, {
 			"skill": "Engineering",
-			"desc": "Skill: Engineering 110. Effect: Armor. 50 armor, 60 durability. Reduces Blunt and Balistic damage. Wearable by Humans, Hiver, Tarka and Zuul.",
+			"value": 110,
+			"desc": "Armor. 50 armor, 60 durability. Reduces Blunt and Balistic damage. Wearable by Humans, Hiver, Tarka and Zuul.",
 			"items": ["Impact Armor", "Adamantium Resin", "Scaleskin", "Scaleskin", "Bindings"]
 	}, {
 			"skill": "Engineering",
-			"desc": "Skill: Engineering 140. Effect: Armour. Crafted using Engineering check.",
+			"value": 140,
+			"desc": "Armour. Crafted using Engineering check.",
 			"items": ["Improvised Exo Armor", "Neural Netting", "Neural Transmitters", "Structural Rods", "Reflex Micro-Furnace", "Myomer Bundles"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 50. Effect: Improvised Lockpick x3. +15% on next lockpicking checks. Single use. ",
+			"value": 50,
+			"desc": "Improvised Lockpick x3. +15% on next lockpicking checks. Single use. ",
 			"items": ["Improvised Lockpick", "Bindings", "Bone Slivers", "Razorteeth"]
 	}, {
 			"skill": "Medical",
-			"desc": "Skill: Medical 75. Effect: Similar to the standard Terran Med-Kit, restores health depending on your Medical skill.",
+			"value": 75,
+			"desc": "Similar to the standard Terran Med-Kit, restores health depending on your Medical skill.",
 			"items": ["Improvised Med-Kit", "Antibiotics", "Bindings", "Bone Slivers", "Serum"]
 	}, {
 			"skill": "Engineering",
-			"desc": "Skill: Engineering 95. Effect: ",
+			"value": 95,
+			"desc": "",
 			"items": ["Kinetic Plate", "Kinetic Scale", "Vibranite", "Nano-Wire", "Chitin"]
 	}, {
 			"skill": "Electronics",
-			"desc": "Skill: Electronics 90. Effect: Rifle Weapon, also an ingredients for other advanced recipes. ",
+			"value": 90,
+			"desc": "Rifle Weapon, also an ingredients for other advanced recipes. ",
 			"items": ["Laser Rifle", "Photonic Amplifier", "Rifle Parts", "Quantum Capacitors", "Superconductors", "Bindings"]
 	}, {
 			"skill": "Electronics",
-			"desc": "Skill: Electronics 100. Effect: +12 inventory. Only 1 Lifter pack can be equipped, but it does not take any equipment slot.",
+			"value": 100,
+			"desc": "+12 inventory. Only 1 Lifter pack can be equipped, but it does not take any equipment slot.",
 			"items": ["Lifter Pack", "Composite Cloth", "Element X", "Energy Cell", "Nano-Wire"]
 	}, {
 			"skill": "Engineering",
-			"desc": "Skill: Engineering (failed w/ 25ish one time). Effect: Blade Weapon. Chance to Stun. Crafted using Engineering check. Can be found in all versions but only crafted starting with the Mindgames Expansion.",
+			"value": 100,
+			"desc": "Blade Weapon. Chance to Stun. Crafted using Engineering check. Can be found in all versions but only crafted starting with the Mindgames Expansion.",
 			"items": ["Lightning Blade", "Sar", "String Sinks", "Living Steel Remnant", "AM Cells", "Welding Goo"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 110. Effect: Heavy Weapon with acid cone attack. Using Acid Sacks as ammo (1 Acid Sack giving 4 charges)",
+			"value": 110,
+			"desc": "Heavy Weapon with acid cone attack. Using Acid Sacks as ammo (1 Acid Sack giving 4 charges)",
 			"items": ["Liquidator", "Rifle Parts", "Compression Chamber", "Servos", "Welding Goo"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 110. Effect: A darter that fires 2 darts that inflict the spore status in its targets (Using only 1 dart ammo per use, when shooting twice). Very useful against unarmored and low-armored targets due to spore status.",
+			"value": 110,
+			"desc": "A darter that fires 2 darts that inflict the spore status in its targets (Using only 1 dart ammo per use, when shooting twice). Very useful against unarmored and low-armored targets due to spore status.",
 			"items": ["M'kkose Darter", "Rifle Parts", "Compression Chamber", "M'kkosian Fungus Shards", "Duct Tape", "Primordial Soup"]
 	}, {
 			"skill": "Engineering",
-			"desc": "Skill: Engineering 110. Effect: +30 Durability, -2 Bio Mod Slots, +5 Damage, +60 Penetration. Using same shotgun ammo, but usable only with Brawler PBA or similar armours allowing usage of heavy weapons. Also has a knockback chance. Doesn't work in Gold Edition",
+			"value": 110,
+			"desc": "+30 Durability, -2 Bio Mod Slots, +5 Damage, +60 Penetration. Using same shotgun ammo, but usable only with Brawler PBA or similar armours allowing usage of heavy weapons. Also has a knockback chance. Doesn't work in Gold Edition",
 			"items": ["Neutronium Stormer", "Auto-Shotgun", "Molecular Neutronium", "Rifle Parts", "Servos", "Element X"]
 	}, {
 			"skill": "Engineering",
-			"desc": "Skill: Engineering 95. Effect: ",
+			"value": 95,
+			"desc": "",
 			"items": ["Overload Rifle", "Laser Rifle", "Superconductors", "Unstable Isotopes", "Bindings"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 95. Effect: Converting Shotgun Shells x30 into Pistol Rounds x45",
+			"value": 95,
+			"desc": "Converting Shotgun Shells x30 into Pistol Rounds x45",
 			"items": ["Pistol Rounds", "Shell Casings", "Shotgun Shells", "Duct Tape"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 110. Effect: Converting Rifle Rounds x100 into Pistol Rounds x110",
+			"value": 110,
+			"desc": "Converting Rifle Rounds x100 into Pistol Rounds x110",
 			"items": ["Pistol Rounds", "Heavy Claw", "Rifle Rounds", "Bindings"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 110. Effect: Poison Darts x5",
+			"value": 110,
+			"desc": "Poison Darts x5",
 			"items": ["Poison Darts", "Chemo Slugs", "Injector Fangs", "Poison Gland", "Poison Gland"]
 	}, {
 			"skill": "Engineering",
-			"desc": "Skill: Engineering 95. Effect: Multi-target. Pistol Weapon. Crafted using Engineering check.",
+			"value": 95,
+			"desc": "Multi-target. Pistol Weapon. Crafted using Engineering check.",
 			"items": ["Pulsar Pistol", "Adaptive Crystals", "Gun Parts", "String Sinks", "Quantum Capacitors", "Reflex Micro-Furnace"]
 	}, {
 			"skill": "Electronics",
-			"desc": "Skill: Electronics 85. Effect: Detects Floor Traps within 2 tiles for a short time. 5 charges.",
+			"value": 85,
+			"desc": "Detects Floor Traps within 2 tiles for a short time. 5 charges.",
 			"items": ["Pulse Resonator", "Softscreen", "Cybernetic Brain", "Sonic Nodule"]
 	}, {
 			"skill": "Electronics",
-			"desc": "Skill: Electronics 115. Effect: Multi-target Rifle Weapon.",
+			"value": 115,
+			"desc": "Multi-target Rifle Weapon.",
 			"items": ["Pulse Rifle", "Laser Rifle", "Photonic Amplifier", "Superconductors", "Bindings"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 85. Effect: Purifies basic food (see below). Used to craft Star Bacon.",
+			"value": 85,
+			"desc": "Purifies basic food (see below). Used to craft Star Bacon.",
 			"items": ["Purifier", "Compression Chamber", "Fuel Cell", "Sparker"]
 	}, {
 			"skill": "Electronics",
-			"desc": "Skill: Electronics 105. Effect: Helmet. Permanently (360 degree) see through everything (except invisibility) in your maximum sight range (12 tiles).",
+			"value": 105,
+			"desc": "Helmet. Permanently (360 degree) see through everything (except invisibility) in your maximum sight range (12 tiles).",
 			"items": ["Quantum Scan Helmet", "Casing Fragments", "Optics", "Quantum Capacitors", "Electronic Parts"]
 	}, {
 			"skill": "Engineering",
-			"desc": "Skill: Engineering 115. Effect: Quantum Splitters x3",
+			"value": 115,
+			"desc": "Quantum Splitters x3",
 			"items": ["Quantum Splitter", "Razorteeth", "Molecular Neutronium", "Nano-Wire"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 55. Effect: Armor which offers poor protection but has high durability. Better than nothing.",
+			"value": 55,
+			"desc": "Armor which offers poor protection but has high durability. Better than nothing.",
 			"items": ["R G Special", "Duct Tape", "Duct Tape", "Duct Tape", "Bone Slivers", "Bone Slivers"]
 	}, {
 			"skill": "Electronics",
-			"desc": "Skill: Electronics 100. Effect: Single target Rifle Weapon which causes Berserk.Tip: Good source for Energy Backpacks. Save up ingredients. (Cyborg Hiver Queen can provide you with more rifle parts than you know what to do with if you let it spawn Hiver Workers). Craft when electronics is sufficiently high. Unload weapon and you have your Energy Backpack.",
+			"value": 100,
+			"desc": "Single target Rifle Weapon which causes Berserk.Tip: Good source for Energy Backpacks. Save up ingredients. (Cyborg Hiver Queen can provide you with more rifle parts than you know what to do with if you let it spawn Hiver Workers). Craft when electronics is sufficiently high. Unload weapon and you have your Energy Backpack.",
 			"items": ["Rage Beam", "Rifle Parts", "Hiver Brain Crystal", "Sonic Nodule", "Bindings"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 80. Effect: Melee Weapon. Grants 5-10 armor when equipped and replaces Fists.",
+			"value": 80,
+			"desc": "Melee Weapon. Grants 5-10 armor when equipped and replaces Fists.",
 			"items": ["Razor Fists", "Composite Cloth", "Razorteeth", "Bindings"]
 	}, {
 			"skill": "Medical",
-			"desc": "Skill: Medical (Failed at 60). Effect: Healing over time about 10 HP per turn (last 10 turns). Can't be created in gold edition.",
+			"value": 105,
+			"desc": "Healing over time about 10 HP per turn (last 10 turns). Can't be created in gold edition.",
 			"items": ["Regen Patch", "Adrenal Sack", "Med Patch", "Giant Mitochondria"]
 	}, {
 			"skill": "Biotech",
-			"desc": "Skill: Biotech 115. Effect: makes the armor wearable for Human, Tarka and Hiver only, light armor, +2 healing ",
+			"value": 115,
+			"desc": "makes the armor wearable for Human, Tarka and Hiver only, light armor, +2 healing ",
 			"items": ["Regen Plate", "Nurturing Embrace", "Biocontroller", "Scaleskin", "Omni Gland"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 80. Effect: expand magazine +4, doesn't work in gold edition ",
+			"value": 80,
+			"desc": "expand magazine +4, doesn't work in gold edition ",
 			"items": ["Rifle", "Rifle", "Casing Fragments", "Duct Tape"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 100. Effect: Converting Shotgun Shells x30 into Rifle Rounds x25",
+			"value": 100,
+			"desc": "Converting Shotgun Shells x30 into Rifle Rounds x25",
 			"items": ["Rifle Rounds", "Shell Casings", "Shotgun Shells", "Welding Goo"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 115. Effect: Converting High Calibre Rounds x60 into Rifle Rounds x70",
+			"value": 115,
+			"desc": "Converting High Calibre Rounds x60 into Rifle Rounds x70",
 			"items": ["Rifle Rounds", "Heavy Claw", "High Calibre Rounds", "Bindings"]
 	}, {
 			"skill": "Electronics",
-			"desc": "Skill: Electronics 75. Effect: Bonus to next Decryption tasks, which includes Tesseract wells and Creation stations. ",
+			"value": 75,
+			"desc": "Bonus to next Decryption tasks, which includes Tesseract wells and Creation stations. ",
 			"items": ["Rosetta Brain", "Softscreen", "Hiver Brain Crystal", "Logic Circuits", "Energy Cell"]
 	}, {
 			"skill": "Engineering",
-			"desc": "Skill: Engineering 110. Effect: Belt. Increases carrying slots by 24 when equipped",
+			"value": 110,
+			"desc": "Belt. Increases carrying slots by 24 when equipped",
 			"items": ["Pocket Tesseract", "Superconductors", "Quantum Capacitors", "Element X", "Energy Cell", "Bindings"]
 	}, {
 			"skill": "Engineering",
-			"desc": "Skill: Engineering 110. Effect: ",
+			"value": 110,
+			"desc": "",
 			"items": ["Seismic Boots", "Combat Boots", "Vibranite", "Sonic Nodule", "Reflex Micro-Furnace", "Superconductors"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 65. Effect: Repairs Hammers, Knives, Blades, and Crowbars. But not Spears. Has 5 uses, poor efficiency. ",
+			"value": 65,
+			"desc": "Repairs Hammers, Knives, Blades, and Crowbars. But not Spears. Has 5 uses, poor efficiency. ",
 			"items": ["Sharpening Kit", "Heavy Claw", "Heavy Claw", "Razorteeth", "Razorteeth", "Bindings"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 90. Effect: Shell Casings x3 ",
+			"value": 90,
+			"desc": "Shell Casings x3 ",
 			"items": ["Shell Casings", "Living Steel Remnant", "Heavy Claw"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 90. Effect: Converting Rifle Rounds x100 into Shotgun Shells x70",
+			"value": 90,
+			"desc": "Converting Rifle Rounds x100 into Shotgun Shells x70",
 			"items": ["Shotgun Shells", "Shell Casings", "Rifle Rounds", "Bindings"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 90. Effect: Converting Pistol Rounds x120 into Shotgun Shells x60",
+			"value": 90,
+			"desc": "Converting Pistol Rounds x120 into Shotgun Shells x60",
 			"items": ["Shotgun Shells", "Shell Casings", "Shell Casings", "Pistol Rounds", "Bindings"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 70. Effect: ",
+			"value": 70,
+			"desc": "",
 			"items": ["Silenced Auto Rifle", "Heavy Silencer", "Welding Goo", "Welding Goo", "Structural Rods"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 70. Effect: Good for using up excess pistol ammo. 3 shot volley using 5 ammo per volley. Magazine size: 25. ",
+			"value": 70,
+			"desc": "Good for using up excess pistol ammo. 3 shot volley using 5 ammo per volley. Magazine size: 25. ",
 			"items": ["Silenced Machine Pistol", "Heavy Silencer", "Welding Goo"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 70. Effect: ",
+			"value": 70,
+			"desc": "",
 			"items": ["Silenced Pistol", "Silencer", "Welding Goo"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 90. Effect: ",
+			"value": 90,
+			"desc": "",
 			"items": ["Silencer", "Gun Parts", "Bindings", "Bindings", "Bone"]
 	}, {
 			"skill": "Necro Tech",
-			"desc": "Skill: Necro Tech 95. Effect: ",
+			"value": 95,
+			"desc": "",
 			"items": ["Siren", "Etthi Vessel", "Pineal Gland", "Scent Gland", "Sonic Nodule"]
 	}, {
 			"skill": "Computer",
-			"desc": "Skill: Computer 115. Effect: -10 durability, +20 accuracy, +5 penetration",
+			"value": 115,
+			"desc": "-10 durability, +20 accuracy, +5 penetration",
 			"items": ["Smart Assault Rifle", "Assault Rifle", "Combat Processors", "Nano-Wire", "Myomer Bundles"]
 	}, {
 			"skill": "Computer",
-			"desc": "Skill: Computer 105. Effect: -7 durability, +20 accuracy",
+			"value": 105,
+			"desc": "-7 durability, +20 accuracy",
 			"items": ["Smart Auto Pistol", "Auto Pistol", "Combat Processors", "Nano-Wire", "Myomer Bundles"]
 	}, {
 			"skill": "Computer",
-			"desc": "Skill: Computer 115. Effect: -10 durability, +20 accuracy, +5 penetration",
+			"value": 115,
+			"desc": "-10 durability, +20 accuracy, +5 penetration",
 			"items": ["Smart Auto Rifle", "Auto Rifle", "Combat Processors", "Nano-Wire", "Myomer Bundles"]
 	}, {
 			"skill": "Computer",
-			"desc": "Skill: Computer 115. Effect: -7 durability, +20 accuracy, +5 penetration",
+			"value": 115,
+			"desc": "-7 durability, +20 accuracy, +5 penetration",
 			"items": ["Smart Laser Carbine", "Laser Carbine", "Combat Processors", "Nano-Wire", "Myomer Bundles"]
 	}, {
 			"skill": "Computer",
-			"desc": "Skill: Computer 115. Effect: -5 durability, +20 accuracy, +5 penetration",
+			"value": 115,
+			"desc": "-5 durability, +20 accuracy, +5 penetration",
 			"items": ["Smart Laser Pistol", "Laser Pistol", "Combat Processors", "Nano-Wire", "Myomer Bundles"]
 	}, {
 			"skill": "Computer",
-			"desc": "Skill: Computer 115. Effect: +20 Accuracy, +5 Penetration, -1 Bio Mod Slot, -8 Durability ",
+			"value": 115,
+			"desc": "+20 Accuracy, +5 Penetration, -1 Bio Mod Slot, -8 Durability ",
 			"items": ["Smart Laser Rifle", "Laser Rifle", "Combat Processors", "Nano-Wire", "Myomer Bundles"]
 	}, {
 			"skill": "Computer",
-			"desc": "Skill: Computer 115. Effect: ",
+			"value": 115,
+			"desc": "",
 			"items": ["Smart Machine Pistol", "Machine Pistol", "Combat Processors", "Nano-Wire", "Myomer Bundles"]
 	}, {
 			"skill": "Computer",
-			"desc": "Skill: Computer 115. Effect: -6 durability, +20 accuracy, +5 penetration",
+			"value": 115,
+			"desc": "-6 durability, +20 accuracy, +5 penetration",
 			"items": ["Smart Mag Pistol", "Mag Pistol", "Combat Processors", "Nano-Wire", "Myomer Bundles"]
 	}, {
 			"skill": "Computer",
-			"desc": "Skill: Computer 115. Effect: ",
+			"value": 115,
+			"desc": "",
 			"items": ["Smart Mag Rifle", "Mag Rifle", "Combat Processors", "Nano-Wire", "Myomer Bundles"]
 	}, {
 			"skill": "Computer",
-			"desc": "Skill: Computer 115. Effect: ",
+			"value": 115,
+			"desc": "",
 			"items": ["Smart Rifle", "Rifle", "Combat Processors", "Nano-Wire", "Myomer Bundles"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 70. Effect: Rifle Weapon, allows a regular Rifle to tackle higher armor creatures.",
+			"value": 70,
+			"desc": "Rifle Weapon, allows a regular Rifle to tackle higher armor creatures.",
 			"items": ["Sniper Rifle", "Rifle", "Bindings", "Optics"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 95. Effect: Knife. Chance to inflict Spores",
+			"value": 95,
+			"desc": "Knife. Chance to inflict Spores",
 			"items": ["Spore Dagger", "Bone", "M'kkosian Fungus Shards", "Bindings", "Bindings"]
 	}, {
 			"skill": "Engineering",
-			"desc": "Skill: Engineering 100. Effect: +15 bonus to ranged combat skills, 360 degree vision. 4 charges (rechargeable). 20 Turns per charge. Equip Location: Drone",
+			"value": 100,
+			"desc": "+15 bonus to ranged combat skills, 360 degree vision. 4 charges (rechargeable). 20 Turns per charge. Equip Location: Drone",
 			"items": ["Squawker Drone", "Optics", "Neural Transmitters", "Casing Fragments", "Hiver Brain Crystal", "Element X"]
 	}, {
 			"skill": "Electronics",
-			"desc": "Skill: Electronics 105. Effect: Dart",
+			"value": 105,
+			"desc": "Dart",
 			"items": ["Targeting Dart", "Electronic Parts", "Specimen Tag", "Darts"]
 	}, {
 			"skill": "Electronics",
-			"desc": "Skill: Electronics 95. Effect: Helmet. +15 bonus to pistol, rifle, assault weapon and heavy weapon skills.",
+			"value": 95,
+			"desc": "Helmet. +15 bonus to pistol, rifle, assault weapon and heavy weapon skills.",
 			"items": ["Targeting Helm", "Casing Fragments", "Optics", "Logic Circuits", "Bindings"]
 	}, {
 			"skill": "Engineering",
-			"desc": "Skill: Engineering 90. Effect: Creates a Mk1 Light Turret in your inventory (Bulky--size: about 2x3). Crafted using Engineering check.",
+			"value": 90,
+			"desc": "Creates a Mk1 Light Turret in your inventory (Bulky--size: about 2x3). Crafted using Engineering check.",
 			"items": ["Turret", "Auto Pistol", "Combat Processors", "Casing Fragments", "Welding Goo", "Optics"]
 	}, {
 			"skill": "Electronics",
-			"desc": "Skill: Electronics 110. Effect: Subverts the nearest turret to fight for you. ",
+			"value": 110,
+			"desc": "Subverts the nearest turret to fight for you. ",
 			"items": ["Turret Override", "Electronic Parts", "Energy Cell", "System Transponder"]
 	}, {
 			"skill": "Necro Tech",
-			"desc": "Skill: Necro Tech 80. Effect: ",
+			"value": 80,
+			"desc": "",
 			"items": ["Undead Abomination", "Etthi Vessel", "Raw Meat", "Ribs", "Hiver Brain Crystal", "Punch Claw"]
 	}, {
 			"skill": "Necro Tech",
-			"desc": "Skill: Necro Tech 90. Effect: ",
+			"value": 90,
+			"desc": "",
 			"items": ["Undead Humanoid", "Etthi Vessel", "Raw Meat", "Raw Meat", "Bone", "Heavy Claw"]
 	}, {
 			"skill": "Necro Tech",
-			"desc": "Skill: Necro Tech 95. Effect: ",
+			"value": 95,
+			"desc": "",
 			"items": ["Undead Vermin", "Etthi Crystal", "Bone Slivers", "Bindings", "Tainted Meat"]
 	}, {
 			"skill": "Mechanical",
-			"desc": "Skill: Mechanical 75. Effect: Blade Weapon. Causes Lvl.5 Poison. -10 penetration, using Poison Glands as ammo.",
+			"value": 75,
+			"desc": "Blade Weapon. Causes Lvl.5 Poison. -10 penetration, using Poison Glands as ammo.",
 			"items": ["Venom Sword", "Sword", "Poison Gland", "Poison Gland", "Poison Gland", "Duct Tape"]
 	}, {
 			"skill": "Electronics",
-			"desc": "Skill: Electronics 115. Effect: Rifle Weapon. Causes 75 Radiation. +5 Accuracy, +4 Damage, +30 Penetration, -10 Clip Size. Can penetrate almost everything and has a great damage parameters - best weapon to destroy heavily armoured targets with high HP.",
+			"value": 115,
+			"desc": "Rifle Weapon. Causes 75 Radiation. +5 Accuracy, +4 Damage, +30 Penetration, -10 Clip Size. Can penetrate almost everything and has a great damage parameters - best weapon to destroy heavily armoured targets with high HP.",
 			"items": ["X-Rifle", "Laser Rifle", "Photonic Amplifier", "X-ray Transducer", "Bindings"]
 	}]
 };
