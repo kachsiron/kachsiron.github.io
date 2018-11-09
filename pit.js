@@ -134,9 +134,7 @@ function calcu(type) {
 	if(chk.checked) {
 		for(let r = 0, rl = fav[type].length; r < rl; r++) {
 			let b = 0, n = [], rt = R[type][ fav[type][r] ];
-			if(selecd[type].value !== 'none') {
-				if(ranger[selecd[type].value] < rt.value || selecd[type].value !== rt.skill) continue;
-			}
+			if(selecd[type].value !== 'none' && selecd[type].value !== rt.skill) continue;
 			for(let i = 1, l = rt.items.length; i < l; i++) {
 				if(myinv[type].indexOf(rt.items[i]) !== -1) {
 					b++;
@@ -144,15 +142,13 @@ function calcu(type) {
 				}
 				else n[i] = false
 			}
-			result.push({ 'b': b / rt.items.length, 'n': n, 'r': fav[type][r], 'a': b === (rt.items.length - 1) });
+			result.push({ 'b': b / rt.items.length, 'n': n, 'r': fav[type][r], 'a': b === (rt.items.length - 1), 'd': ranger[selecd[type].value] < rt.value });
 		}
 	}
 	else{
 		for(let r in R[type]) {
 			let b = 0, n = [], rt = R[type][r];
-			if(selecd[type].value !== 'none') {
-				if(ranger[selecd[type].value] < rt.value || selecd[type].value !== rt.skill) continue;
-			}
+			if(selecd[type].value !== 'none' && selecd[type].value !== rt.skill) continue;
 			for(let i = 1, l = rt.items.length; i < l; i++) {
 				if(myinv[type].indexOf(rt.items[i]) !== -1) {
 					b++;
@@ -161,7 +157,7 @@ function calcu(type) {
 				else n[i] = false
 			}
 			if(b === 0) continue;
-			result.push({ 'b': b / rt.items.length, 'n': n, 'r': r, 'a': b === (rt.items.length - 1) });
+			result.push({ 'b': b / rt.items.length, 'n': n, 'r': r, 'a': b === (rt.items.length - 1), 'd': ranger[selecd[type].value] < rt.value });
 		}
 	}
 	result.sort((a,b)=>{return b.b-a.b});
@@ -198,7 +194,7 @@ function calcu(type) {
 		rd = document.createElement('DIV');
 		rd.className='desc';
 		sp = document.createElement('SPAN');
-		sp.className='descskill';
+		sp.className=result[i].d?'descskillred':'descskill';
 		sp.textContent='Skill: ' + R[type][r].skill + ' ' + R[type][r].value + '. ';
 		rd.appendChild(sp);
 		sp = document.createElement('SPAN');
