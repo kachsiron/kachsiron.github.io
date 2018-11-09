@@ -33,14 +33,15 @@ var ranger = {
 }
 if(localStorage.hasOwnProperty('ranger')) ranger = JSON.parse(localStorage.ranger);
 
-rangerInput.onchange=function() {
+rangerInput.onchange = function() {
 	ranger[selecd[curkedah].value] = Number.parseInt(rangerInput.value);
 	lenin()
 }
 function lenin() {
-	if(selecd[curkedah].value !== 'none') rangerInput.value = ranger[selecd[curkedah].value];
+	if(selecd[curkedah].value !== 'none') {
+		rangerInput.value = ranger[selecd[curkedah].value];
+	}
 	else{
-		rangerInput.disabled = disabled;
 		rangerInput.value = ''
 	}
 	resetList();
