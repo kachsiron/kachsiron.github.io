@@ -19,8 +19,8 @@ var chk = document.createElement('INPUT');
 var chkLabel = document.createElement('LABEL');
 var wiki = document.createElement('A');
 var selecd = { 'cooker': document.createElement('SELECT'), 'lab': document.createElement('SELECT') }, selectd_opt = { 'cooker': ['','Biotech','Medical','Necro Tech'], 'lab': ['','Medical','Computer','Biotech','Traps','Electronics','Necro Tech','Engineering','Mechanical'] };
-
-function lenin() { resetList(); calcu(curkedah); listSearching() }
+var ranger = document.createElement('INPUT');
+function lenin() { ranger.value = 0; resetList(); calcu(curkedah); listSearching() }
 for(let i in selecd) {
 	selecd[i].setAttribute('size', 1);
 	selecd[i].onchange = lenin;
@@ -31,6 +31,12 @@ for(let i in selecd) {
 		selecd[i].appendChild(o)
 	}
 }
+ranger.type = 'range';
+ranger.setAttribute('min', 0);
+ranger.setAttribute('max', 140);
+ranger.setAttribute('step', 5);
+ranger.value = 0;
+
 wiki.href = 'http://sword-of-the-stars-the-pit.wikia.com';
 wiki.id = 'copywiki';
 wiki.textContent = 'sword-of-the-stars-the-pit.wikia.com';
@@ -50,7 +56,7 @@ function listSearchReset(type) {
 	resultData[type].forEach(e => { e.element.style.display = '' });
 }
 function listSearching() {
-	listSearch.disabled = selecd[curkedah].disabled = (resultData[curkedah].length === 0 && selecd.cooker.options.selectedIndex + selecd.lab.options.selectedIndex === 0);
+	ranger.disabled = listSearch.disabled = selecd[curkedah].disabled = (resultData[curkedah].length === 0 && selecd.cooker.options.selectedIndex + selecd.lab.options.selectedIndex === 0);
 	let value = listSearch.value;
 	if(value === '') listSearchReset(curkedah);
 	else {
@@ -106,6 +112,7 @@ function calcu(type) {
 		for(let r = 0, rl = fav[type].length; r < rl; r++) {
 			let b = 0, n = [], rt = R[type][ fav[type][r] ];
 			if(selecd[type].value !== 'none' && selecd[type].value !== rt.skill) continue;
+			if(Integer.parseInt(ranger.value) < rt.value) continue;
 			for(let i = 1, l = rt.items.length; i < l; i++) {
 				if(myinv[type].indexOf(rt.items[i]) !== -1) {
 					b++;
@@ -120,6 +127,7 @@ function calcu(type) {
 		for(let r in R[type]) {
 			let b = 0, n = [], rt = R[type][r];
 			if(selecd[type].value !== 'none' && selecd[type].value !== rt.skill) continue;
+			if(Integer.parseInt(ranger.value) < rt.value) continue;
 			for(let i = 1, l = rt.items.length; i < l; i++) {
 				if(myinv[type].indexOf(rt.items[i]) !== -1) {
 					b++;
@@ -240,10 +248,12 @@ but.onclick=butik.bind({'type':'cooker'})
 but2.onclick=butik.bind({'type':'lab'})
 butik.call({'type':'cooker'});
 chk.onchange=lenin;
+ranger.onchange=lenin;
 listSearching();
 list.appendChild(listSearch);
 list.appendChild(selecd.cooker);
 list.appendChild(selecd.lab);
+list.appendChild(ranger);
 list.appendChild(chk);
 list.appendChild(chkLabel);
 list.appendChild(listRes);
