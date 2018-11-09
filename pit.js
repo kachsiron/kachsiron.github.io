@@ -166,7 +166,7 @@ function calcu(type) {
 		rd.className='desc';
 		sp = document.createElement('SPAN');
 		sp.className='descskill';
-		sp.textContent='Skill: ' + R[type][r].skill + ' ' + R[type][r].value + ' ';
+		sp.textContent='Skill: ' + R[type][r].skill + ' ' + R[type][r].value + '. ';
 		rd.appendChild(sp);
 		sp = document.createElement('SPAN');
 		sp.textContent='Effect: ' + R[type][r].desc;
