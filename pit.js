@@ -160,7 +160,10 @@ function calcu(type) {
 			result.push({ 'b': b / rt.items.length, 'n': n, 'r': r, 'a': b === (rt.items.length - 1), 'd': ranger[selecd[type].value] < rt.value });
 		}
 	}
-	result.sort((a,b)=>{return b.b-a.b});
+	result.sort((a,b)=>{
+		if(a.d===b.d)return b.b-a.b;
+		return b.d-a.d
+	});
 	for(let i = 0, l = result.length, d, rd, r, e, fb, sp; i < l; i++) {
 		d = document.createElement('DIV');
 		fb = document.createElement('DIV');
