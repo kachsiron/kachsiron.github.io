@@ -78,6 +78,7 @@ function listSearchReset(type) {
 }
 function listSearching() {
 	listSearch.disabled = selecd[curkedah].disabled = (resultData[curkedah].length === 0 && selecd.cooker.options.selectedIndex + selecd.lab.options.selectedIndex === 0);
+	rangerInput.disabled = (selecd[curkedah].value === 'none');
 	let value = listSearch.value;
 	if(value === '') listSearchReset(curkedah);
 	else {
