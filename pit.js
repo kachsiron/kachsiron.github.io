@@ -31,7 +31,9 @@ var ranger = {
 	'Engineering': 150,
 	'Mechanical': 150
 }
-rangerInput.onchange=function(){
+if(localStorage.hasOwnProperty('ranger')) ranger = JSON.parse(localStorage.ranger);
+
+rangerInput.onchange=function() {
 	ranger[selecd[curkedah].value] = Number.parseInt(rangerInput.value);
 	lenin()
 }
@@ -262,6 +264,7 @@ but2.textContent = 'Lab';
 saveBut.onclick=function(){
 	localStorage.fav=JSON.stringify(fav);
 	localStorage.myinv=JSON.stringify(myinv);
+	localStorage.ranger=JSON.stringify(ranger);
 }
 but.onclick=butik.bind({'type':'cooker'})
 but2.onclick=butik.bind({'type':'lab'})
