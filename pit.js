@@ -21,19 +21,12 @@ var chkLabel = document.createElement('LABEL');
 var wiki = document.createElement('A');
 var selecd = { 'cooker': document.createElement('SELECT'), 'lab': document.createElement('SELECT') }, selectd_opt = { 'cooker': ['','Biotech','Medical','Necro Tech'], 'lab': ['','Medical','Computer','Biotech','Traps','Electronics','Necro Tech','Engineering','Mechanical'] };
 
-var ranger = {
-	'Biotech': 150,
-	'Necro Tech': 150,
-	'Medical': 150,
-	'Computer': 150,
-	'Traps': 150,
-	'Electronics': 150,
-	'Engineering': 150,
-	'Mechanical': 150
-}
+var ranger = {'Biotech': 150,'Necro Tech': 150,'Medical': 150,'Computer': 150,'Traps': 150,'Electronics': 150,'Engineering': 150,'Mechanical': 150};
 if(localStorage.hasOwnProperty('ranger')) ranger = JSON.parse(localStorage.ranger);
 
 rangerInput.onchange = function() {
+	if(isNaN(Number.parseInt(rangerInput.value)))rangerInput.value='0';
+	if(Number.parseInt(rangerInput.value)<0)rangerInput.value='0';
 	ranger[selecd[curkedah].value] = Number.parseInt(rangerInput.value);
 	lenin()
 }
@@ -160,10 +153,7 @@ function calcu(type) {
 			result.push({ 'b': b / rt.items.length, 'n': n, 'r': r, 'a': b === (rt.items.length - 1), 'd': ranger[selecd[type].value] < rt.value });
 		}
 	}
-	result.sort((a,b)=>{
-		if(a.d===b.d)return b.b-a.b;
-		return a.d-b.d
-	});
+	result.sort((a,b)=>{if(a.d===b.d)return b.b-a.b;return a.d-b.d});
 	for(let i = 0, l = result.length, d, rd, r, e, fb, sp; i < l; i++) {
 		d = document.createElement('DIV');
 		fb = document.createElement('DIV');
