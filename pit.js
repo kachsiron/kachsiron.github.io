@@ -188,10 +188,10 @@ function calcu(type) {
 		rd.className='desc';
 		sp = document.createElement('SPAN');
 		sp.className=result[i].d?'descskillred':'descskill';
-		sp.textContent='Skill: ' + R[type][r].skill + ' ' + R[type][r].value + '. ';
+		sp.textContent='Skill: ' + R[type][r].skill + ' ' + R[type][r].value;
 		rd.appendChild(sp);
 		sp = document.createElement('SPAN');
-		sp.textContent=(R[type][r].desc!==''?'Effect: ' + R[type][r].desc:'');
+		sp.textContent=(R[type][r].desc!==''?'. Effect: ' + R[type][r].desc:'');
 		rd.appendChild(sp);
 		d.appendChild(rd);
 		fb.title='Add to Favorites';
