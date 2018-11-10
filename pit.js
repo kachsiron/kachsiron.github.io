@@ -191,7 +191,7 @@ function calcu(type) {
 		sp.textContent='Skill: ' + R[type][r].skill + ' ' + R[type][r].value + '. ';
 		rd.appendChild(sp);
 		sp = document.createElement('SPAN');
-		sp.textContent='Effect: ' + R[type][r].desc;
+		sp.textContent=(R[type][r].desc!==''?'Effect: ' + R[type][r].desc:'');
 		rd.appendChild(sp);
 		d.appendChild(rd);
 		fb.title='Add to Favorites';
