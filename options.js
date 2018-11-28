@@ -2502,19 +2502,23 @@ function mChats(){
 			//cMan.removeSub(w.wsChatChannelId);
 			//if(w.interval!==void 0){}
 			clearInterval(w.interval);
-			w.sock.send('425'+JSON.stringify(['/chat/leave',{'channel':w.wsChatChannelFullId}]));
-			w.sock.close()
+			if(w.hasOwnProperty('sock')){
+				w.sock.send('425'+JSON.stringify(['/chat/leave',{'channel':w.wsChatChannelFullId}]));
+				w.sock.close()
+			}
 		}
 		else{
 			if(w.wsChat===1){//gg
 				clearInterval(w.interval);
-				w.sock.send(JSON.stringify({'type':'unjoin','data':{'channel_id':w.wsChatChannelId}}));
-				w.sock.close()
+				if(w.hasOwnProperty('sock')){
+					w.sock.send(JSON.stringify({'type':'unjoin','data':{'channel_id':w.wsChatChannelId}}));
+					w.sock.close()
+				}
 			}
 			else{//twitch
 				clearInterval(w.interval);
 				clearInterval(w.interval2);
-				w.sock.close()
+				if(w.hasOwnProperty('sock'))w.sock.close();
 			}
 		}
 		D.body.removeChild(w.winDiv);
