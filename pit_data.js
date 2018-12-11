@@ -975,17 +975,17 @@ var R = {
 			"items": ["Turret Override", "Electronic Parts", "Energy Cell", "System Transponder"]
 	}, {
 			"skill": "Necro Tech",
-			"value": 80,
+			"value": 120,
 			"desc": "",
 			"items": ["Undead Abomination", "Etthi Vessel", "Raw Meat", "Ribs", "Hiver Brain Crystal", "Punch Claw"]
 	}, {
 			"skill": "Necro Tech",
-			"value": 90,
+			"value": 110,
 			"desc": "",
 			"items": ["Undead Humanoid", "Etthi Vessel", "Raw Meat", "Raw Meat", "Bone", "Heavy Claw"]
 	}, {
 			"skill": "Necro Tech",
-			"value": 95,
+			"value": 105,
 			"desc": "",
 			"items": ["Undead Vermin", "Etthi Crystal", "Bone Slivers", "Bindings", "Tainted Meat"]
 	}, {
