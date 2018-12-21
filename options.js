@@ -3972,7 +3972,7 @@ messtochat.MSG.onkeypress=function(e){
 				}
 				else if(m==='t'){
 					mch.load_twitch_smiles();
-					window.open('https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=q6batx0epp608isickayubi39itsckt&redirect_uri=https://twitchapps.com/tmi/&scope=chat:read+chat:edit+channel:moderate+chat_login', 'Fuck', '')
+					window.open('https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=q6batx0epp608isickayubi39itsckt&redirect_uri=https://twitchapps.com/tmi/&scope=chat:read+chat:edit+channel:moderate+chat_login', 'Fuck', 'width=800,height=450,left=100,top=100,toolbar=no,directories=no,menubar=no,scrollbars=yes');
 					setTimeout(()=>{TWITCHPASS=window.prompt('Введи пуроль')},4444)
 				}
 				else if(m==='tw'&&w!==void 0)tw_list(w);//список стримов по категории
