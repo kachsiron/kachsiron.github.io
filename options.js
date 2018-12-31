@@ -3435,7 +3435,7 @@ function scrollHider(){
 	scrlh[0].remove();
 	scrlh=null;
 }
-function nameToUrl(n){return n.replace(rgxpChan[7],'').replace(/-/g,'').replace(rgxpChan[8],'-').toLowerCase()}
+function nameToUrl(n){return n.replace(rgxpChan[7],'').replace(rgxpChan[8],'-').toLowerCase()}//.replace(/-/g,'')
 function graphsendi(n){
 	if(graph){
 		ACAPELA(n + ' запустился').catch(()=>{zvuk[0].play()})
@@ -3973,13 +3973,13 @@ messtochat.MSG.onkeypress=function(e){
 				else if(m==='t'){
 					mch.load_twitch_smiles();
 					window.open('https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=q6batx0epp608isickayubi39itsckt&redirect_uri=https://twitchapps.com/tmi/&scope=chat:read+chat:edit+channel:moderate+chat_login', 'Fuck', 'width=800,height=450,left=100,top=100,toolbar=no,directories=no,menubar=no,scrollbars=yes');
-					setTimeout(()=>{TWITCHPASS=window.prompt('Введи пуроль!!!')},4444)
+					setTimeout(()=>{TWITCHPASS=window.prompt('Введи пуроль')},4444)
 				}
 				else if(m==='tw'&&w!==void 0)tw_list(w);//список стримов по категории
-				else if(m==='gdv'&&w!==void 0){
+/* 				else if(m==='gdv'&&w!==void 0){
 					if(w==='str') GodVille.grun();
 					else if(w==='stp') GodVille.gstop();
-				}
+				} */
 				else if(m==='фав'&&w!==void 0){
 					deleteFromList('-1',w,2);
 					let c=cMan.getIdByName(w);
