@@ -3915,7 +3915,7 @@ messtochat.MSG.onkeypress=function(e){
 					for(let i in cMan.chn)cMan.setFavHid(cMan.chn[i]);
 					return
 				}
-				else if(m==='шрифт'&&w!==void 0)D.body.style.fontSize=w+'px';
+				//else if(m==='шрифт'&&w!==void 0)D.body.style.fontSize=w+'px';
 				else if((m==='ггчат'||m==='uuxfn')&&w!==void 0)mch.addChat('g_'+w,Number.parseInt(w));
 				else if((m==='ггс'||m==='uuc')&&w!==void 0)GGLISTAMOUNT=Number.parseInt(w);
 				else if((m==='тчат'||m==='nxfn')&&w!==void 0)mch.addChat('t_'+w,true,w);
@@ -3970,10 +3970,18 @@ messtochat.MSG.onkeypress=function(e){
 						})
 					})(w);
 				}
+				else if(m==='ts')mch.load_twitch_smiles();
 				else if(m==='t'){
 					mch.load_twitch_smiles();
-					window.open('https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=q6batx0epp608isickayubi39itsckt&redirect_uri=https://twitchapps.com/tmi/&scope=chat:read+chat:edit+channel:moderate+chat_login', 'Fuck', 'width=800,height=450,left=100,top=100,toolbar=no,directories=no,menubar=no,scrollbars=yes');
-					setTimeout(()=>{TWITCHPASS=window.prompt('Введи пуроль')},4444)
+					let openedWindow=window.open('https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=q6batx0epp608isickayubi39itsckt&redirect_uri=https://twitchapps.com/tmi/&scope=chat:read+chat:edit+channel:moderate+chat_login', 'Fuck', 'width=800,height=450,left=100,top=100,toolbar=no,directories=no,menubar=no,scrollbars=yes');
+					//setTimeout(()=>{TWITCHPASS=window.prompt('Введи пуроль')},4444)
+					setTimeout(()=>{
+						browser.storage.local.get('twitch_oath').then(result=>{
+							TWITCHPASS=result.twitch_oath;
+							OPOV.serv('Получен твитч пароль: ' + TWITCHPASS,10000);
+							openedWindow.close()
+						});
+					},4321)
 				}
 				else if(m==='tw'&&w!==void 0)tw_list(w);//список стримов по категории
 /* 				else if(m==='gdv'&&w!==void 0){
