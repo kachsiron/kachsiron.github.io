@@ -3438,7 +3438,7 @@ function scrollHider(){
 function nameToUrl(n){return n.replace(rgxpChan[7],'').replace(rgxpChan[8],'-').toLowerCase()}//.replace(/-/g,'')
 function graphsendi(n){
 	if(graph){
-		ACAPELA(n + ' запустился').catch(()=>{zvuk[0].play()})
+		ACAPELA(n + ' запустился')
 	}
 }
 function objSize(o){let c=0;for(i in o)c++;return c}
@@ -4119,24 +4119,43 @@ var scp,mch;/*,ACAPELA={
 	's':function(msg){this.f.contentWindow.postMessage(msg,'http://www.acapela-group.com/')}
 	's':function(msg){this.f.postMessage(msg,'http://www.acapela-group.com/')}
 };*/
+var ACAP_TIME=1547216173583;
 function ACAPELA(msg){
-	return new Promise((res, rej)=>{
-		let formData=new FormData();
-		formData.append('MyLanguages','sonid26');
-		formData.append('MySelectedVoice','Alyona');
-		formData.append('MyTextForTTS',msg);
-		formData.append('t','1');
-		formData.append('SendToVaaS','');
-		GMX({timeout:5000,ontimeout:rej,onerror:rej,method:'POST',data:formData,url:'http://www.acapela-group.com/demo-tts/DemoHTML5Form_V2.php?langdemo=Powered+by+<a+href="http://www.acapela-vaas.com">Acapela+Voice+as+a+Service</a>.+For+demo+and+evaluation+purpose+only,+for+commercial+use+of+generated+sound+files+please+go+to+<a+href="http://www.acapela-box.com">www.acapela-box.com</a>',onload:requ=>{
+	new Promise((res, rej)=>{
+		//(new Date()).getTime());
+		GMX({timeout:5000,ontimeout:rej,onerror:rej,method:'GET',url:'https://www.acapela-group.com/www/static/website/demoOptionsDef_voicedemo.php?_='+ACAP_TIME,onload:requ=>{
 			try{
-				let a=new Audio();
-				a.src=requ.target.responseText.match(/var myPhpVar = '(.*?)';/,/(.*?) - (.*)/)[1];
-				a.volume=0.5;
-				a.play();
-			}catch(e){
-				rej()
-			}
+				console.log(requ.target.responseText)
+				let b=requ.target.responseText.match(/"start":(.*?),/)[1];
+				let c=requ.target.responseText.match(/"json_service_url":"(.*?)"/)[1];
+				let d=requ.target.responseText.match(/"time":(.*?),/)[1];
+				let e=requ.target.responseText.match(/"login":"(.*?)"/)[1];
+				let f=requ.target.responseText.match(/"app":"(.*?)"/)[1];
+				let a=requ.target.responseText.match(/"key":"(.*?)"/)[1];
+				res({'a':a,'b':b,'c':c,'d':d,'e':e,'f':f})
+			}catch(e){console.log('1',e);zvuk[0].play()}
 		}});
+	}).then(s=>{
+		console.log(s)
+		new Promise((res, rej)=>{
+			let formData=new FormData();
+			formData.append('cl_login',s.e);
+			formData.append('cl_app',s.f);
+			formData.append('session_start',s.b);//Math.round((new Date()).getTime()/1000));
+			formData.append('session_time',s.d);
+			formData.append('session_key',s.a);
+			formData.append('req_voice','alyona22k');
+			formData.append('req_text',msg);
+			GMX({timeout:5000,ontimeout:rej,onerror:rej,method:'POST',data:formData,url:s.c,onload:requ=>{
+				try{
+					console.log(requ.target.responseText);
+ 					let a=new Audio();
+					a.src=requ.target.responseText.match(/"snd_url":"(.*?)"/)[1];
+					a.volume=0.5;
+					a.play();  
+				}catch(e){console.log('2',e);zvuk[0].play()}
+			}});
+		})
 	})
 }
 
