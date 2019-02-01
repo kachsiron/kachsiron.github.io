@@ -2553,6 +2553,7 @@ function mChats(){
 	}*/
 	this.amoGG=function(e,w){
 		let o=JSON.parse(e.data);
+		console.log(o)
 		if(o.type==='message'){
 			if(o.data.hasOwnProperty('private')){
 				o.data.user_name=o.data.user.nickname;
