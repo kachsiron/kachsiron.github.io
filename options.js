@@ -2342,7 +2342,7 @@ function mChats(){
 				this.openSocket(w)
 			}
 		},30000);
-		w.sock=new WebSocket('wss://chat.goodgame.ru/chat/websocket');
+		w.sock=new WebSocket('wss://chat-1.goodgame.ru/chat2/');//wss://chat.goodgame.ru/chat/websocket
 		w.sock.onerror=function(e){console.log('error',e);OPOV.serv('Ошибка в сокете. Смотри в консоль',10000)};
 		w.sock.onmessage=function(e){this.i.amoGG(e,this.w)}.bind({i:this,w:w})
 	}
@@ -2553,7 +2553,6 @@ function mChats(){
 	}*/
 	this.amoGG=function(e,w){
 		let o=JSON.parse(e.data);
-		console.log(o)
 		if(o.type==='message'){
 			if(o.data.hasOwnProperty('private')){
 				o.data.user_name=o.data.user.nickname;
