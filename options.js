@@ -262,8 +262,8 @@ var grBut2={
 		//'st_dustgoldbad':[C('IMG'),'https://stats.altfs.ru/show_graph.php?type=0&width=500&height=200&game=tf&server_id=4&bgcolor=282828&color=FFFFFF&range=1','300px','133px',false],
 		//'st_dustbowl':[C('IMG'),'https://stats.altfs.ru/show_graph.php?type=0&width=500&height=200&game=tf&server_id=5&bgcolor=282828&color=FFFFFF&range=1','300px','133px',false],
 		//'st_2fort':[C('IMG'),'https://stats.altfs.ru/show_graph.php?type=0&width=500&height=200&game=tf&server_id=11&bgcolor=282828&color=FFFFFF&range=1','300px','133px',false],
-		'sc2tv':[C('IMG'),'https://traffic.alexa.com/graph?o=lt&y=t&b=ffffff&n=666666&f=999999&p=4e8cff&r=1y&t=2&z=30&c=1&h=150&w=340&u=peka2.tv','300px','130px',false],
-		'goodgame':[C('IMG'),'https://traffic.alexa.com/graph?o=lt&y=t&b=ffffff&n=666666&f=999999&p=4e8cff&r=1y&t=2&z=30&c=1&h=150&w=340&u=goodgame.ru','300px','130px',false],
+		//'sc2tv':[C('IMG'),'https://traffic.alexa.com/graph?o=lt&y=t&b=ffffff&n=666666&f=999999&p=4e8cff&r=1y&t=2&z=30&c=1&h=150&w=340&u=peka2.tv','300px','130px',false],
+		//'goodgame':[C('IMG'),'https://traffic.alexa.com/graph?o=lt&y=t&b=ffffff&n=666666&f=999999&p=4e8cff&r=1y&t=2&z=30&c=1&h=150&w=340&u=goodgame.ru','300px','130px',false],
 		//'altfstat':[C('IMG'),'https://stats.altfs.ru/trend_graph.php?bgcolor=282828&color=FFFFFF&player=701197','300px','150px',false]
 		//'gt_2fort':[C('IMG'),'http://www.gametracker.com/images/graphs/server_rank.php?GSID=4541130','173px','113px',true]
 		//'gt_dustgoldbad':[C('IMG'),'http://www.gametracker.com/images/graphs/server_rank.php?GSID=4542987','173px','113px',true]
