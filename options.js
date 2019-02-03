@@ -550,7 +550,18 @@ var cMan={
 				requ='p'+requ[1];
 				OPOV.serv('ключ найден: '+requ+'...',0,opv);
 				GMX({method:'POST',url:'https://goodgame.ru/ajax/player/get/',data:'key='+requ,headers:{"Content-Type":"application/x-www-form-urlencoded"},onload:requ2=>{
-					scp.players.get(c).strms.push({'name':'TW','code':JSON.parse(requ2.target.responseText).content});
+					let m=scp.players.get(c),be=JSON.parse(requ2.target.responseText).content;
+					m.strms.push({'name':'TW','code':be});
+					try{
+						m.twid=be.match(/player\.twitch\.tv\/\?channel=(.*?)"/)[1]; 
+						let n=scp.mark.mrk[m.id]
+						n.twmini=C('SPAN');
+						n.twmini.textContent='■';
+						n.twmini.classList.add('pmd_span');
+						n.twmini.onclick=function(){mch.addChat('t_'+this.i,true,this.i)}.bind({i:m.twid});
+						n.chats.appendChild(n.twmini)
+					}
+					catch(e){alert('Ошибка парсинга твитч айди')}
 					scp.remakeMark();
 					OPOV.serv('Готово',3000,opv,true);
 				}})
@@ -1911,7 +1922,7 @@ function ScPlayer(){
 		m.widget.innerHTML=m.strms[0].code;
 		m.div.appendChild(m.widget);
 		m.div.appendChild(m.title);
-		this.mark.mrk[i]={div:C('DIV'),span:C('SPAN'),close:C('span'),fly:C('span'),fly2:C('span'),rest:C('span')}
+		this.mark.mrk[i]={div:C('DIV'),span:C('SPAN'),close:C('span'),fly:C('span'),fly2:C('span'),chats:C('span'),rest:C('span')}
 		n=this.mark.mrk[i];
 		n.span.textContent=i;
 		n.span.classList.add('pmd_span');
@@ -1949,22 +1960,23 @@ function ScPlayer(){
 				}
 				else mch.addChat(this.i,j)*/
 			}.bind({'i':(i.startsWith('g_')?'':'g_')+i,'id':m.ggid});
-			n.div.appendChild(n.ggmini)
+			n.chats.appendChild(n.ggmini)
 		}
 		if(m.twid!==''){
 			n.twmini=C('SPAN');
 			n.twmini.textContent='■';
 			n.twmini.classList.add('pmd_span');
 			n.twmini.onclick=function(){mch.addChat('t_'+this.i,true,this.i)}.bind({i:m.twid});
-			n.div.appendChild(n.twmini)
+			n.chats.appendChild(n.twmini)
 		}
 		if(!m.gg){
 			n.mini=C('SPAN');
 			n.mini.textContent='▤';
 			n.mini.classList.add('pmd_span');
 			n.mini.onclick=function(){mch.addChat(this.i)}.bind({i:i});
-			n.div.appendChild(n.mini)
+			n.chats.appendChild(n.mini)
 		}
+		n.div.appendChild(n.chats);
 		n.div.appendChild(n.rest);
 		this.checkTitle(i);this.mkpc(i);this.remakeMark()
 	}
