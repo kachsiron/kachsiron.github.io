@@ -953,7 +953,7 @@ var cMan={
 				viewers:Number.parseInt(z.viewers)
 			};*/
 			this.contents.gg[x]={
-				'cggio':1,
+				//'cggio':1,
 				'link':z.channel.url,
 				'id':z.channel.id,
 				'chatId':z.id,
@@ -1017,7 +1017,7 @@ var cMan={
 			
 			c=0;
 			for(let x in this.contents.gg){
-				if(!this.contents.gg[x].hasOwnProperty.cggio)continue;//||!this.chn.hasOwnProperty(this.contents.gg[x].streamer.id)
+				//if(!this.contents.gg[x].hasOwnProperty('cggio'))continue;//||!this.chn.hasOwnProperty(this.contents.gg[x].streamer.id)
 				if(this.obnovDesc(this.chn[this.contents.gg[x].streamer.id],this.contents.gg[x]))c++
 			}
 			if(c>0)OPOV.serv('Обновленo gg-заголовков: '+c,null)
