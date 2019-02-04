@@ -1602,7 +1602,7 @@ var scMenu={
 		//scmb[2].innerHTML=(chatTimer===alt?'&#9672;':'&nbsp;')+'Chat';
 		//this.seth(1,cMan.chn[alt].service===0?'':'none');
 		this.seth(2,cMan.chn[alt].service===1&&scp.players.has(alt)?'':'none');
-		this.seth(9,scp.players.has(alt)&&scp.players.get(alt).hasOwnProperty('twid')?'':'none');
+		this.seth(9,scp.players.has(alt)&&scp.players.get(alt).twid!==''?'':'none');
 		this.seth(13,cMan.chn[alt].service===0?'':'none');
 		this.setb(3,'<span style="color:'+(HID.hasOwnProperty(fgd)?'gray">&#10004;Un':'maroon">&#10007;')+'Hide</span>');
 		this.setb(4,'<span style="color:'+(FAV.hasOwnProperty(fgd)?'gray">&#9734;Un':'red">&#9733;')+'Favorite</span>');
