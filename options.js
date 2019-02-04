@@ -2136,7 +2136,6 @@ function mChats(){
 				w.nickColors2={};
 				w.bColor='olive';
 				w.wsChatChannelId=ws;
-				w.wsUsersInChannel='';
 				w.wsHistory=false
 			}
 		}
@@ -2551,12 +2550,7 @@ function mChats(){
 		}
 		else if(o.type==='channel_counters'){
 			w.timeOut=(new Date()).getTime();
-			let l=o.data.users_in_channel+'/'+o.data.clients_in_channel;
-			if(w.wsUsersInChannel!==l){
-				w.titleDiv.style.backgroundColor='black';
-				w.wsUsersInChannel=l;
-				this.setTitle(w,w.wsUsersInChannel)
-			}
+			this.setTitle(w,o.data.users_in_channel)
 		}
 		else if(o.type==='channel_history'){
 			let l=o.data.messages.length;
@@ -2567,8 +2561,7 @@ function mChats(){
 		else if(o.type==='success_join'){
 			w.nick=o.data.channel_streamer.name;
 			w.motd=o.data.motd.replace(/\\n/g,'<br>');
-			w.wsUsersInChannel=o.data.users_in_channel+'/'+o.data.clients_in_channel;
-			this.setTitle(w,w.wsUsersInChannel);
+			this.setTitle(w,o.data.users_in_channel);
 			if(!w.wsHistory){
 				w.sock.send(JSON.stringify({'type':'get_channel_history','data':{'channel_id':w.wsChatChannelId}}));
 				w.wsHistory=true
