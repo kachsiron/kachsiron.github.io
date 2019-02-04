@@ -953,7 +953,7 @@ var cMan={
 				viewers:Number.parseInt(z.viewers)
 			};*/
 			this.contents.gg[x]={
-				//'cggio':1,
+				'cggio':1,
 				'link':z.channel.url,
 				'id':z.channel.id,
 				'chatId':z.id,
@@ -1017,7 +1017,7 @@ var cMan={
 			
 			c=0;
 			for(let x in this.contents.gg){
-				//if(!this.contents.gg[x].hasOwnProperty('cggio'))continue;//||!this.chn.hasOwnProperty(this.contents.gg[x].streamer.id)
+				if(!this.contents.gg[x].hasOwnProperty('cggio'))continue;//||!this.chn.hasOwnProperty(this.contents.gg[x].streamer.id)
 				if(this.obnovDesc(this.chn[this.contents.gg[x].streamer.id],this.contents.gg[x]))c++
 			}
 			if(c>0)OPOV.serv('Обновленo gg-заголовков: '+c,null)
@@ -1390,7 +1390,7 @@ var cMan={
 		this.contents_twitch_length=1;//objSize(this.contents.tw);
 		
 		with(this.fctDiv.div.style){position='absolute';left='444px';top='0';height='12px';backgroundColor='black';color='gray'}
-		with(this.nadDiv.div.style){position='absolute';left='400px';top='0';height='12px';backgroundColor='black';color='gray'}
+		with(this.nadDiv.div.style){position='absolute';left='400px';top='0';height='12px';backgroundColor='black';color='red'}
 		setInterval(()=>{this.fctDiv.div.textContent=--this.fctDiv.dig},10000);
 		this.fctDiv.div.style.cursor='pointer';
 		this.fctDiv.div.onclick=()=>{this.incomintw();this.incomingg();this.incoming()};
@@ -1476,7 +1476,7 @@ var scMenu={
 		this.chanID='-1'
 	},
 	'init':function(){
-		for(let x=0,y=[0,7,3,4,5,6,13,1,8,2];x<10;x++){
+		for(let x=0,y=[0,7,3,4,5,6,13,1,8,9,2];x<11;x++){
 			this.scmb[y[x]]=C('DIV');
 			this.scmb[y[x]].setAttribute('class','limenu');
 			this.menu[0].appendChild(this.scmb[y[x]])
@@ -1484,6 +1484,7 @@ var scMenu={
 		this.scmb[0].style.backgroundColor='#444';
 		this.scmb[0].style.color='white';
 		this.setb(2,'&nbsp;Get TwPlr (gg)');
+		this.setb(9,'&nbsp;Get TwVods');
 		this.setb(1,'&#9733;ListTwitch&#9733;');
 		this.setb(5,'&#10007;ListHide&#10007;');
 		this.setb(6,'&#9733;ListFavorite&#9733;');
@@ -1492,6 +1493,7 @@ var scMenu={
 			t.scmb[0].onclick=t.scmb[7].onclick=t.close.bind(t);
 			t.scmb[1].onclick=e=>t.makeListTwitch(e);
 			t.scmb[2].onclick=()=>{cMan.getTwPlayerFromGg(t.chanID);t.close()};
+			t.scmb[9].onclick=()=>{tw_vods_list(scp.players.get(t.chanID).twid);t.close()};
 			t.scmb[3].onclick=()=>{cMan.addToHide(t.chanID);t.close()};
 			t.scmb[4].onclick=()=>{cMan.addToFavo(t.chanID);t.close()};
 			t.scmb[5].onclick=e=>t.makeList(1,e);
@@ -1600,6 +1602,7 @@ var scMenu={
 		//scmb[2].innerHTML=(chatTimer===alt?'&#9672;':'&nbsp;')+'Chat';
 		//this.seth(1,cMan.chn[alt].service===0?'':'none');
 		this.seth(2,cMan.chn[alt].service===1&&scp.players.has(alt)?'':'none');
+		this.seth(9,scp.players.has(alt)&&scp.players.get(alt).hasOwnProperty('twid')?'':'none');
 		this.seth(13,cMan.chn[alt].service===0?'':'none');
 		this.setb(3,'<span style="color:'+(HID.hasOwnProperty(fgd)?'gray">&#10004;Un':'maroon">&#10007;')+'Hide</span>');
 		this.setb(4,'<span style="color:'+(FAV.hasOwnProperty(fgd)?'gray">&#9734;Un':'red">&#9733;')+'Favorite</span>');
@@ -3450,6 +3453,42 @@ var tw_list=function(r){
 		B(div)
 	}})
 };
+var tw_vods_list=function(r){
+	GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/kraken/channels/'+r+'/videos?broadcast_type=archive',onload:reso=>{
+		reso=JSON.parse(reso.target.responseText).videos;
+		let div=C('DIV');
+		with(div.style){fontSize='75%';position='fixed';bottom='0';right='0';width='150px';maxHeight='500px';zIndex=100;overflowY='scroll';backgroundColor='black';border='1px solid white';overflowX='hidden'}
+		div.ondblclick=function(e){this.remove();e.stopPropagation()}
+		for(let x=0,l=reso.length,el,re;x<l;x++){
+			re=reso[x];
+			if(x>0)div.appendChild(C('HR'));
+			else{
+				el=C('DIV');
+				el.textContent=re.channel.name;
+				el.style.fontWeight='bold';
+				div.appendChild(el)
+			}
+			el=C('IMG');
+			el.src=re.preview;
+			el.style.width=150+DIV3_HIDE_SCROLL+'px';
+			el.style.cursor='pointer';
+			el.onclick=function(){
+				window.open('https://player.twitch.tv/?volume=1&video=v'+this.id, '','width=800,height=450,left=100,top=100,toolbar=no,directories=no,menubar=no,scrollbars=yes')
+			}.bind({id:re.url.match(/videos\/(.*)/)[1]});
+			div.appendChild(el);
+			el=C('DIV');
+			el.textContent=re.title;
+			div.appendChild(el);
+			el=C('SMALL');el.style.display='block';
+			el.textContent='('+re.views+') ' + re.recorded_at;
+			div.appendChild(el);
+			el=C('SMALL');el.style.display='block';
+			el.textContent=re.game;
+			div.appendChild(el);
+		}
+		B(div)
+	}})
+};
 /*var STEAM={//['212.76.130.124:27015','b_350_20_692108_381007_FFFFFF_000000.png'],
 	'ids':'76561198086044175,76561198097816819,76561198081507280,76561198013376987,76561198057651317,76561198068535614',
 	'se':new Map([['193.26.217.5:27295','altfs dust/gold/bad']]),
@@ -3966,6 +4005,7 @@ messtochat.MSG.onkeypress=function(e){
 					},4321)
 				}
 				else if(m==='tw'&&w!==void 0)tw_list(w);//список стримов по категории
+				else if(m==='tv'&&w!==void 0)tw_vods_list(w);//список стримов по категории
 /* 				else if(m==='gdv'&&w!==void 0){
 					if(w==='str') GodVille.grun();
 					else if(w==='stp') GodVille.gstop();
