@@ -3408,6 +3408,13 @@ function makeCnv(){
 }
 
 //U T I L S
+function secToTime(t){
+	let h=Math.floor(t/3600);
+	t-=h*3600;
+	let m=Math.floor(t/60);
+	t-=m*60;
+	return (h>0?h+'ч ':'')+(m>0?m+'м ':'')+Math.round(t)+'с'
+}
 function scrollHider(){
 	let scrlh=[C('DIV'),C('DIV')];
 	scrlh[0].style.overflowY='scroll';
@@ -3477,7 +3484,7 @@ var tw_vods_list=function(r){
 			}.bind({id:re.url.match(/videos\/(.*)/)[1]});
 			div.appendChild(el);
 			el=C('DIV');
-			el.textContent=re.title;
+			el.textContent=re.title+' ('+secToTime(re.length)+')';
 			div.appendChild(el);
 			el=C('SMALL');el.style.display='block';
 			el.textContent='('+re.views+') ' + re.recorded_at;
