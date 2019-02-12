@@ -12,6 +12,7 @@ function vis(){
 var rarityNames=['Нельзя купить','Очень низкая','Низкая','Средняя','Высокая','Очень высокая'];
 var listDiv=document.createElement('DIV');
 listDiv.style.margin='0 auto';
+listDiv.style.backgroundColor='black';
 listDiv.style.width='500px';
 listDiv.style.border='1px solid white';
 listDiv.style.borderRadius='15px';
