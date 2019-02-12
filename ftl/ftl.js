@@ -47,15 +47,15 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih;i<l;i++){
 	if(A.hasOwnProperty(w.weaponArt)){
 		iw=A[w.weaponArt].fw;
 		ih=A[w.weaponArt].fh;
-		if(ih<130){
+		if(ih<120){
+			iw/=ih/120;
+			iw=Math.round(iw);
+			ih=120
+		}
+		else if(ih>130){
 			iw/=ih/130;
 			iw=Math.round(iw);
 			ih=130
-		}
-		else if(ih>80){
-			iw/=ih/80;
-			iw=Math.round(iw);
-			ih=80
 		}
 		imgDiv.style.width=(100+(iw-90))+'px';
 		//img.src=A[w.weaponArt].png;
