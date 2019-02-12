@@ -1,3 +1,13 @@
+document.onscroll=vis;
+//window.onresize=vis;
+function vis(){
+	for(let i=imgs.length;--i>-1;){
+		if(window.scrollY<imgs[i][2]+150&&window.scrollY+window.innerHeight>imgs[i][2]){
+			imgs[i][0].src=imgs[i][1];
+			imgs.splice(i,1)
+		}
+	}
+}
 var rarityNames=['Нельзя купить','Очень низкая','Низкая','Средняя','Высокая','Очень высокая'];
 var listDiv=document.createElement('DIV');
 listDiv.style.margin='0 auto';
@@ -5,6 +15,7 @@ listDiv.style.width='500px';
 listDiv.style.border='1px solid white';
 listDiv.style.borderRadius='15px';
 listDiv.style.padding='15px';
+var imgs=[];
 for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih;i<l;i++){
 	w=W[i];
 	if(w.xml.includes('BOSS'))continue;
@@ -45,7 +56,7 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih;i<l;i++){
 			iw=Math.round(iw);
 			ih=80
 		}
-		img.src=A[w.weaponArt].png;
+		//img.src=A[w.weaponArt].png;
 		//img.style.backgroundRepeat='no-repeat';
 		//img.style.backgroundSize=iw+'px '+ih+'px';
 		//img.style.backgroundPosition=;
@@ -150,6 +161,22 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih;i<l;i++){
 	tempDiv.textContent=w.desc;
 	mainDiv.appendChild(tempDiv);
 	
-	listDiv.appendChild(mainDiv)
+	listDiv.appendChild(mainDiv);
+	
+	if(A.hasOwnProperty(w.weaponArt)){
+		imgs.push([img,A[w.weaponArt].png])
+	}
+}
+window.onload=function(){
+	for(let i=imgs.length,elm;--i>-1;){
+		elm=imgs[i][0];
+		let top=0;
+		do{
+			top+=elm.offsetTop;
+			elm=elm.offsetParent;
+		}while(elm);
+		imgs[i][2]=top
+	}
+	vis()
 }
 document.body.appendChild(listDiv)
