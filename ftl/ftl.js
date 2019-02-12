@@ -134,9 +134,20 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih;i<l;i++){
 		mainDiv.appendChild(tempDiv);
 	}
 
-	if(w.hasOwnProperty('persDamage')&&w.persDamage>0){
+	if(w.hasOwnProperty('damage')||w.hasOwnProperty('persDamage')){
+		let d=(w.hasOwnProperty('damage')?w.damage:0)+(w.hasOwnProperty('persDamage')?w.persDamage:0);
+		
+		let s=d * 15;
+		if(w.hasOwnProperty('boost')&&w.boost.type==='damage'){
+			for(let i=w.boost.count,k=d,tk;--i>-1;){
+				tk=(Math.round(k*10+w.boost.amount*10)/10)*15;
+				k+=w.boost.amount;
+				s+='/'+tk
+			}
+		}
+		
 		tempDiv=document.createElement('DIV');
-		tempDiv.textContent='Урон по экипажу: '+(w.damage * 15 + w.persDamage * 15);
+		tempDiv.textContent='Урон по экипажу: '+s;
 		mainDiv.appendChild(tempDiv);
 	}
 	
