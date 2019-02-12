@@ -38,7 +38,6 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih;i<l;i++){
 	img=document.createElement('IMG');
 	tempDiv=document.createElement('DIV');
 	imgDiv=document.createElement('DIV');
-	imgDiv.style.width='120px';
 	imgDiv.style.height='180px';
 	imgDiv.style.cssFloat='right';
 	imgDiv.style.textAlign='center';
@@ -48,16 +47,17 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih;i<l;i++){
 	if(A.hasOwnProperty(w.weaponArt)){
 		iw=A[w.weaponArt].fw;
 		ih=A[w.weaponArt].fh;
-		if(ih<150){
-			iw/=ih/150;
+		if(ih<130){
+			iw/=ih/130;
 			iw=Math.round(iw);
-			ih=150
+			ih=130
 		}
 		else if(ih>80){
 			iw/=ih/80;
 			iw=Math.round(iw);
 			ih=80
 		}
+		imgDiv.style.width=(100+(iw-90))+'px';
 		//img.src=A[w.weaponArt].png;
 		//img.style.backgroundRepeat='no-repeat';
 		//img.style.backgroundSize=iw+'px '+ih+'px';
