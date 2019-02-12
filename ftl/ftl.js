@@ -84,7 +84,7 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih;i<l;i++){
 	}
 	
 	tempDiv=document.createElement('DIV');
-	tempDiv.textContent='Скорость снаряда/луча: '+(w.hasOwnProperty('speed')?w.speed:'70-80');
+	tempDiv.textContent='Скорость '+(w.type==='BEAM'?'луча':'снаряда')+': '+(w.hasOwnProperty('speed')?w.speed:'70-80');
 	mainDiv.appendChild(tempDiv);
 	
 	if(w.hasOwnProperty('shots')&&w.shots>0){
