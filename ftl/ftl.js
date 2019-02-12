@@ -1,8 +1,9 @@
 document.onscroll=vis;
 //window.onresize=vis;
 function vis(){
+	let v=window.pageYOffset||window.scrollY;
 	for(let i=imgs.length;--i>-1;){
-		if(window.scrollY<imgs[i][2]+150&&window.scrollY+window.innerHeight>imgs[i][2]){
+		if(v<imgs[i][2]+150&&v+window.innerHeight>imgs[i][2]){
 			imgs[i][0].src=imgs[i][1];
 			imgs.splice(i,1)
 		}
