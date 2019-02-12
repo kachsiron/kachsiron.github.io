@@ -73,7 +73,15 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih;i<l;i++){
 	
 	if(w.hasOwnProperty('damage')&&w.damage>0){
 		tempDiv=document.createElement('DIV');
-		tempDiv.textContent='Урон: '+w.damage;
+		let s=w.damage;
+		if(w.hasOwnProperty('boost')&&w.boost.type==='damage'){
+			for(let i=w.boost.count,k=w.damage,tk;--i>-1;){
+				tk=Math.round(k*10+w.boost.amount*10)/10;
+				k+=w.boost.amount;
+				s+='/'+tk
+			}
+		}
+		tempDiv.textContent='Урон: '+s;
 		mainDiv.appendChild(tempDiv);
 	}
 	
@@ -115,10 +123,11 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih;i<l;i++){
 		tempDiv=document.createElement('DIV');
 		let s=w.cooldown;
 		if(w.hasOwnProperty('boost')&&w.boost.type==='cooldown'){
-			for(let i=w.boost.count,k=w.cooldown;--i>-1;){
+			for(let i=w.boost.count,k=w.cooldown,tk;--i>-1;){
 				if(k<=w.boost.amount)break;
+				tk=Math.round(k*10-w.boost.amount*10)/10;
 				k-=w.boost.amount;
-				s+='/'+k
+				s+='/'+tk
 			}
 		}
 		tempDiv.textContent='Перезарядка: '+s;
