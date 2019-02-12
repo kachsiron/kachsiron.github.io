@@ -23,7 +23,7 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih;i<l;i++){
 	if(w.title==='...')continue;
 	mainDiv=document.createElement('DIV');
 	mainDiv.style.clear='both';
-	mainDiv.style.overflow='auto';
+	mainDiv.style.overflowX='hidden';
 	mainDiv.style.padding='15px';
 	mainDiv.style.margin='0 0 15px 0';
 	mainDiv.style.backgroundColor='#FFF';
