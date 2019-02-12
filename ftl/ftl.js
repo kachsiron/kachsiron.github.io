@@ -113,13 +113,21 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih;i<l;i++){
 
 	if(w.hasOwnProperty('cooldown')&&w.cooldown>0){
 		tempDiv=document.createElement('DIV');
-		tempDiv.textContent='Перезарядка: '+w.cooldown+' сек.';
+		let s=w.cooldown;
+		if(w.hasOwnProperty('boost')&&w.boost.type==='cooldown'){
+			for(let i=w.boost.count,k=w.cooldown;--i>-1;){
+				if(k<=w.boost.amount)break;
+				k-=w.boost.amount;
+				s+='/'+k
+			}
+		}
+		tempDiv.textContent='Перезарядка: '+s;
 		mainDiv.appendChild(tempDiv);
 	}
 
 	if(w.hasOwnProperty('persDamage')&&w.persDamage>0){
 		tempDiv=document.createElement('DIV');
-		tempDiv.textContent='Урон по экипажу: '+w.persDamage;
+		tempDiv.textContent='Урон по экипажу: '+(w.damage * 15 + w.persDamage * 15);
 		mainDiv.appendChild(tempDiv);
 	}
 	
