@@ -138,7 +138,7 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih,ahash;i<l;i++){
 		mainDiv.appendChild(tempDiv);
 	}
 
-	if(w.hasOwnProperty('damage')||w.hasOwnProperty('persDamage')){
+	if((w.hasOwnProperty('damage')||w.hasOwnProperty('persDamage'))&&!w.hasOwnProperty('ion')){
 		let d=((w.hasOwnProperty('damage')&&w.damage>0)?w.damage:0)+((w.hasOwnProperty('persDamage')&&w.persDamage>0)?w.persDamage:0);
 		if(d>0){
 			let s=d * 15;
