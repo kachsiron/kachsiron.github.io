@@ -17,7 +17,7 @@ listDiv.style.border='1px solid white';
 listDiv.style.borderRadius='15px';
 listDiv.style.padding='15px';
 var imgs=[];
-for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih;i<l;i++){
+for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih,ahash;i<l;i++){
 	w=W[i];
 	if(w.xml.includes('BOSS'))continue;
 	if(w.title==='...')continue;
@@ -29,10 +29,14 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih;i<l;i++){
 	mainDiv.style.backgroundColor='#FFF';
 	mainDiv.style.borderRadius='15px';
 	tempDiv=document.createElement('DIV');
+	ahash=document.createElement('A');
 	tempDiv.style.textAlign='center';
 	tempDiv.style.fontSize='150%';
 	tempDiv.style.marginBottom='15px';
-	tempDiv.textContent=w.title;
+	ahash.textContent=w.title;
+	ahash.setAttribute('name',w.xml);
+	ahash.setAttribute('href',window.location.href+'#'+w.xml);
+	tempDiv.appendChild(ahash);
 	mainDiv.appendChild(tempDiv);
 	
 	img=document.createElement('IMG');
