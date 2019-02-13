@@ -122,7 +122,7 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih,ahash;i<l;i++){
 	
 	if(w.hasOwnProperty('power')&&w.power>0){
 		tempDiv=document.createElement('DIV');
-		tempDiv.textContent='Потребляемая мощность: '+w.power;
+		tempDiv.textContent='Потребляемая мощность: '+'▮'.repeat(w.power);
 		mainDiv.appendChild(tempDiv);
 	}
 	
