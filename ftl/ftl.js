@@ -1,11 +1,13 @@
 document.onscroll=vis;
 //window.onresize=vis;
+function spid(s){
+	if(s<
+}
 function vis(){
 	let v=window.pageYOffset||window.scrollY;
 	for(let i=imgs.length;--i>-1;){
 		if(v<imgs[i][2]+150&&v+window.innerHeight>imgs[i][2]){
 			imgs[i][0].src=imgs[i][1];
-			imgs[i][0].onerror=function(){console.log('a',this.src)}
 			imgs.splice(i,1)
 		}
 	}
@@ -105,8 +107,11 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih,ahash;i<l;i++){
 		let count=1;
 		if(w.hasOwnProperty('projectiles')){
 			count=0;
-			for(let i=w.projectiles.projectile.length;--i>-1;){
-				if(w.projectiles.projectile[i]._fake==='false')count+=w.projectiles.projectile[i]._count
+			if(w.projectiles.projectile.length===void(0))count=w.projectiles.projectile._count;
+			else{
+				for(let i=w.projectiles.projectile.length;--i>-1;){
+					if(w.projectiles.projectile[i]._fake==='false')count+=w.projectiles.projectile[i]._count
+				}
 			}
 		}
 		tempDiv=document.createElement('DIV');
