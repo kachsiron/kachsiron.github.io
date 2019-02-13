@@ -1,8 +1,5 @@
 document.onscroll=vis;
 //window.onresize=vis;
-function spid(s){
-	if(s<
-}
 function vis(){
 	let v=window.pageYOffset||window.scrollY;
 	for(let i=imgs.length;--i>-1;){
