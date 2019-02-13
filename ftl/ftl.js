@@ -107,6 +107,7 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih,ahash;i<l;i++){
 			for(let i=w.projectiles.projectile.length;--i>-1;){
 				if(!w.projectiles.projectile[i]._fake)count+=w.projectiles.projectile[i]._count
 			}
+			console.log(count,w.projectiles.projectile)
 		}
 		tempDiv=document.createElement('DIV');
 		tempDiv.textContent='Снарядов в залпе: '+(w.shots*count);
