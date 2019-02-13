@@ -96,10 +96,6 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih,ahash;i<l;i++){
 		mainDiv.appendChild(tempDiv);
 	}
 	
-	tempDiv=document.createElement('DIV');
-	tempDiv.textContent='Скорость '+(w.type==='BEAM'?'луча':'снаряда')+': '+(w.hasOwnProperty('speed')?w.speed:'70-80');
-	mainDiv.appendChild(tempDiv);
-	
 	if(w.hasOwnProperty('shots')&&w.shots>0){
 		let count=1;
 		if(w.hasOwnProperty('projectiles')){
@@ -204,6 +200,10 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih,ahash;i<l;i++){
 	}
 	tempDiv=document.createElement('DIV');
 	tempDiv.textContent='Редкость: '+rarityNames[w.rarity];
+	mainDiv.appendChild(tempDiv);
+	
+	tempDiv=document.createElement('DIV');
+	tempDiv.textContent='Скорость '+(w.type==='BEAM'?'луча':'снаряда')+': '+(w.hasOwnProperty('speed')?w.speed:'70-80');
 	mainDiv.appendChild(tempDiv);
 	
 	tempDiv=document.createElement('DIV');
