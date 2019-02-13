@@ -193,7 +193,12 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih,ahash;i<l;i++){
 		tempDiv.textContent='Вероятность поджога: '+w.fireChance*10+'%';
 		mainDiv.appendChild(tempDiv);
 	}
-	
+
+	if(w.hasOwnProperty('stunChance')&&w.stunChance>0){
+		tempDiv=document.createElement('DIV');
+		tempDiv.textContent='Вероятность оглушения: '+w.stunChance*10+'%';
+		mainDiv.appendChild(tempDiv);
+	}
 	tempDiv=document.createElement('DIV');
 	tempDiv.textContent='Редкость: '+rarityNames[w.rarity];
 	mainDiv.appendChild(tempDiv);
