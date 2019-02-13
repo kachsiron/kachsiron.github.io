@@ -5,6 +5,7 @@ function vis(){
 	for(let i=imgs.length;--i>-1;){
 		if(v<imgs[i][2]+150&&v+window.innerHeight>imgs[i][2]){
 			imgs[i][0].src=imgs[i][1];
+			imgs[i][0].onerror=function(){console.log('a',this.src)}
 			imgs.splice(i,1)
 		}
 	}
