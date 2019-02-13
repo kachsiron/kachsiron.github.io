@@ -101,8 +101,15 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih,ahash;i<l;i++){
 	mainDiv.appendChild(tempDiv);
 	
 	if(w.hasOwnProperty('shots')&&w.shots>0){
+		let count=1;
+		if(w.hasOwnProperty('projectiles')){
+			count=0;
+			for(let i=w.projectiles.projectile.length;--i>-1;){
+				if(!w.projectiles.projectile[i]._fake)count+=w.projectiles.projectile[i]._count
+			}
+		}
 		tempDiv=document.createElement('DIV');
-		tempDiv.textContent='Снарядов в залпе: '+w.shots;
+		tempDiv.textContent='Снарядов в залпе: '+(w.shots*count);
 		mainDiv.appendChild(tempDiv);
 	}
 	
