@@ -17,9 +17,16 @@ listDiv.style.width='500px';
 listDiv.style.border='1px solid white';
 listDiv.style.borderRadius='15px';
 listDiv.style.padding='15px';
-var imgs=[];
+var imgs=[];var WW=[]
 for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih,ahash;i<l;i++){
 	w=W[i];
+	if(w.title.includes('√'))continue;
+	if(w.title.includes('†'))continue;
+	if(w.title.includes('^'))continue;
+	if(w.title.includes('‡'))continue;
+	if(w.title.includes('€'))continue;
+	if(w.title.includes('™'))continue;
+	WW.push(w);
 	mainDiv=document.createElement('DIV');
 	mainDiv.style.clear='both';
 	mainDiv.style.overflowX='hidden';
