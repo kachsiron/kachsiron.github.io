@@ -143,12 +143,6 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih,ahash;i<l;i++){
 		mainDiv.appendChild(tempDiv);
 	}
 	
-	if(w.hasOwnProperty('length')&&w.length>0){
-		tempDiv=document.createElement('DIV');
-		tempDiv.textContent='Длина луча: '+w.length;
-		mainDiv.appendChild(tempDiv);
-	}
-	
 	if((w.hasOwnProperty('damage')||w.hasOwnProperty('persDamage'))&&!w.hasOwnProperty('ion')){
 		let d=((w.hasOwnProperty('damage')&&w.damage>0)?w.damage:0)+((w.hasOwnProperty('persDamage')&&w.persDamage>0)?w.persDamage:0);
 		if(d>0){
@@ -205,6 +199,12 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih,ahash;i<l;i++){
 	tempDiv=document.createElement('DIV');
 	tempDiv.textContent='Редкость: '+rarityNames[w.rarity];
 	mainDiv.appendChild(tempDiv);
+	
+	if(w.hasOwnProperty('length')&&w.length>0){
+		tempDiv=document.createElement('DIV');
+		tempDiv.textContent='Длина луча: '+w.length;
+		mainDiv.appendChild(tempDiv);
+	}
 	
 	tempDiv=document.createElement('DIV');
 	tempDiv.textContent='Скорость '+(w.type==='BEAM'?'луча':'снаряда')+': '+(w.hasOwnProperty('speed')?w.speed:'70-80');
