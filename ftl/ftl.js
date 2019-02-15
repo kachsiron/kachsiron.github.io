@@ -26,6 +26,7 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih,ahash;i<l;i++){
 	if(w.title.includes('‡'))continue;
 	if(w.title.includes('€'))continue;
 	if(w.title.includes('™'))continue;
+	if(w.title.includes('‰'))continue;
 	WW.push(w);
 	mainDiv=document.createElement('DIV');
 	mainDiv.style.clear='both';
