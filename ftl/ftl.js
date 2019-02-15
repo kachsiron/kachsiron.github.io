@@ -21,7 +21,12 @@ var imgs=[];
 for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih,ahash;i<l;i++){
 	w=W[i];
 	if(w.xml.includes('BOSS'))continue;
+	if(w.xml.endsWith('™'))continue;
+	if(w.xml.endsWith('‰'))continue;
+	if(w.xml.endsWith('√'))continue;
+	if(w.xml.endsWith('‡'))continue;
 	if(w.title==='...')continue;
+	
 	mainDiv=document.createElement('DIV');
 	mainDiv.style.clear='both';
 	mainDiv.style.overflowX='hidden';
