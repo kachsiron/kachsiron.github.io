@@ -38,14 +38,14 @@ filterDiv.style.padding=filterDivpadding+'px';
 document.body.appendChild(filterDiv)
 
 var textDiv=document.createElement('DIV');
-textDiv.textContent='Поищи';
+textDiv.textContent='Просеять';
 filterDiv.appendChild(textDiv);
 var inputSearchCooldownMin=document.createElement('INPUT');
-inputSearchCooldownMin.placeholder = 'Просеять по перезарядке (мин.)';
+inputSearchCooldownMin.placeholder = 'По перезарядке [0-45] (мин.)';
 inputSearchCooldownMin.type = 'text';
 filterDiv.appendChild(inputSearchCooldownMin);
 var inputSearchCooldownMax=document.createElement('INPUT');
-inputSearchCooldownMax.placeholder = 'Просеять по перезарядке (макс.)';
+inputSearchCooldownMax.placeholder = 'По перезарядке [0-45] (макс.)';
 inputSearchCooldownMax.type = 'text';
 filterDiv.appendChild(inputSearchCooldownMax);
 var inputSearchRarityMin=document.createElement('INPUT');
@@ -108,6 +108,9 @@ listDiv.style.border='1px solid white';
 listDiv.style.borderRadius='15px';
 listDiv.style.padding=listDivpadding+'px';
 var imgs=[],weaponElements=[];
+
+//var minmax=[Number.POSITIVE_INFINITY,Number.NEGATIVE_INFINITY];
+
 for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih,ahash,fdata,rr;i<l;i++){
 	w=W[i];
 	fdata={};
@@ -235,6 +238,9 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih,ahash,fdata,rr;i<l;i++
 		}
 		tempDiv.textContent='Перезарядка: '+s;
 		mainDiv.appendChild(tempDiv)
+		
+		//if(fdata.cooldown[0]>minmax[1])minmax[1]=fdata.cooldown[0];
+		//if(fdata.cooldown[fdata.cooldown.length-1]<minmax[0])minmax[0]=fdata.cooldown[fdata.cooldown.length-1]
 	}
 	else fdata.cooldown=[0];
 	
