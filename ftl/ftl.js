@@ -83,6 +83,7 @@ function filterPosition(){
 	filterDiv.style.left=(document.documentElement.clientWidth/2-filterDivwidth-listDivwidth/2-listDivpadding-filterDivpadding*2)+'px';
 }
 var rarityNames=['Нельзя купить','Очень низкая','Низкая','Средняя','Высокая','Очень высокая'];
+var rarityColor=['rgb(255,0,0)','rgb(0,255,0)','rgb(51,204,0)','rgb(101,154,0)','rgb(153,102,0)','rgb(203,52,0)']
 var listDiv=document.createElement('DIV');
 listDiv.style.margin='0 auto';
 listDiv.style.backgroundColor='black';
@@ -276,6 +277,7 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih,ahash,fdata;i<l;i++){
 	}
 	tempDiv=document.createElement('DIV');
 	tempDiv.textContent='Редкость: '+rarityNames[w.rarity];
+	tempDiv.style.color=rarityColor[w.rarity];
 	mainDiv.appendChild(tempDiv);
 	
 	if(w.hasOwnProperty('length')&&w.length>0){
