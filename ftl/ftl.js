@@ -49,11 +49,18 @@ var inputSearchCooldownMax=document.createElement('INPUT');
 inputSearchCooldownMax.placeholder = 'Просеять по перезарядке (макс.)';
 inputSearchCooldownMax.type = 'text';
 filterDiv.appendChild(inputSearchCooldownMax);
+var inputSearchReset=document.createElement('BUTTON');
+inputSearchReset.textContent='Очистить';
+filterDiv.appendChild(inputSearchReset);
 inputSearchCooldownMin.onkeyup=inputSearchCooldownMax.onkeyup=function(){
 	clearTimeout(timeouttimer);
 	timeouttimer=setTimeout(filtering,1555)
 };
 inputSearchCooldownMin.style.width=inputSearchCooldownMax.style.width='275px';
+inputSearchReset.onclick=function(){
+	inputSearchCooldownMin.value=inputSearchCooldownMax.value='';
+	filtering()
+}
 function filtering(){
 	let cooldownmin=Number.parseInt(inputSearchCooldownMin.value);
 	let cooldownmax=Number.parseInt(inputSearchCooldownMax.value);
