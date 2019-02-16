@@ -35,6 +35,7 @@ filterDiv.style.position='fixed';
 filterDiv.style.width=filterDivwidth+'px';
 filterDiv.style.backgroundColor='white';
 filterDiv.style.padding=filterDivpadding+'px';
+filterDiv.style.borderRadius='0 15px 0 0';
 document.body.appendChild(filterDiv)
 
 var textDiv=document.createElement('DIV');
