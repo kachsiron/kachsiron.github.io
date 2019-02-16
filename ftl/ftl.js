@@ -40,6 +40,7 @@ document.body.appendChild(filterDiv)
 var textDiv=document.createElement('DIV');
 textDiv.textContent='Просеять';
 filterDiv.appendChild(textDiv);
+
 var inputSearchCooldownMin=document.createElement('INPUT');
 inputSearchCooldownMin.placeholder = 'По перезарядке [0-45] (мин.)';
 inputSearchCooldownMin.type = 'text';
@@ -48,6 +49,7 @@ var inputSearchCooldownMax=document.createElement('INPUT');
 inputSearchCooldownMax.placeholder = 'По перезарядке [0-45] (макс.)';
 inputSearchCooldownMax.type = 'text';
 filterDiv.appendChild(inputSearchCooldownMax);
+
 var inputSearchRarityMin=document.createElement('INPUT');
 inputSearchRarityMin.placeholder = 'По редкости [0-5] (мин.)';
 inputSearchRarityMin.type = 'text';
@@ -56,16 +58,26 @@ var inputSearchRarityMax=document.createElement('INPUT');
 inputSearchRarityMax.placeholder = 'По редкости [0-5] (макс.)';
 inputSearchRarityMax.type = 'text';
 filterDiv.appendChild(inputSearchRarityMax);
+
+var inputSearchPowerMin=document.createElement('INPUT');
+inputSearchPowerMin.placeholder = 'По потреблению [1-4] (мин.)';
+inputSearchPowerMin.type = 'text';
+filterDiv.appendChild(inputSearchPowerMin);
+var inputSearchPowerMax=document.createElement('INPUT');
+inputSearchPowerMax.placeholder = 'По потреблению [1-4] (макс.)';
+inputSearchPowerMax.type = 'text';
+filterDiv.appendChild(inputSearchPowerMax);
+
 var inputSearchReset=document.createElement('BUTTON');
 inputSearchReset.textContent='Очистить';
 filterDiv.appendChild(inputSearchReset);
-inputSearchCooldownMin.onkeyup=inputSearchCooldownMax.onkeyup=inputSearchRarityMin.onkeyup=inputSearchRarityMax.onkeyup=function(){
+inputSearchCooldownMin.onkeyup=inputSearchCooldownMax.onkeyup=inputSearchRarityMin.onkeyup=inputSearchRarityMax.onkeyup=inputSearchPowerMin.onkeyup=inputSearchPowerMax.onkeyup=function(){
 	clearTimeout(timeouttimer);
 	timeouttimer=setTimeout(filtering,1555)
 };
-inputSearchCooldownMin.style.width=inputSearchCooldownMax.style.width=inputSearchRarityMin.style.width=inputSearchRarityMax.style.width='275px';
+inputSearchCooldownMin.style.width=inputSearchCooldownMax.style.width=inputSearchRarityMin.style.width=inputSearchRarityMax.style.width=inputSearchPowerMin.style.width=inputSearchPowerMax.style.width='275px';
 inputSearchReset.onclick=function(){
-	inputSearchCooldownMin.value=inputSearchCooldownMax.value=inputSearchRarityMax.value=inputSearchRarityMin.value='';
+	inputSearchCooldownMin.value=inputSearchCooldownMax.value=inputSearchRarityMax.value=inputSearchRarityMin.value=inputSearchPowerMax.value=inputSearchPowerMin.value='';
 	filtering()
 }
 const reducer=(a,c)=>a+c;
@@ -74,14 +86,18 @@ function filtering(){
 	let cooldownmax=Number.parseInt(inputSearchCooldownMax.value);
 	let raritymin=Number.parseInt(inputSearchRarityMin.value);
 	let raritymax=Number.parseInt(inputSearchRarityMax.value);
+	let powermin=Number.parseInt(inputSearchPowerMin.value);
+	let powermax=Number.parseInt(inputSearchPowerMax.value);
 	if(Number.isNaN(cooldownmin)||cooldownmin<0)cooldownmin=0;
 	if(Number.isNaN(cooldownmax)||cooldownmax<0)cooldownmax=Number.POSITIVE_INFINITY;
 	if(Number.isNaN(raritymin)||raritymin<0)raritymin=0;
 	if(Number.isNaN(raritymax)||raritymax<0)raritymax=5;
+	if(Number.isNaN(powermin)||powermin<1)powermin=1;
+	if(Number.isNaN(powermax)||powermax<0)powermax=4;
 	for(let i=0,l=weaponElements.length,w,el,tr;i<l;i++){
 		w=weaponElements[i][1];
 		el=weaponElements[i][0];
-		tr=[0,0];
+		tr=[0,0,0];
 		for(let j=w.cooldown.length;--j>-1;){
 			if(w.cooldown[j]<=cooldownmax&&w.cooldown[j]>=cooldownmin){
 				el.style.display='';
@@ -90,7 +106,8 @@ function filtering(){
 			}
 		}
 		if(w.rarity<=raritymax&&w.rarity>=raritymin)tr[1]=1;
-		if(tr.reduce(reducer)<2)el.style.display='none';
+		if(w.power<=powermax&&w.power>=powermin)tr[2]=1;
+		if(tr.reduce(reducer)<3)el.style.display='none';
 	}
 	imgPosition();
 	vis()
@@ -210,11 +227,13 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih,ahash,fdata,rr;i<l;i++
 		mainDiv.appendChild(tempDiv);
 	}
 	
-	if(w.hasOwnProperty('power')&&w.power>0){
-		tempDiv=document.createElement('DIV');
-		tempDiv.textContent='Потребляемая мощность:'+'▮'.repeat(w.power);
-		mainDiv.appendChild(tempDiv);
-	}
+	//if(w.hasOwnProperty('power')&&w.power>0){
+	tempDiv=document.createElement('DIV');
+	tempDiv.textContent='Потребляемая мощность:'+'▮'.repeat(w.power);
+	fdata.power=w.power;
+	mainDiv.appendChild(tempDiv);
+	//}
+	//else fdata.power=0;
 	
 	if(w.hasOwnProperty('missiles')&&w.missles>0){
 		tempDiv=document.createElement('DIV');
