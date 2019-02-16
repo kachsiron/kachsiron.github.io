@@ -1,25 +1,92 @@
 document.onscroll=vis;
 //window.onresize=vis;
+const filterDivwidth=300;
+const filterDivpadding=5;
+const listDivwidth=500;
+const listDivpadding=15;
+var timeouttimer;
 function vis(){
 	let v=window.pageYOffset||window.scrollY;
 	for(let i=imgs.length;--i>-1;){
-		if(v<imgs[i][2]+150&&v+window.innerHeight>imgs[i][2]){
-			imgs[i][0].src=imgs[i][1];
+		if(v<imgs[i][3]+150&&v+window.innerHeight>imgs[i][3]){
+			console.log(v,imgs[i][3]+150,'||',v+window.innerHeight,imgs[i][3])
+
+			imgs[i][1].src=imgs[i][2];
 			imgs.splice(i,1)
 		}
 	}
+	console.log('filtered',imgs.length)
+}
+function imgPosition(){
+	for(let i=imgs.length,elm;--i>-1;){
+		if(imgs[i][0].style.display==='none')imgs[i][3]=Number.POSITIVE_INFINITY;
+		else{
+			elm=imgs[i][1];
+			let top=0;
+			do{
+				top+=elm.offsetTop;
+				elm=elm.offsetParent;
+			}while(elm);
+			imgs[i][3]=top
+		}
+	}
+	console.log('positioned',imgs.length)
+}
+var filterDiv=document.createElement('DIV')
+filterDiv.style.position='fixed';
+
+filterDiv.style.width=filterDivwidth+'px';
+filterDiv.style.height=100+'px';
+filterDiv.style.backgroundColor='white';
+filterDiv.style.padding=filterDivpadding+'px';
+document.body.appendChild(filterDiv)
+
+var inputSearchCooldownMin=document.createElement('INPUT');
+inputSearchCooldownMin.placeholder = 'Просеять по перезарядке (мин.)';
+inputSearchCooldownMin.type = 'text';
+filterDiv.appendChild(inputSearchCooldownMin);
+var inputSearchCooldownMax=document.createElement('INPUT');
+inputSearchCooldownMax.placeholder = 'Просеять по перезарядке (макс.)';
+inputSearchCooldownMax.type = 'text';
+filterDiv.appendChild(inputSearchCooldownMax);
+inputSearchCooldownMin.onkeyup=inputSearchCooldownMax.onkeyup=function(){
+	clearTimeout(timeouttimer);
+	timeouttimer=setTimeout(filtering,1555)
+};
+inputSearchCooldownMin.style.width=inputSearchCooldownMax.style.width='275px';
+function filtering(){
+	let cooldownmin=Number.parseInt(inputSearchCooldownMin.value);
+	let cooldownmax=Number.parseInt(inputSearchCooldownMax.value);
+	if(Number.isNaN(cooldownmin)||cooldownmin<0)cooldownmin=0;
+	if(Number.isNaN(cooldownmax)||cooldownmax<0)cooldownmax=Number.POSITIVE_INFINITY;
+	for(let i=0,l=weaponElements.length,w,el;i<l;i++){
+		w=weaponElements[i][1];
+		el=weaponElements[i][0];
+		if(w.cooldown<=cooldownmax&&w.cooldown>=cooldownmin){
+			el.style.display=''
+		}
+		else{
+			el.style.display='none'
+		}
+	}
+	imgPosition();
+	vis()
+}
+function filterPosition(){
+	filterDiv.style.left=(document.documentElement.clientWidth/2-filterDivwidth-listDivwidth/2-listDivpadding-filterDivpadding*2)+'px';
 }
 var rarityNames=['Нельзя купить','Очень низкая','Низкая','Средняя','Высокая','Очень высокая'];
 var listDiv=document.createElement('DIV');
 listDiv.style.margin='0 auto';
 listDiv.style.backgroundColor='black';
-listDiv.style.width='500px';
+listDiv.style.width=listDivwidth+'px';
 listDiv.style.border='1px solid white';
 listDiv.style.borderRadius='15px';
-listDiv.style.padding='15px';
-var imgs=[];
-for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih,ahash;i<l;i++){
+listDiv.style.padding=listDivpadding+'px';
+var imgs=[],weaponElements=[];
+for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih,ahash,fdata;i<l;i++){
 	w=W[i];
+	fdata={};
 	mainDiv=document.createElement('DIV');
 	mainDiv.style.clear='both';
 	mainDiv.style.overflowX='hidden';
@@ -129,19 +196,23 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih,ahash;i<l;i++){
 	}
 
 	if(w.hasOwnProperty('cooldown')&&w.cooldown>0){
+		fdata.cooldown=[];
 		tempDiv=document.createElement('DIV');
 		let s=w.cooldown;
+		fdata.cooldown.push(w.cooldown)
 		if(w.hasOwnProperty('boost')&&w.boost.type==='cooldown'){
 			for(let i=w.boost.count,k=w.cooldown,tk;--i>-1;){
 				if(k<=w.boost.amount)break;
 				tk=Math.round(k*10-w.boost.amount*10)/10;
 				k-=w.boost.amount;
-				s+='/'+tk
+				s+='/'+tk;
+				fdata.cooldown.push(tk)
 			}
 		}
 		tempDiv.textContent='Перезарядка: '+s;
-		mainDiv.appendChild(tempDiv);
+		mainDiv.appendChild(tempDiv)
 	}
+	else fdata.cooldown=[0]
 	
 	if((w.hasOwnProperty('damage')||w.hasOwnProperty('persDamage'))&&!w.hasOwnProperty('ion')){
 		let d=((w.hasOwnProperty('damage')&&w.damage>0)?w.damage:0)+((w.hasOwnProperty('persDamage')&&w.persDamage>0)?w.persDamage:0);
@@ -218,20 +289,15 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih,ahash;i<l;i++){
 	
 	listDiv.appendChild(mainDiv);
 	
-	if(A.hasOwnProperty(w.weaponArt)){
-		imgs.push([img,A[w.weaponArt].png])
-	}
+	weaponElements.push([mainDiv, fdata]);
+	
+	if(A.hasOwnProperty(w.weaponArt))imgs.push([mainDiv,img,A[w.weaponArt].png])
 }
 window.onload=function(){
-	for(let i=imgs.length,elm;--i>-1;){
-		elm=imgs[i][0];
-		let top=0;
-		do{
-			top+=elm.offsetTop;
-			elm=elm.offsetParent;
-		}while(elm);
-		imgs[i][2]=top
-	}
-	vis()
+	filterDiv.style.top=listDiv.offsetTop+'px';
+	imgPosition();
+	vis();
+	filterPosition()
 }
+window.onresize=function(){filterPosition()}
 document.body.appendChild(listDiv)
