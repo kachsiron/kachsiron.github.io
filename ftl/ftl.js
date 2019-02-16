@@ -146,7 +146,7 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih,ahash,fdata,rr;i<l;i++
 	tempDiv.style.marginBottom='15px';
 	ahash.textContent=w.title;
 	ahash.setAttribute('name',w.xml);
-	ahash.setAttribute('href',window.location.href+'#'+w.xml);
+	ahash.setAttribute('href',window.location.host+window.location.pathname+'#'+w.xml);
 	tempDiv.appendChild(ahash);
 	mainDiv.appendChild(tempDiv);
 	
