@@ -8,8 +8,6 @@ function vis(){
 	let v=window.pageYOffset||window.scrollY;
 	for(let i=imgs.length;--i>-1;){
 		if(v<imgs[i][3]+150&&v+window.innerHeight>imgs[i][3]){
-			console.log(v,imgs[i][3]+150,'||',v+window.innerHeight,imgs[i][3])
-
 			imgs[i][1].src=imgs[i][2];
 			imgs.splice(i,1)
 		}
@@ -39,6 +37,9 @@ filterDiv.style.backgroundColor='white';
 filterDiv.style.padding=filterDivpadding+'px';
 document.body.appendChild(filterDiv)
 
+var textDiv=document.createElement('DIV');
+textDiv.textContent='Поищи';
+filterDiv.appendChild(textDiv);
 var inputSearchCooldownMin=document.createElement('INPUT');
 inputSearchCooldownMin.placeholder = 'Просеять по перезарядке (мин.)';
 inputSearchCooldownMin.type = 'text';
