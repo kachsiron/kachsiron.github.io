@@ -1,5 +1,4 @@
 document.onscroll=vis;
-//window.onresize=vis;
 const filterDivwidth=300;
 const filterDivpadding=5;
 const listDivwidth=500;
@@ -15,7 +14,7 @@ function vis(){
 			imgs.splice(i,1)
 		}
 	}
-	console.log('filtered',imgs.length)
+	//console.log('filtered',imgs.length)
 }
 function imgPosition(){
 	for(let i=imgs.length,elm;--i>-1;){
@@ -30,13 +29,12 @@ function imgPosition(){
 			imgs[i][3]=top
 		}
 	}
-	console.log('positioned',imgs.length)
+	//console.log('positioned',imgs.length)
 }
 var filterDiv=document.createElement('DIV')
 filterDiv.style.position='fixed';
 
 filterDiv.style.width=filterDivwidth+'px';
-filterDiv.style.height=100+'px';
 filterDiv.style.backgroundColor='white';
 filterDiv.style.padding=filterDivpadding+'px';
 document.body.appendChild(filterDiv)
@@ -49,32 +47,49 @@ var inputSearchCooldownMax=document.createElement('INPUT');
 inputSearchCooldownMax.placeholder = 'Просеять по перезарядке (макс.)';
 inputSearchCooldownMax.type = 'text';
 filterDiv.appendChild(inputSearchCooldownMax);
+var inputSearchRarityMin=document.createElement('INPUT');
+inputSearchRarityMin.placeholder = 'По редкости [0-5] (мин.)';
+inputSearchRarityMin.type = 'text';
+filterDiv.appendChild(inputSearchRarityMin);
+var inputSearchRarityMax=document.createElement('INPUT');
+inputSearchRarityMax.placeholder = 'По редкости [0-5] (макс.)';
+inputSearchRarityMax.type = 'text';
+filterDiv.appendChild(inputSearchRarityMax);
 var inputSearchReset=document.createElement('BUTTON');
 inputSearchReset.textContent='Очистить';
 filterDiv.appendChild(inputSearchReset);
-inputSearchCooldownMin.onkeyup=inputSearchCooldownMax.onkeyup=function(){
+inputSearchCooldownMin.onkeyup=inputSearchCooldownMax.onkeyup=inputSearchRarityMin.onkeyup=inputSearchRarityMax.onkeyup=function(){
 	clearTimeout(timeouttimer);
 	timeouttimer=setTimeout(filtering,1555)
 };
-inputSearchCooldownMin.style.width=inputSearchCooldownMax.style.width='275px';
+inputSearchCooldownMin.style.width=inputSearchCooldownMax.style.width=inputSearchRarityMin.style.width=inputSearchRarityMax.style.width='275px';
 inputSearchReset.onclick=function(){
-	inputSearchCooldownMin.value=inputSearchCooldownMax.value='';
+	inputSearchCooldownMin.value=inputSearchCooldownMax.value=inputSearchRarityMax.value=inputSearchRarityMin.value='';
 	filtering()
 }
+const reducer=(a,c)=>a+c;
 function filtering(){
 	let cooldownmin=Number.parseInt(inputSearchCooldownMin.value);
 	let cooldownmax=Number.parseInt(inputSearchCooldownMax.value);
+	let raritymin=Number.parseInt(inputSearchRarityMin.value);
+	let raritymax=Number.parseInt(inputSearchRarityMax.value);
 	if(Number.isNaN(cooldownmin)||cooldownmin<0)cooldownmin=0;
 	if(Number.isNaN(cooldownmax)||cooldownmax<0)cooldownmax=Number.POSITIVE_INFINITY;
-	for(let i=0,l=weaponElements.length,w,el;i<l;i++){
+	if(Number.isNaN(raritymin)||raritymin<0)raritymin=0;
+	if(Number.isNaN(raritymax)||raritymax<0)raritymax=5;
+	for(let i=0,l=weaponElements.length,w,el,tr;i<l;i++){
 		w=weaponElements[i][1];
 		el=weaponElements[i][0];
-		if(w.cooldown<=cooldownmax&&w.cooldown>=cooldownmin){
-			el.style.display=''
+		tr=[0,0];
+		for(let j=w.cooldown.length;--j>-1;){
+			if(w.cooldown[j]<=cooldownmax&&w.cooldown[j]>=cooldownmin){
+				el.style.display='';
+				tr[0]=1;
+				break
+			}
 		}
-		else{
-			el.style.display='none'
-		}
+		if(w.rarity<=raritymax&&w.rarity>=raritymin)tr[1]=1;
+		if(tr.reduce(reducer)<2)el.style.display='none';
 	}
 	imgPosition();
 	vis()
@@ -82,8 +97,8 @@ function filtering(){
 function filterPosition(){
 	filterDiv.style.left=(document.documentElement.clientWidth/2-filterDivwidth-listDivwidth/2-listDivpadding-filterDivpadding*2)+'px';
 }
-var rarityNames=['Нельзя купить','Очень низкая','Низкая','Средняя','Высокая','Очень высокая'];
-var rarityColor=['rgb(255,0,0)','rgb(0,255,0)','rgb(51,204,0)','rgb(101,154,0)','rgb(153,102,0)','rgb(203,52,0)']
+var rarityNames=['Очень низкая','Низкая','Средняя','Высокая','Очень высокая','Нельзя купить'];
+var rarityColor=['rgb(0,255,0)','rgb(51,204,0)','rgb(101,154,0)','rgb(153,102,0)','rgb(203,52,0)','rgb(255,0,0)'];
 var listDiv=document.createElement('DIV');
 listDiv.style.margin='0 auto';
 listDiv.style.backgroundColor='black';
@@ -92,7 +107,7 @@ listDiv.style.border='1px solid white';
 listDiv.style.borderRadius='15px';
 listDiv.style.padding=listDivpadding+'px';
 var imgs=[],weaponElements=[];
-for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih,ahash,fdata;i<l;i++){
+for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih,ahash,fdata,rr;i<l;i++){
 	w=W[i];
 	fdata={};
 	mainDiv=document.createElement('DIV');
@@ -220,7 +235,7 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih,ahash,fdata;i<l;i++){
 		tempDiv.textContent='Перезарядка: '+s;
 		mainDiv.appendChild(tempDiv)
 	}
-	else fdata.cooldown=[0]
+	else fdata.cooldown=[0];
 	
 	if((w.hasOwnProperty('damage')||w.hasOwnProperty('persDamage'))&&!w.hasOwnProperty('ion')){
 		let d=((w.hasOwnProperty('damage')&&w.damage>0)?w.damage:0)+((w.hasOwnProperty('persDamage')&&w.persDamage>0)?w.persDamage:0);
@@ -276,8 +291,11 @@ for(let i=0,l=W.length,mainDiv,tempDiv,imgDiv,img,w,iw,ih,ahash,fdata;i<l;i++){
 		mainDiv.appendChild(tempDiv);
 	}
 	tempDiv=document.createElement('DIV');
-	tempDiv.textContent='Редкость: '+rarityNames[w.rarity];
-	tempDiv.style.color=rarityColor[w.rarity];
+	rr=w.rarity-1;
+	if(rr===-1)rr=5;
+	tempDiv.textContent='Редкость: '+rarityNames[rr]+'['+rr+']';
+	tempDiv.style.color=rarityColor[rr];
+	fdata.rarity=rr;
 	mainDiv.appendChild(tempDiv);
 	
 	if(w.hasOwnProperty('length')&&w.length>0){
