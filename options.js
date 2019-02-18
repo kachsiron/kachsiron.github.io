@@ -3737,8 +3737,8 @@ function getCookie(){
 	//cookieToken=D.cookie.match(/chat_token=([^;]*)/);
 	let formData=new FormData();
 	formData.append('return','user');
-	formData.append('nickname','Asoas');
-	formData.append('password','6cBa3c0d37A35933');
+	formData.append('nickname',MYNICK[1]);
+	formData.append('password',GGPASS);
 	formData.append('remember','1');
 	GMX({method:'POST',url:'https://goodgame.ru/ajax/chatlogin/',data:formData,onload:function(requ){try{
 		requ=JSON.parse(requ.target.responseText);
@@ -3754,8 +3754,9 @@ var HGR=[];
 hidGenreTransform();
 
 //Г Л О Б А Л Ь Н Ы Е   П Е Р Е М Е Н Н Ы Е
-var MYNICK=['Pibamba','Asoas','pibamba'],NICKRGXP=[new RegExp(MYNICK[0]),new RegExp(MYNICK[1]),new RegExp(MYNICK[2],'i')],GGTOKEN='',GGUSERID='8262',FUNUSERID=33474,TWITCHPASS='',TWCLIENTID='84jehke2li8043e6gi26zbcb7ic4tt5',//TWITCHSECRET='6lgcbw7sh2bcgaih5q1fb5veyk8jur',
+var MYNICK=['Pibamba','Pibamba','pibamba'],NICKRGXP=[new RegExp(MYNICK[0]),new RegExp(MYNICK[1]),new RegExp(MYNICK[2],'i')],FUNUSERID=33474,TWITCHPASS='',TWCLIENTID='84jehke2li8043e6gi26zbcb7ic4tt5',//TWITCHSECRET='6lgcbw7sh2bcgaih5q1fb5veyk8jur',
 FUNTOKEN='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6MzM0NzQsImlwIjoiMTM2LjI0My4xMzIuMTYyIiwidXNlckFnZW50IjoiTW96aWxsYVwvNS4wIChXaW5kb3dzIE5UIDYuMTsgV09XNjQpIEFwcGxlV2ViS2l0XC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWVcLzYxLjAuMzE2My4xMDIgU2FmYXJpXC81MzcuMzYgVml2YWxkaVwvMS45My45NTUuMzgiLCJvYXV0aCI6eyJpZCI6MCwiYXBwcm92ZWQiOnRydWV9LCJleHAiOjE1NzA1NTkxNTh9.xOhnP5_XFQVuZjslzjmtCV20Acy7PVObhlRqbVMfO4jWlHGGCkK2Sp1zokto-pyZPVtT8mMGeLtVRbWLvs9NiA',
+GGTOKEN='',GGUSERID='1214319',GGPASS='KeLPdp6IlHsvi2E9Privet_-p9Z2VhZ4aj',//Asoas 8262
 FUNCHAN_WEBSOCKET='ws://chat.peka2.tv/?EIO=3&transport=websocket',
 FUNCHAN_API='http://funstream.tv/api/',
 LIMITOFMASSAGES=300,GGLISTAMOUNT=2,
