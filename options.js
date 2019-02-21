@@ -1611,7 +1611,7 @@ var scMenu={
 		this.chanID=alt;
 		//this.CID=cMan[alt].cid;
 		let x=e.pageX-15;
-		this.setb(7,cMan.chn[alt].thmb!==null?'<img style="height:120px;width:200px" src="'+cMan.getThmb(alt)+'?'+Math.round(Math.random()*1000)+'">':'');
+		this.setb(7,cMan.chn[alt].thmb!==null?'<img style="height:200px;width:355px" src="'+cMan.getThmb(alt)+'?'+Math.round(Math.random()*1000)+'">':'');
 		//this.setb(11,(fgh||(cMan.chn[alt]&&cMan.chn[alt].cache!=='')?'&nbsp;Clear cache':''));
 		this.menu[0].style.top=this.gpgy(e.pageY-25,this.menu[0].offsetHeight);
 		this.menu[0].style.left=(x<0?0:x)+'px';
@@ -2568,23 +2568,14 @@ function mChats(){
 			}
 		}
 		else if(o.type==='success_auth'){
-			//if(o.data.user_name===MYNICK[1])w.streamButton.style.display='none';
 			this.sam('[<u>авторизованы</u>]',w,true,2);
 			w.titleDiv.style.backgroundColor='black';
 			w.sock.send(JSON.stringify({'type':'join','data':{'channel_id':w.wsChatChannelId}}))
 		}
-		else if(o.type==='accepted'){
-			messtochat.MSG.value=''
-		}
-		else if(o.type==='welcome'){
-			w.sock.send(JSON.stringify({'type':'auth',data:{'user_id':GGUSERID,'token':GGTOKEN}}))
-		}
-		else if(o.type==='error'){
-			this.sam('[<u>ошибка</u>] ' + o.data.errorMsg,w,false)
-		}
-		else if(o.type==='new_poll'){
-			this.sam('[<u>голосование</u>] ' + o.data.title,w,false)
-		}
+		else if(o.type==='accepted')messtochat.MSG.value='';
+		else if(o.type==='welcome')w.sock.send(JSON.stringify({'type':'auth',data:{'user_id':GGUSERID,'token':GGTOKEN}}));
+		else if(o.type==='error')this.sam('[<u>ошибка</u>] ' + o.data.errorMsg,w,false);
+		else if(o.type==='new_poll')this.sam('[<u>голосование</u>] ' + o.data.title,w,false)
 	}
 	this.amoTwitchPubsub=function(e,w){console.log(e)}
 	this.amoTwitch=function(e,w){
