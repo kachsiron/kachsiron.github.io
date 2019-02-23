@@ -3718,7 +3718,7 @@ var MYNICK=['Pibamba','Pibamba','pibamba'],NICKRGXP=[new RegExp(MYNICK[0]),new R
 FUNTOKEN='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6MzM0NzQsImlwIjoiMTM2LjI0My4xMzIuMTYyIiwidXNlckFnZW50IjoiTW96aWxsYVwvNS4wIChXaW5kb3dzIE5UIDYuMTsgV09XNjQpIEFwcGxlV2ViS2l0XC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWVcLzYxLjAuMzE2My4xMDIgU2FmYXJpXC81MzcuMzYgVml2YWxkaVwvMS45My45NTUuMzgiLCJvYXV0aCI6eyJpZCI6MCwiYXBwcm92ZWQiOnRydWV9LCJleHAiOjE1NzA1NTkxNTh9.xOhnP5_XFQVuZjslzjmtCV20Acy7PVObhlRqbVMfO4jWlHGGCkK2Sp1zokto-pyZPVtT8mMGeLtVRbWLvs9NiA',
 GGTOKEN='',GGUSERID='1214319',GGPASS='KeLPdp6IlHsvi2E9Privet_-p9Z2VhZ4aj',//Asoas 8262
 FUNCHAN_WEBSOCKET='ws://chat.peka2.tv/?EIO=3&transport=websocket',
-FUNCHAN_API='http://funstream.tv/api/',
+FUNCHAN_API='https://peka2.tv/api/',
 LIMITOFMASSAGES=300,GGLISTAMOUNT=2,
 rgxpChan=[
 	/var current_players = \[.*?\];/,
