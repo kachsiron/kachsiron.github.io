@@ -1690,6 +1690,7 @@ function ScPlayer(){
 			cMan.api('stream',{'slug':nameToUrl(cmn)},requ=>{
 			//cMan.api('bulk',{'command':[['/api/stream',{'slug':cmn,'options':{'players':true}}]]},requ=>{try{
 				//console.log(JSON.parse(requ.responseText))
+				console.log(requ)
 				let p=JSON.parse(requ.target.responseText).players;
 				if(p.length>0){
 					this.addPlayer(p,this.aP(i,false,0,[i]))
