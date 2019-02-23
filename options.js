@@ -292,8 +292,8 @@ var grBut2={
 			}
 			
 		};
-		smilepadik.appendChild(utfresult);
-		smilepadik.appendChild(utfinput);
+		smilepadik.appendChild(this.utfresult);
+		smilepadik.appendChild(this.utfinput);
 		for(let x in this.imgs){
 			this.imgs[x][0].style.width=this.imgs[x][2];
 			this.imgs[x][0].style.height=this.imgs[x][3];
