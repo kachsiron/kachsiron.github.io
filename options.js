@@ -3611,8 +3611,8 @@ function previewHandle(e){
 	for(let x=p.length;--x>-1;){
 		p[x].onclick=function(e){
 			//window.open(this.l,'','width=800,height=450,left=100,top=100,toolbar=no,directories=no,menubar=no,scrollbars=yes')
-			let j=C('DIV'),d=C('DIV'),i;
-			d.style.top=(window.innerHeight/2-250)+'px';
+			let j=C('DIV'),d=C('DIV'),i,hh=window.innerHeight - 50;
+			d.style.top=(window.innerHeight/2-hh/2)+'px';
 			d.style.left=(window.innerWidth/2-400)+'px';
 			if(e.ctrlKey){
 				i=C('iframe');
@@ -3623,9 +3623,9 @@ function previewHandle(e){
 				i=C('img');
 				i.src=this.l;
 			}
-			i.style.height='500px';
-			i.style.width='800px';
-			with(d.style){position='fixed';width='800px';height='500px';backgroundColor='black'}
+			i.style.height=hh+'px';
+			//i.style.width='800px';
+			with(d.style){position='fixed';height=hh+'px';backgroundColor='black'}
 			d.appendChild(i);
 			with(j.style){position='fixed';width=(window.innerWidth+DIV3_HIDE_SCROLL)+'px';zIndex=100;height=window.innerHeight+'px';backgroundColor='rgba(0,0,0,0.75)';cursor='pointer';top=0;left=0}
 			j.onclick=function(e){this.remove();e.stopPropagation()}
