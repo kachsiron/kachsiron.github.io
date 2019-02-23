@@ -283,7 +283,9 @@ var grBut2={
 		this.utfinput.onkeypress=function(e){
 			grBut2.utfresult.innerHTML='';
 			let r=new RegExp(this.value,'i');
+			console.log(grBut2.utfs.length)
 			for(let i=0,l=grBut2.utfs.length,d;i<l;i++){
+				console.log(i)
 				if(r.test(grBut2.utfs[i][1])){
 					d=C('DIV');
 					d.textContent=grBut2.utfs[i].join(' ');
