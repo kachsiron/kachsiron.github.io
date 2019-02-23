@@ -281,6 +281,7 @@ var grBut2={
 		this.utfresult.style.maxHeight='300px';
 		this.utfresult.style.overflowY='scroll';
 		this.utfinput.onkeypress=function(e){
+			if(this.value.length<3)return;
 			grBut2.utfresult.innerHTML='';
 			let r=new RegExp(this.value,'i');
 			for(let i=0,l=grBut2.utfs.length,d;i<l;i++){
