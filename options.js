@@ -287,10 +287,14 @@ var grBut2={
 				if(r.test(grBut2.utfs[i][1])){
 					d=C('DIV');
 					d.textContent=grBut2.utfs[i].join(' ');
+					d.onclick=function(e){
+						messtochat.MSG.value=messtochat.MSG.value+(messtochat.MSG.value!==''?' ':'')+this.smile;
+						messtochat.MSG.focus();
+						if(e.ctrlKey)e.stopPropagation()
+					}.bind({'smile':grBut2.utfs[i][0]});
 					grBut2.utfresult.appendChild(d)
 				}
 			}
-			
 		};
 		this.utfinput.onclick=function(e){e.stopPropagation()}
 		smilepadik.appendChild(this.utfresult);
