@@ -284,9 +284,9 @@ var grBut2={
 			grBut2.utfresult.innerHTML='';
 			let r=new RegExp(this.value,'i');
 			for(let i=0,l=grBut2.utfs.length,d;i<l;i++){
-				if(r.test(grBut2.utfs[i])){
+				if(r.test(grBut2.utfs[i][1])){
 					d=C('DIV');
-					d.textContent=grBut2.utfs[i][0]+' '+grBut2.utfs[i][1];
+					d.textContent=grBut2.utfs[i].join(' ');
 					grBut2.utfresult.appendChild(d)
 				}
 			}
