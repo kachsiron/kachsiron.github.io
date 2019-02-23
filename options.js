@@ -292,6 +292,7 @@ var grBut2={
 			}
 			
 		};
+		this.utfinput.onclick=function(e){e.stopPropagation()}
 		smilepadik.appendChild(this.utfresult);
 		smilepadik.appendChild(this.utfinput);
 		for(let x in this.imgs){
