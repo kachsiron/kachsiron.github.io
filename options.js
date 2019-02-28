@@ -293,10 +293,11 @@ var grBut2={
 					d=C('DIV');
 					d.textContent=grBut2.utfs[i].join(' ');
 					d.style.cursor='pointer';
-					d.style.width='300px';
+					d.style.width='295px';
 					d.style.overflow='hidden';
 					d.style.height='16px';
 					d.style.whiteSpace='nowrap';
+					d.setAttribute('title',grBut2.utfs[i][1]);
 					d.onclick=function(e){
 						messtochat.MSG.value=messtochat.MSG.value+(messtochat.MSG.value!==''?' ':'')+this.smile;
 						messtochat.MSG.focus();
