@@ -2138,27 +2138,23 @@ function mChats(){
 		w.winDiv.style.fontFamily=fonty[rand(0,fonty.length-1)];
 		w.winDiv.style.zIndex=1;
 
-		with(w.closeButton){className='mc_button';textContent='x';style.top=style.right='0';style.height='14px'}
-		with(w.upButton){className='mc_button';textContent='-';style.top=style.left='0';style.height='7px'}
-		with(w.downButton){className='mc_button';textContent='-';style.left='0';style.height=style.top='7px'}
+		with(w.closeButton){className='mc_button';textContent='x';style.top='-1px';style.right='0';style.height='14px'}
+		with(w.upButton){className='mc_button';textContent='-';style.top='-1px';style.left='0';style.height='7px'}
+		with(w.downButton){className='mc_button';textContent='-';style.left='0';style.height='7px';style.top='6px'}
 		
 		w.listUserDiv.className='mc_listUserDiv';
 		if(!ws){
-			//w.smileVis=isa;
-			//w.invisibleConnect=true;
 			w.noticeDiv=C('DIV');
 			w.noticeDiv.className='mc_notice';
 			w.noticeDiv.style.top=this.tHeight+'px';
 			w.noticeDiv.onclick=function(e){this.style.display='none';e.stopPropagation()}
-			with(w.streamButton){className='mc_button';textContent='s';style.left='12px';style.top='0';style.height='14px';onclick=function(){scp.mkp(this.id)}.bind({id:w.id})}
-			with(w.listUserButton){className='mc_button';textContent='u';style.right='24px';style.height='14px'}
-			//with(w.connectButton){className='mc_button';textContent=(isa?'c':'d');style.right='48px';style.height='14px'}
-			h(w.noticeDiv);h(w.streamButton);h(w.listUserButton);//h(w.connectButton);
+			with(w.streamButton){className='mc_button';textContent='s';style.left='12px';style.top='-1px';style.height='14px';onclick=function(){scp.mkp(this.id)}.bind({id:w.id})}
+			with(w.listUserButton){className='mc_button';textContent='u';style.right='24px';style.height='14px';style.top='-1px'}
+			h(w.noticeDiv);h(w.streamButton);h(w.listUserButton);
 
 			w.userListStatus=false;
 			w.leftButton.style.left='24px';
-			w.rightButton.style.left='36px';
-			//w.idle.span.style.left='48px'
+			w.rightButton.style.left='36px'
 		}
 		else{
 			if(w.wsChat===1){
@@ -2175,22 +2171,21 @@ function mChats(){
 				h(w.streamButton);*/
 			}
 			w.leftButton.style.left='12px';
-			w.rightButton.style.left='24px';
-			//w.idle.span.style.left='36px'
+			w.rightButton.style.left='24px'
 		}
 		
 		w.leftButton.className='mc_button';
 		w.leftButton.textContent='<';
 		w.leftButton.style.height='14px';
+		w.leftButton.style.top='-1px';
 
 		w.rightButton.className='mc_button';
 		w.rightButton.textContent='>';
 		w.rightButton.style.height='14px';
+		w.rightButton.style.top='-1px';
 		
-		//w.idle.span.className='mc_titleSpan';
-		with(w.fontUpButton){className='mc_button';textContent='-';style.top='0';style.right='12px';style.height='7px'}
-		with(w.fontDownButton){className='mc_button';textContent='-';style.right='12px';style.height=style.top='7px'}
-//with(w.sunButton){className='mc_button';textContent=(isa?'☼':'☀');style.right='12px';style.height='14px'}
+		with(w.fontUpButton){className='mc_button';textContent='-';style.top='-1px';style.right='12px';style.height='7px'}
+		with(w.fontDownButton){className='mc_button';textContent='-';style.right='12px';style.height='7px';style.top='6px'}
 
 		w.titleDiv.className='mc_titleDiv';
 
