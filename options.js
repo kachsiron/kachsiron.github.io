@@ -3956,10 +3956,10 @@ messtochat.MSG.onkeypress=function(e){
 					return
 				}*/
 				else if(m==='save'){
-					window.prompt('fav hid hidGenre tfav', localStorage.fav + '}{' + localStorage.hid + '}{' + localStorage.hidGenre + '}{' + localStorage.dns + '}{' + localStorage.tfav)
+					window.prompt('fav hid hidGenre tfav smile', localStorage.fav + '}{' + localStorage.hid + '}{' + localStorage.hidGenre + '}{' + localStorage.dns + '}{' + localStorage.tfav + '}{' + localStorage.smile)
 				}
 				else if(m==='load'){
-					let s=window.prompt('fav hid hidGenre tfav').split('}{');
+					let s=window.prompt('fav hid hidGenre tfav smile').split('}{');
 					console.log(s)
 					localStorage.fav=s[0];
 					HID=JSON.parse(s[1]);
@@ -3968,6 +3968,8 @@ messtochat.MSG.onkeypress=function(e){
 					DNS=JSON.parse(s[3]);
 					localStorage.dns=s[3];
 					localStorage.tfav=s[4];
+					SMILE=JSON.parse(s[5]);
+					localStorage.smile=s[5];
 					hidGenreTransform()
 				}
 				else if(m==='imp'){
