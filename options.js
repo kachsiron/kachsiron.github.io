@@ -283,23 +283,30 @@ var grBut2={
 		for(let i in SMILE)a.push([SMILE[i],i]);
 		a.sort((a,b)=>{return b[0]-a[0]});
 		for(let i=0,l=a.length,d;i<l;i++){
-			d=C('DIV');
+			d=C('SPAN');
 			d.textContent=a[i][1];
 			d.title=a[i][0];
 			d.style.cursor='pointer';
-			d.onclick=function(e){
-				if(SMILE.hasOwnProperty(this.smile))SMILE[this.smile]++;
-				else SMILE[this.smile]=1;
-				grBut2.makesmilefavdiv();
-				
-				localStorage.smile=JSON.stringify(SMILE);
-				messtochat.MSG.value=messtochat.MSG.value+(messtochat.MSG.value!==''?' ':'')+this.smile;
-				messtochat.MSG.focus();
-				if(e.ctrlKey)e.stopPropagation()
-			}.bind({'smile':a[i][1]});
+			d.onclick=this.smilehooh.bind({'smile':a[i][1]});
 			this.utffav.appendChild(d)
 		}
+	},
+	'smilehooh':function(e){
+		if(e.shiftKey){
+			delete SMILE[this.smile];
+			e.stopPropagation()
+		}
+		else{
+			if(SMILE.hasOwnProperty(this.smile))SMILE[this.smile]++;
+			else SMILE[this.smile]=1;
+			messtochat.MSG.value=messtochat.MSG.value+(messtochat.MSG.value!==''?' ':'')+this.smile;
+			messtochat.MSG.focus()
+		}
+		localStorage.smile=JSON.stringify(SMILE);
 		
+		grBut2.makesmilefavdiv();
+
+		if(e.ctrlKey)e.stopPropagation()
 	},
 	'init':function(){
 		let span=C('DIV');
@@ -323,16 +330,7 @@ var grBut2={
 					d.style.height='16px';
 					d.style.whiteSpace='nowrap';
 					d.setAttribute('title',grBut2.utfs[i][1]);
-					d.onclick=function(e){
-						if(SMILE.hasOwnProperty(this.smile))SMILE[this.smile]++;
-						else SMILE[this.smile]=1;
-						localStorage.smile=JSON.stringify(SMILE);
-						grBut2.makesmilefavdiv();
-						
-						messtochat.MSG.value=messtochat.MSG.value+(messtochat.MSG.value!==''?' ':'')+this.smile;
-						messtochat.MSG.focus();
-						if(e.ctrlKey)e.stopPropagation()
-					}.bind({'smile':grBut2.utfs[i][0]});
+					d.onclick=this.smilehooh.bind({'smile':grBut2.utfs[i][0]});
 					grBut2.utfresult.appendChild(d)
 				}
 			}
