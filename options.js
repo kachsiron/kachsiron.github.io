@@ -330,7 +330,7 @@ var grBut2={
 					d.style.height='16px';
 					d.style.whiteSpace='nowrap';
 					d.setAttribute('title',grBut2.utfs[i][1]);
-					d.onclick=this.smilehooh.bind({'smile':grBut2.utfs[i][0]});
+					d.onclick=grBut2.smilehooh.bind({'smile':grBut2.utfs[i][0]});
 					grBut2.utfresult.appendChild(d)
 				}
 			}
