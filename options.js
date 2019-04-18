@@ -652,7 +652,9 @@ var cMan={
 		this.sock=new WebSocket(FUNCHAN_WEBSOCKET);
 		this.sock.onerror=e=>{console.log('error list',e);setTimeout(()=>{this.recon()},4567)};
 		this.sock.onmessage=e=>this.getm(e);
-		this.intervals.info=setInterval(()=>{this.sock.send('2')},30000);
+		this.intervals.info=setInterval(()=>{
+			try{this.sock.send('2')}catch(e){}
+		},30000);
 		this.intervals.timeout=setInterval(i=>{
 			if((new Date()).getTime()-this.timeout>40000)this.recon()
 		},45000)
