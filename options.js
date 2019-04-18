@@ -645,7 +645,7 @@ var cMan={
 	'recon':function(){
 		OPOV.serv('Пересоединение к общему каналу',null);
 		clearInterval(this.intervals.timeout);
-		this.sock.close();
+		try{this.sock.close()}catch(e){}
 		this.launch()
 	},
 	'launch':function(){
