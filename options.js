@@ -4024,6 +4024,11 @@ messtochat.MSG.onkeypress=function(e){
 					else if(ser===1)scp.mkpGG(...par);
 					else if(ser===2)scp.importing(par[0])
 				}
+				else if(m==='v'){
+					try{
+						window.prompt('vlc','streamlink twitch.tv/'+scp.players.get(scp.plr).twid+' best')
+					}catch(e){console.log(e)}
+				}
 				else if((m==='gg'||m==='пп')&&w!==void 0){
 					GMX({method:'GET',url:'https://goodgame.ru/api/getchannelstatus?id='+w+'&fmt=json',onload:requ=>{try{
 						for(let i in JSON.parse(requ.target.responseText))scp.mkpGG('g_'+i,i,w)
