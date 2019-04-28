@@ -4031,7 +4031,7 @@ messtochat.MSG.onkeypress=function(e){
 				}
 				else if(m==='vg'){
 					try{
-						window.prompt('vlc','streamlink goodgame.ru/channel/'+scp.players.get(scp.plr).ggid+' best')
+						window.prompt('vlc','streamlink goodgame.ru/channel/'+scp.players.get(scp.plr).gg+' best')
 					}catch(e){console.log(e)}
 				}
 				else if((m==='gg'||m==='пп')&&w!==void 0){
