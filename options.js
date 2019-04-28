@@ -1893,7 +1893,7 @@ function ScPlayer(){
 				m.ggid=plrs[x].channel;
 				if(plrs[x].hasOwnProperty('code')){
 					if(plrs[x].code.includes('goodgame.ru'))r.code+='https://goodgame.ru/player?'+plrs[x].code.match(/player\?(.*?)"/)[1];
-					else 	if(plrs[x].code.includes('twitch.tv'))r.code+=plrs[x].code.match(/ src="(.*?)"/)[1];
+					else if(plrs[x].code.includes('twitch.tv'))r.code+=plrs[x].code.match(/ src="(.*?)"/)[1];
 				}
 				else r.code+='https://goodgame.ru/player?'+m.ggid;
 			}catch(e){console.log(plrs[x],e);OPOV.serv('GG ошибка',11111)}}
@@ -4031,7 +4031,7 @@ messtochat.MSG.onkeypress=function(e){
 				}
 				else if(m==='vg'){
 					try{
-						window.prompt('vlc','streamlink goodgame.ru/channel/'+scp.players.get(scp.plr).gg+' best')
+						window.prompt('vlc','streamlink goodgame.ru/channel/'+cMan.getcn(scp.players.get(scp.plr).id)+' best')
 					}catch(e){console.log(e)}
 				}
 				else if((m==='gg'||m==='пп')&&w!==void 0){
