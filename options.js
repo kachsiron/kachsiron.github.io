@@ -4030,8 +4030,8 @@ messtochat.MSG.onkeypress=function(e){
 					else s+='goodgame.ru/channel/';
 					
 					let q=' best';
-					if(w===1)q=' 480p';
-					else if(w===0)q=' worst';
+					if(w==='1')q=' 480p';
+					else if(w==='0')q=' worst';
 
 					try{
 						window.prompt('vlc',s+scp.players.get(scp.plr).twid+q)
