@@ -4026,15 +4026,15 @@ messtochat.MSG.onkeypress=function(e){
 				}
 				else if(m==='vt'||m==='vg'){
 					let s='streamlink ';
-					if(m==='vt')s+='twitch.tv/';
-					else s+='goodgame.ru/channel/';
+					if(m==='vt')s+='twitch.tv/'+scp.players.get(scp.plr).twid;
+					else s+='goodgame.ru/channel/'+cMan.getcn(scp.players.get(scp.plr).id);
 					
 					let q=' best';
 					if(w==='1')q=' 480p';
 					else if(w==='0')q=' worst';
 
 					try{
-						window.prompt('vlc',s+scp.players.get(scp.plr).twid+q)
+						window.prompt('vlc',s+q)
 					}catch(e){console.log(e)}
 				}
 				else if((m==='gg'||m==='пп')&&w!==void 0){
