@@ -4024,14 +4024,17 @@ messtochat.MSG.onkeypress=function(e){
 					else if(ser===1)scp.mkpGG(...par);
 					else if(ser===2)scp.importing(par[0])
 				}
-				else if(m==='vt'){
+				else if(m==='vt'||m==='vg'){
+					let s='streamlink ';
+					if(m==='vt')s+='twitch.tv/';
+					else s+='goodgame.ru/channel/';
+					
+					let q=' best';
+					if(w===1)q=' 480p';
+					else if(w===0)q=' worst';
+
 					try{
-						window.prompt('vlc','streamlink twitch.tv/'+scp.players.get(scp.plr).twid+' best')
-					}catch(e){console.log(e)}
-				}
-				else if(m==='vg'){
-					try{
-						window.prompt('vlc','streamlink goodgame.ru/channel/'+cMan.getcn(scp.players.get(scp.plr).id)+' best')
+						window.prompt('vlc',s+scp.players.get(scp.plr).twid+q)
 					}catch(e){console.log(e)}
 				}
 				else if((m==='gg'||m==='пп')&&w!==void 0){
