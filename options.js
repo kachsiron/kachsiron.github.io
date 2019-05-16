@@ -3223,7 +3223,7 @@ function mChats(){
 		if(this.twitchSmiles.hasOwnProperty(p1[0])&&this.twitchSmiles[ p1[0] ].includes(p1))return '☺';
 		return p1
 	}
-	this.load_twitch_smiles=function(){
+	this.load_twitch_smiles=function(){/*
 		let opv=OPOV.serv('Загрузь твитч смайлов...');
 		GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/kraken/chat/emoticon_images',onload:requ=>{try{
 			requ=JSON.parse(requ.target.responseText).emoticons;
@@ -3240,7 +3240,7 @@ function mChats(){
 			delete this.twitchSmiles['\\'];
 			OPOV.serv('Готово (' + c + ')',3000,opv,true)
 		}catch(e){console.log(e);OPOV.serv('Ошибка!',60000,opv,true)}}});
-	}
+	*/}
 	this.init=function(){
 		//this.load_twitch_smiles();
 		let arr={};
