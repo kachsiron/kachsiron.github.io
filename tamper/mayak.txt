@@ -1,0 +1,133 @@
+// ==UserScript==
+// @name        mayak
+// @namespace   mayak
+// @match       https://radiomayak.ru/persons/person/id/213089/
+// @match       https://radiomayak.ru/shows/show/id/*
+// @version     1.1
+// @grant       GM_addStyle
+// @grant       GM_download
+// @grant       GM_notification
+// @run-at      document-end
+// ==/UserScript==
+Number.prototype.totwo=function(){return this<10?'0'+this:this.toString()}
+GM_addStyle('.b-header,.b-show,.b-show-hosts{display:none}');
+let d = document.body.querySelector('#content');
+d = document.body.querySelector('#vgtrk_bar').style.display = 'none';
+document.body.querySelectorAll('.b-adv').forEach(function(a){ a.style.display = 'none' });
+//let s='';
+//for(let i=0,t=document.body.querySelectorAll('.b-schedule__list-item__load'),l=t.length;i<l;i++)s+=t[i].href+"\n";
+let t = document.body.querySelectorAll('.b-schedule__list-item__load');
+for(let i = 0, l = t.length; i < l; i++){
+	t[i].style.border = '3px solid black';
+}
+document.body.querySelectorAll('.b-schedule__list-item__description').forEach(a=>{
+	a.onclick=function(){
+		this.parentNode.parentNode.parentNode.remove()
+	}
+	a.style.cursor='pointer';
+	a.textContent='X'
+})
+document.body.onkeypress = function(e){console.log(e.charCode,e.keyCode)
+	if(e.charCode === 122){//z except last
+		let t = document.body.querySelectorAll('.b-schedule__list-item__load');
+		for(let i = 0, l = t.length, b = A[2] + '_' + A[1]; i < l - 1; i++){
+			t[i].style.border = '3px solid green';
+			arr.push([t[i], b + '_' + i.totwo() + '.mp3', false])
+		}
+		gogo()
+	}
+	else if(e.keyCode === 13){// enter
+		let t = document.body.querySelectorAll('.b-schedule__list-item__load');
+		for(let i = 0, l = t.length, b = A[2] + '_' + A[1]; i < l; i++){
+			t[i].style.border = '3px solid green';
+			arr.push([t[i], b + '_' + i.totwo() + '.mp3', false])
+		}
+		gogo()
+	}
+	else if(e.charCode === 104){//h show
+		let t = document.body.querySelectorAll('.b-schedule__list-item__load');
+		for(let i = 0, l = t.length; i < l; i++){
+			t[i].style.border = '3px solid black';
+		}
+	}
+	else if(e.charCode === 108){//l for list
+		let t = document.body.querySelectorAll('.b-schedule__list-item__load');
+		let d = document.body.querySelectorAll('.b-schedule__list-item__time');
+		for(let i = 0, l = t.length,el,b; i < l; i++){// 20.01.2012 17:00
+			b=d[i].textContent.replace("\n",'').trim().match(/(\d\d)\.(\d\d)\.(\d\d\d\d) /);
+			b=b[3] + '_' + b[2] + '_' + b[1].totwo() + '.mp3';
+			el = document.createElement('SPAN');
+			el.textContent = 'Д';
+			t[i].parentNode.insertBefore(el, t[i]);
+			el.style.cursor = 'pointer';
+			el.onclick=function(){
+				GM_download({
+					'url': this.href,
+					'name':  this.name,
+					'onerror': ()=>{ GM_notification(this.name + ' не скачался ') },
+					'onload': ()=>{ GM_notification(this.name + ' скачался') }
+				});
+			}.bind({ 'href': t[i].href, 'name': b });
+		}
+	}
+	else if(e.charCode === 59){//; for list all
+		let t = document.body.querySelectorAll('.b-schedule__list-item__load');
+		let d = document.body.querySelectorAll('.b-schedule__list-item__time');
+		for(let i = 0, l = t.length,b; i < l; i++){
+			b=d[i].textContent.replace("\n",'').trim().match(/(\d\d)\.(\d\d)\.(\d\d\d\d) /);
+			b=b[3] + '_' + b[2] + '_' + b[1].totwo() + '.mp3';
+			t[i].style.border = '3px solid green';
+			arr.push([t[i], b, false])
+		}
+		gogo()
+	}
+	else if(e.charCode === 113){//q
+		let t = document.body.querySelectorAll('.b-schedule__list-item__load');
+		for(let i = 0, l = t.length, b = A[2] + '_' + A[1], el; i < l; i++){
+			el = document.createElement('SPAN');
+			el.textContent = 'Д';
+			t[i].parentNode.insertBefore(el, t[i]);
+			el.style.cursor = 'pointer';
+			el.onclick=function(){
+				let aa=window.location.href.match(/(\d\d)-(\d\d)-\d\d\d\d/);
+				GM_download({
+					'url': this.href,
+					'name':  aa[2] + '_' + aa[1] + this.name,
+					'onerror': ()=>{ GM_notification(aa[2] + '_' + aa[1] + this.name + ' не скачался') },
+					'onload': ()=>{ GM_notification(aa[2] + '_' + aa[1] + this.name + ' скачался') }
+				});
+			}.bind({ 'href': t[i].href, 'name': '_' + i.totwo() + '.mp3' });
+		}
+	}
+}
+var A=window.location.href.match(/(\d\d)-(\d\d)-\d\d\d\d/);
+var arr = [], cdo = 0, max_cdo = 1;
+function gogo(){
+	//document.body.querySelectorAll('.b-schedule__list-item__description').forEach(a=>a.remove())
+	for(let i = arr.length; --i > -1;){
+		if(arr[i] === null || arr[i][2]) continue;
+		if(cdo < max_cdo){
+			cdo++;
+			arr[i][2] = true
+			arr[i][0].style.border = '3px solid blue';
+			GM_download({
+				'url': arr[i][0].href,
+				'name': arr[i][1],
+				'onerror': function(){
+					cdo--;
+					arr[this.i][2] = false;
+					gogo()
+				}.bind({'i': i}),
+				'onload': function(){
+					cdo--;
+					arr[this.i][0].style.border = '3px solid red';
+					arr[this.i] = null;
+					if(arr.every(a => a===null)) GM_notification('Готово');
+					else gogo()
+				}.bind({'i': i})
+			});
+		}
+	}
+}
+
+//GM_setClipboard(s,{type:'text',mimetype:'text/plain'});
