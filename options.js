@@ -4031,7 +4031,7 @@ messtochat.MSG.onkeypress=function(e){
 					
 					let q=' best';
 					if(w==='1')q=' 480p';
-					else if(w==='2')q=' 720p';
+					else if(w==='2')q=' 720p_alt';
 					else if(w==='0')q=' worst';
 
 					try{
