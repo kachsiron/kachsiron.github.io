@@ -11,51 +11,35 @@
 // ==/UserScript==
 Number.prototype.totwo=function(){return this<10?'0'+this:this.toString()}
 GM_addStyle('.b-header,.b-show,.b-show-hosts{display:none}');
-//let d = document.body.querySelector('#content');
-//d = document.body.querySelector('#vgtrk_bar').style.display = 'none';
 document.body.querySelector('header').style.display = 'none';
 document.body.querySelectorAll('.b-adv').forEach(function(a){ a.style.display = 'none' });
-//let s='';
-//for(let i=0,t=document.body.querySelectorAll('.b-schedule__list-item__load'),l=t.length;i<l;i++)s+=t[i].href+"\n";
 let t = document.body.querySelectorAll('.b-schedule__list-item__load');
-for(let i = 0, l = t.length; i < l; i++){
-	t[i].style.border = '3px solid black';
-}
+for(let i = 0, l = t.length; i < l; i++)t[i].style.border = '3px solid black';
 document.body.querySelectorAll('.b-schedule__list-item__description').forEach(a=>{
-	a.onclick=function(){
-		this.parentNode.parentNode.parentNode.remove()
-	}
+	a.onclick=function(){this.parentNode.parentNode.parentNode.remove()}
 	a.style.cursor='pointer';
 	a.textContent='X'
 })
-var A=window.location.href.match(/(\d\d)-(\d\d)-\d\d\d\d/);
-var arr = [], cdo = 0, max_cdo = 1;
+var A=window.location.href.match(/(\d\d)-(\d\d)-\d\d\d\d/), arr = [], cdo = 0, acaca = false;
 function gogo(){
-	//document.body.querySelectorAll('.b-schedule__list-item__description').forEach(a=>a.remove())
-	for(let i = arr.length; --i > -1;){
-		if(arr[i] === null || arr[i][2]) continue;
-		if(cdo < max_cdo){
+	if(acaca) return;
+	arr[cdo][0].style.border = '3px solid blue';
+	acaca = true;
+	GM_download({
+		'url': arr[cdo][0].href,
+		'name': arr[cdo][1],
+		'onerror': function(){
+			acaca = false;
+			gogo()
+		}.bind({'i': cdo}),
+		'onload': function(){
+			acaca = false;
 			cdo++;
-			arr[i][2] = true
-			arr[i][0].style.border = '3px solid blue';
-			GM_download({
-				'url': arr[i][0].href,
-				'name': arr[i][1],
-				'onerror': function(){
-					cdo--;
-					arr[this.i][2] = false;
-					gogo()
-				}.bind({'i': i}),
-				'onload': function(){
-					cdo--;
-					arr[this.i][0].style.border = '3px solid red';
-					arr[this.i] = null;
-					if(arr.every(a => a===null)) GM_notification('Готово');
-					else gogo()
-				}.bind({'i': i})
-			});
-		}
-	}
+			arr[this.i][0].style.border = '3px solid red';
+			if(cdo>=arr.length) GM_notification('Готово');
+			else gogo()
+		}.bind({'i': cdo})
+	});
 }
 t = document.body.querySelectorAll('.b-schedule__list-item__load');
 for(let i = 0, l = t.length, b = A[2] + '_' + A[1], el; i < l; i++){
@@ -67,13 +51,7 @@ for(let i = 0, l = t.length, b = A[2] + '_' + A[1], el; i < l; i++){
 	t[i].parentNode.insertBefore(el, t[i]);
 	el.style.cursor = 'pointer';
 	el.onclick=function(){
-		let aa=window.location.href.match(/(\d\d)-(\d\d)-\d\d\d\d/);
-		GM_download({
-			'url': this.href,
-			'name':  aa[2] + '_' + aa[1] + this.name,
-			'onerror': ()=>{ GM_notification(aa[2] + '_' + aa[1] + this.name + ' не скачался') },
-			'onload': ()=>{ GM_notification(aa[2] + '_' + aa[1] + this.name + ' скачался') }
-		});
+		arr.push([this.href, aa[2] + '_' + aa[1] + this.name])
+		gogo()
 	}.bind({ 'href': t[i].href, 'name': '_' + i.totwo() + '.mp3' });
 }
-//GM_setClipboard(s,{type:'text',mimetype:'text/plain'});
