@@ -51,6 +51,7 @@ for(let i = 0, l = t.length, b = A[2] + '_' + A[1], el; i < l; i++){
 	t[i].parentNode.insertBefore(el, t[i]);
 	el.style.cursor = 'pointer';
 	el.onclick=function(){
+		this.el.style.border = '3px solid green';
 		let aa=window.location.href.match(/(\d\d)-(\d\d)-\d\d\d\d/);
 		arr.push([this.href, aa[2] + '_' + aa[1] + this.name, this.el])
 		gogo()
