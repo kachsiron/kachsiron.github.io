@@ -1,0 +1,117 @@
+<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+<style type="text/css">
+body{font-size:12px;margin:0;padding:0}
+.name{max-width:100px;overflow-x:hidden;display:inline-block}
+</style></head><body>
+
+<script src="Units.js"></script>
+
+<script>
+let m = document.createElement('DIV');
+m.style.display='flex';
+m.style.flexWrap='wrap';
+m.style.justifyContent='space-around';
+for(u of U) {
+	let s='';
+	if(u.ability.includes('ABILITY_SHOOTER')){
+		if(u.ability.includes('ABILITY_NO_RANGE_PENALTY'))s='🔫'
+		else s='🏹'
+	}
+	if(u.ability.includes('ABILITY_NO_ENEMY_RETALIATION'))s+='👊'
+	if(u.fly)s+='🐦'
+	u.shooter=s
+}
+function g3(attr,po,di){
+	let y = []
+	let l=attr.length
+	for(u of U){
+		let s = 1
+		for(let i=0;i<l;i++){
+			s *= Math.pow(u[ attr[i] ], po[i])
+		}
+		s=Math.round(s/di)
+		y.push([u, s])
+	}
+	y.sort((a,b)=>{return b[1] - a[1]})
+	let d = document.createElement('DIV');
+	let e = document.createElement('DIV');
+	e.innerHTML = attr.join(',');
+	e.style.backgroundColor='white';
+	e.style.position='fixed';
+	d.appendChild(e)
+	
+	e = document.createElement('DIV')
+	e.innerHTML = '&nbsp;';
+	d.appendChild(e)
+	for(u of y) {
+		e = document.createElement('DIV');
+		e.style.backgroundColor = C[ u[0].faction ];
+		e.style.letterSpacing = '-1px';
+		e.style.whiteSpace='nowrap';
+		e.innerHTML = '<span>' + u[1] + '&nbsp;</span><span class="name">'+N[ u[0].id ] + '</span>'+u[0].shooter+'<sup>'+u[0].tier+'</sup>'
+		d.appendChild(e)
+	}
+	m.appendChild(d)
+}
+function g2(t1,t2){
+	U.sort((a,b)=>{return (b[t2] + b[t1]) / 2 - (a[t2] + a[t1]) / 2})
+	let d = document.createElement('DIV');
+	let e = document.createElement('DIV');
+	e.innerHTML = t1 + '-' + t2;
+	e.style.position='fixed';
+	e.style.backgroundColor='white';
+	d.appendChild(e)
+	e = document.createElement('DIV')
+	e.innerHTML = '&nbsp;';
+	d.appendChild(e)
+	for(u of U) {
+		e = document.createElement('DIV');
+		e.style.backgroundColor = C[ u.faction ];
+		e.style.letterSpacing = '-1px';
+		e.style.whiteSpace='nowrap';
+		e.innerHTML = '<span>' + u[t1] + '-' + u[t2] + '&nbsp;</span><span class="name">' + N[u.id] + '</span>'+u.shooter+'<sup>'+u.tier+'</sup>'
+		d.appendChild(e)
+	}
+	m.appendChild(d)
+}
+function g(t){
+	U.sort((a,b)=>{
+		let c = b[t] - a[t]
+		if(c == 0) return a.tier - b.tier
+		return c
+	})
+	let d = document.createElement('DIV');
+	let e = document.createElement('DIV');
+	e.innerHTML = t
+	e.style.position='fixed';
+	e.style.backgroundColor='white';
+	d.appendChild(e)
+	e = document.createElement('DIV')
+	e.innerHTML = '&nbsp;';
+	d.appendChild(e)
+	let c = [0, false]
+	for(u of U) {
+		e = document.createElement('DIV');
+		e.style.backgroundColor = C[ u.faction ];
+		e.style.letterSpacing = '-1px';
+		e.style.whiteSpace='nowrap';
+		e.innerHTML = '<span>' + u[t] + '&nbsp;</span><span class="name">' + N[u.id] + '</span>'+u.shooter+'<sup>'+u.tier+'</sup>'
+		if(c[0] != u[t]) { c[0] = u[t]; c[1] = !c[1] }
+		//e.style.borderLeft = '2px solid ' + (c[1] ? 'black' : 'white')
+		d.appendChild(e)
+	}
+	m.appendChild(d)
+}
+g('init')
+g('spd')
+g('at')
+g('df')
+g('hp')
+//g('gold')
+g2('min_d','max_d')
+g3(['at','init','spd'],[1,1.1,1],7.138)
+g3(['df','hp'],[1,1.1],19.676)
+
+document.body.appendChild(m)
+</script>
+</body></html>
