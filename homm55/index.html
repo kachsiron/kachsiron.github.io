@@ -1,9 +1,4 @@
-<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html;charset=utf-8"/>
-<style type="text/css">
-.val,strong{display:inline-block;width:45px}
-body{font-size:12px;margin:0;padding:0;background-color:black;color:white}
-</style><title>Might & Magic: Heroes 5.5</title><link rel="shortcut icon" href="/homm55/homm55.ico" type="image/x-icon"></head><body>
-<script src="Units.js"></script><script>
+<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html;charset=utf-8"/><style type="text/css">.val,strong{display:inline-block;width:45px}body{font-size:12px;margin:0;padding:0;background-color:black;color:white}</style><title>Might & Magic: Heroes 5.5</title><link rel="shortcut icon" href="/homm55/homm55.ico" type="image/x-icon"></head><body><script src="Units.js"></script><script>
 String.prototype.cut=function(){
 	let r=this;
 	let g=r.split(' ');
@@ -25,7 +20,8 @@ for(u of U) {
 	if(u.faction==='TOWN_NO_TYPE')continue;
 	if(!F.hasOwnProperty(u.faction))F[u.faction]=[]
 	if(F[u.faction][u.tier-1]===void 0)F[u.faction][u.tier-1]=[];
-	u.ability=u.ability.split(',');
+	u.ability=u.ability.replace(/"/g,'').split(',');
+	u.spells=u.spells.replace(/"/g,'').split(',');
 	u.ability.forEach((a,b,c)=>{c[b]=a.replace('ABILITY_','')});
 	F[u.faction][u.tier-1].push(u)
 }
@@ -46,7 +42,6 @@ for(o in F) {
 	d.style.overflowX='hidden';
 	d.style.borderRight='1px solid pink';
 	
-
 	for(let i=0,m,e,num,dd;i<7;i++){
 		dd = document.createElement('DIV');
 		dd.style.position='relative';
@@ -61,8 +56,6 @@ for(o in F) {
 		
 		e = document.createElement('DIV');
 		e.style.borderTop='1px solid pink';
-		//e.style.width='166px';
-		//e.style.overflowX='hidden';
 		e.style.whiteSpace='nowrap';
 		e.style.letterSpacing = '-1px';
 		e.innerHTML = '<span title="'+f[i][1].id+'" style="color:red">' + N[ f[i][1].id ].cut() + '</span>/<span title="'+f[i][2].id+'" style="color:#00afff">' + N[ f[i][2].id ].cut() + '</span>'
@@ -74,15 +67,24 @@ for(o in F) {
 			e = document.createElement('DIV');
 			if(m>0)e.innerHTML = '<span class="val">'+p+'</span>: <strong style="color:red">'+f[i][1][p]+'</strong><span class="val">'+f[i][2][p]+'</span>';
 			else if(m<0)e.innerHTML = '<span class="val">'+p+'</span>: <span class="val">'+f[i][1][p]+'</span><strong style="color:#00afff">'+f[i][2][p]+'</strong>';
-			//else e.innerHTML = 'at: '+f[i][1].at+' - '+f[i][2].at;
 			dd.appendChild(e)
 		}
 		let s=[];
 		for(let u=1,y;u<3;u++){
 			y=(u===1?2:1)
 			for(let j=0,l=f[i][u].ability.length;j<l;j++){
+				if(f[i][u].ability[j]==='')continue;
 				if(!f[i][y].ability.includes( f[i][u].ability[j] )){
 					s.push( '<span style="color:'+(u===1?'red':'#00afff')+'">'+f[i][u].ability[j]+'</span>' )
+				}
+			}
+		}
+		for(let u=1,y;u<3;u++){
+			y=(u===1?2:1)
+			for(let j=0,l=f[i][u].spells.length;j<l;j++){
+				if(f[i][u].spells[j]==='')continue;
+				if(!f[i][y].spells.includes( f[i][u].spells[j] )){
+					s.push( '<span style="color:'+(u===1?'red':'#00afff')+'">'+f[i][u].spells[j]+'</span>' )
 				}
 			}
 		}
@@ -93,8 +95,5 @@ for(o in F) {
 	}
 	m.appendChild(d)
 }
-
-
 document.body.appendChild(m)
-</script>
-</body></html>
+</script></body></html>
