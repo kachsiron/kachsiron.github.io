@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html;charset=utf-8"/><style type="text/css">.val,strong{display:inline-block;width:45px}body{font-size:12px;margin:0;padding:0;background-color:black;color:white}</style><title>Might & Magic: Heroes 5.5</title><link rel="shortcut icon" href="/homm55/homm55.ico" type="image/x-icon"></head><body><script src="Units.js"></script><script>
+<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html;charset=utf-8"/><style type="text/css">.help{cursor:pointer;text-decoration:underline;text-decoration-style:dotted}.val,strong{display:inline-block;width:45px}body{font-size:12px;margin:0;padding:0;background-color:black;color:white}</style><title>Might & Magic: Heroes 5.5</title><link rel="shortcut icon" href="/homm55/homm55.ico" type="image/x-icon"></head><body><script src="Units.js"></script><script>
 String.prototype.cut=function(){
 	let r=this;
 	let g=r.split(' ');
@@ -75,7 +75,7 @@ for(o in F) {
 			for(let j=0,l=f[i][u].ability.length;j<l;j++){
 				if(f[i][u].ability[j]==='')continue;
 				if(!f[i][y].ability.includes( f[i][u].ability[j] )){
-					s.push( '<span style="color:'+(u===1?'red':'#00afff')+'">'+f[i][u].ability[j]+'</span>' )
+					s.push( '<span class="help" title="'+D[ f[i][u].ability[j] ]+'" style="color:'+(u===1?'red':'#00afff')+'">'+f[i][u].ability[j]+'</span>' )
 				}
 			}
 		}
