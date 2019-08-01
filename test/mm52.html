@@ -1,0 +1,99 @@
+<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+<style type="text/css">
+.val,strong{display:inline-block;width:45px}
+body{font-size:12px;margin:0;padding:0;background-color:black;color:lightblue}
+</style></head><body>
+<script src="Units.js"></script><script>
+String.prototype.cut=function(){
+	let r=this;
+	let g=r.split(' ');
+	if(g.length===2){
+		g[0]=g[0].substr(0,4)+'.';
+		r=g.join(' ');
+	}
+	else{
+		g=r.split('-');
+		if(g.length===2){
+			g[1]=g[1].substr(0,4)+'.';
+			r=g.join('-');
+		}
+	}
+	return r
+}
+var F = {}
+for(u of U) {
+	if(u.faction==='TOWN_NO_TYPE')continue;
+	if(!F.hasOwnProperty(u.faction))F[u.faction]=[]
+	if(F[u.faction][u.tier-1]===void 0)F[u.faction][u.tier-1]=[];
+	u.ability=u.ability.split(',');
+	u.ability.forEach((a,b,c)=>{c[b]=a.replace('ABILITY_','')});
+	F[u.faction][u.tier-1].push(u)
+}
+for(f in F) {
+	for(let i=0;i<7;i++) F[f][i].sort((a,b)=>{return a.gold-b.gold})
+}
+
+let m = document.createElement('DIV');
+m.style.display='flex';
+m.style.flexWrap='wrap';
+m.style.justifyContent='space-around';
+
+var v = ['at','df','shots','min_d','max_d','spd','init','hp','mana']
+for(o in F) {
+	let f = F[o], d = document.createElement('DIV');
+	d.style.width='166px';
+	d.style.overflowX='hidden';
+	d.style.borderRight='1px solid pink';
+	
+
+	for(let i=0,m,e,num,dd;i<7;i++){
+		dd = document.createElement('DIV');
+		dd.style.position='relative';
+		num=document.createElement('DIV');
+		num.style.position='absolute';
+		num.style.right='0';
+		num.style.bottom='0';
+		num.style.fontSize='200%';
+		num.style.color='#323232';
+		num.textContent=i+1;
+		dd.appendChild(num);
+		
+		e = document.createElement('DIV');
+		e.style.borderTop='1px solid pink';
+		//e.style.width='166px';
+		//e.style.overflowX='hidden';
+		e.style.whiteSpace='nowrap';
+		e.style.letterSpacing = '-1px';
+		e.innerHTML = '<span style="color:red">' + N[ f[i][1].id ].cut() + '</span>/<span style="color:#00afff">' + N[ f[i][2].id ].cut() + '</span>'
+		dd.appendChild(e)
+		
+		for(let j=0,p;j<9;j++){
+			p = v[j]
+			m = f[i][1][p] - f[i][2][p]
+			e = document.createElement('DIV');
+			if(m>0)e.innerHTML = '<span class="val">'+p+'</span>: <strong style="color:red">'+f[i][1][p]+'</strong><span class="val">'+f[i][2][p]+'</span>';
+			else if(m<0)e.innerHTML = '<span class="val">'+p+'</span>: <span class="val">'+f[i][1][p]+'</span><strong style="color:#00afff">'+f[i][2][p]+'</strong>';
+			//else e.innerHTML = 'at: '+f[i][1].at+' - '+f[i][2].at;
+			dd.appendChild(e)
+		}
+		let s=[];
+		for(let u=1,y;u<3;u++){
+			y=(u===1?2:1)
+			for(let j=0,l=f[i][u].ability.length;j<l;j++){
+				if(!f[i][y].ability.includes( f[i][u].ability[j] )){
+					s.push( '<span style="color:'+(u===1?'red':'#00afff')+'">'+f[i][u].ability[j]+'</span>' )
+				}
+			}
+		}
+		e = document.createElement('SMALL');
+		e.innerHTML=s.join(', ');
+		dd.appendChild(e);
+		d.appendChild(dd)
+	}
+	m.appendChild(d)
+}
+
+
+document.body.appendChild(m)
+</script>
+</body></html>

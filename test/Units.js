@@ -2,14 +2,10 @@ var N={
 	"SuccubusSeducer":"Искусительницы","Gold_Dragon":"Изумрудные драконы","Cleric":"Инквизиторы","Champion":"Рыцари Изабель","AcidicHydra": "Темные гидры", "Air_Elemental": "Воздушные элементали", "Angel": "Ангелы", "AngerTreant": "Дикие энты", "Archangel": "Архангелы", "ArchDemon": "Архидемоны", "ArchDevil_": "Архидьяволы", "Archer": "Лучники", "Arch_Magi": "Архимаги", "Assassin": "Ассасины", "Axe_Fighter": "Метатели копья", "Axe_Thrower": "Мастера копья", "Balor": "Пещерные владыки", "Banshee": "Баньши", "BattleGriffin": "Боевые грифоны", "BattleRager": "Воины Арката", "Bear_Raider": "Наездники на медведях", "Berserker": "Берсерки", "Blackbear_Raider": "Хозяева медведей", "BlackRider": "Проворные наездники", "Black_Dragon": "Черные драконы", "BladeSinger": "Танцующие с ветром", "Blade_Juggler": "Танцующие с клинками", "BloodWitch2": "Мегеры", "Blood_Witch": "Фурии", "Bone_Dragon": "Костяные драконы", "Brawler": "Костоломы", "Cavalier": "Рыцари", "Centaur1": "Кентавры", "Centaur2": "Кочевые кентавры", "CentaurMaradeur": "Боевые кентавры", "Cerberius": "Церберы", "Chaos_Hydra": "Пещерные гидры", "CombatMage": "Боевые маги", "Cyclop1": "Циклопы", "Cyclop2": "Свободные циклопы", "CyclopBloodeyed": "Кровоглазые циклопы", "Death_Knight": "Черные рыцари", "Deep_Dragon": "Сумеречные драконы", "Defender": "Защитники гор", "Demilich": "Архиличи", "Demon": "Демоны", "Devil": "Дьяволы", "DiseaseZombie": "Гниющие зомби", "DjinnVizier": "Визири джиннов", "Druid": "Друиды", "Druid_Elder": "Верховные друиды", "Dryad": "Нимфы", "Earth_Elemental": "Земные элементали", "Familiar": "Бесы", "FirebreatherHound": "Огненные гончие", "Fire_Dragon": "Огненные драконы", "Fire_Elemental": "Огненные элементали", "FlameKeeper": "Жрецы Пламени", "Flame_Mage": "Жрецы Арката", "Footman": "Мечники", "FrightfulNightmare": "Кошмары", "Genie": "Джинны", "Ghosts": "Призраки", "Giant": "Колоссы", "Goblin1": "Гоблины", "Goblin2": "Трапперы", "GoblinDefiler": "Колдуны гоблинов", "Grand_Elf": "Мастера лука", "Green_Dragon": "Зеленые драконы", "Gremlin": "Гремлины", "GremlinSaboteur": "Гремлины-вредители", "Griffin": "Грифоны", "Harpooner": "Гарпунеры", "HellHound": "Адские гончие", "Hellmare": "Кони преисподней", "HighDruid": "Старшие друиды", "HornedDemon": "Огненные демоны", "HornedLeaper": "Старшие демоны", "HorrorDragon": "Астральные драконы", "Hydra": "Гидры", "Imp": "Черти", "InfernalSuccubus": "Демонессы", "Iron_Golem": "Железные големы", "Landlord": "Лендлорды", "LavaDragon": "Драконы Арката", "Lich": "Личи", "LichMaster": "Высшие личи", "Longbowman": "Стрелки", "Magi": "Маги", "Magma_Dragon": "Лавовые драконы", "Manes": "Привидения", "Manticore": "Мантикоры", "MarbleGargoyle": "Стихийные горгульи", "Marksman": "Арбалетчики", "Master_Genie": "Султаны джиннов", "Master_Gremlin": "Старшие гремлины", "Matriarch": "Владычицы тени", "Matron": "Сумеречные ведьмы", "Militiaman": "Ополченцы", "Minotaur": "Минотавры", "MinotaurCaptain": "Минотавры-надсмотрщики", "Minotaur_King": "Минотавры-стражи", "Mummy": "Мумии", "Nightmare": "Адские жеребцы", "Nosferatu": "Князья вампиров", "ObsidianGolem": "Обсидиановые големы", "Obsidian_Gargoyle": "Обсидиановые горгульи", "Orc1": "Орочьи воины", "Orc2": "Орочьи бойцы", "OrcChief1": "Убийцы", "OrcChief2": "Палачи", "OrcchiefChieftain": "Военачальники", "OrcWarmonger": "Вармонгеры", "Paladin": "Паладины", "Peasant": "Крестьяне", "Phoenix": "Фениксы", "PitFiend": "Пещерные демоны", "PitSpawn": "Пещерные отродья", "Pixie": "Феи", "Poltergeist": "Духи", "Priest": "Монахи", "Quasit": "Дьяволята", "RainbowDragon": "Кристаллические драконы", "Rakshasa": "Принцессы ракшас", "RakshasaKshatri": "Кшатрии ракшас", "Rakshasa_Rukh": "Раджи ракшас", "Ravager": "Темные всадники", "RedDragon": "Красные драконы", "Rider": "Наездники на ящерах", "Royal_Griffin": "Королевские грифоны", "Rune_Mage": "Жрецы Рун", "Scout": "Лазутчики", "Seraph": "Серафим", "ShadowMistress": "Хозяйки ночи", "Shadow_Dragon": "Призрачные драконы", "Shaman1": "Дочери Солнца", "Shaman2": "Дочери неба", "ShamanHag": "Дочери земли", "SharpShooter": "Снайперы", "Skeleton": "Костяные воины", "SkeletonWarrior": "Костяные воители", "Skeleton_Archer": "Костяные лучники", "SnowApe": "Чародейские орлы", "Sprite": "Дриады", "Stalker": "Ловчие", "Steel_Golem": "Стальные големы", "StoneDefender": "Горные стражи", "Stone_Gargoyle": "Каменные горгульи", "StormLord": "Громовержцы", "Stout_Defender": "Воители", "Succubus": "Суккубы", "Swordsman": "Латники", "Thane": "Таны", "ThunderThane": "Эрлы", "Titan": "Титаны", "Treant": "Энты", "Treant_Guardian": "Древние энты", "Unicorn": "Единороги", "Vampire": "Вампиры", "Vampire_Lord": "Высшие вампиры", "Vindicator": "Ревнитель веры", "Walking_Dead": "Зомби", "Warlord": "Ярлы", "War_Dancer": "Танцующие со смертью", "War_Unicorn": "Боевые единороги", "Water_Elemental": "Водные элементали", "WhiteBearRider": "Северные наездники", "WhiteUnicorn": "Светлые единороги", "Wight": "Умертвия", "Witch": "Бестии", "Wolf": "Волки", "Wood_Elf": "Эльфийские лучники", "Wraith": "Вестники смерти", "Wyvern1": "Виверны", "Wyvern2": "Темные виверны", "WyvernPaokai": "Паокаи", "Zealot": "Адепт", "Zombie": "Чумные зомби"
 }
 var C={
-	'TOWN_ACADEMY': 'orange',
-	'TOWN_DUNGEON': 'gray',
-	'TOWN_FORTRESS': 'lightblue',
-	'TOWN_HEAVEN': 'yellow',
-	'TOWN_INFERNO': 'red',
-	'TOWN_NECROMANCY': 'lime',
-	'TOWN_STRONGHOLD': 'brown',
-	'TOWN_PRESERVE': 'green',
+	'TOWN_ACADEMY': 'orange','TOWN_DUNGEON': 'gray',
+	'TOWN_FORTRESS': 'lightblue','TOWN_HEAVEN': 'yellow',
+	'TOWN_INFERNO': 'red','TOWN_NECROMANCY': 'lime',
+	'TOWN_STRONGHOLD': 'brown','TOWN_PRESERVE': 'green',
 	'TOWN_NO_TYPE': 'white'
 }
 var U=[{
@@ -38,7 +34,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 12
-}, {
+},{
     "id": "DjinnVizier",
     "at": 13,
     "df": 13,
@@ -64,7 +60,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 15
-}, {
+},{
     "id": "GremlinSaboteur",
     "at": 4,
     "df": 3,
@@ -90,7 +86,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 3
-}, {
+},{
     "id": "MarbleGargoyle",
     "at": 2,
     "df": 6,
@@ -116,7 +112,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 6
-}, {
+},{
     "id": "ObsidianGolem",
     "at": 6,
     "df": 4,
@@ -142,7 +138,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 9
-}, {
+},{
     "id": "RakshasaKshatri",
     "at": 27,
     "df": 20,
@@ -168,7 +164,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 18
-}, {
+},{
     "id": "StormLord",
     "at": 30,
     "df": 30,
@@ -194,7 +190,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 2,
     "sequence": 21
-}, {
+},{
     "id": "Arch_Magi",
     "at": 10,
     "df": 10,
@@ -220,7 +216,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 11
-}, {
+},{
     "id": "Genie",
     "at": 11,
     "df": 10,
@@ -246,7 +242,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 13
-}, {
+},{
     "id": "Giant",
     "at": 27,
     "df": 27,
@@ -272,7 +268,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 1,
     "sequence": 19
-}, {
+},{
     "id": "Gremlin",
     "at": 2,
     "df": 2,
@@ -298,7 +294,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 1
-}, {
+},{
     "id": "Iron_Golem",
     "at": 5,
     "df": 5,
@@ -324,7 +320,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 7
-}, {
+},{
     "id": "Magi",
     "at": 10,
     "df": 10,
@@ -350,7 +346,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 10
-}, {
+},{
     "id": "Master_Genie",
     "at": 15,
     "df": 15,
@@ -376,7 +372,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 14
-}, {
+},{
     "id": "Master_Gremlin",
     "at": 2,
     "df": 2,
@@ -402,7 +398,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 2
-}, {
+},{
     "id": "Obsidian_Gargoyle",
     "at": 3,
     "df": 5,
@@ -428,7 +424,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 5
-}, {
+},{
     "id": "Rakshasa",
     "at": 25,
     "df": 20,
@@ -454,7 +450,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 16
-}, {
+},{
     "id": "Rakshasa_Rukh",
     "at": 25,
     "df": 22,
@@ -480,7 +476,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 17
-}, {
+},{
     "id": "Steel_Golem",
     "at": 6,
     "df": 6,
@@ -506,7 +502,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 8
-}, {
+},{
     "id": "Stone_Gargoyle",
     "at": 3,
     "df": 4,
@@ -532,7 +528,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 4
-}, {
+},{
     "id": "Titan",
     "at": 30,
     "df": 30,
@@ -558,7 +554,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 2,
     "sequence": 20
-}, {
+},{
     "id": "AcidicHydra",
     "at": 15,
     "df": 14,
@@ -584,7 +580,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 15
-}, {
+},{
     "id": "BlackRider",
     "at": 12,
     "df": 9,
@@ -610,7 +606,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 12
-}, {
+},{
     "id": "BloodWitch2",
     "at": 5,
     "df": 4,
@@ -636,7 +632,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 6
-}, {
+},{
     "id": "MinotaurCaptain",
     "at": 6,
     "df": 5,
@@ -662,7 +658,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 9
-}, {
+},{
     "id": "RedDragon",
     "at": 30,
     "df": 30,
@@ -688,7 +684,7 @@ var U=[{
     "Sulfur": 2,
     "gem": 0,
     "sequence": 21
-}, {
+},{
     "id": "ShadowMistress",
     "at": 20,
     "df": 20,
@@ -714,7 +710,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 18
-}, {
+},{
     "id": "Stalker",
     "at": 4,
     "df": 3,
@@ -740,7 +736,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 3
-}, {
+},{
     "id": "Assassin",
     "at": 4,
     "df": 3,
@@ -766,7 +762,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 2
-}, {
+},{
     "id": "Black_Dragon",
     "at": 30,
     "df": 30,
@@ -792,7 +788,7 @@ var U=[{
     "Sulfur": 2,
     "gem": 0,
     "sequence": 20
-}, {
+},{
     "id": "Blood_Witch",
     "at": 5,
     "df": 4,
@@ -818,7 +814,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 5
-}, {
+},{
     "id": "Chaos_Hydra",
     "at": 15,
     "df": 15,
@@ -844,7 +840,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 14
-}, {
+},{
     "id": "Deep_Dragon",
     "at": 25,
     "df": 24,
@@ -870,7 +866,7 @@ var U=[{
     "Sulfur": 1,
     "gem": 0,
     "sequence": 19
-}, {
+},{
     "id": "Hydra",
     "at": 15,
     "df": 12,
@@ -896,7 +892,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 13
-}, {
+},{
     "id": "Matriarch",
     "at": 22,
     "df": 18,
@@ -922,7 +918,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 17
-}, {
+},{
     "id": "Matron",
     "at": 18,
     "df": 18,
@@ -948,7 +944,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 16
-}, {
+},{
     "id": "Minotaur",
     "at": 5,
     "df": 2,
@@ -974,7 +970,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 7
-}, {
+},{
     "id": "Minotaur_King",
     "at": 5,
     "df": 3,
@@ -1000,7 +996,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 8
-}, {
+},{
     "id": "Ravager",
     "at": 10,
     "df": 9,
@@ -1026,7 +1022,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 11
-}, {
+},{
     "id": "Rider",
     "at": 9,
     "df": 7,
@@ -1052,7 +1048,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 10
-}, {
+},{
     "id": "Scout",
     "at": 3,
     "df": 3,
@@ -1078,7 +1074,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 1
-}, {
+},{
     "id": "Witch",
     "at": 4,
     "df": 2,
@@ -1104,7 +1100,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 4
-}, {
+},{
     "id": "BattleRager",
     "at": 7,
     "df": 7,
@@ -1130,7 +1126,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 12
-}, {
+},{
     "id": "FlameKeeper",
     "at": 10,
     "df": 9,
@@ -1156,7 +1152,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 15
-}, {
+},{
     "id": "Harpooner",
     "at": 5,
     "df": 3,
@@ -1182,7 +1178,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 6
-}, {
+},{
     "id": "LavaDragon",
     "at": 32,
     "df": 35,
@@ -1208,7 +1204,7 @@ var U=[{
     "Sulfur": 2,
     "gem": 0,
     "sequence": 21
-}, {
+},{
     "id": "StoneDefender",
     "at": 2,
     "df": 5,
@@ -1234,7 +1230,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 3
-}, {
+},{
     "id": "ThunderThane",
     "at": 16,
     "df": 23,
@@ -1260,7 +1256,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 18
-}, {
+},{
     "id": "WhiteBearRider",
     "at": 8,
     "df": 10,
@@ -1286,7 +1282,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 9
-}, {
+},{
     "id": "Axe_Fighter",
     "at": 4,
     "df": 4,
@@ -1312,7 +1308,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 4
-}, {
+},{
     "id": "Axe_Thrower",
     "at": 4,
     "df": 4,
@@ -1338,7 +1334,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 5
-}, {
+},{
     "id": "Bear_Raider",
     "at": 5,
     "df": 9,
@@ -1364,7 +1360,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 7
-}, {
+},{
     "id": "Berserker",
     "at": 7,
     "df": 7,
@@ -1390,7 +1386,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 11
-}, {
+},{
     "id": "Blackbear_Raider",
     "at": 6,
     "df": 10,
@@ -1416,7 +1412,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 8
-}, {
+},{
     "id": "Brawler",
     "at": 6,
     "df": 6,
@@ -1442,7 +1438,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 10
-}, {
+},{
     "id": "Defender",
     "at": 1,
     "df": 4,
@@ -1468,7 +1464,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 1
-}, {
+},{
     "id": "Fire_Dragon",
     "at": 25,
     "df": 32,
@@ -1494,7 +1490,7 @@ var U=[{
     "Sulfur": 1,
     "gem": 0,
     "sequence": 19
-}, {
+},{
     "id": "Flame_Mage",
     "at": 9,
     "df": 9,
@@ -1520,7 +1516,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 14
-}, {
+},{
     "id": "Magma_Dragon",
     "at": 30,
     "df": 40,
@@ -1546,7 +1542,7 @@ var U=[{
     "Sulfur": 2,
     "gem": 0,
     "sequence": 20
-}, {
+},{
     "id": "Rune_Mage",
     "at": 10,
     "df": 6,
@@ -1572,7 +1568,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 13
-}, {
+},{
     "id": "Stout_Defender",
     "at": 1,
     "df": 5,
@@ -1598,7 +1594,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 2
-}, {
+},{
     "id": "Thane",
     "at": 15,
     "df": 24,
@@ -1624,7 +1620,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 16
-}, {
+},{
     "id": "Warlord",
     "at": 15,
     "df": 24,
@@ -1650,7 +1646,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 17
-}, {
+},{
     "id": "Angel",
     "at": 27,
     "df": 27,
@@ -1676,7 +1672,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 19
-}, {
+},{
     "id": "Archangel",
     "at": 31,
     "df": 31,
@@ -1702,7 +1698,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 20
-}, {
+},{
     "id": "Archer",
     "at": 4,
     "df": 3,
@@ -1728,7 +1724,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 4
-}, {
+},{
     "id": "Cavalier",
     "at": 23,
     "df": 21,
@@ -1754,7 +1750,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 16
-}, {
+},{
     "id": "Cleric",
     "at": 16,
     "df": 18,
@@ -1780,7 +1776,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 14
-}, {
+},{
     "id": "Footman",
     "at": 4,
     "df": 8,
@@ -1806,7 +1802,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 7
-}, {
+},{
     "id": "Griffin",
     "at": 7,
     "df": 5,
@@ -1832,7 +1828,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 10
-}, {
+},{
     "id": "Marksman",
     "at": 4,
     "df": 4,
@@ -1858,7 +1854,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 5
-}, {
+},{
     "id": "Militiaman",
     "at": 1,
     "df": 2,
@@ -1884,7 +1880,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 2
-}, {
+},{
     "id": "Paladin",
     "at": 24,
     "df": 24,
@@ -1910,7 +1906,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 1,
     "sequence": 17
-}, {
+},{
     "id": "Peasant",
     "at": 1,
     "df": 1,
@@ -1936,7 +1932,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 1
-}, {
+},{
     "id": "Priest",
     "at": 12,
     "df": 12,
@@ -1962,7 +1958,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 13
-}, {
+},{
     "id": "BattleGriffin",
     "at": 7,
     "df": 12,
@@ -1988,7 +1984,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 12
-}, {
+},{
     "id": "Champion",
     "at": 24,
     "df": 22,
@@ -2014,7 +2010,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 1,
     "sequence": 18
-}, {
+},{
     "id": "Landlord",
     "at": 2,
     "df": 1,
@@ -2040,7 +2036,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 3
-}, {
+},{
     "id": "Longbowman",
     "at": 4,
     "df": 3,
@@ -2066,7 +2062,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 6
-}, {
+},{
     "id": "Seraph",
     "at": 35,
     "df": 27,
@@ -2092,7 +2088,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 21
-}, {
+},{
     "id": "Vindicator",
     "at": 8,
     "df": 8,
@@ -2118,7 +2114,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 9
-}, {
+},{
     "id": "Zealot",
     "at": 20,
     "df": 14,
@@ -2144,7 +2140,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 15
-}, {
+},{
     "id": "Royal_Griffin",
     "at": 9,
     "df": 8,
@@ -2170,7 +2166,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 11
-}, {
+},{
     "id": "Swordsman",
     "at": 5,
     "df": 9,
@@ -2196,7 +2192,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 8
-}, {
+},{
     "id": "ArchDemon",
     "at": 32,
     "df": 32,
@@ -2222,7 +2218,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 21
-}, {
+},{
     "id": "FirebreatherHound",
     "at": 4,
     "df": 3,
@@ -2248,7 +2244,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 9
-}, {
+},{
     "id": "Hellmare",
     "at": 16,
     "df": 18,
@@ -2274,7 +2270,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 15
-}, {
+},{
     "id": "HornedLeaper",
     "at": 3,
     "df": 2,
@@ -2300,7 +2296,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 6
-}, {
+},{
     "id": "PitSpawn",
     "at": 27,
     "df": 23,
@@ -2326,7 +2322,7 @@ var U=[{
     "Sulfur": 1,
     "gem": 0,
     "sequence": 18
-}, {
+},{
     "id": "Quasit",
     "at": 3,
     "df": 3,
@@ -2352,7 +2348,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 3
-}, {
+},{
     "id": "SuccubusSeducer",
     "at": 6,
     "df": 6,
@@ -2378,7 +2374,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 12
-}, {
+},{
     "id": "ArchDevil_",
     "at": 32,
     "df": 30,
@@ -2404,7 +2400,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 20
-}, {
+},{
     "id": "Balor",
     "at": 25,
     "df": 23,
@@ -2430,7 +2426,7 @@ var U=[{
     "Sulfur": 1,
     "gem": 0,
     "sequence": 17
-}, {
+},{
     "id": "Cerberius",
     "at": 4,
     "df": 3,
@@ -2456,7 +2452,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 8
-}, {
+},{
     "id": "Demon",
     "at": 1,
     "df": 3,
@@ -2482,7 +2478,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 4
-}, {
+},{
     "id": "Devil",
     "at": 27,
     "df": 25,
@@ -2508,7 +2504,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 19
-}, {
+},{
     "id": "Familiar",
     "at": 2,
     "df": 2,
@@ -2534,7 +2530,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 1
-}, {
+},{
     "id": "FrightfulNightmare",
     "at": 18,
     "df": 16,
@@ -2560,7 +2556,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 14
-}, {
+},{
     "id": "HellHound",
     "at": 4,
     "df": 3,
@@ -2586,7 +2582,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 7
-}, {
+},{
     "id": "HornedDemon",
     "at": 2,
     "df": 3,
@@ -2612,7 +2608,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 5
-}, {
+},{
     "id": "Imp",
     "at": 4,
     "df": 2,
@@ -2638,7 +2634,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 2
-}, {
+},{
     "id": "InfernalSuccubus",
     "at": 6,
     "df": 6,
@@ -2664,7 +2660,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 11
-}, {
+},{
     "id": "Nightmare",
     "at": 13,
     "df": 13,
@@ -2690,7 +2686,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 13
-}, {
+},{
     "id": "PitFiend",
     "at": 21,
     "df": 21,
@@ -2716,7 +2712,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 16
-}, {
+},{
     "id": "Succubus",
     "at": 6,
     "df": 6,
@@ -2742,7 +2738,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 10
-}, {
+},{
     "id": "Banshee",
     "at": 24,
     "df": 23,
@@ -2768,7 +2764,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 18
-}, {
+},{
     "id": "DiseaseZombie",
     "at": 2,
     "df": 3,
@@ -2794,7 +2790,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 6
-}, {
+},{
     "id": "HorrorDragon",
     "at": 31,
     "df": 27,
@@ -2820,7 +2816,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 1,
     "sequence": 21
-}, {
+},{
     "id": "LichMaster",
     "at": 21,
     "df": 19,
@@ -2846,7 +2842,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 15
-}, {
+},{
     "id": "Nosferatu",
     "at": 8,
     "df": 8,
@@ -2872,7 +2868,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 12
-}, {
+},{
     "id": "Poltergeist",
     "at": 6,
     "df": 5,
@@ -2898,7 +2894,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 9
-}, {
+},{
     "id": "SkeletonWarrior",
     "at": 1,
     "df": 3,
@@ -2924,7 +2920,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 3
-}, {
+},{
     "id": "Bone_Dragon",
     "at": 27,
     "df": 28,
@@ -2950,7 +2946,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 1,
     "sequence": 19
-}, {
+},{
     "id": "Demilich",
     "at": 19,
     "df": 19,
@@ -2976,7 +2972,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 14
-}, {
+},{
     "id": "Ghosts",
     "at": 6,
     "df": 4,
@@ -3002,7 +2998,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 8
-}, {
+},{
     "id": "Lich",
     "at": 15,
     "df": 15,
@@ -3028,7 +3024,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 13
-}, {
+},{
     "id": "Manes",
     "at": 5,
     "df": 4,
@@ -3054,7 +3050,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 7
-}, {
+},{
     "id": "Shadow_Dragon",
     "at": 30,
     "df": 28,
@@ -3080,7 +3076,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 1,
     "sequence": 20
-}, {
+},{
     "id": "Skeleton",
     "at": 1,
     "df": 2,
@@ -3106,7 +3102,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 1
-}, {
+},{
     "id": "Skeleton_Archer",
     "at": 1,
     "df": 2,
@@ -3132,7 +3128,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 2
-}, {
+},{
     "id": "Vampire",
     "at": 6,
     "df": 6,
@@ -3158,7 +3154,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 10
-}, {
+},{
     "id": "Vampire_Lord",
     "at": 10,
     "df": 9,
@@ -3184,7 +3180,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 11
-}, {
+},{
     "id": "Walking_Dead",
     "at": 1,
     "df": 2,
@@ -3210,7 +3206,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 4
-}, {
+},{
     "id": "Wight",
     "at": 24,
     "df": 22,
@@ -3236,7 +3232,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 16
-}, {
+},{
     "id": "Wraith",
     "at": 26,
     "df": 25,
@@ -3262,7 +3258,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 17
-}, {
+},{
     "id": "Zombie",
     "at": 3,
     "df": 2,
@@ -3288,7 +3284,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 5
-}, {
+},{
     "id": "Air_Elemental",
     "at": 8,
     "df": 8,
@@ -3314,7 +3310,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": ""
-}, {
+},{
     "id": "Death_Knight",
     "at": 23,
     "df": 23,
@@ -3340,7 +3336,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": ""
-}, {
+},{
     "id": "Earth_Elemental",
     "at": 6,
     "df": 10,
@@ -3366,7 +3362,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": ""
-}, {
+},{
     "id": "Fire_Elemental",
     "at": 10,
     "df": 6,
@@ -3392,7 +3388,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": ""
-}, {
+},{
     "id": "Manticore",
     "at": 15,
     "df": 15,
@@ -3418,7 +3414,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": ""
-}, {
+},{
     "id": "Mummy",
     "at": 8,
     "df": 9,
@@ -3444,7 +3440,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": ""
-}, {
+/*},{
     "id": "Phoenix",
     "at": 33,
     "df": 33,
@@ -3470,7 +3466,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": ""
-}, {
+},{
     "id": "SnowApe",
     "at": 16,
     "df": 14,
@@ -3495,8 +3491,8 @@ var U=[{
     "crystal": 0,
     "Sulfur": 0,
     "gem": 0,
-    "sequence": ""
-}, {
+    "sequence": ""*/
+},{
     "id": "Water_Elemental",
     "at": 8,
     "df": 8,
@@ -3522,7 +3518,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": ""
-}, {
+},{
     "id": "Wolf",
     "at": 5,
     "df": 3,
@@ -3548,7 +3544,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": ""
-}, {
+},{
     "id": "CentaurMaradeur",
     "at": 4,
     "df": 4,
@@ -3574,7 +3570,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 6
-}, {
+},{
     "id": "CyclopBloodeyed",
     "at": 28,
     "df": 28,
@@ -3600,7 +3596,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 21
-}, {
+},{
     "id": "GoblinDefiler",
     "at": 1,
     "df": 2,
@@ -3626,7 +3622,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 3
-}, {
+},{
     "id": "OrcchiefChieftain",
     "at": 14,
     "df": 15,
@@ -3652,7 +3648,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 15
-}, {
+},{
     "id": "OrcWarmonger",
     "at": 4,
     "df": 6,
@@ -3678,7 +3674,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 9
-}, {
+},{
     "id": "ShamanHag",
     "at": 9,
     "df": 7,
@@ -3704,7 +3700,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 12
-}, {
+},{
     "id": "WyvernPaokai",
     "at": 23,
     "df": 23,
@@ -3730,7 +3726,7 @@ var U=[{
     "Sulfur": 1,
     "gem": 0,
     "sequence": 18
-}, {
+},{
     "id": "Centaur1",
     "at": 3,
     "df": 1,
@@ -3756,7 +3752,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 4
-}, {
+},{
     "id": "Centaur2",
     "at": 5,
     "df": 3,
@@ -3782,7 +3778,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 5
-}, {
+},{
     "id": "Cyclop1",
     "at": 29,
     "df": 27,
@@ -3808,7 +3804,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 19
-}, {
+},{
     "id": "Cyclop2",
     "at": 30,
     "df": 29,
@@ -3834,7 +3830,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 20
-}, {
+},{
     "id": "Goblin1",
     "at": 1,
     "df": 1,
@@ -3860,7 +3856,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 1
-}, {
+},{
     "id": "Goblin2",
     "at": 2,
     "df": 1,
@@ -3886,7 +3882,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 2
-}, {
+},{
     "id": "Orc1",
     "at": 5,
     "df": 2,
@@ -3912,7 +3908,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 7
-}, {
+},{
     "id": "Orc2",
     "at": 6,
     "df": 4,
@@ -3938,7 +3934,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 8
-}, {
+},{
     "id": "OrcChief1",
     "at": 11,
     "df": 8,
@@ -3964,7 +3960,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 13
-}, {
+},{
     "id": "OrcChief2",
     "at": 14,
     "df": 10,
@@ -3990,7 +3986,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 14
-}, {
+},{
     "id": "Shaman1",
     "at": 5,
     "df": 5,
@@ -4016,7 +4012,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 10
-}, {
+},{
     "id": "Shaman2",
     "at": 7,
     "df": 9,
@@ -4042,7 +4038,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 11
-}, {
+},{
     "id": "Wyvern1",
     "at": 21,
     "df": 21,
@@ -4068,7 +4064,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 16
-}, {
+},{
     "id": "Wyvern2",
     "at": 25,
     "df": 23,
@@ -4094,7 +4090,7 @@ var U=[{
     "Sulfur": 1,
     "gem": 0,
     "sequence": 17
-}, {
+},{
     "id": "AngerTreant",
     "at": 21,
     "df": 27,
@@ -4120,7 +4116,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 1,
     "sequence": 18
-}, {
+},{
     "id": "BladeSinger",
     "at": 6,
     "df": 5,
@@ -4146,7 +4142,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 6
-}, {
+},{
     "id": "Dryad",
     "at": 2,
     "df": 3,
@@ -4172,7 +4168,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 3
-}, {
+},{
     "id": "HighDruid",
     "at": 12,
     "df": 8,
@@ -4198,7 +4194,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 12
-}, {
+},{
     "id": "RainbowDragon",
     "at": 27,
     "df": 31,
@@ -4224,7 +4220,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 21
-}, {
+},{
     "id": "SharpShooter",
     "at": 6,
     "df": 5,
@@ -4250,7 +4246,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 9
-}, {
+},{
     "id": "WhiteUnicorn",
     "at": 15,
     "df": 15,
@@ -4276,7 +4272,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 15
-}, {
+},{
     "id": "Blade_Juggler",
     "at": 3,
     "df": 2,
@@ -4302,7 +4298,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 4
-}, {
+},{
     "id": "Druid",
     "at": 7,
     "df": 7,
@@ -4328,7 +4324,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 10
-}, {
+},{
     "id": "Druid_Elder",
     "at": 12,
     "df": 9,
@@ -4354,7 +4350,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 11
-}, {
+},{
     "id": "Gold_Dragon",
     "at": 29,
     "df": 27,
@@ -4380,7 +4376,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 20
-}, {
+},{
     "id": "Grand_Elf",
     "at": 5,
     "df": 4,
@@ -4406,7 +4402,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 8
-}, {
+},{
     "id": "Green_Dragon",
     "at": 27,
     "df": 25,
@@ -4432,7 +4428,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 19
-}, {
+},{
     "id": "Pixie",
     "at": 1,
     "df": 1,
@@ -4458,7 +4454,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 1
-}, {
+},{
     "id": "Sprite",
     "at": 3,
     "df": 2,
@@ -4484,7 +4480,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 2
-}, {
+},{
     "id": "Treant",
     "at": 19,
     "df": 27,
@@ -4510,7 +4506,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 16
-}, {
+},{
     "id": "Treant_Guardian",
     "at": 19,
     "df": 29,
@@ -4536,7 +4532,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 1,
     "sequence": 17
-}, {
+},{
     "id": "Unicorn",
     "at": 12,
     "df": 12,
@@ -4562,7 +4558,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 13
-}, {
+},{
     "id": "War_Dancer",
     "at": 6,
     "df": 4,
@@ -4588,7 +4584,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 5
-}, {
+},{
     "id": "War_Unicorn",
     "at": 17,
     "df": 17,
@@ -4614,7 +4610,7 @@ var U=[{
     "Sulfur": 0,
     "gem": 0,
     "sequence": 14
-}, {
+},{
     "id": "Wood_Elf",
     "at": 4,
     "df": 1,

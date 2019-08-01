@@ -1,6 +1,6 @@
 <!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html;charset=utf-8"/>
 <style type="text/css">
-body{font-size:12px;margin:0;padding:0}
+body{font-size:12px;margin:0;padding:0;min-width:1280px}
 .name{max-width:100px;overflow-x:hidden;display:inline-block}
 </style></head><body>
 
@@ -18,31 +18,69 @@ for(u of U) {
 		else s='🏹'
 	}
 	if(u.ability.includes('ABILITY_NO_ENEMY_RETALIATION'))s+='👊'
-	if(u.fly)s+='🐦'
+	if(u.fly=='true')s+='🐦'
 	u.shooter=s
 }
-function g3(attr,po,di){
+function g4(attr, po, di){
 	let y = []
 	let l=attr.length
+	let n = 0
 	for(u of U){
 		let s = 1
-		for(let i=0;i<l;i++){
-			s *= Math.pow(u[ attr[i] ], po[i])
+		for(let i=0,p;i<l;i++){
+			if(po[i]==0)p=1;
+			else p=u[ attr[i] ]/po[i];
+			s *= Math.pow(u[ attr[i] ]*p*p, di[i])
 		}
-		s=Math.round(s/di)
+		if(s>n)n=s;
 		y.push([u, s])
 	}
+	n/=1000
+	for(let i=0,l=y.length;i<l;i++) y[i][1] = Math.round(y[i][1]/n)
 	y.sort((a,b)=>{return b[1] - a[1]})
 	let d = document.createElement('DIV');
 	let e = document.createElement('DIV');
 	e.innerHTML = attr.join(',');
 	e.style.backgroundColor='white';
-	e.style.position='fixed';
+	//e.style.position='fixed';
 	d.appendChild(e)
 	
-	e = document.createElement('DIV')
-	e.innerHTML = '&nbsp;';
+	//e = document.createElement('DIV')
+	//e.innerHTML = '&nbsp;';
+	//d.appendChild(e)
+	for(u of y) {
+		e = document.createElement('DIV');
+		e.style.backgroundColor = C[ u[0].faction ];
+		e.style.letterSpacing = '-1px';
+		e.style.whiteSpace='nowrap';
+		e.innerHTML = '<span>' + u[1] + '&nbsp;</span><span class="name">'+N[ u[0].id ] + '</span>'+u[0].shooter+'<sup>'+u[0].tier+'</sup>'
+		d.appendChild(e)
+	}
+	m.appendChild(d)
+}
+function g3(attr, po){
+	let y = []
+	let l=attr.length
+	let n = 0
+	for(u of U){
+		let s = 1
+		for(let i=0;i<l;i++) s *= Math.pow(u[ attr[i] ], po[i])
+		if(s>n)n=s;
+		y.push([u, s])
+	}
+	n/=1000
+	for(let i=0,l=y.length;i<l;i++) y[i][1] = Math.round(y[i][1]/n)
+	y.sort((a,b)=>{return b[1] - a[1]})
+	let d = document.createElement('DIV');
+	let e = document.createElement('DIV');
+	e.innerHTML = attr.join(',');
+	e.style.backgroundColor='white';
+	//e.style.position='fixed';
 	d.appendChild(e)
+	
+	//e = document.createElement('DIV')
+	//e.innerHTML = '&nbsp;';
+	//d.appendChild(e)
 	for(u of y) {
 		e = document.createElement('DIV');
 		e.style.backgroundColor = C[ u[0].faction ];
@@ -58,12 +96,12 @@ function g2(t1,t2){
 	let d = document.createElement('DIV');
 	let e = document.createElement('DIV');
 	e.innerHTML = t1 + '-' + t2;
-	e.style.position='fixed';
+	//e.style.position='fixed';
 	e.style.backgroundColor='white';
 	d.appendChild(e)
-	e = document.createElement('DIV')
-	e.innerHTML = '&nbsp;';
-	d.appendChild(e)
+	//e = document.createElement('DIV')
+	//e.innerHTML = '&nbsp;';
+	//d.appendChild(e)
 	for(u of U) {
 		e = document.createElement('DIV');
 		e.style.backgroundColor = C[ u.faction ];
@@ -83,12 +121,12 @@ function g(t){
 	let d = document.createElement('DIV');
 	let e = document.createElement('DIV');
 	e.innerHTML = t
-	e.style.position='fixed';
+	//e.style.position='fixed';
 	e.style.backgroundColor='white';
 	d.appendChild(e)
-	e = document.createElement('DIV')
-	e.innerHTML = '&nbsp;';
-	d.appendChild(e)
+	//e = document.createElement('DIV')
+	//e.innerHTML = '&nbsp;';
+	//d.appendChild(e)
 	let c = [0, false]
 	for(u of U) {
 		e = document.createElement('DIV');
@@ -109,8 +147,8 @@ g('df')
 g('hp')
 //g('gold')
 g2('min_d','max_d')
-g3(['at','init','spd'],[1,1.1,1],7.138)
-g3(['df','hp'],[1,1.1],19.676)
+g4(['at','init','spd'],[0,0,5],[0.5,1.5,1])
+g3(['df','hp'],[1,1.1])
 
 document.body.appendChild(m)
 </script>
