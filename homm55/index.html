@@ -65,7 +65,7 @@ for(o in F) {
 		//e.style.overflowX='hidden';
 		e.style.whiteSpace='nowrap';
 		e.style.letterSpacing = '-1px';
-		e.innerHTML = '<span style="color:red">' + N[ f[i][1].id ].cut() + '</span>/<span style="color:#00afff">' + N[ f[i][2].id ].cut() + '</span>'
+		e.innerHTML = '<span title="'+f[i][1].id+'" style="color:red">' + N[ f[i][1].id ].cut() + '</span>/<span title="'+f[i][2].id+'" style="color:#00afff">' + N[ f[i][2].id ].cut() + '</span>'
 		dd.appendChild(e)
 		
 		for(let j=0,p;j<9;j++){
