@@ -84,7 +84,7 @@ for(o in F) {
 			for(let j=0,l=f[i][u].spells.length;j<l;j++){
 				if(f[i][u].spells[j]==='')continue;
 				if(!f[i][y].spells.includes( f[i][u].spells[j] )){
-					s.push( '<span style="color:'+(u===1?'red':'#00afff')+'">'+f[i][u].spells[j]+'</span>' )
+					s.push( '<span class="help" title="'+S[ f[i][u].spells[j] ]+'" style="color:'+(u===1?'red':'#00afff')+'">'+f[i][u].spells[j]+'</span>' )
 				}
 			}
 		}
