@@ -90,7 +90,7 @@ events.addEvent('unit_move', function(params) {
 		camera.moveOn(unit.realPosition.x, unit.realPosition.y);
 		if (d === 7) events.callEvent('unit_stand', [x, y]);
 		if (d > 9) {
-			unit.setAnim('stand');
+			if (!unit.owner.controller.pressed) unit.setAnim('stand');
 			clearInterval(unit.moveInterval);
 			unit.moveInterval = null
 		}
@@ -173,7 +173,9 @@ document.body.onkeyup = function(e) {
 				for (let j in p.controller.keys) {
 					if (p.controller.keys[j][1]) { stop = false; break }
 				}
-				if (stop) p.controller.pressed = false
+				if (stop) {
+					p.controller.pressed = false
+				}
 				
 				break
 			}
