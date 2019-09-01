@@ -16,11 +16,11 @@ class Cell {
 		if (value < 0) value = 0;
 		else if (value > 1) value = 1;
 		this.plod = value;
-		if (value > 0.8) this.imgs.soil.src = 'img/soil_5_0'+rand(1, 3)+'.png';
-		else if (value > 0.6) this.imgs.soil.src = 'img/soil_4_0'+rand(1, 3)+'.png';
-		else if (value > 0.4) this.imgs.soil.src = 'img/soil_3_0'+rand(1, 3)+'.png';
-		else if (value > 0.2) this.imgs.soil.src = 'img/soil_2_0'+rand(1, 3)+'.png';
-		else this.imgs.soil.src = 'img/soil_1_0'+rand(1, 3)+'.png';
+		if (value > 0.8) this.imgs.soil.src = 'img/Soil_5_0'+rand(1, 3)+'.png';
+		else if (value > 0.6) this.imgs.soil.src = 'img/Soil_4_0'+rand(1, 3)+'.png';
+		else if (value > 0.4) this.imgs.soil.src = 'img/Soil_3_0'+rand(1, 3)+'.png';
+		else if (value > 0.2) this.imgs.soil.src = 'img/Soil_2_0'+rand(1, 3)+'.png';
+		else this.imgs.soil.src = 'img/Soil_1_0'+rand(1, 3)+'.png';
 
 	}
 	convert(type) {
