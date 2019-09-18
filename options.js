@@ -93,7 +93,7 @@ function getNews(){
 	cMan.api('schedule/get',{},requ=>{try{
 		let p=JSON.parse(requ.target.responseText);
 		//console.log(requ.responseText)
-		for(let x=p.length;x--;)result[0]+='<a target="_blank" style="text-decoration:none;color:dodgerblue" href="http://peka2.tv/'+p[x].user.name+'">'+p[x].user.name+'</a><br>'+tss(p[x].time*1000)+'<br><span style="font-size:75%">'+p[x].description+'</span><hr>'
+		for(let x=p.length;x--;)result[0]+='<a target="_blank" style="text-decoration:none;color:dodgerblue" href="http://sc2tv.ru/'+p[x].user.name+'">'+p[x].user.name+'</a><br>'+tss(p[x].time*1000)+'<br><span style="font-size:75%">'+p[x].description+'</span><hr>'
 		getNewsShow(result,opv,++resco,'SC2TV announces ok...')
 	}catch(e){console.log(e);getNewsShow([],opv,++resco,'SC2TV announces not ok...')}})
 	GMX({method:'GET',url:'https://goodgame.ru/',onload:requ=>{
@@ -404,7 +404,7 @@ var grBut2={
 }*/
 function recentNews(){
 	let opv=OPOV.serv('Запрос последних обновлений на форуме...');
-	GMX({timeout:5000,method:'POST',url:'http://peka2.tv/block_refresh/vbbridge/recent',headers:{'Host':'sc2tv.ru','User-agent':'Mozilla/5.0 (Windows NT 5.1; rv:31.0) Gecko/20100101 Firefox/31.0','Accept':'*/*','Accept-Language':'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3','Accept-Encoding':'gzip, deflate','X-Requested-With':'XMLHttpRequest','Referer':'http://peka2.tv/','Cookie':D.cookie,'Connection':'keep-alive'},onload:requ=>{
+	GMX({timeout:5000,method:'POST',url:'http://sc2tv.ru/block_refresh/vbbridge/recent',headers:{'Host':'sc2tv.ru','User-agent':'Mozilla/5.0 (Windows NT 5.1; rv:31.0) Gecko/20100101 Firefox/31.0','Accept':'*/*','Accept-Language':'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3','Accept-Encoding':'gzip, deflate','X-Requested-With':'XMLHttpRequest','Referer':'http://sc2tv.ru/','Cookie':D.cookie,'Connection':'keep-alive'},onload:requ=>{
 		requ=requ.target;
 		if(requ.responseText===''){OPOV.serv('Пустая строка!',10000,opv,true);return}
 		let div=C('DIV');div.style.bottom=div.style.right=0;
@@ -674,7 +674,7 @@ var cMan={
 		if(b){
 			if(o.service===1)o.span.title.href=o.link;
 			else if(o.service===2)o.span.title.href='https://www.twitch.tv/'+o.name;
-			else o.span.title.href='http://peka2.tv/'+nameToUrl(o.name);
+			else o.span.title.href='http://sc2tv.ru/'+nameToUrl(o.name);
 			o.span.title.innerHTML=o.title;
 			o.span.title.title=o.title;
 			o.span.cat.textContent=o.cat
@@ -801,7 +801,7 @@ var cMan={
 		c.temp=false;
 
 		//c.span.name.textContent=nm;
-		c.span.title.href='http://peka2.tv/'+nm;
+		c.span.title.href='http://sc2tv.ru/'+nm;
 		this.writeName(c,nm);
 		this.obnovDesc(c,o);
 		mch.setName(c.id,nm)
@@ -1884,7 +1884,7 @@ function ScPlayer(){
 				.replace(/twitch.tv/,'TW')
 				.replace(/cybergame.tv/,'CG')
 				.replace(/youtube.com/,'YT')
-				.replace(/peka2.tv/,'P2');
+				.replace(/sc2tv.ru/,'SC');
 			r.code='<iframe width="'+this.playerSize.x+'" height="'+this.playerSize.y+'" src="';
 			if(r.name==='GG'){try{
 				m.ggid=plrs[x].channel;
@@ -3752,8 +3752,8 @@ hidGenreTransform();
 var MYNICK=['Pibamba','Pibamba','pibamba'],NICKRGXP=[new RegExp(MYNICK[0]),new RegExp(MYNICK[1]),new RegExp(MYNICK[2],'i')],FUNUSERID=33474,TWITCHPASS='',TWCLIENTID='84jehke2li8043e6gi26zbcb7ic4tt5',//TWITCHSECRET='6lgcbw7sh2bcgaih5q1fb5veyk8jur',
 FUNTOKEN='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6MzM0NzQsImlwIjoiMTM2LjI0My4xMzIuMTYyIiwidXNlckFnZW50IjoiTW96aWxsYVwvNS4wIChXaW5kb3dzIE5UIDYuMTsgV09XNjQpIEFwcGxlV2ViS2l0XC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWVcLzYxLjAuMzE2My4xMDIgU2FmYXJpXC81MzcuMzYgVml2YWxkaVwvMS45My45NTUuMzgiLCJvYXV0aCI6eyJpZCI6MCwiYXBwcm92ZWQiOnRydWV9LCJleHAiOjE1NzA1NTkxNTh9.xOhnP5_XFQVuZjslzjmtCV20Acy7PVObhlRqbVMfO4jWlHGGCkK2Sp1zokto-pyZPVtT8mMGeLtVRbWLvs9NiA',
 GGTOKEN='',GGUSERID='1214319',GGPASS='KeLPdp6IlHsvi2E9Privet_-p9Z2VhZ4aj',//Asoas 8262
-FUNCHAN_WEBSOCKET='ws://chat.peka2.tv/?EIO=3&transport=websocket',
-FUNCHAN_API='https://peka2.tv/api/',
+FUNCHAN_WEBSOCKET='ws://chat.sc2tv.ru/?EIO=3&transport=websocket',
+FUNCHAN_API='https://sc2tv.ru/api/',
 LIMITOFMASSAGES=300,GGLISTAMOUNT=2,
 rgxpChan=[
 	/var current_players = \[.*?\];/,
