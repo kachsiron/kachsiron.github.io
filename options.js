@@ -685,10 +685,7 @@ var cMan={
 		o.span.vc.style.color=((a&&b)?'red':a?'lime':b?'orange':'white');
 		for(let d in o.span)o.div.appendChild(o.span[d])
 	},
-	'isuper':function(c,u){
-		c.isup+=u?-1:1;
-		c.isup=c.isup>3?3:(c.isup<0?0:c.isup)
-	},
+	'isuper':function(c,u){c.isup+=u?-1:1;c.isup=c.isup>3?3:(c.isup<0?0:c.isup)},
 	'makeChan':function(temp,o,id){
 		let nm=o.streamer.name;
 		if(HID.hasOwnProperty(nm))HID[nm]=this.rTimes;
