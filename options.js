@@ -1047,6 +1047,7 @@ var cMan={
 	},
 	'incomintw':function(){
 		GMX({headers:{'Client-ID':TWCLIENTID},timeout:10000,ontimeout:()=>{},method:'GET',url:'https://api.twitch.tv/kraken/streams?channel='+this.twitchListRequest,onload:reso=>{
+			console.log(reso.target.responseText)
 			try{
 				reso=JSON.parse(reso.target.responseText).streams;
 				let o=[];
