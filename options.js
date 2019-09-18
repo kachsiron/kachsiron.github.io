@@ -1047,11 +1047,11 @@ var cMan={
 	},
 	'incomintw':function(){
 		GMX({headers:{'Client-ID':TWCLIENTID},timeout:10000,ontimeout:()=>{},method:'GET',url:'https://api.twitch.tv/helix/streams?'+this.twitchListRequest,onload:reso=>{
-			console.log(JSON.parse(reso.target.responseText), this.twitchListRequest)
 			try{
 				reso=JSON.parse(reso.target.responseText).data;
 				let o=[];
 				for(let i=reso.length,j,name;--i>-1;){
+					console.log(reso[i])
 					j=reso[i];name=j.user_name
 					o.push(name);
 					this.contents.tw[name]={
@@ -1060,6 +1060,7 @@ var cMan={
 					}
 					this.addChan(this.contents.tw[name])
 				}
+				console.log(this.contents.tw)
 				for(let x in this.contents.tw){
 					if(o.includes(x))continue;
 					this.contents.tw[x]={
