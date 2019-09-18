@@ -1397,12 +1397,12 @@ var cMan={
 		this.contents.tw[w]=null;
 		//this.contents_twitch_length=objSize(this.contents.tw);
 		this.twitchListRequest='';
-		for(let x in this.contents.tw)this.twitchListRequest=(this.twitchListRequest===''?x:'user_login='+this.twitchListRequest+'&'+x);
+		for(let x in this.contents.tw)this.twitchListRequest=(this.twitchListRequest===''?'user_login='+x:this.twitchListRequest+'&user_login='+x);
 	},
 	'init':function(){
 		this.contents.tw={};
 		for(let i in TFAV)this.contents.tw[i]=null;
-		for(let x in this.contents.tw)this.twitchListRequest=(this.twitchListRequest===''?x:'user_login='+this.twitchListRequest+'&'+x);
+		for(let x in this.contents.tw)this.twitchListRequest=(this.twitchListRequest===''?'user_login='+x:this.twitchListRequest+'&user_login='+x);
 		this.contents_twitch_length=1;//objSize(this.contents.tw);
 		
 		with(this.fctDiv.div.style){position='absolute';left='444px';top='0';height='12px';backgroundColor='black';color='gray'}
