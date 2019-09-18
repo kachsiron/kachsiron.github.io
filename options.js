@@ -686,7 +686,7 @@ var cMan={
 		for(let d in o.span)o.div.appendChild(o.span[d])
 	},
 	'isuper':function(c,u){
-		c.isup+=(u==='live'?1:-1);
+		c.isup+=(u==='live'?-1:1);
 		c.isup=c.isup>3?3:(c.isup<0?0:c.isup)
 	},
 	'makeChan':function(temp,o,id){
@@ -1051,16 +1051,14 @@ var cMan={
 				reso=JSON.parse(reso.target.responseText).data;
 				let o=[];
 				for(let i=reso.length,j,name;--i>-1;){
-					console.log(reso[i])
 					j=reso[i];name=j.user_name
 					o.push(name);
 					this.contents.tw[name]={
 						'id':name, 'start_at':0, 'created_at':j.started_at, 'streamer':{'name':name, 'id':'t_'+name},'players':null,
-						'thumbnail':j.thumbnail_url.replace('{width}', '355').replace('{height}', '200'), 'tw': true, 'name':j.title, 'description':'', 'category':{'name':j.game_id}, 'viewers':j.viewers_count, 'l':j.type
+						'thumbnail':j.thumbnail_url.replace('{width}', '355').replace('{height}', '200'), 'tw': true, 'name':j.title, 'description':'', 'category':{'name':j.game_id}, 'viewers':j.viewer_count, 'l':j.type
 					}
 					this.addChan(this.contents.tw[name])
 				}
-				console.log(this.contents.tw)
 				for(let x in this.contents.tw){
 					if(o.includes(x))continue;
 					this.contents.tw[x]={
