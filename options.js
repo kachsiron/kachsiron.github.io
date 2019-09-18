@@ -686,7 +686,7 @@ var cMan={
 		for(let d in o.span)o.div.appendChild(o.span[d])
 	},
 	'isuper':function(c,u){
-		c.isup+=u?-1:1;
+		c.isup+=(u==='live'?1:-1);
 		c.isup=c.isup>3?3:(c.isup<0?0:c.isup)
 	},
 	'makeChan':function(temp,o,id){
@@ -1046,19 +1046,19 @@ var cMan={
 		this.resetContent()
 	},
 	'incomintw':function(){
-		GMX({headers:{'Client-ID':TWCLIENTID},timeout:10000,ontimeout:()=>{},method:'GET',url:'https://api.twitch.tv/kraken/streams?channel='+this.twitchListRequest,onload:reso=>{
-			console.log(reso)
+		GMX({headers:{'Client-ID':TWCLIENTID},timeout:10000,ontimeout:()=>{},method:'GET',url:'https://api.twitch.tv/helix/streams?'+this.twitchListRequest,onload:reso=>{
+			console.log(JSON.parse(reso.target.responseText))
 			try{
-				reso=JSON.parse(reso.target.responseText).streams;
+				reso=JSON.parse(reso.target.responseText).data;
 				let o=[];
-				for(let i=reso.length,j,h;--i>-1;){
-					j=reso[i],h=j.channel;
-					o.push(h.name);
-					this.contents.tw[h.name]={
-						'id':h.name, 'start_at':0, 'created_at':j.created_at, 'streamer':{'name':h.name, 'id':'t_'+h.name},'players':null,
-						'thumbnail':j.preview.medium, 'tw': true, 'name':h.status, 'description':'', 'category':{'name':h.game}, 'viewers':j.viewers, 'l':j.is_playlist
+				for(let i=reso.length,j,name;--i>-1;){
+					j=reso[i];name=j.user_name
+					o.push(name);
+					this.contents.tw[name]={
+						'id':name, 'start_at':0, 'created_at':j.started_at, 'streamer':{'name':name, 'id':'t_'+name},'players':null,
+						'thumbnail':j.thumbnail_url, 'tw': true, 'name':h.title, 'description':'', 'category':{'name':h.game_id}, 'viewers':j.viewers_count, 'l':j.type
 					}
-					this.addChan(this.contents.tw[h.name])
+					this.addChan(this.contents.tw[name])
 				}
 				for(let x in this.contents.tw){
 					if(o.includes(x))continue;
@@ -1397,12 +1397,12 @@ var cMan={
 		this.contents.tw[w]=null;
 		//this.contents_twitch_length=objSize(this.contents.tw);
 		this.twitchListRequest='';
-		for(let x in this.contents.tw)this.twitchListRequest=(this.twitchListRequest===''?x:this.twitchListRequest+','+x);
+		for(let x in this.contents.tw)this.twitchListRequest=(this.twitchListRequest===''?x:'user_login='+this.twitchListRequest+'&'+x);
 	},
 	'init':function(){
 		this.contents.tw={};
 		for(let i in TFAV)this.contents.tw[i]=null;
-		for(let x in this.contents.tw)this.twitchListRequest=(this.twitchListRequest===''?x:this.twitchListRequest+','+x);
+		for(let x in this.contents.tw)this.twitchListRequest=(this.twitchListRequest===''?x:'user_login='+this.twitchListRequest+'&'+x);
 		this.contents_twitch_length=1;//objSize(this.contents.tw);
 		
 		with(this.fctDiv.div.style){position='absolute';left='444px';top='0';height='12px';backgroundColor='black';color='gray'}
