@@ -1047,7 +1047,7 @@ var cMan={
 	},
 	'incomintw':function(){
 		GMX({headers:{'Client-ID':TWCLIENTID},timeout:10000,ontimeout:()=>{},method:'GET',url:'https://api.twitch.tv/helix/streams?'+this.twitchListRequest,onload:reso=>{
-			console.log(JSON.parse(reso.target.responseText))
+			console.log(JSON.parse(reso.target.responseText), this.twitchListRequest)
 			try{
 				reso=JSON.parse(reso.target.responseText).data;
 				let o=[];
