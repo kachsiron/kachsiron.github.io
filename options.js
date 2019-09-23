@@ -746,7 +746,7 @@ var cMan={
 		}
 		this.chanCount++;
 		let chn=this.chn[id];
-		if(o.category!==null)game_twitch_id(chn, o.category.name)
+		
 		if(o.hasOwnProperty('tw')){
 			chn.add=this.getTwitchTime(o.created_at);
 			chn.adt=false;
@@ -754,7 +754,8 @@ var cMan={
 			chn.viewers=o.viewers;
 			chn.isup=1;
 			this.isuper(chn,o.l);
-			chn.rate=0
+			chn.rate=0;
+			if(o.category!==null)game_twitch_id(chn, o.category.name)
 		}
 		else{
 			chn.adt=o.start_at===0;
@@ -3469,13 +3470,12 @@ var tw_list=function(r){
 	}})
 };
 var game_twitch_id=function(obj, di){
-	console.log('a'+di+'a')
-	//if(di==='')return
-	//GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/helix/games?id='+di,onload:reso=>{
-	//	reso=JSON.parse(reso.target.responseText).data[0].name;
-	//	obj.span.cat.textContent=reso
-	//	obj.cat=reso
-	//}})
+	if(di==='')return
+	GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/helix/games?id='+di,onload:reso=>{
+		reso=JSON.parse(reso.target.responseText).data[0].name;
+		obj.span.cat.textContent=reso
+		obj.cat=reso
+	}})
 }
 var tw_vods_list=function(r){
 	GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/helix/videos?user_id='+r,onload:reso=>{
