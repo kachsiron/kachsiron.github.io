@@ -567,7 +567,7 @@ var cMan={
 				let m=scp.players.get(c)
 				try{
 					let idt=requ.target.responseText.match(/https:\/\/www\.twitch\.tv\/(.*?)[<"]/i)[1]
-					m.strms.push({'name':'TW','code':'<iframe src="https://player.twitch.tv/?channel='+idt+'" frameborder="0" height="100%" width="100%"></iframe>'});
+					m.strms.push({'name':'TW','code':'<iframe src="https://player.twitch.tv/?channel='+idt+'" allowfullscreen="true" frameborder="0" height="100%" width="100%"></iframe>'});
 					m.twid=idt; 
 					let n=scp.mark.mrk[m.id]
 					n.twmini=C('SPAN');
@@ -1688,7 +1688,7 @@ function ScPlayer(){
 	this.importing=function(id){
 		let a='t_'+id;
 		this.addPlayer(
-			[{provider:'TW',channel:id,code:'<iframe src="https://player.twitch.tv/?channel='+id+'" frameborder="0" height="100%" width="100%"></iframe>'}],
+			[{provider:'TW',channel:id,code:'<iframe src="https://player.twitch.tv/?channel='+id+'" allowfullscreen="true" frameborder="0" height="100%" width="100%"></iframe>'}],
 			this.aP(a,true,2,[id])
 		)
 	}
