@@ -562,7 +562,29 @@ var cMan={
 	},
 	'getTwPlayerFromGg':function(c){
 		let opv=OPOV.serv('Запрос twitch channel from GG...');
-		GMX({method:'GET',url:this.chn[c].link,onload:requ=>{
+		GMX({'url':this.chn[c].link, 'method':'GET', 'onload':requ=>{
+			if(requ!==null){
+				let m=scp.players.get(c)
+				try{
+					let idt=requ.target.responseText.match(/https:\/\/www\.twitch\.tv\/(.*?)"/i)[1]
+					m.strms.push({'name':'TW','code':'<iframe src="https://player.twitch.tv/?channel='+idt+'" frameborder="0" height="100%" width="100%"></iframe>'});
+					m.twid=idt; 
+					let n=scp.mark.mrk[m.id]
+					n.twmini=C('SPAN');
+					n.twmini.textContent='■';
+					n.twmini.classList.add('pmd_span');
+					n.twmini.onclick=function(){mch.addChat('t_'+this.i,true,this.i)}.bind({i:m.twid});
+					n.chats.appendChild(n.twmini)
+					scp.remakeMark();
+					OPOV.serv('ключ найден: '+idt+'...',3000,opv,true);
+				}
+				catch(e){
+					OPOV.serv('Ошибка парсинга твитч айди',3000,opv,true);
+				}
+			}
+			else OPOV.serv('ключ не найден!',3000,opv,true);
+		}})
+		/* GMX({method:'GET',url:this.chn[c].link,onload:requ=>{
 			requ=requ.target.responseText.match(rgxpServ[4]);
 			if(requ!==null){
 				requ='p'+requ[1];
@@ -585,7 +607,7 @@ var cMan={
 				}})
 			}
 			else OPOV.serv('ключ не найден!',3000,opv,true);
-		}})
+		}}) */
 	},
 	'getcn':function(c){//получить имя стримера по айди
 		if(this.chn.hasOwnProperty(c))return this.chn[c].name;
