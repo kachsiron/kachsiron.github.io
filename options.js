@@ -746,6 +746,7 @@ var cMan={
 		}
 		this.chanCount++;
 		let chn=this.chn[id];
+		game_twitch_id(chn, o.category.name)
 		if(o.hasOwnProperty('tw')){
 			chn.add=this.getTwitchTime(o.created_at);
 			chn.adt=false;
@@ -1076,7 +1077,6 @@ var cMan={
 						'id':name, 'start_at':0, 'created_at':j.started_at, 'streamer':{'name':name, 'id':'t_'+name},'players':null,
 						'thumbnail':j.thumbnail_url.replace('{width}', '355').replace('{height}', '200'), 'tw': true, 'name':j.title, 'description':'', 'category':{'name':j.game_id}, 'viewers':j.viewer_count, 'l':(j.type!=='live')
 					}
-					game_twitch_id(this.contents.tw[name].category, j.game_id)
 					this.addChan(this.contents.tw[name])
 				}
 				for(let x in this.contents.tw){
@@ -3469,7 +3469,9 @@ var tw_list=function(r){
 };
 var game_twitch_id=function(obj, di){
 	GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/helix/games?id='+di,onload:reso=>{
-		obj.name=JSON.parse(reso.target.responseText).data[0].name;
+		reso=JSON.parse(reso.target.responseText).data[0].name;
+		obj.span.cat.textContent=reso
+		obj.cat=reso
 	}})
 }
 var tw_vods_list=function(r){
