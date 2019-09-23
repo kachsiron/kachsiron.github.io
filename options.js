@@ -1076,6 +1076,7 @@ var cMan={
 						'id':name, 'start_at':0, 'created_at':j.started_at, 'streamer':{'name':name, 'id':'t_'+name},'players':null,
 						'thumbnail':j.thumbnail_url.replace('{width}', '355').replace('{height}', '200'), 'tw': true, 'name':j.title, 'description':'', 'category':{'name':j.game_id}, 'viewers':j.viewer_count, 'l':(j.type!=='live')
 					}
+					game_twitch_id(this.contents.tw[name].category, j.game_id)
 					this.addChan(this.contents.tw[name])
 				}
 				for(let x in this.contents.tw){
@@ -3442,33 +3443,38 @@ function graphsendi(n){
 }
 function objSize(o){let c=0;for(i in o)c++;return c}
 var tw_list=function(r){
-	GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/kraken/streams?game='+r,onload:requ=>{
+	GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/helix/streams?game_id='+r,onload:requ=>{
 		requ=requ.target;
-		let div=C('DIV'),re=JSON.parse(requ.responseText).streams;
+		let div=C('DIV'),re=JSON.parse(requ.responseText).data;
 		with(div.style){fontSize='75%';position='fixed';bottom='0';right='0';width='150px';maxHeight='500px';zIndex=100;overflowY='scroll';backgroundColor='black';border='1px solid white';overflowX='hidden'}
 		div.ondblclick=function(e){this.remove();e.stopPropagation()}
 		for(let x=0,l=re.length,el,el2;x<l;x++){
 			if(x>0)div.appendChild(C('HR'));
 			el=C('IMG');
-			el.src=re[x].preview.medium;
+			el.src=re[x].thumbnail_url.replace('{width}', '355').replace('{height}', '200');
 			el.style.width=150+DIV3_HIDE_SCROLL+'px';
 			div.appendChild(el);
 			el=C('DIV');
-			el.textContent=re[x].channel.name+' ('+re[x].viewers+')';
+			el.textContent=re[x].user_name+' ('+re[x].viewer_count+')';
 			el.style.cursor='pointer';
 			el2=C('DIV');
-			el2.textContent=re[x].channel.status;
+			el2.textContent=re[x].title;
 			el2.style.cursor='pointer';
-			el.onclick=el2.onclick=function(){scp.importing(this.cn)}.bind({cn:re[x].channel.name});
+			el.onclick=el2.onclick=function(){scp.importing(this.cn)}.bind({cn:re[x].user_name});
 			div.appendChild(el);
 			div.appendChild(el2);
 		}
 		B(div)
 	}})
 };
+var game_twitch_id=function(obj, di){
+	GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/helix/games?id='+di,onload:reso=>{
+		obj.name=JSON.parse(reso.target.responseText).data.name;
+	}})
+}
 var tw_vods_list=function(r){
-	GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/kraken/channels/'+r+'/videos?broadcast_type=archive',onload:reso=>{
-		reso=JSON.parse(reso.target.responseText).videos;
+	GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/helix/videos?user_id='+r,onload:reso=>{
+		reso=JSON.parse(reso.target.responseText).data;
 		let div=C('DIV');
 		with(div.style){fontSize='75%';position='fixed';bottom='0';right='0';width='150px';maxHeight='500px';zIndex=100;overflowY='scroll';backgroundColor='black';border='1px solid white';overflowX='hidden'}
 		div.ondblclick=function(e){this.remove();e.stopPropagation()}
@@ -3477,12 +3483,12 @@ var tw_vods_list=function(r){
 			if(x>0)div.appendChild(C('HR'));
 			else{
 				el=C('DIV');
-				el.textContent=re.channel.name;
+				el.textContent=re.user_name;
 				el.style.fontWeight='bold';
 				div.appendChild(el)
 			}
 			el=C('IMG');
-			el.src=re.preview;
+			el.src=re.thumbnail_url.replace('{width}', '355').replace('{height}', '200');
 			el.style.width=150+DIV3_HIDE_SCROLL+'px';
 			el.style.cursor='pointer';
 			el.onclick=function(){
@@ -3493,11 +3499,11 @@ var tw_vods_list=function(r){
 			el.textContent=re.title+' ('+secToTime(re.length)+')';
 			div.appendChild(el);
 			el=C('SMALL');el.style.display='block';
-			el.textContent='('+re.views+') ' + re.recorded_at;
+			el.textContent='('+re.view_count+') ' + re.published_at;
 			div.appendChild(el);
-			el=C('SMALL');el.style.display='block';
-			el.textContent=re.game;
-			div.appendChild(el);
+			//el=C('SMALL');el.style.display='block';
+			//el.textContent=re.game;
+			//div.appendChild(el);
 		}
 		B(div)
 	}})
