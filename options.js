@@ -3469,8 +3469,8 @@ var tw_list=function(r){
 	}})
 };
 var game_twitch_id=function(obj, di){
+	if(di==='')return
 	GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/helix/games?id='+di,onload:reso=>{
-		console.log(di,reso)
 		reso=JSON.parse(reso.target.responseText).data[0].name;
 		obj.span.cat.textContent=reso
 		obj.cat=reso
