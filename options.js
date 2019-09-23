@@ -870,6 +870,7 @@ var cMan={
 			c.thmb=o.thumbnail;
 			graphsendi(c.name);
 			OPOV.serv(c.name+' запустился',60000);
+			game_twitch_id(c, o.category.name)
 			this.obnovDesc(c,o);
 			c.add=this.getTwitchTime(o.created_at);
 			this.nakeTime(c)
