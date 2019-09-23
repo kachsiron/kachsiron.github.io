@@ -566,7 +566,7 @@ var cMan={
 			if(requ!==null){
 				let m=scp.players.get(c)
 				try{
-					let idt=requ.target.responseText.match(/https:\/\/www\.twitch\.tv\/(.*?)"/i)[1]
+					let idt=requ.target.responseText.match(/https:\/\/www\.twitch\.tv\/(.*?)[<"]/i)[1]
 					m.strms.push({'name':'TW','code':'<iframe src="https://player.twitch.tv/?channel='+idt+'" frameborder="0" height="100%" width="100%"></iframe>'});
 					m.twid=idt; 
 					let n=scp.mark.mrk[m.id]
