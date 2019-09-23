@@ -746,7 +746,7 @@ var cMan={
 		}
 		this.chanCount++;
 		let chn=this.chn[id];
-		game_twitch_id(chn, o.category.name)
+		if(o.category!==null)game_twitch_id(chn, o.category.name)
 		if(o.hasOwnProperty('tw')){
 			chn.add=this.getTwitchTime(o.created_at);
 			chn.adt=false;
@@ -870,7 +870,7 @@ var cMan={
 			c.thmb=o.thumbnail;
 			graphsendi(c.name);
 			OPOV.serv(c.name+' запустился',60000);
-			game_twitch_id(c, o.category.name)
+			if(o.category!==null)game_twitch_id(c, o.category.name)
 			this.obnovDesc(c,o);
 			c.add=this.getTwitchTime(o.created_at);
 			this.nakeTime(c)
