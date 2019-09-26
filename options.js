@@ -876,6 +876,7 @@ var cMan={
 			c.add=this.getTwitchTime(o.created_at);
 			this.nakeTime(c)
 		}
+		else if(o.category!==null&&o.category.name!==c.cat)game_twitch_id(c, o.category.name)
 		c.viewers=o.viewers;
 		this.isuper(c,o.l)
 	},
