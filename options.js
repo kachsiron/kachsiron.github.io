@@ -2387,6 +2387,7 @@ function mChats(){
 				w.sock.send('CAP REQ :twitch.tv/tags twitch.tv/commands');
 				w.sock.send('PASS '+TWITCHPASS);
 				w.sock.send('NICK '+MYNICK[2]);
+				w.sock.send('USER '+MYNICK[2]+' 8 * :'+MYNICK[2]);
 				w.sock.send('JOIN #'+w.wsChatChannelId);
 				this.sam('[<u>JOIN #'+w.wsChatChannelId+'</u>]',w,false);
 			}
