@@ -2605,6 +2605,8 @@ function mChats(){
 	}
 	this.amoTwitchPubsub=function(e,w){console.log(e)}
 	this.amoTwitch=function(e,w){
+//@badge-info=;badges=moderator/1,partner/1;color=#32C3A2;display-name=Streamlabs;emotes=;flags=;id=5a62caba-48a1-409a-b233-6158f91769f6;mod=1;room-id=21255999;subscriber=0;tmi-sent-ts=1569612194226;turbo=0;user-id=105166207;user-type=mod :streamlabs!streamlabs@streamlabs.tmi.twitch.tv PRIVMSG #kritzkast :Thank you for following Crom1337!
+		console.log('a',e)
 		let r=e.data.match(rgxpChatTwitch[2]);
 		if(r[1]==='@'){
 //this.sam('[<u>'+r[2]+'</u>]',w,true,0);
@@ -2612,7 +2614,8 @@ function mChats(){
 			if(nick===null||nick[1]==='')nick=r[2].match(rgxpChatTwitch[4]);
 
 			r=[nick,r[2].match(rgxpChatTwitch[5]),r[2].match(rgxpChatTwitch[10])];
-			if(r[0]!==null&&r[1]!==null)this.am({timestamp:new Date(),user_name:r[0][1],text:r[1][1],sub:r[2][1]},w,false)
+			console.log('b',r)
+			if(r[0]!==null&&r[1]!==null)this.am({'timestamp':new Date(),'user_name':r[0][1],'text':r[1][1],'sub':r[2][1]},w,false)
 		}
 		else if(r[1]===':'){
 			if(rgxpChatTwitch[7].test(r[2])) this.sam('[<u>авторизованы</u>]',w,false);
