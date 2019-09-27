@@ -2608,7 +2608,7 @@ function mChats(){
 	this.amoTwitch=function(e,w){
 //@badge-info=;badges=moderator/1,partner/1;color=#32C3A2;display-name=Streamlabs;emotes=;flags=;id=5a62caba-48a1-409a-b233-6158f91769f6;mod=1;room-id=21255999;subscriber=0;tmi-sent-ts=1569612194226;turbo=0;user-id=105166207;user-type=mod :streamlabs!streamlabs@streamlabs.tmi.twitch.tv PRIVMSG #kritzkast :Thank you for following Crom1337!
 //@badge-info=;badges=;color=;display-name=racchedoon;emotes=160394:17-22,24-29,31-36;flags=;id=9eb63434-03d1-49e6-9e3e-5fd1e5c0eefd;mod=0;room-id=426609374;subscriber=0;tmi-sent-ts=1569613621807;turbo=0;user-id=424781590;user-type= :racchedoon!racchedoon@racchedoon.tmi.twitch.tv PRIVMSG #mariamaggry :чатику приветики BegWan BegWan BegWan
-		console.log('a',e)
+//console.log('a',e)
 		let r=e.data.match(rgxpChatTwitch[2]);
 		if(r[1]==='@'){
 //this.sam('[<u>'+r[2]+'</u>]',w,true,0);
