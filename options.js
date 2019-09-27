@@ -2381,7 +2381,7 @@ function mChats(){
 			w.sock.onerror=function(e){console.log('error',e);OPOV.serv('Ошибка в сокете. Смотри в консоль',10000)};
 			w.sock.onmessage=e=>{i.amoTwitch(e,w)};
 			w.sock.onopen=()=>{
-				w.interval=setInterval(function(){this.titleDiv.style.backgroundColor=this.bColor;this.sock.send('PING :tmi.twitch.tv')}.bind(w),30000);
+				w.interval=setInterval(function(){this.titleDiv.style.backgroundColor=this.bColor;this.sock.send('PING')}.bind(w),30000);
 				w.interval2=setInterval(i.getTwitchChatterCount.bind({i:i,w:w}),60000);
 				i.getTwitchChatterCount.call({i:i,w:w});
 				w.sock.send('CAP REQ :twitch.tv/tags twitch.tv/commands');
