@@ -2618,9 +2618,12 @@ function mChats(){
 			console.log('b',r)
 			if(r[0]!==null&&r[1]!==null)this.am({'timestamp':new Date(),'user_name':r[0][1],'text':r[1][1],'sub':r[2][1]},w,false)
 		}
-		else if(r[1]===':'){
+		else if(r[1]===':'){//PING :tmi.twitch.tv\r\n
 			if(rgxpChatTwitch[7].test(r[2])) this.sam('[<u>авторизованы</u>]',w,false);
 			w.titleDiv.style.backgroundColor='black'
+		}
+		else if(r[1]==='P'){
+			w.sock.send('PONG :tmi.twitch.tv')
 		}
 	}
 	this.amoFun=function(e,w){
