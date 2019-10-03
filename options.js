@@ -1695,6 +1695,13 @@ function ScPlayer(){
 			this.aP(a,true,2,[id])
 		)
 	}
+	this.importingYT=function(id){
+		let a='y_'+id;
+		this.addPlayer(
+			[{provider:'YT',channel:id,code:'<iframe height="100%" width="100%" src="https://www.youtube.com/embed/'+id+'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'}],
+			this.aP(a,true,3,[id])
+		)
+	}
 	this.sitesort=function(a, b){
 		//var t=a.match(rgxpc[4]);
 		//if(t!==null&&t[1]==='goodgame')return false;return true
@@ -4015,6 +4022,9 @@ messtochat.MSG.onkeypress=function(e){
 				}
 				else if(m==='imp'){
 					scp.importing(w.replace(/https?:\/\/.*?\//,''));//добавить твитч канал по нику
+				}
+				else if(m==='impy'){
+					scp.importingYT(w);//добавить youtube канал по id
 				}
 //else if(m==='st')STEAM.get();
 //else if(m==='sta'&&w!==void 0)STEAM.add(w);
