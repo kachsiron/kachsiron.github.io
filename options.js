@@ -1234,6 +1234,7 @@ var cMan={
 					}
 					else if(c.service===0){
 						c.div.style.display='flex';cnt++
+						if(c.count<61)c.span.count.style.color=kracka(c.count,60)
 						//if(c.un[0]>0||FAV.hasOwnProperty(c.name)){c.div.style.display='flex';cnt++}
 						//else c.div.style.display='none'
 					}
@@ -3651,7 +3652,7 @@ function tss(i){
 	let dt=new Date(i);
 	return dt.getDate()+' '+dt.getHours().totwo()+':'+dt.getMinutes().totwo()
 }
-function kpacka(c,l){let t;if(c>l)t=0;else t=Math.round(255-(c/l*255));return 'rgb(255,'+t+','+t+')'}
+function kpacka(c,l){let t;if(c>l)t=255;else t=Math.round(255-(c/l*255));return 'rgb(255,'+t+','+t+')'}
 function resetMyTimer(){
 	cMan.secure=[0,null,0,0];
 	cMan.secure2=[0,null,0,0];
