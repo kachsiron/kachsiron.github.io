@@ -31,7 +31,7 @@ aside{font-size:80%;width:555px;border-bottom:1px solid #444}
 .mainTableSpan>div:nth-child(2){width:94px}
 .mainTableSpan>div:nth-child(3){width:30px;font-weight:bold}
 .mainTableSpan>div:nth-child(4){width:22px}
-.tablespan{height:12px;overflow:hidden}
+.tablespan{line-height:1;height:10px;overflow:hidden}
 .tablespan>div{overflow:hidden}
 .tablespan>div,.tablespan>a{vertical-align:top}
 .tablespan>div:nth-child(1):hover,.tablespan>div:nth-child(5):hover{background-color:rgba(255,165,0,0.25)}
@@ -46,7 +46,7 @@ aside{font-size:80%;width:555px;border-bottom:1px solid #444}
 .tablespan>div:nth-child(7){color:green;width:22px}
 .tablespan>div:nth-child(8){color:greenyellow}
 .tablespan>div:nth-child(11){color:rosybrown;font-size:85%}
-.tablespan>a{display:block;text-decoration:none;color:dodgerblue;line-height:14px}
+.tablespan>a{display:block;text-decoration:none;color:dodgerblue}
 .pm{position:relative;background-color:black;border-bottom:1px solid #444;border-top:1px solid #444;overflow:hidden}
 .tom{position:relative;z-index:1;word-wrap:break-word}
 .smilepad{overflow-y:scroll;overflow-x:hidden;border-bottom:1px solid yellow}
