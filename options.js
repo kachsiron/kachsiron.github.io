@@ -3652,7 +3652,7 @@ function tss(i){
 	let dt=new Date(i);
 	return dt.getDate()+' '+dt.getHours().totwo()+':'+dt.getMinutes().totwo()
 }
-function kpacka(c,l){let t;if(c>l)t=255;else t=Math.round(255-(c/l*255));return 'rgb(255,'+t+','+t+')'}
+function kpacka(c,l){let t;if(c>l)t=255;else t=Math.round(c/l*255);return 'rgb(255,'+t+','+t+')'}
 function resetMyTimer(){
 	cMan.secure=[0,null,0,0];
 	cMan.secure2=[0,null,0,0];
