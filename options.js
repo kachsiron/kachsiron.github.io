@@ -2638,6 +2638,7 @@ function mChats(){
 	}
 	this.amoFun=function(e,w){
 		let r=e.data.match(/(\d{1,4})(.*)/),code=r[1];
+		console.log(e)
 		if(r[2]!=='')r[2]=JSON.parse(r[2]);
 		if(code==='3'){w.titleDiv.style.backgroundColor='black';w.timeOut=(new Date()).getTime()}
 		//else if(code==='0')w.sock.send('420'+JSON.stringify(['/chat/login',{'token':FUNTOKEN}]));
