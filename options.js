@@ -2657,6 +2657,7 @@ function mChats(){
 		}
 		else if(code==='0'){
 			//this.sam('[<u>авторизованы</u>]',w,true,2);
+			console.log('421'+JSON.stringify(['/chat/join',{'channel':w.wsChatChannelFullId}]))
 			w.sock.send('421'+JSON.stringify(['/chat/join',{'channel':w.wsChatChannelFullId}]))
 		}
 		else if(code==='431'){
