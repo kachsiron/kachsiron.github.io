@@ -2638,7 +2638,7 @@ function mChats(){
 	}
 	this.amoFun=function(e,w){
 		let r=e.data.match(/(\d{1,4})(.*)/),code=r[1];
-		console.log(e)
+		//console.log(e)
 		if(r[2]!=='')r[2]=JSON.parse(r[2]);
 		if(code==='3'){w.titleDiv.style.backgroundColor='black';w.timeOut=(new Date()).getTime()}
 		//else if(code==='0')w.sock.send('420'+JSON.stringify(['/chat/login',{'token':FUNTOKEN}]));
@@ -2702,10 +2702,9 @@ function mChats(){
 				to={'id':messtochat.UID.id,'name':messtochat.UID.name}
 			}
 			else{messtochat.UID=null;to=null}
-			//console.log(JSON.stringify(['/chat/publish',{'channel':w.wsChatChannelFullId,'from':{'id':FUNUSERID,'name':MYNICK[0]},'to':to,'text':msg}]))
 			//428["/chat/publish",{"channel":"stream/154317","from":{"id":216708,"name":"Калапуйсис"},"to":null,"text":"/me где игры"}]
-			console.log('4242' + JSON.stringify(['/chat/publish',{'channel':w.wsChatChannelFullId,'from':{'id':FUNUSERID,'name':MYNICK[0],'slug':''},'to':to,'text':msg,'anonymous':false}]))
-			w.sock.send('4242' + JSON.stringify(['/chat/publish',{'channel':w.wsChatChannelFullId,'from':{'id':FUNUSERID,'name':MYNICK[0],'slug':''},'to':to,'text':msg,'anonymous':false}]))
+			//console.log('4242' + JSON.stringify(['/chat/publish',{'channel':w.wsChatChannelFullId,'from':{'id':FUNUSERID,'name':MYNICK[0],'slug':''},'to':to,'text':msg,'anonymous':false}]))
+			cMan.sock.send('424' + JSON.stringify(['/chat/publish',{'channel':w.wsChatChannelFullId,'from':{'id':FUNUSERID,'name':MYNICK[0],'slug':''},'to':to,'text':msg,'anonymous':false}]))
 		}
 		else if(w.wsChat===1){
 			w.sock.send(JSON.stringify({'type':'send_message','data':{'channel_id':w.wsChatChannelId,'text':msg}}))
@@ -3803,7 +3802,7 @@ hidGenreTransform();
 
 //Г Л О Б А Л Ь Н Ы Е   П Е Р Е М Е Н Н Ы Е
 var MYNICK=['Pibamba','Pibamba','pibamba'],NICKRGXP=[new RegExp(MYNICK[0]),new RegExp(MYNICK[1]),new RegExp(MYNICK[2],'i')],FUNUSERID=33474,TWITCHPASS='',TWCLIENTID='84jehke2li8043e6gi26zbcb7ic4tt5',//TWITCHSECRET='6lgcbw7sh2bcgaih5q1fb5veyk8jur',
-FUNTOKEN='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6MzM0NzQsImlwIjoiMTM2LjI0My4xMzIuMTYyIiwidXNlckFnZW50IjoiTW96aWxsYVwvNS4wIChXaW5kb3dzIE5UIDYuMTsgV09XNjQpIEFwcGxlV2ViS2l0XC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWVcLzYxLjAuMzE2My4xMDIgU2FmYXJpXC81MzcuMzYgVml2YWxkaVwvMS45My45NTUuMzgiLCJvYXV0aCI6eyJpZCI6MCwiYXBwcm92ZWQiOnRydWV9LCJleHAiOjE1NzA1NTkxNTh9.xOhnP5_XFQVuZjslzjmtCV20Acy7PVObhlRqbVMfO4jWlHGGCkK2Sp1zokto-pyZPVtT8mMGeLtVRbWLvs9NiA',
+FUNTOKEN='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6MzM0NzQsImlwIjoiMTg4LjEyMC4yMjUuMTQ2IiwidXNlckFnZW50IjoiTW96aWxsYVwvNS4wIChXaW5kb3dzIE5UIDEwLjA7IFdPVzY0KSBBcHBsZVdlYktpdFwvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lXC83My4wLjM2ODMuODggU2FmYXJpXC81MzcuMzYgVml2YWxkaVwvMi40LjE0ODguMzYiLCJvYXV0aCI6eyJpZCI6MCwiYXBwcm92ZWQiOnRydWV9LCJleHAiOjE2MzMxMDYxNzF9.gU79moRFBvhMqa0xNRFIDIVdFtss6v79BGRnnGlZuB_zQzgQpp9Jx4lIfpQbastxbA_TNKTeCR617T68TbsNaA',
 GGTOKEN='',GGUSERID='1214319',GGPASS='KeLPdp6IlHsvi2E9Privet_-p9Z2VhZ4aj',//Asoas 8262
 FUNCHAN_WEBSOCKET='wss://chat.sc2tv.ru/?EIO=3&transport=websocket',
 FUNCHAN_API='https://sc2tv.ru/api/',
