@@ -2703,6 +2703,7 @@ function mChats(){
 			else{messtochat.UID=null;to=null}
 			//console.log(JSON.stringify(['/chat/publish',{'channel':w.wsChatChannelFullId,'from':{'id':FUNUSERID,'name':MYNICK[0]},'to':to,'text':msg}]))
 			//428["/chat/publish",{"channel":"stream/154317","from":{"id":216708,"name":"Калапуйсис"},"to":null,"text":"/me где игры"}]
+			console.log('4242' + JSON.stringify(['/chat/publish',{'channel':w.wsChatChannelFullId,'from':{'id':FUNUSERID,'name':MYNICK[0],'slug':''},'to':to,'text':msg,'anonymous':false}]))
 			cMan.sock.send('4242' + JSON.stringify(['/chat/publish',{'channel':w.wsChatChannelFullId,'from':{'id':FUNUSERID,'name':MYNICK[0],'slug':''},'to':to,'text':msg,'anonymous':false}]))
 		}
 		else if(w.wsChat===1){
