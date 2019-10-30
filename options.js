@@ -2608,6 +2608,10 @@ function mChats(){
 			w.titleDiv.style.backgroundColor='black';
 			w.sock.send(JSON.stringify({'type':'join','data':{'channel_id':w.wsChatChannelId}}))
 		}
+		else if(o.type==='user_ban'){
+			this.sam('[<u>Пользователь '+o.data.user_name+' забанен. Причина: '+o.data.reason+'. Длительность: '+o.data.duration+'. Модератор: '+o.data.moder_name+'</u>]',w,false);
+			w.titleDiv.style.backgroundColor='black'
+		}
 		else if(o.type==='accepted')messtochat.MSG.value='';
 		else if(o.type==='welcome')w.sock.send(JSON.stringify({'type':'auth',data:{'user_id':GGUSERID,'token':GGTOKEN}}));
 		else if(o.type==='error')this.sam('[<u>ошибка</u>] ' + o.data.errorMsg,w,false);
