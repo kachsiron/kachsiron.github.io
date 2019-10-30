@@ -2592,7 +2592,7 @@ function mChats(){
 			let l=o.data.messages.length;
 			for(let x=0;x<l;x++)this.amgg(o.data.messages[x],w,true);
 			if(l>0)this.nlawka(w,this.tss(o.data.messages[l-1].timestamp*1000));
-			if(w.motd!=='')this.sam('[<u>motd</u>] ' + w.motd,w,false)
+			if(w.motd!=='')this.sam('[<u>MOTD</u>] ' + w.motd,w,false)
 		}
 		else if(o.type==='success_join'){
 			w.nick=o.data.channel_streamer.name;
@@ -2604,18 +2604,16 @@ function mChats(){
 			}
 		}
 		else if(o.type==='success_auth'){
-			this.sam('[<u>авторизованы</u>]',w,true,2);
+			this.sam('[<u>Авторизованы</u>]',w,true,2);
 			w.titleDiv.style.backgroundColor='black';
 			w.sock.send(JSON.stringify({'type':'join','data':{'channel_id':w.wsChatChannelId}}))
 		}
-		else if(o.type==='user_ban'){
-			this.sam('[<u>Пользователь '+o.data.user_name+' забанен. Причина: '+o.data.reason+'. Длительность: '+o.data.duration+'. Модератор: '+o.data.moder_name+'</u>]',w,false);
-			w.titleDiv.style.backgroundColor='black'
-		}
+		else if(o.type==='user_ban')this.sam('[<u>Пользователь '+o.data.user_name+' забанен</u>] Причина: '+o.data.reason+'. Длительность: '+o.data.duration+'. Модератор: '+o.data.moder_name,w,false);
+		else if(o.type==='user_warn')this.sam('[<u>Пользователь '+o.data.user_name+' предупреждён</u>] Причина: '+o.data.reason+'. Модератор: '+o.data.moder_name,w,false);
 		else if(o.type==='accepted')messtochat.MSG.value='';
 		else if(o.type==='welcome')w.sock.send(JSON.stringify({'type':'auth',data:{'user_id':GGUSERID,'token':GGTOKEN}}));
-		else if(o.type==='error')this.sam('[<u>ошибка</u>] ' + o.data.errorMsg,w,false);
-		else if(o.type==='new_poll')this.sam('[<u>голосование</u>] ' + o.data.title,w,false)
+		else if(o.type==='error')this.sam('[<u>Ошибка</u>] '+o.data.errorMsg,w,false);
+		else if(o.type==='new_poll')this.sam('[<u>Голосование</u>] Заголовок: '+o.data.title+'. Варианты: |'+o.data.answers.reduce((ac,cv)=>ac+cv.text+'|'),w,false)
 	}
 	this.amoTwitchPubsub=function(e,w){console.log(e)}
 	this.amoTwitch=function(e,w){
