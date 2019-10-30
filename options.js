@@ -2613,7 +2613,7 @@ function mChats(){
 		else if(o.type==='accepted')messtochat.MSG.value='';
 		else if(o.type==='welcome')w.sock.send(JSON.stringify({'type':'auth',data:{'user_id':GGUSERID,'token':GGTOKEN}}));
 		else if(o.type==='error')this.sam('[<u>Ошибка</u>] '+o.data.errorMsg,w,false);
-		else if(o.type==='new_poll')this.sam('[<u>Голосование</u>] Заголовок: '+o.data.title+'. Варианты: |'+o.data.answers.reduce((ac,cv)=>ac+cv.text+'|'),w,false)
+		else if(o.type==='new_poll')this.sam('[<u>Голосование</u>] Заголовок: '+o.data.title+'. Варианты: |'+o.data.answers.map(el=>el.text).reduce((ac,cv)=>ac+'|'+cv),w,false)
 	}
 	this.amoTwitchPubsub=function(e,w){console.log(e)}
 	this.amoTwitch=function(e,w){
