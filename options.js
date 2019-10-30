@@ -1233,7 +1233,7 @@ var cMan={
 						else c.div.style.display='none'
 					}
 					else if(c.service===0){
-						c.div.style.display='flex';cnt++
+						//c.div.style.display='flex';cnt++
 						if(c.count<61)c.span.count.style.color=kpacka(c.count,60)
 						if(c.un[0]>0||FAV.hasOwnProperty(c.name)){c.div.style.display='flex';cnt++}
 						else c.div.style.display='none'
