@@ -1,0 +1,35 @@
+NVIDIA
+sc config NVDisplay.ContainerLocalSystem start=demand & net start NVDisplay.ContainerLocalSystem & sc config NvContainerLocalSystem start=demand & net start NvContainerLocalSystem & sc config NvContainerNetworkService start=demand & net start NvContainerNetworkService
+sc config NVDisplay.ContainerLocalSystem start=disabled & net stop NVDisplay.ContainerLocalSystem & sc config NvContainerLocalSystem start=disabled & net stop NvContainerLocalSystem & sc config NvContainerNetworkService start=disabled & net stop NvContainerNetworkService
+========================================================================================
+Cлужба политики диагностики
+sc config DPS start=demand & net start DPS
+net stop DPS & sc config DPS start=disabled
+
+sc config SysMain start=demand & net start SysMain
+net stop SysMain & sc config SysMain start=disabled
+========================================================================================
+InstallService Служба установки Microsoft Store
+LicenseManager Служба Windows License Manager
+
+sc config InstallService start=disabled & sc config LicenseManager start=disabled
+net stop InstallService & net stop LicenseManager
+
+sc config InstallService start=demand & sc config LicenseManager start=demand
+net start InstallService & net start LicenseManager
+========================================================================================
+WlanSvc Служба автонастройки WLAN
+icssvc Служба Windows Mobile Hotspot
+
+net stop WlanSvc & net stop icssvc
+net start WlanSvc & net start icssvc
+========================================================================================
+sc config "Disc Soft Lite Bus Service" start=demand
+net start "Disc Soft Lite Bus Service"
+========================================================================================
+Lenovo "System Interface Foundation Service"
+sc config ImControllerService start=demand & net start ImControllerService
+sc config ImControllerService start=disabled & net stop ImControllerService
+
+Tasks
+disabled MsCtfMonitor
