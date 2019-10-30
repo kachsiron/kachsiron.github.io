@@ -1235,8 +1235,8 @@ var cMan={
 					else if(c.service===0){
 						c.div.style.display='flex';cnt++
 						if(c.count<61)c.span.count.style.color=kpacka(c.count,60)
-						//if(c.un[0]>0||FAV.hasOwnProperty(c.name)){c.div.style.display='flex';cnt++}
-						//else c.div.style.display='none'
+						if(c.un[0]>0||FAV.hasOwnProperty(c.name)){c.div.style.display='flex';cnt++}
+						else c.div.style.display='none'
 					}
 					else{
 						if(c.un[0]>0){c.div.style.display='flex';cnt++}
@@ -3534,50 +3534,6 @@ var tw_vods_list=function(r){
 		B(div)
 	}})
 };
-/*var STEAM={//['212.76.130.124:27015','b_350_20_692108_381007_FFFFFF_000000.png'],
-	'ids':'76561198086044175,76561198097816819,76561198081507280,76561198013376987,76561198057651317,76561198068535614',
-	'se':new Map([['193.26.217.5:27295','altfs dust/gold/bad']]),
-	//['46.174.48.45:27242','b_350_20_692108_381007_FFFFFF_000000.png'],
-	'im':new Map([['193.26.217.5:27295','b_350_20_323957_202743_F19A15_111111.png']]),
-	'add':function(s){this.ids+=','+s},
-	'comp':function(requ){
-		let re=JSON.parse(requ.responseText).response.players,result1='',result2='',result3='';
-		for(let x=0,l=re.length,s;x<l;x++){
-			s='<img title="'+re[x].steamid+'" style="height:12px" src="'+re[x].avatar+'"><a style="color:'+(re[x].personastate>0?'white':'gray')+';font-weight:bold" target="_blank" href="'+re[x].profileurl+'">'+re[x].personaname+'</a>-';
-			if(re[x].hasOwnProperty('gameserverip'))result1+=s+'<a target="_blank" href="https://www.gametracker.com/server_info/'+re[x].gameserverip+'/">'+(this.se.get(re[x].gameserverip)||re[x].gameserverip)+'</a><br>'
-			else if(re[x].personastate>0)result2+=s+'<br>';
-			else result3+=s+'<br>'
-		}
-
-		let div=C('DIV'),ref=C('DIV'),lis=C('DIV');
-		with(div.style){position='fixed';bottom='0';right='0';width='292px';zIndex=100;backgroundColor='black';border='1px solid white';overflow='hidden'}
-		with(ref.style){cursor='pointer';position='absolute';right='12px';top='-5px'}
-		with(lis.style){fontSize='90%';overflowY='scroll';overflowX='hidden';height='110px'}
-		lis.innerHTML=result1+result2+result3;
-		div.ondblclick=function(e){this.remove();e.stopPropagation()}
-		ref.onclick=()=>{div.remove();this.get()}
-		ref.textContent='↻';
-		div.appendChild(lis);
-		let a,i,t=(new Date()).getTime();
-		for(let [k,v] of this.im){
-			a=C('A');
-			i=C('IMG');
-			a.href='http://www.gametracker.com/server_info/'+k+'/';
-			a.target='_blank';
-			i.src='http://www.gametracker.com/server_info/'+k+'/'+v+'?t='+t;
-			i.style.border='0';
-			i.style.width='350px';
-			i.style.height='20px';
-			i.style.marginLeft='-35px';
-			i.style.display='block';
-			a.appendChild(i);
-			div.appendChild(a)
-		}
-		div.appendChild(ref);
-		B(div)
-	},
-	'get':function(){GMX({method:'GET',url:'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=3E58305C0F935230A67536967CD4BB3E&steamids='+this.ids+'&format=json',onload:requ=>{this.comp(requ.target)}})}
-};*/
 function perevodchik(s,d){
 	GMX({timeout:5000,method:'GET',url:'http://www.lingvo-online.ru/ru/Translate/'+d+'/'+s,onload:function(requ){
 		requ=requ.target;
@@ -3912,14 +3868,6 @@ window.onresize=function(){
 	try{
 		mch.divideSquare();
 		mch.checkOnSquares();
-		//console.log(window.innerWidth,window.innerHeight)
-		//SCREEN={w:window.innerWidth,h:window.innerHeight,s:SCREEN.w/window.innerWidth};
-		//SCREEN.rw=window.innerWidth;
-		//SCREEN.rh=window.innerHeight;
-		//SCREEN.s=SCREEN.w/window.innerWidth;
-		//console.log(SCREEN);
-		//if(grBut2.status===0){//fullscreen
-		//console.log(window.innerHeight
 		cMan.div1.style.height=window.innerHeight-460+'px';
 		divLog2.style.right=window.innerWidth-730+'px'
 	}
@@ -4145,53 +4093,6 @@ vasya.div.appendChild(vasya.cnv);
 function rand(min,max){return Math.floor(Math.random()*(max-min+1))+min}
 window.onunload=saveHid;
 
-// G O D V I L L E
-/* var GodVille = {
-	//'sounds': [C('audio'),C('source'),C('audio'),C('source'),C('audio'),C('source')],
-	'h_notice': true,
-	'g_notice': true,
-	'timer': null,
-	'lph': ''
-}
-GodVille.func = function() {
-	GMX({method:'GET',url:'https://godville.net/gods/api/%D0%92%D1%83%D0%BA%D1%83%D0%BF%D0%BA%D0%B0%D0%BA%D0%B5/529007a4e508',onload:e=>{try{
-		e = JSON.parse(e.target.responseText);
-		/*OPOV.serv(e.health + '/' + e.max_health + ', ' + e.distance + 'шт, ' + e.inventory_num + '/' + e.inventory_max_num + ', qs' + e.quest_progress + ', lv' + e.exp_progress + ', gp' + e.godpower, 20000);
-		OPOV.serv(e.diary_last, 20000);
-		if(e.health <= 40) {
-			if(GodVille.h_notice) {
-				GodVille.sounds[0].play();
-				GodVille.h_notice = false;
-			}
-		}
-		else GodVille.h_notice = true;
-		if(e.godpower >= 25) {
-			if(GodVille.g_notice) {
-				GodVille.sounds[2].play();
-				GodVille.g_notice = false;
-			}
-		}
-		else GodVille.g_notice = true;
-		if(GodVille.lph !== e.diary_last && /«|»/.test(e.diary_last)) {
-			GodVille.sounds[4].play();
-		}
-		if(GodVille.lph !== e.diary_last)ACAPELA(e.diary_last)
-		GodVille.lph = e.diary_last;
-	}catch(err){OPOV.serv('Не удалось годвильнуть',0);console.log(err)}}})
-}
-GodVille.grun = function() { GodVille.timer = setInterval(GodVille.func, 59999) }
-GodVille.gstop = function() { clearInterval(GodVille.timer) }
-GodVille.sounds[0].src=MF[1];
-GodVille.sounds[2].src=MF[2];
-GodVille.sounds[4].src=MF[3];
-GodVille.sounds[1].setAttribute('preload','preload');GodVille.sounds[1].type='audio/ogg';
-GodVille.sounds[3].setAttribute('preload','preload');GodVille.sounds[3].type='audio/ogg';
-GodVille.sounds[5].setAttribute('preload','preload');GodVille.sounds[5].type='audio/ogg';
-GodVille.sounds[0].appendChild(GodVille.sounds[1]);B(GodVille.sounds[0]);
-GodVille.sounds[2].appendChild(GodVille.sounds[3]);B(GodVille.sounds[2]);
-GodVille.sounds[4].appendChild(GodVille.sounds[5]);B(GodVille.sounds[4]);
-GodVille.grun();*/
-
 //Д О Б А В Л Е Н И Е   Н А   С Т Р А Н И Ц У
 B(vasya.div); B(grBut);
 B(messtochat.ID); B(messtochat.MSG);
@@ -4269,52 +4170,3 @@ document.addEventListener('DOMContentLoaded',()=>{
 	//window.open('http://www.acapela-group.com/','');
 	//ACAPELA.init()
 });
-
-/*function Victor(mch, chat) {
-	this.chat = chat;
-	this.mch = mch;
-	this.started = false;
-	this.curr = null;
-	this.listOfQuestions = [];
-	this.timer = null;
-	this.income = function(msg) {
-		let sMsg = msg.text.match(this.listOfQuestions[this.curr].answer);
-		if(sMsg !== null) {
-			sMsg = sMsg[1];
-			
-		}
-
-	}
-	this.addQuestion = function(q) {
-		this.listOfQuestions.push(q)
-	}
-	this.start = function() {
-		this.started = true;
-		this.setRandomCurr();
-	}
-	this.setRandomCurr = function() {
-		let q=[];
-		let dt=(new Date()).getTime();
-		for(let i = 0; i < this.listOfQuetions.length; i++){
-			q.push([this.listOfQuestions[i].])
-		}
-	}
-	this.init = function() {
-		if(localStorage.hasOwnProperty('victor')){
-			this.players=JSON.parse(localStorage.victor)
-		}
-		else this.players={};
-	}
-	this.save = function() {
-		localStorage.victor=JSON.stringify(this.players)
-	}
-}*/
-
-/* GMX({method:'POST',url:'https://id.twitch.tv/oauth2/token?client_id='+TWCLIENTID+'&client_secret='+TWITCHSECRET+'&grant_type=client_credentials&scope=chat_login',onload:requ=>{
-	try{
-		let t=JSON.parse(requ.target.responseText)['access_token'];
-		OPOV.serv('Twitch token: '+t,3000);
-		TWITCHPASS='oauth:'+t
-	}
-	catch(e){OPOV.serv('TWITCH TOKEN ERROR',0)}
-}}) */
