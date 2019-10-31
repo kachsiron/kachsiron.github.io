@@ -2608,8 +2608,8 @@ function mChats(){
 			w.titleDiv.style.backgroundColor='black';
 			w.sock.send(JSON.stringify({'type':'join','data':{'channel_id':w.wsChatChannelId}}))
 		}
-		else if(o.type==='user_ban')this.sam('[<u>Пользователь '+o.data.user_name+' забанен</u>] Причина: '+o.data.reason+'. Длительность: '+o.data.duration+'. Модератор: '+o.data.moder_name,w,false);
-		else if(o.type==='user_warn')this.sam('[<u>Пользователь '+o.data.user_name+' предупреждён</u>] Причина: '+o.data.reason+'. Модератор: '+o.data.moder_name,w,false);
+		else if(o.type==='user_ban')this.sam('[<u>'+o.data.user_name+' забанен</u>] Причина: '+o.data.reason+'. Длительность: '+o.data.duration+'. Модератор: '+o.data.moder_name,w,false);
+		else if(o.type==='user_warn')this.sam('[<u>'+o.data.user_name+' предупреждён</u>] Причина: '+o.data.reason+'. Модератор: '+o.data.moder_name,w,false);
 		else if(o.type==='accepted')messtochat.MSG.value='';
 		else if(o.type==='welcome')w.sock.send(JSON.stringify({'type':'auth',data:{'user_id':GGUSERID,'token':GGTOKEN}}));
 		else if(o.type==='error')this.sam('[<u>Ошибка</u>] '+o.data.errorMsg,w,false);
