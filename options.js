@@ -975,25 +975,8 @@ var cMan={
 	'coming':function(){
 		this.nadDiv.div.style.opacity=0;
 		this.setTime();
-		
 		for(let x=0,l=this.contents.gg.length,c,z;x<l;x++){
-			//if(this.contents.gg[x].viewers==='0')continue;
-			//if(!this.contents.gg[x].hasOwnProperty('channel'))continue;
 			z=this.contents.gg[x];
-			/*this.contents.gg[x]={
-				'cggio':1,
-				'link':z.channel.url,
-				'id':z.channel.id,
-				'chatId':z.id,
-				'name':z.channel.title,
-				'thumbnail':z.channel.thumb,
-				'rating':0,
-				'description':'',
-				'category':{'name':(z.channel.games.length>0?z.channel.games[0].title:'GG')},
-				'streamer':{'id':'g_'+z.id,'name':z.key},
-				'start_at':z.broadcast_started,
-				'viewers':Number.parseInt(z.viewers)
-			};*/
 			this.contents.gg[x]={
 				'cggio':1,
 				'link':'https://goodgame.ru/channel/'+z.key,
@@ -1103,7 +1086,7 @@ var cMan={
 			GMX({ontimeout:()=>{OPOV.serv('Таймаут при запросе GG контента',null);this.checkReady('gg');resolve()},
 				timeout:2222,
 				method:'GET',
-				url:'https://goodgame.ru/api/4/streams?page='+page,// http://api2.goodgame.ru/v2/streams?page='+page
+				url:'https://goodgame.ru/api/4/streams?page='+page,
 				onload:requ=>{
 					let content;
 					try{content=JSON.parse(requ.target.responseText).streams}
@@ -2363,12 +2346,9 @@ function mChats(){
 				w.sock.close();
 				this.openSocket(w)
 			}
-			else{
-				console.log(w.wsChatChannelId)
-				w.sock.send(JSON.stringify({'type':'get_users_list2','data':{'channel_id':w.wsChatChannelId}}))
-			}
 		},30000);
 		w.interval2=setInterval(()=>{w.sock.send(JSON.stringify({'type':'ping','data':{}}))},15000);
+		w.interval3=setInterval(()=>{w.sock.send(JSON.stringify({'type':'get_users_list2','data':{'channel_id':w.wsChatChannelId}}))},60000);
 		w.sock=new WebSocket('wss://chat-1.goodgame.ru/chat2/');//wss://chat.goodgame.ru/chat/websocket
 		w.sock.onerror=function(e){console.log('error',e);OPOV.serv('Ошибка в сокете. Смотри в консоль',10000)};
 		w.sock.onmessage=function(e){this.i.amoGG(e,this.w)}.bind({i:this,w:w})
@@ -2539,6 +2519,7 @@ function mChats(){
 			if(w.wsChat===1){//gg
 				clearInterval(w.interval);
 				clearInterval(w.interval2);
+				clearInterval(w.interval3);
 				if(w.hasOwnProperty('sock')){
 					w.sock.send(JSON.stringify({'type':'unjoin','data':{'channel_id':w.wsChatChannelId}}));
 					w.sock.close()
