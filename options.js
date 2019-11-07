@@ -1103,9 +1103,10 @@ var cMan={
 				data:'tab=popular&page='+page+'&onpage=12',
 				url:'https://goodgame.ru/ajax/streams/selector/',// http://api2.goodgame.ru/v2/streams?page='+page
 				onload:requ=>{
-					requ=requ.target;
+					//requ=requ.target;
 					let content;
-					try{content=JSON.parse(requ.responseText)._embedded.streams}
+					//try{content=JSON.parse(requ.responseText)._embedded.streams}
+					try{content=JSON.parse(requ.responseText).streams}
 					catch(e){
 						console.log(requ);
 						OPOV.serv('Ошибка при обработке запроса GG контента',null);
