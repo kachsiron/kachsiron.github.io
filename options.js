@@ -1005,7 +1005,7 @@ var cMan={
 				'description':'',
 				'category':{'name':z.game.title},
 				'streamer':{'id':'g_'+z.id,'name':z.key},
-				'start_at':z.hasOwnProperty('announce')?announce.start:0,
+				'start_at':z.hasOwnProperty('announce')?z.announce.start:0,
 				'viewers':z.viewers
 			};
 			
