@@ -2581,8 +2581,8 @@ function mChats(){
 			let usrs=[[],[]]
 			
 			for(let i=0,l=o.data.users.length,p;i<l;i++){
-				p=o.data.users[i]
-				if(!w.usersList.hasOwnProperty(p))usrs[0].push(p.name)
+				p=o.data.users[i].name;
+				if(!w.usersList.hasOwnProperty(p))usrs[0].push(p);
 				w.usersList[p]=cMan.T_VALUE;
 			}
 			for(let i in w.usersList){
