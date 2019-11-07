@@ -1106,7 +1106,7 @@ var cMan={
 				url:'https://goodgame.ru/api/4/streams?page='+page,// http://api2.goodgame.ru/v2/streams?page='+page
 				onload:requ=>{
 					let content;
-					console.log(JSON.parse(requ.target.responseText).streams)
+					//console.log(JSON.parse(requ.target.responseText).streams)
 					//try{content=JSON.parse(requ.responseText)._embedded.streams}
 					try{content=JSON.parse(requ.target.responseText).streams}
 					catch(e){
@@ -1116,7 +1116,9 @@ var cMan={
 						resolve();
 						return
 					}
+					console.log(content)
 					this.contents.gg=this.contents.gg.concat(content);
+					console.log(this.contents.gg)
 					this.checkReady('gg')
 					resolve()
 				}
