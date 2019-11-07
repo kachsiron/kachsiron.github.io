@@ -975,10 +975,10 @@ var cMan={
 	'coming':function(){
 		this.nadDiv.div.style.opacity=0;
 		this.setTime();
-		console.log(this.contents.gg[0])
+		
 		for(let x=0,l=this.contents.gg.length,c,z;x<l;x++){
-			if(this.contents.gg[x].viewers==='0')continue;
-			if(!this.contents.gg[x].hasOwnProperty('channel'))continue;
+			//if(this.contents.gg[x].viewers==='0')continue;
+			//if(!this.contents.gg[x].hasOwnProperty('channel'))continue;
 			z=this.contents.gg[x];
 			/*this.contents.gg[x]={
 				'cggio':1,
@@ -1106,8 +1106,6 @@ var cMan={
 				url:'https://goodgame.ru/api/4/streams?page='+page,// http://api2.goodgame.ru/v2/streams?page='+page
 				onload:requ=>{
 					let content;
-					//console.log(JSON.parse(requ.target.responseText).streams)
-					//try{content=JSON.parse(requ.responseText)._embedded.streams}
 					try{content=JSON.parse(requ.target.responseText).streams}
 					catch(e){
 						console.log(requ);
@@ -1117,7 +1115,6 @@ var cMan={
 						return
 					}
 					this.contents.gg=this.contents.gg.concat(content);
-					//console.log(this.contents.gg)
 					this.checkReady('gg')
 					resolve()
 				}
