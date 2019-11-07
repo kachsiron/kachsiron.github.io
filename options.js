@@ -979,7 +979,7 @@ var cMan={
 			if(this.contents.gg[x].viewers==='0')continue;
 			if(!this.contents.gg[x].hasOwnProperty('channel'))continue;
 			z=this.contents.gg[x];
-			this.contents.gg[x]={
+			/*this.contents.gg[x]={
 				'cggio':1,
 				'link':z.channel.url,
 				'id':z.channel.id,
@@ -992,6 +992,20 @@ var cMan={
 				'streamer':{'id':'g_'+z.id,'name':z.key},
 				'start_at':z.broadcast_started,
 				'viewers':Number.parseInt(z.viewers)
+			};*/
+			this.contents.gg[x]={
+				'cggio':1,
+				'link':'',
+				'id':z.streamKey,
+				'chatId':z.id,
+				'name':z.title,
+				'thumbnail':z.preview,
+				'rating':0,
+				'description':'',
+				'category':{'name':z.game.title},
+				'streamer':{'id':'g_'+z.id,'name':z.key},
+				'start_at':z.announce.start,
+				'viewers':z.viewers
 			};
 			c=this.contents.gg[x];
 			if(this.addChan(c)&&this.T_VALUE>0){
@@ -1089,7 +1103,6 @@ var cMan={
 				method:'GET',
 				url:'https://goodgame.ru/api/4/streams?page='+page,// http://api2.goodgame.ru/v2/streams?page='+page
 				onload:requ=>{
-					//requ=requ.target;
 					let content;
 					console.log(JSON.parse(requ.target.responseText).streams)
 					//try{content=JSON.parse(requ.responseText)._embedded.streams}
@@ -3753,7 +3766,7 @@ FUNTOKEN='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6MzM0NzQsImlwIjoiMTg4LjEyM
 GGTOKEN='',GGUSERID='1214319',GGPASS='KeLPdp6IlHsvi2E9Privet_-p9Z2VhZ4aj',//Asoas 8262
 FUNCHAN_WEBSOCKET='wss://chat.sc2tv.ru/?EIO=3&transport=websocket',
 FUNCHAN_API='https://sc2tv.ru/api/',
-LIMITOFMASSAGES=300,GGLISTAMOUNT=2,
+LIMITOFMASSAGES=300,GGLISTAMOUNT=1,
 rgxpChan=[
 	/var current_players = \[.*?\];/,
 	/{"service":".*?","html":".*?","channel":".*?"}/g,
