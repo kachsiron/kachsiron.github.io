@@ -996,7 +996,7 @@ var cMan={
 			};*/
 			this.contents.gg[x]={
 				'cggio':1,
-				'link':'',
+				'link':'https://goodgame.ru/channel/'+z.key,
 				'id':z.streamKey,
 				'chatId':z.id,
 				'name':z.title,
