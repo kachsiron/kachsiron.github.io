@@ -2585,8 +2585,8 @@ function mChats(){
 			for(let i in w.usersList){
 				if(w.usersList[i]<cMan.T_VALUE){usrs[1].push(i);delete w.usersList[i]}
 			}
-			let lu=usrs[1].length>0?'❌'+usrs[1].join(','):'';
-			let ly=usrs[0].length>0?'✔️'+usrs[0].join(','):'';
+			let lu=usrs[1].length>0?'❌'+usrs[1].join(' '):'';
+			let ly=usrs[0].length>0?'✔️'+usrs[0].join(' '):'';
 			if(lu!==''||ly!==''){
 				let t=new Date();
 				this.sam(t.getHours()+':'+t.getMinutes()+ly+lu,w,false);
