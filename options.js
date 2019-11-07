@@ -1105,9 +1105,9 @@ var cMan={
 				onload:requ=>{
 					//requ=requ.target;
 					let content;
-					console.log(JSON.parse(requ.responseText))
+					console.log(JSON.parse(JSON.parse(requ.responseText).target.responseText))
 					//try{content=JSON.parse(requ.responseText)._embedded.streams}
-					try{content=JSON.parse(requ.responseText).streams}
+					try{content=JSON.parse(requ.responseText).target.streams}
 					catch(e){
 						console.log(requ);
 						OPOV.serv('Ошибка при обработке запроса GG контента',null);
