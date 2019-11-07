@@ -2579,20 +2579,16 @@ function mChats(){
 		}
 		else if(o.type==='users_list'){
 			let usrs=[[],[]]
-			
 			for(let i=0,l=o.data.users.length,p;i<l;i++){
 				p=o.data.users[i].name;
 				if(!w.usersList.hasOwnProperty(p))usrs[0].push(p);
 				w.usersList[p]=cMan.T_VALUE;
 			}
 			for(let i in w.usersList){
-				if(w.usersList[i]<cMan.T_VALUE){
-					usrs[1].push(i)
-					delete w.usersList[i]
-				}
+				if(w.usersList[i]<cMan.T_VALUE){usrs[1].push(i);delete w.usersList[i]}
 			}
-			let lu=usrs[1].length>0?'❌:'+usrs[1].join(','):'';
-			let ly=usrs[0].length>0?'✔️:'+usrs[0].join(','):'';
+			let lu=usrs[1].length>0?'❌ '+usrs[1].join(','):'';
+			let ly=usrs[0].length>0?'✔️ '+usrs[0].join(','):'';
 			if(lu!==''||ly!=='')this.sam(ly+lu,w,false);
 			this.setTitle(w,o.data.users_in_channel)
 		}
