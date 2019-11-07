@@ -2364,8 +2364,8 @@ function mChats(){
 				this.openSocket(w)
 			}
 			else{
-				console.log(w.id)
-				w.sock.send(JSON.stringify({'type':'get_users_list2','data':{'channel_id':w.id}}))
+				console.log(w.wsChatChannelId)
+				w.sock.send(JSON.stringify({'type':'get_users_list2','data':{'channel_id':w.wsChatChannelId}}))
 			}
 		},30000);
 		w.interval2=setInterval(()=>{w.sock.send(JSON.stringify({'type':'ping','data':{}}))},15000);
@@ -2621,6 +2621,7 @@ function mChats(){
 			this.sam('[<u>Авторизованы</u>]',w,true,2);
 			w.titleDiv.style.backgroundColor='black';
 			w.sock.send(JSON.stringify({'type':'join','data':{'channel_id':w.wsChatChannelId}}))
+			w.sock.send(JSON.stringify({'type':'get_users_list2','data':{'channel_id':w.wsChatChannelId}}))
 		}
 		else if(o.type==='user_ban')this.sam('[<u>'+o.data.user_name+' забанен</u>] Причина: '+o.data.reason+'. Длительность: '+o.data.duration+'. Модератор: '+o.data.moder_name,w,false);
 		else if(o.type==='user_warn')this.sam('[<u>'+o.data.user_name+' предупреждён</u>] Причина: '+o.data.reason+'. Модератор: '+o.data.moder_name,w,false);
