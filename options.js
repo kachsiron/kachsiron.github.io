@@ -2364,6 +2364,7 @@ function mChats(){
 				this.openSocket(w)
 			}
 			else{
+				console.log(w.id)
 				w.sock.send(JSON.stringify({'type':'get_users_list2','data':{'channel_id':w.id}}))
 			}
 		},30000);
