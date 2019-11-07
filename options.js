@@ -1100,7 +1100,8 @@ var cMan={
 			GMX({ontimeout:()=>{OPOV.serv('Таймаут при запросе GG контента',null);this.checkReady('gg');resolve()},
 				timeout:2222,
 				method:'GET',
-				url:'http://api2.goodgame.ru/v2/streams?page='+page,
+				data:'tab=popular&page='+page+'&onpage=12',
+				url:'https://goodgame.ru/ajax/streams/selector/',// http://api2.goodgame.ru/v2/streams?page='+page
 				onload:requ=>{
 					requ=requ.target;
 					let content;
@@ -2613,7 +2614,7 @@ function mChats(){
 		else if(o.type==='accepted')messtochat.MSG.value='';
 		else if(o.type==='welcome')w.sock.send(JSON.stringify({'type':'auth',data:{'user_id':GGUSERID,'token':GGTOKEN}}));
 		else if(o.type==='error')this.sam('[<u>Ошибка</u>] '+o.data.errorMsg,w,false);
-		else if(o.type==='new_poll')this.sam('[<u>Голосование</u>] Заголовок: '+o.data.title+'. Варианты: |'+o.data.answers.map(el=>el.text).reduce((ac,cv)=>ac+'|'+cv),w,false)
+		else if(o.type==='new_poll')this.sam('[<u>Голосование</u>] Заголовок: '+o.data.title+'. Варианты: '+o.data.answers.map(el=>el.text).reduce((ac,cv)=>ac+'|'+cv),w,false)
 	}
 	this.amoTwitchPubsub=function(e,w){console.log(e)}
 	this.amoTwitch=function(e,w){
