@@ -1005,11 +1005,11 @@ var cMan={
 				'description':'',
 				'category':{'name':z.game.title},
 				'streamer':{'id':'g_'+z.id,'name':z.key},
-				'start_at':z.announce.start,
+				'start_at':z.hasOwnProperty('announce')?announce.start:0,
 				'viewers':z.viewers
 			};
 			
-			c=this.contents.gg[x];console.log(c)
+			c=this.contents.gg[x];
 			if(this.addChan(c)&&this.T_VALUE>0){
 				let nm=c.streamer.name,cid=c.streamer.id;
 				if(FAV.hasOwnProperty(nm)){
