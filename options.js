@@ -1007,7 +1007,8 @@ var cMan={
 				'start_at':z.announce.start,
 				'viewers':z.viewers
 			};
-			c=this.contents.gg[x];
+			
+			c=this.contents.gg[x];console.log(c)
 			if(this.addChan(c)&&this.T_VALUE>0){
 				let nm=c.streamer.name,cid=c.streamer.id;
 				if(FAV.hasOwnProperty(nm)){
