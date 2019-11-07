@@ -1105,6 +1105,7 @@ var cMan={
 				onload:requ=>{
 					//requ=requ.target;
 					let content;
+					console.log(JSON.parse(requ.responseText))
 					//try{content=JSON.parse(requ.responseText)._embedded.streams}
 					try{content=JSON.parse(requ.responseText).streams}
 					catch(e){
