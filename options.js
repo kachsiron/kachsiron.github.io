@@ -975,6 +975,7 @@ var cMan={
 	'coming':function(){
 		this.nadDiv.div.style.opacity=0;
 		this.setTime();
+		console.log(this.contents.gg)
 		for(let x=0,l=this.contents.gg.length,c,z;x<l;x++){
 			if(this.contents.gg[x].viewers==='0')continue;
 			if(!this.contents.gg[x].hasOwnProperty('channel'))continue;
