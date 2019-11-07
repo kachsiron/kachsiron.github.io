@@ -979,19 +979,6 @@ var cMan={
 			if(this.contents.gg[x].viewers==='0')continue;
 			if(!this.contents.gg[x].hasOwnProperty('channel'))continue;
 			z=this.contents.gg[x];
-			/*c={
-				link:z.link,
-				id:z.streamkey,
-				chatId:z.id,
-				name:z.title,
-				thumbnail:z.preview,
-				rating:0,
-				description:'',
-				category:{name:'GG'},
-				streamer:{id:'g_'+z.id,name:z.streamer},
-				start_at:0,
-				viewers:Number.parseInt(z.viewers)
-			};*/
 			this.contents.gg[x]={
 				'cggio':1,
 				'link':z.channel.url,
@@ -1100,8 +1087,7 @@ var cMan={
 			GMX({ontimeout:()=>{OPOV.serv('Таймаут при запросе GG контента',null);this.checkReady('gg');resolve()},
 				timeout:2222,
 				method:'GET',
-				data:'tab=popular&page='+page+'&onpage=12',
-				url:'https://goodgame.ru/ajax/streams/selector/',// http://api2.goodgame.ru/v2/streams?page='+page
+				url:'https://goodgame.ru/api/4/streams?page='+page,// http://api2.goodgame.ru/v2/streams?page='+page
 				onload:requ=>{
 					//requ=requ.target;
 					let content;
