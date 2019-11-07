@@ -2591,8 +2591,8 @@ function mChats(){
 					delete w.usersList[i]
 				}
 			}
-			usrs[0].length>0?this.sam('Вошли:'+usrs[0].join(','),w,false):null;
-			usrs[1].length>0?this.sam('Вышли:'+usrs[1].join(','),w,false):null;
+			usrs[1].length>0?this.sam('📤:'+usrs[1].join(','),w,false):null;
+			usrs[0].length>0?this.sam('📥:'+usrs[0].join(','),w,false):null;
 			this.setTitle(w,o.data.users_in_channel)
 		}
 		else if(o.type==='channel_counters'){
