@@ -2348,7 +2348,7 @@ function mChats(){
 				this.openSocket(w)
 			}
 		},30000);
-		w.interval2=setInterval(()=>{w.sock.send(JSON.stringify({'type':'ping','data':{}}))},15000);
+		w.interval2=setInterval(()=>{w.sock.send(JSON.stringify({'type':'ping','data':{}}))},14321);
 		w.interval3=setInterval(()=>{w.sock.send(JSON.stringify({'type':'get_users_list2','data':{'channel_id':w.wsChatChannelId}}))},60000);
 		w.sock=new WebSocket('wss://chat-1.goodgame.ru/chat2/');//wss://chat.goodgame.ru/chat/websocket
 		w.sock.onerror=function(e){console.log('error',e);OPOV.serv('Ошибка в сокете. Смотри в консоль',10000)};
@@ -2574,9 +2574,7 @@ function mChats(){
 			}
 			else this.amgg(o.data,w,false);
 		}
-		else if(o.type==='pong'){
-			w.timeOut=(new Date()).getTime();
-		}
+		else if(o.type==='pong')w.timeOut=(new Date()).getTime();
 		else if(o.type==='users_list'){
 			let usrs=[[],[]]
 			for(let i=0,l=o.data.users.length,p;i<l;i++){
@@ -2589,7 +2587,10 @@ function mChats(){
 			}
 			let lu=usrs[1].length>0?'❌ '+usrs[1].join(','):'';
 			let ly=usrs[0].length>0?'✔️ '+usrs[0].join(','):'';
-			if(lu!==''||ly!=='')this.sam(ly+lu,w,false);
+			if(lu!==''||ly!==''){
+				let t=new Date();
+				this.sam(t.getHours()+':'+t.getMinutes()+' '+ly+lu,w,false);
+			}
 			this.setTitle(w,o.data.users_in_channel)
 		}
 		else if(o.type==='channel_counters'){
