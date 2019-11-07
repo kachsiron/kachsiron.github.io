@@ -2338,6 +2338,7 @@ function mChats(){
 	this.openSocket=function(w){//gg
 		this.sam('[<u>соединение</u>]',w,true,0);
 		w.timeOut=(new Date()).getTime();
+		w.usersList={}
 		w.interval=setInterval(()=>{
 			if((new Date()).getTime() - w.timeOut > 45000) {
 				console.log('gg',(new Date()).getTime() - w.timeOut)
@@ -2577,6 +2578,21 @@ function mChats(){
 			w.timeOut=(new Date()).getTime();
 		}
 		else if(o.type==='users_list'){
+			let usrs=[[],[]]
+			
+			for(let i=0,l=o.data.users.length,p;i<l;i++){
+				p=o.data.users[i]
+				if(!w.usersList.hasOwnProperty(p))usrs[0].push(p)
+				w.usersList[p]=cMan.T_VALUE;
+			}
+			for(let i in w.usersList){
+				if(w.usersList[i]<cMan.T_VALUE){
+					usrs[0].push(i)
+					delete w.usersList[i]
+				}
+			}
+			usrs[0].length>0?this.sam('Вошли:'+usrs[0].join(',')):null;
+			usrs[1].length>0?this.sam('Вышли:'+usrs[1].join(',')):null;
 			this.setTitle(w,o.data.users_in_channel)
 		}
 		else if(o.type==='channel_counters'){
@@ -2623,7 +2639,6 @@ function mChats(){
 			if(nick===null||nick[1]==='')nick=r[2].match(rgxpChatTwitch[4]);
 
 			r=[nick,r[2].match(rgxpChatTwitch[5]),r[2].match(rgxpChatTwitch[10])];
-			console.log('b',r)
 			if(r[0]!==null&&r[1]!==null)this.am({'timestamp':new Date(),'user_name':r[0][1],'text':r[1][1],'sub':r[2][1]},w,false)
 		}
 		else if(r[1]===':'){//PING :tmi.twitch.tv\r\n
