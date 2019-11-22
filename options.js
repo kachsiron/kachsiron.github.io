@@ -771,7 +771,7 @@ var cMan={
 				chn.service=1;
 				chn.span.cat.onclick=function(){FORMELA.filter(true,'ж '+this.cat)}.bind(this.chn[id]);
 				chn.chatId=o.chatId
-//chn.span.act.onclick=chn.span.vc.onclick=function(id){this.nInfoGG(id)}.bind(this,o.id);
+				//chn.span.act.onclick=chn.span.vc.onclick=function(id){this.nInfoGG(id)}.bind(this,o.id);
 			}
 			else{
 				chn.service=0;
@@ -978,6 +978,7 @@ var cMan={
 		this.setTime();
 		for(let x=0,l=this.contents.gg.length,c,z;x<l;x++){
 			z=this.contents.gg[x];
+
 			this.contents.gg[x]={
 				'cggio':1,
 				'link':'https://goodgame.ru/channel/'+z.key,
@@ -2358,38 +2359,42 @@ function mChats(){
 	this.openSocketTwitch=function(w,i){
 		//if(this.twitchSmiles===null)//https://api.twitch.tv/kraken/chat/emoticon_images?on_site=1&emotesets=0,2490,2774,2808,3902,7301,13715
 		this.sam('[<u>соединение</u>]',w,false);
+		let ws = "wss://irc-ws.chat.twitch.tv/";
+		w.sock=new WebSocket(ws);
+		this.sam('[<u>'+ws+'</u>]',w,false);
+		
+		w.sock.onerror=function(e){console.log('error',e);OPOV.serv('Ошибка в сокете. Смотри в консоль',10000)};
+		w.sock.onmessage=e=>{i.amoTwitch(e,w)};
+		w.sock.onopen=()=>{
+			w.interval=setInterval(function(){this.titleDiv.style.backgroundColor=this.bColor;this.sock.send('PING :tmi.twitch.tv')}.bind(w),30000);
+			w.interval2=setInterval(i.getTwitchChatterCount.bind({i:i,w:w}),60000);
+			i.getTwitchChatterCount.call({i:i,w:w});
+			w.sock.send('CAP REQ :twitch.tv/tags twitch.tv/commands');
+			w.sock.send('PASS '+TWITCHPASS);
+			w.sock.send('NICK '+MYNICK[2]);
+			w.sock.send('USER '+MYNICK[2]+' 8 * :'+MYNICK[2]);
+			w.sock.send('JOIN #'+w.wsChatChannelId);
+			this.sam('[<u>JOIN #'+w.wsChatChannelId+'</u>]',w,false);
+		}
+		/* 		
 		GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/api/channels/'+w.wsChatChannelId+'/chat_properties?on_site=1',onload:requ=>{try{
 			requ=JSON.parse(requ.target.responseText).web_socket_servers[0];
 			let ws;
 			if(/twitch/.test(requ)){
 				ws='wss://'+requ.replace(':80','');
-				/*w.sockpubsub=new WebSocket('wss://pubsub-edge.twitch.tv/v1');
+				
+				w.sockpubsub=new WebSocket('wss://pubsub-edge.twitch.tv/v1');
 				w.sockpubsub.onerror=function(e){console.log('error',e);OPOV.serv('Ошибка в pubsub сокете. Смотри в консоль',10000)};
 				w.sockpubsub.onopen=()=>{
 					w.sockpubsub.send(JSON.stringify({'type':'PING'}));
 					w.sockpubsub.send(JSON.stringify({'type':'LISTEN','nonce':'twitchnonce','data':{'auth_token':'','topics':['channel.'+w.wsChatChannelId]}}));
 				}
-				w.sockpubsub.onmessage=e=>{i.amoTwitchPubsub(e,w)};*/
+				w.sockpubsub.onmessage=e=>{i.amoTwitchPubsub(e,w)};
+				
 			}
 			else ws='ws://'+requ;
-			
-			w.sock=new WebSocket(ws);
-			this.sam('[<u>'+ws+'</u>]',w,false);
-			
-			w.sock.onerror=function(e){console.log('error',e);OPOV.serv('Ошибка в сокете. Смотри в консоль',10000)};
-			w.sock.onmessage=e=>{i.amoTwitch(e,w)};
-			w.sock.onopen=()=>{
-				w.interval=setInterval(function(){this.titleDiv.style.backgroundColor=this.bColor;this.sock.send('PING :tmi.twitch.tv')}.bind(w),30000);
-				w.interval2=setInterval(i.getTwitchChatterCount.bind({i:i,w:w}),60000);
-				i.getTwitchChatterCount.call({i:i,w:w});
-				w.sock.send('CAP REQ :twitch.tv/tags twitch.tv/commands');
-				w.sock.send('PASS '+TWITCHPASS);
-				w.sock.send('NICK '+MYNICK[2]);
-				w.sock.send('USER '+MYNICK[2]+' 8 * :'+MYNICK[2]);
-				w.sock.send('JOIN #'+w.wsChatChannelId);
-				this.sam('[<u>JOIN #'+w.wsChatChannelId+'</u>]',w,false);
-			}
 		}catch(e){console.log(e);OPOV.serv('Twitch. Ошибка при получении ссылки на irc-сервер',10000)}}})
+		*/
 	}
 	this.openSocketFun=function(w,a){
 		if(a){
