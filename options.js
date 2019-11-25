@@ -801,7 +801,7 @@ var cMan={
 		}
 		else if(chn.service===2){
 			chn.span.count.onclick=chn.span.time.onclick=function(id){this.importing(id)}.bind(scp,o.id);
-			chn.span.name.onclick=function(id){this.addChat('t_'+id,true,id)}.bind(mch,o.id)
+			chn.span.name.onclick=function(id){this.addChat('t_'+id,true,id.toLowerCase())}.bind(mch,o.id)
 		}
 		else{
 			//chn.span.count.onclick=function(id){this.getPlrs(id)}.bind(this,id);
