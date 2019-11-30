@@ -981,15 +981,15 @@ var cMan={
 
 			this.contents.gg[x]={
 				'cggio':1,
-				'link':'https://goodgame.ru/channel/'+z.key,
-				'id':z.streamKey,
+				'link':'https://goodgame.ru/channel/'+z.channelkey,
+				'id':z.streamkey,
 				'chatId':z.id,
 				'name':z.title,
 				'thumbnail':z.preview,
 				'rating':0,
 				'description':'',
-				'category':{'name':z.game.title},
-				'streamer':{'id':'g_'+z.id,'name':z.key},
+				'category':{'name':z.game},
+				'streamer':{'id':'g_'+z.id,'name':z.streamer},
 				'start_at':0,//z.hasOwnProperty('announce')?z.announce.start:0,
 				'viewers':z.viewers
 			};
@@ -1092,7 +1092,6 @@ var cMan={
 				url:'https://goodgame.ru/ajax/streams/selector/',
 				data:'tab=popular&onpage=15&page='+page,
 				onload:requ=>{
-					console.log(JSON.parse(requ.target.responseText).streams)
 					let content;
 					try{content=JSON.parse(requ.target.responseText).streams}
 					catch(e){
