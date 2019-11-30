@@ -1092,7 +1092,7 @@ var cMan={
 				url:'https://goodgame.ru/ajax/streams/selector/',
 				data:'tab=popular&onpage=15&page='+page,
 				onload:requ=>{
-					console.log(requ)
+					console.log(JSON.parse(requ.target.responseText).streams)
 					let content;
 					try{content=JSON.parse(requ.target.responseText).streams}
 					catch(e){
