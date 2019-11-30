@@ -568,7 +568,7 @@ var cMan={
 				try{
 					let idt=requ.target.responseText.match(/https:\/\/www\.twitch\.tv\/(.*?)[<"]/i)[1]
 					m.strms.push({'name':'TW','code':'<iframe src="https://player.twitch.tv/?channel='+idt+'" allowfullscreen="true" frameborder="0" height="100%" width="100%"></iframe>'});
-					m.twid=idt; 
+					m.twid=idt.toLowerCase(); 
 					let n=scp.mark.mrk[m.id]
 					n.twmini=C('SPAN');
 					n.twmini.textContent='■';
@@ -1088,8 +1088,11 @@ var cMan={
 			GMX({ontimeout:()=>{OPOV.serv('Таймаут при запросе GG контента',null);this.checkReady('gg');resolve()},
 				timeout:2222,
 				method:'GET',
-				url:'https://goodgame.ru/api/4/streams?page='+page,
+				//url:'https://goodgame.ru/api/4/streams?page='+page,
+				url:'https://goodgame.ru/ajax/streams/selector/',
+				data:'tab=popular&onpage=15&page='+page,
 				onload:requ=>{
+					console.log(requ)
 					let content;
 					try{content=JSON.parse(requ.target.responseText).streams}
 					catch(e){
@@ -1917,7 +1920,7 @@ function ScPlayer(){
 				else r.code+='https://goodgame.ru/player?'+m.ggid;
 			}catch(e){console.log(plrs[x],e);OPOV.serv('GG ошибка',11111)}}
 			else if(r.name==='TW'){
-				m.twid=plrs[x].channel;
+				m.twid=plrs[x].channel.toLowerCase();
 				r.code+='https://player.twitch.tv/?branding=false&showInfo=false&autoplay=false&channel='+m.twid
 			}
 			else if(r.name==='CG')r.code+='http://api.cybergame.tv/p/embed.php?w=100pc&h=100pc&type=embed&c='+plrs[x].channel
