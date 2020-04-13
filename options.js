@@ -769,7 +769,7 @@ var cMan={
 
 				chn.viewers=o.viewers;
 				chn.service=1;
-				chn.span.cat.onclick=function(){FORMELA.filter(true,'ж '+this.cat)}.bind(this.chn[id]);
+				//chn.span.cat.onclick=function(){FORMELA.filter(true,'ж '+this.cat)}.bind(this.chn[id]);
 				chn.chatId=o.chatId
 				//chn.span.act.onclick=chn.span.vc.onclick=function(id){this.nInfoGG(id)}.bind(this,o.id);
 			}
