@@ -1070,7 +1070,7 @@ var cMan={
 		this.resetContent()
 	},
 	'incomintw':function(){
-		GMX({headers:{'Client-ID':TWCLIENTID},timeout:10000,ontimeout:()=>{},method:'GET',url:'https://api.twitch.tv/helix/streams?'+this.twitchListRequest,onload:reso=>{
+		GMX({headers:{'Client-ID':TWCLIENTID,'':TWITCHPASS},timeout:10000,ontimeout:()=>{},method:'GET',url:'https://api.twitch.tv/helix/streams?'+this.twitchListRequest,onload:reso=>{
 			try{
 				reso=JSON.parse(reso.target.responseText).data;
 				let o=[];
@@ -4028,7 +4028,7 @@ messtochat.MSG.onkeypress=function(e){
 				else if(m==='ts')mch.load_twitch_smiles();
 				else if(m==='t'||m==='е'){
 					mch.load_twitch_smiles();
-					window.open('https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=q6batx0epp608isickayubi39itsckt&redirect_uri=https://twitchapps.com/tmi/&scope=chat:read+chat:edit+channel:moderate+chat_login', 'Fuck', 'width=800,height=450,left=100,top=100,toolbar=no,directories=no,menubar=no,scrollbars=yes');
+					window.open('https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=84jehke2li8043e6gi26zbcb7ic4tt5&redirect_uri=https://twitchapps.com/tmi/&scope=chat:read+chat:edit+channel:moderate+chat_login', 'Fuck', 'width=800,height=450,left=100,top=100,toolbar=no,directories=no,menubar=no,scrollbars=yes');
 					//setTimeout(()=>{TWITCHPASS=window.prompt('Введи пуроль')},4444)
 					setTimeout(()=>{
 						browser.storage.local.get('twitch_oath').then(result=>{
