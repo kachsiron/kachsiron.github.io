@@ -1070,7 +1070,7 @@ var cMan={
 		this.resetContent()
 	},
 	'incomintw':function(){
-		GMX({headers:{'Client-ID':TWCLIENTID},timeout:10000,ontimeout:()=>{},method:'GET',url:'https://api.twitch.tv/helix/streams?'+this.twitchListRequest,onload:reso=>{
+		GMX({headers:{'Client-ID':TWCLIENTID,'Authorization':TWITCH_IDIOTISM},timeout:10000,ontimeout:()=>{},method:'GET',url:'https://api.twitch.tv/helix/streams?'+this.twitchListRequest,onload:reso=>{
 			try{
 				reso=JSON.parse(reso.target.responseText).data;
 				let o=[];
@@ -2440,7 +2440,7 @@ function mChats(){
 		}.bind({i:this,w:w});
 		w.sock.onmessage=function(e){this.i.amoFun(e,this.w)}.bind({i:this,w:w})
 	}
-	this.getTwitchChatterCount=function(){GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://tmi.twitch.tv/group/user/'+this.w.wsChatChannelId+'/chatters',onload:requ=>{try{this.i.setTitle(this.w,(JSON.parse(requ.target.responseText)).chatter_count)}catch(e){}}})}
+	this.getTwitchChatterCount=function(){GMX({headers:{'Client-ID':TWCLIENTID,'Authorization':TWITCH_IDIOTISM},method:'GET',url:'https://tmi.twitch.tv/group/user/'+this.w.wsChatChannelId+'/chatters',onload:requ=>{try{this.i.setTitle(this.w,(JSON.parse(requ.target.responseText)).chatter_count)}catch(e){}}})}
 	this.setMessageDivHeight=function(wid,d){
 		if(d===void 0){
 			//wid.square.y=this.defSquare.y;
@@ -3496,7 +3496,7 @@ function graphsendi(n){
 }
 function objSize(o){let c=0;for(i in o)c++;return c}
 var tw_list=function(r){
-	GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/helix/streams?game_id='+r,onload:requ=>{
+	GMX({headers:{'Client-ID':TWCLIENTID,'Authorization':TWITCH_IDIOTISM},method:'GET',url:'https://api.twitch.tv/helix/streams?game_id='+r,onload:requ=>{
 		requ=requ.target;
 		let div=C('DIV'),re=JSON.parse(requ.responseText).data;
 		with(div.style){fontSize='75%';position='fixed';bottom='0';right='0';width='150px';maxHeight='500px';zIndex=100;overflowY='scroll';backgroundColor='black';border='1px solid white';overflowX='hidden'}
@@ -3522,14 +3522,14 @@ var tw_list=function(r){
 };
 var game_twitch_id=function(obj, di){
 	if(di==='')return
-	GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/helix/games?id='+di,onload:reso=>{
+	GMX({headers:{'Client-ID':TWCLIENTID,'Authorization':TWITCH_IDIOTISM},method:'GET',url:'https://api.twitch.tv/helix/games?id='+di,onload:reso=>{
 		reso=JSON.parse(reso.target.responseText).data[0].name;
 		obj.span.cat.textContent=reso
 		obj.cat=reso
 	}})
 }
 var tw_vods_list=function(r){
-	GMX({headers:{'Client-ID':TWCLIENTID},method:'GET',url:'https://api.twitch.tv/helix/videos?user_id='+r,onload:reso=>{
+	GMX({headers:{'Client-ID':TWCLIENTID,'Authorization':TWITCH_IDIOTISM},method:'GET',url:'https://api.twitch.tv/helix/videos?user_id='+r,onload:reso=>{
 		reso=JSON.parse(reso.target.responseText).data;
 		let div=C('DIV');
 		with(div.style){fontSize='75%';position='fixed';bottom='0';right='0';width='150px';maxHeight='500px';zIndex=100;overflowY='scroll';backgroundColor='black';border='1px solid white';overflowX='hidden'}
@@ -3789,7 +3789,7 @@ var HGR=[];
 hidGenreTransform();
 
 //Г Л О Б А Л Ь Н Ы Е   П Е Р Е М Е Н Н Ы Е
-var MYNICK=['Pibamba','Pibamba','pibamba'],NICKRGXP=[new RegExp(MYNICK[0]),new RegExp(MYNICK[1]),new RegExp(MYNICK[2],'i')],FUNUSERID=33474,TWITCHPASS='',TWCLIENTID='84jehke2li8043e6gi26zbcb7ic4tt5',//TWITCHSECRET='6lgcbw7sh2bcgaih5q1fb5veyk8jur',
+var MYNICK=['Pibamba','Pibamba','pibamba'],NICKRGXP=[new RegExp(MYNICK[0]),new RegExp(MYNICK[1]),new RegExp(MYNICK[2],'i')],FUNUSERID=33474,TWITCHPASS='',TWCLIENTID='mwjifiu32yfpnpgsmdeeuwa4wyb9se',TWITCH_IDIOTISM='Bearer vo5uv5sj5a2rcrmoob8mt74bemi4kb',//old client id 84jehke2li8043e6gi26zbcb7ic4tt5 TWITCHSECRET='6lgcbw7sh2bcgaih5q1fb5veyk8jur',
 FUNTOKEN='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6MzM0NzQsImlwIjoiMTg4LjEyMC4yMjUuMTQ2IiwidXNlckFnZW50IjoiTW96aWxsYVwvNS4wIChXaW5kb3dzIE5UIDEwLjA7IFdPVzY0KSBBcHBsZVdlYktpdFwvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lXC83My4wLjM2ODMuODggU2FmYXJpXC81MzcuMzYgVml2YWxkaVwvMi40LjE0ODguMzYiLCJvYXV0aCI6eyJpZCI6MCwiYXBwcm92ZWQiOnRydWV9LCJleHAiOjE2MzMxMDYxNzF9.gU79moRFBvhMqa0xNRFIDIVdFtss6v79BGRnnGlZuB_zQzgQpp9Jx4lIfpQbastxbA_TNKTeCR617T68TbsNaA',
 GGTOKEN='',GGUSERID='1214319',GGPASS='KeLPdp6IlHsvi2E9Privet_-p9Z2VhZ4aj',//Asoas 8262
 FUNCHAN_WEBSOCKET='wss://chat.sc2tv.ru/?EIO=3&transport=websocket',
