@@ -2589,8 +2589,8 @@ function mChats(){
 			if(o.data.hasOwnProperty('private')){
 				o.data.user_name=o.data.user.nickname;
 				o.data.timestamp=Math.round((new Date()).getTime()/1000);
-//w.mafia.income({'user_name':o.data.user_name,'user_id':o.data.user.id,'text':o.data.text});
-				o.data.text='[<u>приватное сообщение</u>] '+o.data.text;
+				//w.mafia.income({'user_name':o.data.user_name,'user_id':o.data.user.id,'text':o.data.text});
+				o.data.text='<приватное сообщение> '+o.data.text;
 				this.amgg(o.data,w,false);
 			}
 			else this.amgg(o.data,w,false);
