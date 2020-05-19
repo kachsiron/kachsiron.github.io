@@ -3794,7 +3794,7 @@ FUNTOKEN='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6MzM0NzQsImlwIjoiMTg4LjEyM
 GGTOKEN='',GGUSERID='1214319',GGPASS='KeLPdp6IlHsvi2E9Privet_-p9Z2VhZ4aj',//Asoas 8262
 FUNCHAN_WEBSOCKET='wss://chat.sc2tv.ru/?EIO=3&transport=websocket',
 FUNCHAN_API='https://sc2tv.ru/api/',
-LIMITOFMASSAGES=300,GGLISTAMOUNT=1,
+LIMITOFMASSAGES=300,GGLISTAMOUNT=4,
 rgxpChan=[
 	/var current_players = \[.*?\];/,
 	/{"service":".*?","html":".*?","channel":".*?"}/g,
