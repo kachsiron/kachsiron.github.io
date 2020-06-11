@@ -567,7 +567,8 @@ var cMan={
 				let m=scp.players.get(c)
 				try{
 					let idt=requ.target.responseText.match(/https:\/\/www\.twitch\.tv\/(.*?)[<"]/i)[1]
-					m.strms.push({'name':'TW','code':'<iframe src="https://player.twitch.tv/?channel='+idt+'" allowfullscreen="true" frameborder="0" height="100%" width="100%"></iframe>'});
+					//m.strms.push({'name':'TW','code':'<iframe src="https://player.twitch.tv/?channel='+idt+'" allowfullscreen="true" frameborder="0" height="100%" width="100%"></iframe>'});
+					m.strms.push({'name':'TW','code':'<script src= "https://player.twitch.tv/js/embed/v1.js"></script><div id="'+idt+'"></div><script type="text/javascript">var options = {width: '+scp.playerSize.x+',height: '+scp.playerSize.y+',channel: "'+idt+'"};var player = new Twitch.Player("'+idt+'", options);player.setVolume(0.5);</script>'});
 					m.twid=idt.toLowerCase(); 
 					let n=scp.mark.mrk[m.id]
 					n.twmini=C('SPAN');
