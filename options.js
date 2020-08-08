@@ -3769,6 +3769,14 @@ var FORMELA={
 }
 FORMELA.init();
 function getCookie(){
+	GMX({method:'POST',url:'https://id.twitch.tv/oauth2/token?client_id='+TWCLIENTID+'&client_secret='+TWCLSECRET+'&grant_type=client_credentials',onload:reso=>{
+		try{
+			TWITCH_IDIOTISM = 'Bearer ' + JSON.parse(reso.target.responseText).access_token
+			OPOV.serv('Twitch token: ' + TWITCH_IDIOTISM, 3333)
+		}
+		catch(e){console.log(e)}
+	}})
+	
 	//cookieToken=D.cookie.match(/chat_token=([^;]*)/);
 	let formData=new FormData();
 	formData.append('return','user');
@@ -4201,12 +4209,4 @@ document.addEventListener('DOMContentLoaded',()=>{
 	vasya.init();
 	//window.open('http://www.acapela-group.com/','');
 	//ACAPELA.init()
-	GMX({method:'POST',url:'https://id.twitch.tv/oauth2/token?client_id='+TWCLIENTID+'&client_secret='+TWCLSECRET+'&grant_type=client_credentials',onload:reso=>{
-		try{
-			TWITCH_IDIOTISM = 'Bearer ' + JSON.parse(reso.target.responseText).access_token
-			OPOV.serv('Twitch token: ' + TWITCH_IDIOTISM, 0)
-		}
-		catch(e){console.log(e)}
-	}})
-
 });
