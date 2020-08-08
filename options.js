@@ -1073,7 +1073,6 @@ var cMan={
 	},
 	'incomintw':function(){
 		GMX({headers:{'Client-ID':TWCLIENTID,'Authorization':TWITCH_IDIOTISM},timeout:10000,ontimeout:()=>{},method:'GET',url:'https://api.twitch.tv/helix/streams?'+this.twitchListRequest,onload:reso=>{
-			console.log(reso)
 			try{
 				reso=JSON.parse(reso.target.responseText).data;
 				let o=[];
@@ -3792,7 +3791,7 @@ var HGR=[];
 hidGenreTransform();
 
 //Г Л О Б А Л Ь Н Ы Е   П Е Р Е М Е Н Н Ы Е
-var MYNICK=['Pibamba','Pibamba','pibamba'],NICKRGXP=[new RegExp(MYNICK[0]),new RegExp(MYNICK[1]),new RegExp(MYNICK[2],'i')],FUNUSERID=33474,TWITCHPASS='',TWCLIENTID='mwjifiu32yfpnpgsmdeeuwa4wyb9se',TWITCH_IDIOTISM='Bearer vo5uv5sj5a2rcrmoob8mt74bemi4kb',//old client id 84jehke2li8043e6gi26zbcb7ic4tt5 TWITCHSECRET='6lgcbw7sh2bcgaih5q1fb5veyk8jur',
+var MYNICK=['Pibamba','Pibamba','pibamba'],NICKRGXP=[new RegExp(MYNICK[0]),new RegExp(MYNICK[1]),new RegExp(MYNICK[2],'i')],FUNUSERID=33474,TWITCHPASS='',TWCLSECRET='upeckvpcod0odxj5iwv7n00e228wxc',TWCLIENTID='xbyo0pp2k8py60sm1dcckf45nm66rn',TWITCH_IDIOTISM='',//old client id 84jehke2li8043e6gi26zbcb7ic4tt5 TWITCHSECRET='6lgcbw7sh2bcgaih5q1fb5veyk8jur',
 FUNTOKEN='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6MzM0NzQsImlwIjoiMTg4LjEyMC4yMjUuMTQ2IiwidXNlckFnZW50IjoiTW96aWxsYVwvNS4wIChXaW5kb3dzIE5UIDEwLjA7IFdPVzY0KSBBcHBsZVdlYktpdFwvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lXC83My4wLjM2ODMuODggU2FmYXJpXC81MzcuMzYgVml2YWxkaVwvMi40LjE0ODguMzYiLCJvYXV0aCI6eyJpZCI6MCwiYXBwcm92ZWQiOnRydWV9LCJleHAiOjE2MzMxMDYxNzF9.gU79moRFBvhMqa0xNRFIDIVdFtss6v79BGRnnGlZuB_zQzgQpp9Jx4lIfpQbastxbA_TNKTeCR617T68TbsNaA',
 GGTOKEN='',GGUSERID='1214319',GGPASS='KeLPdp6IlHsvi2E9Privet_-p9Z2VhZ4aj',//Asoas 8262
 FUNCHAN_WEBSOCKET='wss://chat.sc2tv.ru/?EIO=3&transport=websocket',
@@ -4202,4 +4201,12 @@ document.addEventListener('DOMContentLoaded',()=>{
 	vasya.init();
 	//window.open('http://www.acapela-group.com/','');
 	//ACAPELA.init()
+	GMX({method:'POST',url:'https://id.twitch.tv/oauth2/token?client_id='+TWCLIENTID+'&client_secret='+TWCLSECRET+'&grant_type=client_credentials',onload:reso=>{
+		try{
+			TWITCH_IDIOTISM = 'Bearer ' + JSON.parse(reso.target.responseText).access_token
+			OPOV.serv('Twitch token: ' + TWITCH_IDIOTISM, 0)
+		}
+		catch(e){console.log(e)}
+	}})
+
 });
