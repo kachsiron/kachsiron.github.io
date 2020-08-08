@@ -1073,6 +1073,7 @@ var cMan={
 	},
 	'incomintw':function(){
 		GMX({headers:{'Client-ID':TWCLIENTID,'Authorization':TWITCH_IDIOTISM},timeout:10000,ontimeout:()=>{},method:'GET',url:'https://api.twitch.tv/helix/streams?'+this.twitchListRequest,onload:reso=>{
+			console.log(reso)
 			try{
 				reso=JSON.parse(reso.target.responseText).data;
 				let o=[];
