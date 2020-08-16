@@ -1935,7 +1935,7 @@ function ScPlayer(){
 			}catch(e){console.log(plrs[x],e);OPOV.serv('GG ошибка',11111)}}
 			else if(r.name==='TW'){
 				m.twid=plrs[x].channel.toLowerCase();
-				r.code+='https://player.twitch.tv/?branding=false&showInfo=false&autoplay=false&channel='+m.twid
+				r.code+='https://player.twitch.tv/?branding=false&parent=f93b0906-642e-4044-972e-1f2690047292&showInfo=false&autoplay=false&channel='+m.twid
 			}
 			else if(r.name==='CG')r.code+='http://api.cybergame.tv/p/embed.php?w=100pc&h=100pc&type=embed&c='+plrs[x].channel
 			else if(r.name==='P2')r.code+='http://funstream.tv/player/sc2tv/'+plrs[x].channel+'?autoplay=false';
