@@ -16,7 +16,7 @@ input[type="text"],input[type="number"],select,option{width:150px;font-family:mo
 .desc{padding:3px;width:100%;border-bottom:3px solid dodgerblue}
 .descskill{color:lime}
 .descskillred{color:red}
-#list{border-left:3px solid dodgerblue; width:600px}
+#list{border-left:3px solid dodgerblue; width:600px; width:calc(100% - 755px)}
 .active_button{color:red}
 .inactive_item{opacity:0.5}
 .good{background-color:#783e48}
