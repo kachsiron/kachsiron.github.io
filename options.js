@@ -1156,7 +1156,8 @@ var cMan={
 	'checkReady':function(t){
 		this.contentReady[t]++;
 		this.nadDiv.div.textContent=++this.nadDiv.dig;
-		if(this.contentReady.fun>0&&this.contentReady.gg>=GGLISTAMOUNT&&this.contentReady.tw>=this.contents_twitch_length)this.coming()
+		//if(this.contentReady.fun>0&&this.contentReady.gg>=GGLISTAMOUNT&&this.contentReady.tw>=this.contents_twitch_length)this.coming()
+		if(this.contentReady.fun>0&&this.contentReady.gg>=GGLISTAMOUNT)this.coming()
 	},
 	'glu':null,
 	'getListUser':function(w){
@@ -1168,7 +1169,7 @@ var cMan={
 	'getcl': function(){
 		this.nadDiv.div.style.opacity=1;
 		this.nadDiv.div.textContent=this.nadDiv.dig=0;
-		this.incomintw();
+		//this.incomintw();
 		this.incomingg();
 		this.incoming();
 		this.fctDiv.div.textContent=this.fctDiv.dig=6;
@@ -1431,7 +1432,7 @@ var cMan={
 		this.contents.tw={};
 		for(let i in TFAV)this.contents.tw[i]=null;
 		for(let x in this.contents.tw)this.twitchListRequest=(this.twitchListRequest===''?'user_login='+x:this.twitchListRequest+'&user_login='+x);
-		this.contents_twitch_length=1;//objSize(this.contents.tw);
+		//this.contents_twitch_length=1;//objSize(this.contents.tw);
 		
 		with(this.fctDiv.div.style){position='absolute';left='444px';top='0';height='12px';backgroundColor='black';color='gray'}
 		with(this.nadDiv.div.style){position='absolute';left='400px';top='0';height='12px';backgroundColor='black';color='red'}
