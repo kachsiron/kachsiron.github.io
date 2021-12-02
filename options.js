@@ -1456,7 +1456,7 @@ var cMan={
 
 		with(this.div1h.style){display='flex';flexDirection='column';flexWrap='nowrap';alignContent='stretch'}
 		let h=this.div1h.appendChild.bind(this.div1h);
-		h(this.myspan.span);h(FORMELA.div);h(this.hr);h(this.hr2);h(this.hr3);
+		h(this.myspan.span);h(FORMELA.div);h(this.hr);h(this.hr2);//h(this.hr3);
 
 		this.checkbox.type='checkbox';
 		B(this.checkbox);
