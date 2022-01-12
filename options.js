@@ -578,6 +578,7 @@ var cMan={
 					n.twmini.onclick=function(){mch.addChat('t_'+this.i,true,this.i)}.bind({i:m.twid});
 					n.chats.appendChild(n.twmini)
 					scp.remakeMark();
+					window.prompt('twitch link','https://www.twitch.tv/'+idt)
 					OPOV.serv('ключ найден: '+idt+'...',3000,opv,true);
 				}
 				catch(e){
