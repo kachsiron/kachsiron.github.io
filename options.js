@@ -1139,6 +1139,7 @@ var cMan={
 				this.checkReady('fun');
 				return
 			}
+			console.log(content)
 			this.contents.fun=content;
 			this.checkReady('fun')
 		},
