@@ -1139,8 +1139,7 @@ var cMan={
 				this.checkReady('fun');
 				return
 			}
-			console.log(content)
-			this.contents.fun=content;
+			this.contents.fun=content!==void 0?content:null;
 			this.checkReady('fun')
 		},
 		()=>{OPOV.serv('Таймаут при запросе FUN контента',null);this.checkReady('fun')},
