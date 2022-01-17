@@ -981,7 +981,7 @@ var cMan={
 		this.setTime();
 		for(let x=0,l=this.contents.gg.length,c,z;x<l;x++){
 			z=this.contents.gg[x];
-
+try{
 			this.contents.gg[x]={
 				'cggio':1,
 				'link':'https://goodgame.ru/channel/'+z.key,
@@ -996,20 +996,9 @@ var cMan={
 				'start_at':0,//z.hasOwnProperty('announce')?z.announce.start:0,
 				'viewers':z.viewers
 			};
-/* 			this.contents.gg[x]={
-				'cggio':1,
-				'link':'https://goodgame.ru/channel/'+z.channelkey,
-				'id':z.streamkey,
-				'chatId':z.id,
-				'name':z.title,
-				'thumbnail':z.preview,
-				'rating':0,
-				'description':'',
-				'category':{'name':z.game},
-				'streamer':{'id':'g_'+z.id,'name':z.streamer},
-				'start_at':0,//z.hasOwnProperty('announce')?z.announce.start:0,
-				'viewers':z.viewers
-			}; */
+}catch(e){
+console.log(z)
+}
 			c=this.contents.gg[x];
 			if(this.addChan(c)&&this.T_VALUE>0){
 				let nm=c.streamer.name,cid=c.streamer.id;
