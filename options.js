@@ -982,6 +982,7 @@ var cMan={
 		for(let x=0,l=this.contents.gg.length,c,z;x<l;x++){
 			z=this.contents.gg[x];
 try{
+			if(!z.hasOwnProperty('game'))z.game={'title':'ничегго'}
 			this.contents.gg[x]={
 				'cggio':1,
 				'link':'https://goodgame.ru/channel/'+z.key,
@@ -997,8 +998,8 @@ try{
 				'viewers':z.viewers
 			};
 }catch(e){
-console.log(e)
-console.log(z)
+	console.log(e)
+	console.log(z)
 }
 			c=this.contents.gg[x];
 			if(this.addChan(c)&&this.T_VALUE>0){
