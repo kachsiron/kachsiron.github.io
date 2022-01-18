@@ -997,6 +997,7 @@ try{
 				'viewers':z.viewers
 			};
 }catch(e){
+console.log(e)
 console.log(z)
 }
 			c=this.contents.gg[x];
