@@ -64,11 +64,11 @@ function getDistance(x1, y1, x2, y2) {
 }
 function desertGenerator() {
     let rar = []
-    for (let x = 0; x < map_size.x; x++) {
-        rar.push([1, [ x, bioms.desert[0] ]])
-        rar.push([1, [ x, bioms.desert[1] ]])
-    }
-    for (let i = 0; i < 12; i++) {
+    //for (let x = 0; x < map_size.x; x++) {
+    //    rar.push([1, [ x, bioms.desert[0] ]])
+    //    rar.push([1, [ x, bioms.desert[1] ]])
+    //}
+    for (let i = 0; i < 18; i++) {
         rar.push([rand(1,2), [
             rand( 0, map_size.x-1 ),
             rand(bioms.desert[0], bioms.desert[1])
