@@ -68,7 +68,7 @@ function desertGenerator() {
     //    rar.push([1, [ x, bioms.desert[0] ]])
     //    rar.push([1, [ x, bioms.desert[1] ]])
     //}
-    for (let i = 0; i < 18; i++) {
+    for (let i = 0; i < 12; i++) {
         rar.push([rand(1,2), [
             rand( 0, map_size.x-1 ),
             rand(bioms.desert[0], bioms.desert[1])
@@ -81,7 +81,7 @@ function desertGenerator() {
         for (let i = 0, dist; i < parray.length; i++) {
             dist = getDistance(parray[i].coordinates.x, parray[i].coordinates.y, cx, cy)
             if (dist <= radius) {
-                if ((100 - 100 / radius * dist) > rand(0, 100)) {
+                if ((100 - 100 / radius * dist) >= rand(0, 100)) {
                     parray[i].setImage('img/tile2.png')
                 }
             }
@@ -111,7 +111,7 @@ function tundraGenerator() {
         for (let i = 0, dist; i < parray.length; i++) {
             dist = getDistance(parray[i].coordinates.x, parray[i].coordinates.y, cx, cy)
             if (dist <= radius) {
-                if ((100 - 100 / radius * dist) > rand(0, 100)) {
+                if ((100 - 100 / radius * dist) >= rand(0, 100)) {
                     parray[i].setImage('img/tile4.png')
                 }
             }
