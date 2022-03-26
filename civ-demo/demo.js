@@ -89,7 +89,7 @@ for (let y = 0, id = 0; y < map_size.y; y++) {
 		parray[ id ].setImage('img/tile1.png')
 		parray[ id ].setImageSize(square_size)
 		
-		parray[ id ].setPosition({ 'x': x * square_size.width/2, 'y': canvas_size.height + square_size.height + rand(0, 400) })
+		parray[ id ].setPosition({ 'x': x * square_size.width/2, 'y': canvas_size.height + square_size.height + rand(0, 400) + y * (square_size.height - square_size.shift.y) })
 		parray[ id ].addTask(opacity.bind(parray[ id ], { 'start': 0, 'duration': 60 }))
 		parray[ id ].addTask(motion.bind(parray[ id ], {
 			'path': [
