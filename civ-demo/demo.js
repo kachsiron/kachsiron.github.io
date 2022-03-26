@@ -1,17 +1,66 @@
 function rand(min, max){ return Math.floor(Math.random() * (max - min + 1)) + min }
 var canvas = document.getElementById('demo');
 var ctx = canvas.getContext('2d');
-var canvas_size = { 'width': 1024, 'height': 650 }
+var canvas_size = { 'width': window.innerWidth - 15, 'height': window.innerHeight - 15 }
 canvas.width = canvas_size.width
 canvas.height = canvas_size.height
 var parray = []
 var шаблон = [[-1, -1], [1, -1], [2, 0], [1, 1], [-1, 1], [-2, 0]]
 var larray = []
-var map_size = { 'x': 19, 'y': 10 }
+var map_size = { 'x': 19, 'y': 9 }
 var bioms = {
 	'winter': [0, 9],
 	'desert': [4, 5],
 	'tundra': [1, 8]
+}
+var canvas_data = { 'x': 0, 'y': 0, 'press': false, 'move': false, 'scale': 1 }
+canvas.onwheel = function(e) {
+	//if (e.deltaY > 0) canvas_data.scale += 0.1
+	//else canvas_data.scale -= 0.1
+	//ctx.scale(canvas_data.scale, canvas_data.scale)
+}
+canvas.onmousedown = function(e) {
+	e.preventDefault()
+	canvas_data.x = e.clientX
+	canvas_data.y = e.clientY
+	canvas_data.press = true
+}
+canvas.onmousemove = function(e) {
+	e.preventDefault()
+	if (canvas_data.press) {
+		start_point.x +=  e.clientX - canvas_data.x
+		start_point.y += e.clientY - canvas_data.y
+
+		canvas_data.x = e.clientX
+		canvas_data.y = e.clientY
+		canvas_data.move = true
+	}
+}
+
+canvas.onmouseup = function(e) {
+	e.preventDefault()
+	if (!canvas_data.move) {
+		let x = e.clientX - start_point.x
+		let y = e.clientY - start_point.y
+		for (let i = 0; i < parray.length; i++) {
+			if (
+				x > parray[ i ].point.x &&
+				x < parray[ i ].point.x + square_size.width &&
+				y > parray[ i ].point.y &&
+				y < parray[ i ].point.y + square_size.height
+			) {
+				parray[ i ].setImage('img/tile' + rand(1,4) + '.png')
+			}
+		}
+	}
+	canvas_data.x = 0
+	canvas_data.y = 0
+	canvas_data.press = false
+	canvas_data.move = false
+}
+canvas.onclick = function(e) {
+
+
 }
 function getDirection(x, y) {
 	if (x < 0) x /= Math.abs(x)
@@ -39,11 +88,17 @@ for (let y = 0, id = 0; y < map_size.y; y++) {
 		larray[ cid(x, y) ] = parray[ id ]
 		parray[ id ].setImage('img/tile1.png')
 		parray[ id ].setImageSize(square_size)
-		parray[ id ].setPath([
-			{ 'x': start_point.x + x * square_size.width/2, 'y': canvas_size.height + square_size.height + rand(0, 400) },
-			{ 'x': start_point.x + x * square_size.width/2, 'y': start_point.y + y * (square_size.height - square_size.shift.y) }
-		])
-		parray[ id ].motion()
+		
+		parray[ id ].setPosition({ 'x': x * square_size.width/2, 'y': canvas_size.height + square_size.height + rand(0, 400) })
+		parray[ id ].addTask(opacity.bind(parray[ id ], { 'start': 0, 'duration': 60 }))
+		parray[ id ].addTask(motion.bind(parray[ id ], {
+			'path': [
+				{ 'x': x * square_size.width/2, 'y': y * (square_size.height - square_size.shift.y) }
+			],
+			'destination': new Vector(0, 0),
+			'end_path': false,
+			'path_index': 0
+		}))
 	}
 }
 for (let id = 0; id < parray.length; id++) { // LINKS
@@ -51,7 +106,7 @@ for (let id = 0; id < parray.length; id++) { // LINKS
 		x = parray[ id ].coordinates.x + шаблон[ t ][0]
 		y = parray[ id ].coordinates.y + шаблон[ t ][1]
 		if (!checkPoint(x, y)) continue
-		parray[ id ].set_link(t, larray[ cid(x, y) ])
+		parray[ id ].setLink(t, larray[ cid(x, y) ])
 	}
 }
 function checkPoint(x, y) {
@@ -149,11 +204,16 @@ function winterGenerator() {
         }
     }
 }
+
 function render() {
+	ctx.globalAlpha = 1
+	
 	ctx.fillStyle = 'black';
 	ctx.fillRect(0, 0, canvas_size.width, canvas_size.height);
 	for (let i = 0; i < parray.length; i++) {
-		ctx.drawImage(parray[ i ].img, parray[ i ].point.x, parray[ i ].point.y, parray[ i ].image_size.width, parray[ i ].image_size.height);
+		ctx.globalAlpha = parray[ i ].alpha
+		
+		ctx.drawImage(parray[ i ].img, start_point.x + parray[ i ].point.x, start_point.y + parray[ i ].point.y, parray[ i ].image_size.width, parray[ i ].image_size.height);
 	}
 
 }
@@ -189,84 +249,19 @@ function Plate(id, coordinates) {
 	this.point = null
 	this.image_size = null
 	this.img = new Image()
-	this.path = null
-	this.path_index = null
 	this.speed = new Vector(0, 0)
 	this.acceleration = 0.3
-	this.max_speed = 15
-	this.friction = 0.9
-	this.destination = new Vector(0, 0)
-	this.active = 0
-	this.end_path = false
+	this.max_speed = 18
+	this.alpha = 1
+	this.friction = [0.9, 0.8, 0.7]
+
+	//this.active = 0
 	
-	this.set_link = function(id, link) {
-		this.links[ id ] = link
-	}
-	this.check_path = function() {
-		if (this.end_path) {
-			// if (this.speed.length < 1 && this.active === 1) {
-				// this.active = 0
-				// this.speed.reset()
-			// }
-			//else
-			if (this.speed.length < 1 && this.destination.length < 0.5) {
-
-				this.point.x = this.path[ this.path_index ].x
-				this.point.y = this.path[ this.path_index ].y
-				this.active = 0
-				this.destination.reset()
-				this.speed.reset()
-				this.path = null
-				this.path_index = null
-			}
+	this.tasks = []
+	this.doTasks = function() {
+		for (let i = this.tasks.length; --i > -1; ) {
+			if (this.tasks[ i ]()) this.tasks.splice(i, 1)
 		}
-		else if (this.destination.length < 20) {
-			if (this.path_index+1 === this.path.length) {
-				this.end_path = true
-			}
-		}
-	}
-	this.motion = function() {
-		if (this.active === 0) return false
-		//let p = false
-		this.destination.point.x = this.path[ this.path_index ].x - this.point.x
-		this.destination.point.y = this.path[ this.path_index ].y - this.point.y
-		this.destination.lengthize()
-		this.destination.normalize()
-
-		this.speed.point.x += this.destination.norma.x * this.acceleration
-		this.speed.point.y += this.destination.norma.y * this.acceleration
-		//console.log(this.speed.point.y, this.destination.norma.y, this.acceleration)
-		if (this.end_path) {
-			this.speed.point.x *= this.friction
-			this.speed.point.y *= this.friction
-		}
-		else{
-			//this.speed.point.x *= this.friction[0]
-			//this.speed.point.y *= this.friction[0]
-		}
-		this.speed.lengthize()
-		//this.speed.normalize()
-
-		if (this.speed.length > this.max_speed) {
-			let l = this.speed.length / this.max_speed
-			this.speed.point.x /= l
-			this.speed.point.y /= l
-		}
-		this.speed.lengthize()
-		this.point.x += this.speed.point.x
-		this.point.y += this.speed.point.y
-
-		return true
-	}
-	this.setPath = function(path) {
-		this.active = 2
-		this.path = path
-		this.point = { 'x': this.path[ 0 ].x, 'y': this.path[ 0 ].y }
-		this.path_index = 1
-	}
-	this.setPoint = function(point) {
-		this.point = point
 	}
 	this.setImage = function(image_name) {
 		this.img.src = image_name
@@ -274,25 +269,83 @@ function Plate(id, coordinates) {
 	this.setImageSize = function(size) {
 		this.image_size = size
 	}
+	this.setPosition = function(pos) {
+		this.point = pos
+	}
+	this.setLink = function(id, link) {
+		this.links[ id ] = link
+	}
+	this.addTask = function(fun) {
+		this.tasks.push( fun )
+	}
+}
+function opacity(data) {
+	data.start += 1 / data.duration
+	if (data.start >= 1) {
+		this.alpha = 1
+		return true
+	}
+	this.alpha = data.start
+	return false
+}
+function motion(data) {
+	if (data.end_path) {
+		//console.log(this.speed.length,data.destination.length)
+		if (this.speed.length < 1 && data.destination.length < 0.5) {
+			this.point.x = data.path[ data.path_index ].x
+			this.point.y = data.path[ data.path_index ].y
+			this.speed.reset()
+			return true
+		}
+	}
+	else if (data.destination.length < 20) {
+		if (data.path_index+1 === data.path.length) {
+			data.end_path = true
+		}
+	}
+
+	data.destination.point.x = data.path[ data.path_index ].x - this.point.x
+	data.destination.point.y = data.path[ data.path_index ].y - this.point.y
+	data.destination.lengthize()
+	data.destination.normalize()
+
+	this.speed.point.x += data.destination.norma.x * this.acceleration
+	this.speed.point.y += data.destination.norma.y * this.acceleration
+
+	if (data.destination.length < 100) {
+		let fr = 2
+		if (data.destination.length > 30) fr = 0
+		else if (data.destination.length > 15) fr = 1
+		//else fr = 2
+		this.speed.point.x *= this.friction[ fr ]
+		this.speed.point.y *= this.friction[ fr ]
+	}
+	else {
+		this.speed.lengthize()
+		if (this.speed.length > this.max_speed) {
+			let l = this.speed.length / this.max_speed
+			this.speed.point.x /= l
+			this.speed.point.y /= l
+		}
+	}
+	this.speed.lengthize()
+	this.point.x += this.speed.point.x
+	this.point.y += this.speed.point.y
+
+	return false
 }
 var stop = false
 function engine() {
-	let c = 0
+
 	if (stop) return
 	for (let i = 0; i < parray.length; i++) {
-		if (parray[ i ].motion()) {
-			c++
-			parray[ i ].check_path()
-		}
+		parray[ i ].doTasks()
 	}
-	//console.log(c)
-	//for (let i = 0; i < parray.length; i++) {
-		
-	//}
+
 	render()
 }
 desertGenerator()
 tundraGenerator()
 winterGenerator()
 
-setInterval(engine, 25)
+setInterval(engine, 1000/50)
