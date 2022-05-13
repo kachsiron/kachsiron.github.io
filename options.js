@@ -1455,39 +1455,39 @@ try{
 		B(this.checkbox);
 		this.div1.appendChild(this.div1h)
 		B(this.div1);
-		let opv=OPOV.serv('Запрос смайлов...');
-		this.api('bulk',{'command':[['/api/smile',[]]]},resp=>{
-			resp=resp.target;
-			if(resp.responseText==='')return;
-			try{resp=JSON.parse(resp.responseText)[0][2]}
-			catch(e){OPOV.serv('Ошибка загрузки смайлов',0,opv,true);return}
-			let lesm=resp.length,sp;
-			for(let x=0;x<lesm;x++){
-				smiles[resp[x].code]={img:resp[x].url};
-				continue;
-				if(resp[x].level===0&&resp[x].tab===0){
-					sp=C('IMG');
-					sp.src=resp[x].url;
-					sp.title=resp[x].code;
-					sp.className='smimg';
-					sp.style.cursor='pointer';
-					sp.style.padding='1px';
-					sp.onclick=function(){messtochat.MSG.value=messtochat.MSG.value+' :'+this.getAttribute('title')+':';messtochat.MSG.focus()}
-					smilepadik.appendChild(sp)
-				}
-			}
-			for(let x in mch.smr){
-				sp=C('IMG');
-				sp.src=smiles[mch.smr[x]].img;
-				sp.className='smimg';
-				sp.style.padding='1px';
-				smilepadik.appendChild(sp);
-				sp=C('SPAN');
-				sp.textContent=x+',';
-				smilepadik.appendChild(sp)
-			}
-			OPOV.serv('Готово! ('+lesm+')',3000,opv,true)
-		});
+		//let opv=OPOV.serv('Запрос смайлов...');
+		//this.api('bulk',{'command':[['/api/smile',[]]]},resp=>{
+			//resp=resp.target;
+			//if(resp.responseText==='')return;
+			//try{resp=JSON.parse(resp.responseText)[0][2]}
+			//catch(e){OPOV.serv('Ошибка загрузки смайлов',0,opv,true);return}
+			//let lesm=resp.length,sp;
+			//for(let x=0;x<lesm;x++){
+				//smiles[resp[x].code]={img:resp[x].url};
+				//continue;
+				//if(resp[x].level===0&&resp[x].tab===0){
+					//sp=C('IMG');
+					//sp.src=resp[x].url;
+					//sp.title=resp[x].code;
+					//sp.className='smimg';
+					//sp.style.cursor='pointer';
+					//sp.style.padding='1px';
+					//sp.onclick=function(){messtochat.MSG.value=messtochat.MSG.value+' :'+this.getAttribute('title')+':';messtochat.MSG.focus()}
+					//smilepadik.appendChild(sp)
+				//}
+			//}
+			//for(let x in mch.smr){
+				//sp=C('IMG');
+				//sp.src=smiles[mch.smr[x]].img;
+				//sp.className='smimg';
+				//sp.style.padding='1px';
+				//smilepadik.appendChild(sp);
+				//sp=C('SPAN');
+				//sp.textContent=x+',';
+				//smilepadik.appendChild(sp)
+			//}
+			//OPOV.serv('Готово! ('+lesm+')',3000,opv,true)
+		//});
 		let opv2=OPOV.serv('Запрос GG смайлов...');
 		GMX({method:'GET',url:'https://goodgame.ru/js/minified/global.js',onload:requ=>{
 			(function(){
@@ -4199,7 +4199,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 	//UGOL.init();
 	getCookie();
 	cMan.getcl();
-	cMan.launch();
+	//cMan.launch();
 	vasya.init();
 	//window.open('http://www.acapela-group.com/','');
 	//ACAPELA.init()
