@@ -890,13 +890,15 @@ var cMan={
 		return (new Date(d[1],d[2]-1,d[3],d[4],d[5],d[6])).getTime()/1000+10800
 	},
 	'writeName':function(c,n){
-		c.name=n;
-		if(c.service===0)DNS[c.id]=[n,this.rTimes];
-		c.span.name.textContent=n;
-		if(n.length>11){
-			let m=-0.5*(n.length-11);
-			if(m<-2.5)m=-2.5;
-			c.span.name.style.letterSpacing=m+'px'
+		if (n !== void 0) {
+			c.name=n;
+			if(c.service===0)DNS[c.id]=[n,this.rTimes];
+			c.span.name.textContent=n;
+			if(n.length>11){
+				let m=-0.5*(n.length-11);
+				if(m<-2.5)m=-2.5;
+				c.span.name.style.letterSpacing=m+'px'
+			}
 		}
 	},
 	'setFavHid':function(c){
@@ -1015,31 +1017,32 @@ try{
 				}*/
 			}
 		}
-		let con=this.contents.fun,d30=this.T_VALUE%30;
-		if(con!==null){
-			for(let i=0,l=con.length,cid,nm,c;i<l;i++){
-				c=con[i];
-				c.streamer=c.owner;
-				if(this.addChan(c)&&this.T_VALUE>0){
-					cid=c.streamer.id.toString();
-					nm=c.streamer.name;
-					if(FAV.hasOwnProperty(nm)){
-						adLog2(nm,'start',cid);
-						graphsendi(nm)
-					}
-					if(!this.chn[cid].hid)TRAY.not(nm+' запустИл стрим '+c.name,'dodgerblue',c,0)
-				}
-			}
-		}
-		if(this.T_VALUE>0&&d30===0){
-			let c=0;
-			for(let i=0,l=con.length,n;i<l;i++){
-				n=this.chn[con[i].streamer.id.toString()];
-				if(n===void 0)continue;
-				if(this.obnovDescForFun(n,con[i])){this.setFavHid(n);c++}
-			}
-			if(c>0)OPOV.serv('Обновленo fun-заголовков: '+c,null)
-		}
+		//let con=this.contents.fun,
+		let d30=this.T_VALUE%30;
+		//if(con!==null){
+			//for(let i=0,l=con.length,cid,nm,c;i<l;i++){
+				//c=con[i];
+				//c.streamer=c.owner;
+				//if(this.addChan(c)&&this.T_VALUE>0){
+					//cid=c.streamer.id.toString();
+					//nm=c.streamer.name;
+					//if(FAV.hasOwnProperty(nm)){
+						//adLog2(nm,'start',cid);
+						//graphsendi(nm)
+					//}
+					//if(!this.chn[cid].hid)TRAY.not(nm+' запустИл стрим '+c.name,'dodgerblue',c,0)
+				//}
+			//}
+		//}
+		//if(this.T_VALUE>0&&d30===0){
+			//let c=0;
+			//for(let i=0,l=con.length,n;i<l;i++){
+				//n=this.chn[con[i].streamer.id.toString()];
+				//if(n===void 0)continue;
+				//if(this.obnovDescForFun(n,con[i])){this.setFavHid(n);c++}
+			//}
+			//if(c>0)OPOV.serv('Обновленo fun-заголовков: '+c,null)
+		//}
 
 		if(d30===0){
 			let ch,c=0;
