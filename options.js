@@ -1018,6 +1018,7 @@ try{
 			}
 		}
 		let con=this.contents.fun
+		console.log(this.contents.fun)
 		let d30=this.T_VALUE%30;
 		if(con!==null){
 			for(let i=0,l=con.length,cid,nm,c;i<l;i++){
@@ -1133,7 +1134,6 @@ try{
 				this.checkReady('fun');
 				return
 			}
-			console.log(content)
 			this.contents.fun=content!==void 0?content:null;
 			this.checkReady('fun')
 		},
