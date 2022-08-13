@@ -1017,32 +1017,32 @@ try{
 				}*/
 			}
 		}
-		//let con=this.contents.fun,
+		let con=this.contents.fun,
 		let d30=this.T_VALUE%30;
-		//if(con!==null){
-			//for(let i=0,l=con.length,cid,nm,c;i<l;i++){
-				//c=con[i];
-				//c.streamer=c.owner;
-				//if(this.addChan(c)&&this.T_VALUE>0){
-					//cid=c.streamer.id.toString();
-					//nm=c.streamer.name;
-					//if(FAV.hasOwnProperty(nm)){
-						//adLog2(nm,'start',cid);
-						//graphsendi(nm)
-					//}
-					//if(!this.chn[cid].hid)TRAY.not(nm+' запустИл стрим '+c.name,'dodgerblue',c,0)
-				//}
-			//}
-		//}
-		//if(this.T_VALUE>0&&d30===0){
-			//let c=0;
-			//for(let i=0,l=con.length,n;i<l;i++){
-				//n=this.chn[con[i].streamer.id.toString()];
-				//if(n===void 0)continue;
-				//if(this.obnovDescForFun(n,con[i])){this.setFavHid(n);c++}
-			//}
-			//if(c>0)OPOV.serv('Обновленo fun-заголовков: '+c,null)
-		//}
+		if(con!==null){
+			for(let i=0,l=con.length,cid,nm,c;i<l;i++){
+				c=con[i];
+				c.streamer=c.owner;
+				if(this.addChan(c)&&this.T_VALUE>0){
+					cid=c.streamer.id.toString();
+					nm=c.streamer.name;
+					if(FAV.hasOwnProperty(nm)){
+						adLog2(nm,'start',cid);
+						graphsendi(nm)
+					}
+					if(!this.chn[cid].hid)TRAY.not(nm+' запустИл стрим '+c.name,'dodgerblue',c,0)
+				}
+			}
+		}
+		if(this.T_VALUE>0&&d30===0){
+			let c=0;
+			for(let i=0,l=con.length,n;i<l;i++){
+				n=this.chn[con[i].streamer.id.toString()];
+				if(n===void 0)continue;
+				if(this.obnovDescForFun(n,con[i])){this.setFavHid(n);c++}
+			}
+			if(c>0)OPOV.serv('Обновленo fun-заголовков: '+c,null)
+		}
 
 		if(d30===0){
 			let ch,c=0;
@@ -1152,8 +1152,8 @@ try{
 		this.contentReady[t]++;
 		this.nadDiv.div.textContent=++this.nadDiv.dig;
 		//if(this.contentReady.fun>0&&this.contentReady.gg>=GGLISTAMOUNT&&this.contentReady.tw>=this.contents_twitch_length)this.coming()
-		//if(this.contentReady.fun>0&&this.contentReady.gg>=GGLISTAMOUNT)this.coming()
-		if(this.contentReady.gg>=GGLISTAMOUNT)this.coming()
+		if(this.contentReady.fun>0&&this.contentReady.gg>=GGLISTAMOUNT)this.coming()
+		//if(this.contentReady.gg>=GGLISTAMOUNT)this.coming()
 	},
 	'glu':null,
 	'getListUser':function(w){
@@ -1167,7 +1167,7 @@ try{
 		this.nadDiv.div.textContent=this.nadDiv.dig=0;
 		//this.incomintw();
 		this.incomingg();
-		//this.incoming();
+		this.incoming();
 		this.fctDiv.div.textContent=this.fctDiv.dig=6;
 		this.T_VALUE++;
 		if(vasya.cnd)makeCnv();
@@ -4207,3 +4207,4 @@ document.addEventListener('DOMContentLoaded',()=>{
 	//window.open('http://www.acapela-group.com/','');
 	//ACAPELA.init()
 });
+
