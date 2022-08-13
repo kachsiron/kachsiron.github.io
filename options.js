@@ -1017,7 +1017,7 @@ try{
 				}*/
 			}
 		}
-		let con=this.contents.fun,
+		let con=this.contents.fun
 		let d30=this.T_VALUE%30;
 		if(con!==null){
 			for(let i=0,l=con.length,cid,nm,c;i<l;i++){
