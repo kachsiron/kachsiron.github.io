@@ -4204,7 +4204,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 	//UGOL.init();
 	getCookie();
 	cMan.getcl();
-	cMan.launch();
+	//cMan.launch();
 	vasya.init();
 	//window.open('http://www.acapela-group.com/','');
 	//ACAPELA.init()
