@@ -1152,8 +1152,8 @@ try{
 		this.contentReady[t]++;
 		this.nadDiv.div.textContent=++this.nadDiv.dig;
 		//if(this.contentReady.fun>0&&this.contentReady.gg>=GGLISTAMOUNT&&this.contentReady.tw>=this.contents_twitch_length)this.coming()
-		if(this.contentReady.gg>=GGLISTAMOUNT)this.coming()
-		//if(this.contentReady.fun>0&&this.contentReady.gg>=GGLISTAMOUNT)this.coming()
+		//if(this.contentReady.gg>=GGLISTAMOUNT)this.coming()
+		if(this.contentReady.fun>0&&this.contentReady.gg>=GGLISTAMOUNT)this.coming()
 	},
 	'glu':null,
 	'getListUser':function(w){
@@ -4204,7 +4204,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 	//UGOL.init();
 	getCookie();
 	cMan.getcl();
-	//cMan.launch();
+	cMan.launch();
 	vasya.init();
 	//window.open('http://www.acapela-group.com/','');
 	//ACAPELA.init()
