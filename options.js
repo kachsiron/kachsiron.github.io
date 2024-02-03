@@ -700,7 +700,7 @@ var cMan={
 			if(o.service===1){
 				o.span.title.href='mailto:'+o.link+':best';
 				o.span.title2.href='mailto:'+o.link+':540p';
-				o.span.title2.innerHTML='540p';
+				o.span.title2.innerHTML=' 540p';
 				o.span.title2.title=o.title2;
 				o.span.title2.target='_blank';
 			}
