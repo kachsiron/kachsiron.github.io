@@ -648,7 +648,7 @@ var cMan={
 			}
 			let l=res.length;
 			if(l===0){OPOV.serv('Не удалось!',3000,opv,true);return}
-			for(let x=0;x<l;x++)res[x]={provider:res[x].match(/service":"(.*?)"/)[1],channel:res[x].match(/channel":"(.*?)"/)[1],code:res[x].match(rgxpChan[2])[1].replace(rgxpChan[5],'')};
+			for(let x=0;x<l;x++)res[x]={provider:res[x].match(/service":"(.*?)"/)[1],channel:res[x].match(":"(.*?)"/)[1],code:res[x].match(rgxpChan[2])[1].replace(rgxpChan[5],'')};
 			scp.addPlayer(res,scp.aP(id,false,0,[id]));
 			//scMenu.setb(1,'&#9672;Get Plrs (sc2tv)');
 			OPOV.serv('Готово!',3000,opv,true)
@@ -766,8 +766,8 @@ var cMan={
 			else chn.add=o.start_at;
 
 			if(o.hasOwnProperty('link')){
-				chn.link=o.link;
-				//try{chn.id2=o.link.match(/https?:\/\/goodgame.ru\/channel\/(.*?)\//)[1]}
+				chn.link='mailto:'+o.link+':540p';
+				//try{chn.id2=o.link.match(/https?:\/\/goodgame.ru\\/(.*?)\//)[1]}
 				//catch(e){chn.id2=this.getcn(chn.id)}
 
 				chn.viewers=o.viewers;
