@@ -697,7 +697,7 @@ var cMan={
 		o.span.vc.textContent='■';
 		o.div.classList.add('tablespan');
 		if(b){
-			if(o.service===1)o.span.title.href=o.link;
+			if(o.service===1)o.span.title.href='mailto:'+o.link+':540p';
 			else if(o.service===2)o.span.title.href='https://www.twitch.tv/'+o.name;
 			else o.span.title.href='http://sc2tv.ru/'+nameToUrl(o.name);
 			o.span.title.innerHTML=o.title;
@@ -766,7 +766,7 @@ var cMan={
 			else chn.add=o.start_at;
 
 			if(o.hasOwnProperty('link')){
-				chn.link='mailto:'+o.link+':540p';
+				chn.link=o.link;
 				//try{chn.id2=o.link.match(/https?:\/\/goodgame.ru\\/(.*?)\//)[1]}
 				//catch(e){chn.id2=this.getcn(chn.id)}
 
