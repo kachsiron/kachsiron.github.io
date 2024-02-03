@@ -700,6 +700,9 @@ var cMan={
 			if(o.service===1){
 				o.span.title.href='mailto:'+o.link+':best';
 				o.span.title2.href='mailto:'+o.link+':540p';
+				o.span.title2.innerHTML=o.title2;
+				o.span.title2.title=o.title2;
+				o.span.title2.target='_blank';
 			}
 			else if(o.service===2)o.span.title.href='https://www.twitch.tv/'+o.name;
 			else o.span.title.href='http://sc2tv.ru/'+nameToUrl(o.name);
