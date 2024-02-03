@@ -697,7 +697,10 @@ var cMan={
 		o.span.vc.textContent='■';
 		o.div.classList.add('tablespan');
 		if(b){
-			if(o.service===1)o.span.title.href='mailto:'+o.link+':540p';
+			if(o.service===1){
+				o.span.title.href='mailto:'+o.link+':best';
+				o.span.title2.href='mailto:'+o.link+':540p';
+			}
 			else if(o.service===2)o.span.title.href='https://www.twitch.tv/'+o.name;
 			else o.span.title.href='http://sc2tv.ru/'+nameToUrl(o.name);
 			o.span.title.innerHTML=o.title;
@@ -744,6 +747,7 @@ var cMan={
 				'news':C('DIV'),
 				'cat':C('DIV'),
 				'title':C('a'),
+				'title2':C('a')
 			},
 			'service':null
 		}
