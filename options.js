@@ -675,7 +675,7 @@ var cMan={
 	},
 	'launch':function(){
 		this.sock=new WebSocket(FUNCHAN_WEBSOCKET);
-		this.sock.onerror=e=>{console.log('error list',e);setTimeout(()=>{this.recon()},4567)};
+		this.sock.onerror=e=>{console.log('error list',e);setTimeout(()=>{this.recon()},120000)};//4567
 		this.sock.onmessage=e=>this.getm(e);
 		this.intervals.info=setInterval(()=>{
 			try{this.sock.send('2')}catch(e){}
