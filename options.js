@@ -1071,7 +1071,7 @@ var cMan={
 			}
 			if(c>0)OPOV.serv('Обновленo gg-заголовков: '+c,null)
 		}
-		//this.all();
+		this.all();
 		//this.calc();
 		if(this.enabled)this.makeTable();
 		this.chanMessNum=0;
@@ -1237,7 +1237,7 @@ var cMan={
 		FORMELA.filter(false);
 		this.myspan.el.count.textContent=cnt+'/'+this.chanCount
 	},
-	/*'all':function(){
+	'all':function(){
 		let dt = Math.round(this.rTime0), dd;
 		for(let i in this.chn){
 			if(this.chn[i].service===0){
@@ -1272,7 +1272,8 @@ var cMan={
 				}
 			}
 		}
-		let j,k,o=0;
+		
+        let j,k,o=0;
 		for(let i in this.chn){
 			j=this.chn[i];
 			if(j.service!==2){
@@ -1285,16 +1286,16 @@ var cMan={
 				}
 				else{
 					j.count++;
-					if(j.service===0){
+					/*if(j.service===0){
 						k=j.un[0]-j.un[2];
 						if(k>4&&j.un[0]>j.un[2]*1.25)OPOV.serv('Скачок на канале стримера <span style="color:red">'+j.name+'</span>. '+j.un[2]+'=>'+j.un[0],10000);
-					}
+					}*/
 					j.un[2]=j.un[0]
 				}
 			}
 		}
 		if(o>0)OPOV.serv('Каналов удалено: ' + o,10000);
-	},*/
+	},
 	'subscribe': [],
 	'subscriber': [],
 	'addSub':function(a,b){
