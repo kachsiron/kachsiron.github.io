@@ -667,6 +667,7 @@ var cMan={
 		let a=mch.windows.has(c),b=scp.players.has(c);
 		this.chn[c].span.vc.style.color=((a&&b)?'red':a?'lime':b?'orange':'white')
 	},
+    /*
 	'recon':function(){
 		OPOV.serv('Пересоединение к общему каналу',null);
 		clearInterval(this.intervals.timeout);
@@ -683,7 +684,7 @@ var cMan={
 		this.intervals.timeout=setInterval(i=>{
 			if((new Date()).getTime()-this.timeout>40000)this.recon()
 		},45000)
-	},
+	},*/
 	'addMainChan':function(c){
 		let m=(DNS[c]?DNS[c][0]:c);
 		this.makeChan(true, {'id':0, 'start_at':0, 'category':{'name':''}, 'description':'', 'streamer':{'name':m}, 'rating':0, 'players':null, 'thumbnail':null, 'name':''}, c);
@@ -990,26 +991,26 @@ var cMan={
 		this.setTime();
 		for(let x=0,l=this.contents.gg.length,c,z;x<l;x++){
 			z=this.contents.gg[x];
-try{
-			if(!z.hasOwnProperty('game'))z.game={'title':'ничегго'}
-			this.contents.gg[x]={
-				'cggio':1,
-				'link':'https://goodgame.ru/channel/'+z.key,
-				'id':z.streamKey,
-				'chatId':z.id,
-				'name':z.title,
-				'thumbnail':z.preview,
-				'rating':0,
-				'description':'',
-				'category':{'name':z.game.title},
-				'streamer':{'id':'g_'+z.id,'name':z.key},
-				'start_at':0,//z.hasOwnProperty('announce')?z.announce.start:0,
-				'viewers':z.viewers
-			};
-}catch(e){
-	console.log(e)
-	console.log(z)
-}
+            try{
+                if(!z.hasOwnProperty('game'))z.game={'title':'ничегго'}
+                this.contents.gg[x]={
+                    'cggio':1,
+                    'link':'https://goodgame.ru/channel/'+z.key,
+                    'id':z.streamKey,
+                    'chatId':z.id,
+                    'name':z.title,
+                    'thumbnail':z.preview,
+                    'rating':0,
+                    'description':'',
+                    'category':{'name':z.game.title},
+                    'streamer':{'id':'g_'+z.id,'name':z.key},
+                    'start_at':0,//z.hasOwnProperty('announce')?z.announce.start:0,
+                    'viewers':z.viewers
+                };
+            }catch(e){
+                console.log(e)
+                console.log(z)
+            }
 			c=this.contents.gg[x];
 			if(this.addChan(c)&&this.T_VALUE>0){
 				let nm=c.streamer.name,cid=c.streamer.id;
@@ -1024,8 +1025,9 @@ try{
 				}*/
 			}
 		}
-		let con=this.contents.fun
 		let d30=this.T_VALUE%30;
+		/*
+		let con=this.contents.fun
 		if(con!==null){
 			for(let i=0,l=con.length,cid,nm,c;i<l;i++){
 				c=con[i];
@@ -1050,16 +1052,18 @@ try{
 			}
 			if(c>0)OPOV.serv('Обновленo fun-заголовков: '+c,null)
 		}
-
+        */
 		if(d30===0){
 			let ch,c=0;
+            
+            /*
 			for(let x in this.contents.tw){
 				if(!this.chn.hasOwnProperty('t_'+x))continue;
 				ch=this.chn['t_'+x];
 				if(ch.isup>0&&this.obnovDesc(ch,this.contents.tw[x]))c++
 			}
 			if(c>0)OPOV.serv('Обновленo tw-заголовков: '+c,null);
-			
+			*/
 			c=0;
 			for(let x in this.contents.gg){
 				if(!this.contents.gg[x].hasOwnProperty('cggio'))continue;//||!this.chn.hasOwnProperty(this.contents.gg[x].streamer.id)
@@ -1067,8 +1071,8 @@ try{
 			}
 			if(c>0)OPOV.serv('Обновленo gg-заголовков: '+c,null)
 		}
-		this.all();
-		this.calc();
+		//this.all();
+		//this.calc();
 		if(this.enabled)this.makeTable();
 		this.chanMessNum=0;
 		this.resetContent()
@@ -1128,7 +1132,7 @@ try{
 	'incomingg':async function(){
 		for(let page=1;page<=GGLISTAMOUNT;page++)await this.incomingghelper(page)
 	},
-	'incoming':function(){
+	/*'incoming':function(){
 		//this.api('bulk',{command:[['/api/content',{content:'stream',type:'all',category:{slug:'top'}}]]},requ=>{
 		this.api('content',{content:'stream',type:'all',category:{slug:'top'}},requ=>{
 			let content;
@@ -1154,13 +1158,14 @@ try{
 				this.gg_streams[i][0]=miker
 			}
 		}})*/
-	},
+	},*/
 	'checkReady':function(t){
 		this.contentReady[t]++;
 		this.nadDiv.div.textContent=++this.nadDiv.dig;
 		//if(this.contentReady.fun>0&&this.contentReady.gg>=GGLISTAMOUNT&&this.contentReady.tw>=this.contents_twitch_length)this.coming()
 		//if(this.contentReady.gg>=GGLISTAMOUNT)this.coming()
-		if(this.contentReady.fun>0&&this.contentReady.gg>=GGLISTAMOUNT)this.coming()
+		//if(this.contentReady.fun>0&&this.contentReady.gg>=GGLISTAMOUNT)this.coming()
+        if(this.contentReady.gg>=GGLISTAMOUNT)this.coming()
 	},
 	'glu':null,
 	'getListUser':function(w){
@@ -1174,10 +1179,10 @@ try{
 		this.nadDiv.div.textContent=this.nadDiv.dig=0;
 		//this.incomintw();
 		this.incomingg();
-		this.incoming();
+		//this.incoming();
 		this.fctDiv.div.textContent=this.fctDiv.dig=6;
 		this.T_VALUE++;
-		if(vasya.cnd)makeCnv();
+		//if(vasya.cnd)makeCnv();
 		setTimeout(()=>{this.getcl()},60000)
 	},
 	'makeMySpan':function(){
@@ -1258,7 +1263,7 @@ try{
 		FORMELA.filter(false);
 		this.myspan.el.count.textContent=cnt+'/'+this.chanCount
 	},
-	'all':function(){
+	/*'all':function(){
 		let dt = Math.round(this.rTime0), dd;
 		for(let i in this.chn){
 			if(this.chn[i].service===0){
@@ -1315,7 +1320,7 @@ try{
 			}
 		}
 		if(o>0)OPOV.serv('Каналов удалено: ' + o,10000);
-	},
+	},*/
 	'subscribe': [],
 	'subscriber': [],
 	'addSub':function(a,b){
@@ -1434,16 +1439,20 @@ try{
 		for(let x in this.contents.tw)this.twitchListRequest=(this.twitchListRequest===''?'user_login='+x:this.twitchListRequest+'&user_login='+x);
 	},
 	'init':function(){
-		this.contents.tw={};
-		for(let i in TFAV)this.contents.tw[i]=null;
-		for(let x in this.contents.tw)this.twitchListRequest=(this.twitchListRequest===''?'user_login='+x:this.twitchListRequest+'&user_login='+x);
+		//this.contents.tw={};
+		//for(let i in TFAV)this.contents.tw[i]=null;
+		//for(let x in this.contents.tw)this.twitchListRequest=(this.twitchListRequest===''?'user_login='+x:this.twitchListRequest+'&user_login='+x);
 		//this.contents_twitch_length=1;//objSize(this.contents.tw);
 		
 		with(this.fctDiv.div.style){position='absolute';left='444px';top='0';height='12px';backgroundColor='black';color='gray'}
 		with(this.nadDiv.div.style){position='absolute';left='400px';top='0';height='12px';backgroundColor='black';color='red'}
 		setInterval(()=>{this.fctDiv.div.textContent=--this.fctDiv.dig},10000);
 		this.fctDiv.div.style.cursor='pointer';
-		this.fctDiv.div.onclick=()=>{this.incomintw();this.incomingg();this.incoming()};
+		this.fctDiv.div.onclick=()=>{
+            //this.incomintw();
+            this.incomingg();
+            //this.incoming()
+        };
 		B(this.nadDiv.div);
 		B(this.fctDiv.div);
 
@@ -3406,6 +3415,7 @@ function refreshTitles(nid){
 }
 
 //Г Р А Ф И К
+/*
 function makeCnvSize(s){
 	s=s.split(' ');
 	vasya.cnv.setAttribute('width',s[0]);
@@ -3473,7 +3483,7 @@ function makeCnv(){
 		if(cc++>11)break;
 	}
 	vasya.div.style.display='block'
-}
+}*/
 
 //U T I L S
 function secToTime(t){
@@ -3877,17 +3887,17 @@ rgxpChatTwitch=[
 	/ ?☺ ?(?=☺)/g
 ],
 RGXP_B=/\[b\](.*?):\[\/b\]/g,RGXP_HTTP=/(([a-z]{2,5}):\/\/([^\/]+\.)*([^\/]+\.[^\/ ]+)\/?([^: ]*))/gi,
-vasya={div:C('DIV'),cnv:C('CANVAS')},
+//vasya={div:C('DIV'),cnv:C('CANVAS')},
 smiles={},smilesGG={},graph=true,
 smilepadik=C('DIV'),messtochat={'MSG':C('INPUT'),'ID':C('INPUT'),'UID':null},
 grBut=C('BUTTON'),
 divLog=C('DIV'),divLog2=C('DIV'),
 zvuk=[C('audio'),C('source')];//,C('audio'),C('source')];
-vasya.ctx=vasya.cnv.getContext('2d');
-vasya.init=function(){vasya.cnd=false,vasya.data={},vasya.startPoint=0,vasya.max=0}
+//vasya.ctx=vasya.cnv.getContext('2d');
+//vasya.init=function(){vasya.cnd=false,vasya.data={},vasya.startPoint=0,vasya.max=0}
 
 //С Т И Л И
-with(vasya.div.style){border='1px solid gray';display='none';position='fixed';bottom=0;right=0;zIndex=100}
+//with(vasya.div.style){border='1px solid gray';display='none';position='fixed';bottom=0;right=0;zIndex=100}
 with(smilepadik.style){zIndex=4;border='1px solid #444';position='fixed';bottom='21px';left='21px';width='600px';display='none';backgroundColor='black'}
 with(messtochat.MSG.style){zIndex=1;position='fixed';bottom=0;left='71px';width='538px';backgroundColor='black';fontFamily='Marmelad';color='white'}
 with(messtochat.ID.style){zIndex=1;position='fixed';bottom=0;left='19px';width='51px';backgroundColor='black';fontFamily='Marmelad';color='white'}
@@ -3901,13 +3911,13 @@ grBut.textContent='on';
 makeCnvSize('400 200');
 zvuk[0].src=MF[0];
 zvuk[1].setAttribute('preload','preload');zvuk[1].type='audio/ogg';
-vasya.ctx.font='8px Verdana';
+//vasya.ctx.font='8px Verdana';
 zvuk[0].volume=0.5;
 
 //О Б Р А Б О Т Ч И К И
 D.body.onkeypress=function(e){if(e.keyCode===13)messtochat.MSG.focus()}
 divLog.onclick=function(){this.style.display='none'}
-vasya.cnv.onclick=function(){vasya.div.style.display='none';vasya.init()}
+//vasya.cnv.onclick=function(){vasya.div.style.display='none';vasya.init()}
 smilepadik.onclick=function(){this.style.display='none'}
 grBut.onclick=function(){graph=!graph;this.textContent=(graph?'on':'off')}
 window.onresize=function(){
@@ -4135,12 +4145,13 @@ messtochat.MSG.onkeyup=function(e){
 messtochat.MSG.ondblclick=function(){if(messtochat.MSG.value==='')getNews()}
 
 //О С Т А Л Ь Н О Е
-vasya.div.appendChild(vasya.cnv);
+//vasya.div.appendChild(vasya.cnv);
 function rand(min,max){return Math.floor(Math.random()*(max-min+1))+min}
 window.onunload=saveHid;
 
 //Д О Б А В Л Е Н И Е   Н А   С Т Р А Н И Ц У
-B(vasya.div); B(grBut);
+//B(vasya.div);
+B(grBut);
 B(messtochat.ID); B(messtochat.MSG);
 B(divLog2);B(divLog);B(smilepadik);
 zvuk[0].appendChild(zvuk[1]);B(zvuk[0]);
@@ -4211,8 +4222,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 	//UGOL.init();
 	getCookie();
 	cMan.getcl();
-	cMan.launch();
-	vasya.init();
+	//cMan.launch();
+	//vasya.init();
 	//window.open('http://www.acapela-group.com/','');
 	//ACAPELA.init()
 });
