@@ -1132,34 +1132,7 @@ var cMan={
 	'incomingg':async function(){
 		for(let page=1;page<=GGLISTAMOUNT;page++)await this.incomingghelper(page)
 	},
-	/*'incoming':function(){
-		//this.api('bulk',{command:[['/api/content',{content:'stream',type:'all',category:{slug:'top'}}]]},requ=>{
-		this.api('content',{content:'stream',type:'all',category:{slug:'top'}},requ=>{
-			let content;
-			try{content=JSON.parse(requ.target.responseText).content}
-			catch(e){
-				console.log(requ.target.responseText);
-				OPOV.serv('Ошибка при обработке запроса FUN контента',null);
-				this.contents.fun=[];
-				this.checkReady('fun');
-				return
-			}
-			this.contents.fun=content!==void 0?content:null;
-			this.checkReady('fun')
-		},
-		()=>{OPOV.serv('Таймаут при запросе FUN контента',null);this.checkReady('fun')},
-		()=>{OPOV.serv('Ошибка при запросе FUN контента',null);this.checkReady('fun')});
-		GMX({timeout:5000,method:'GET',url:'https://goodgame.ru/api/getggchannelstatus?id=Miker,Tey,boni,ilyamaddyson&fmt=json',onload:requ=>{
-			requ=JSON.parse(requ.responseText);
-			let miker;
-			for(let i in this.gg_streams){
-				if(requ.hasOwnProperty(this.gg_streams[i][1]))miker=(requ[this.gg_streams[i][1]].status==='Dead'?false:true);
-				if(!this.gg_streams[i][0]&&miker)OPOV.serv(i+' стартанул <a href="https://goodgame.ru/channel/'+i+'/" target="_blank">link</a>',0);
-				this.gg_streams[i][0]=miker
-			}
-		}})
-	},
-    */
+
 	'checkReady':function(t){
 		this.contentReady[t]++;
 		this.nadDiv.div.textContent=++this.nadDiv.dig;
