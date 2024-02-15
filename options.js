@@ -1434,7 +1434,7 @@ var cMan={
 		this.resetContent();
 		this.setTime();
 		setInterval(saveHid,599999);
-		this.addMainChan('main');
+		//this.addMainChan('main');
 		this.makeMySpan();
 		with(this.hr.style){width='99%';color='pink';margin='2px 0';order=3}
 		with(this.hr2.style){width='99%';color='olive';margin='2px 0';order=4}
@@ -3782,7 +3782,10 @@ function getCookie(){
 }
 
 //З А Г Р У З К А   Д А Н Н Ы Х
-if(localStorage.fav===void 0){var TFAV={},FAV={},HID={'main':1},hidGenre=['dota'],DNS={};localStorage.fav=JSON.stringify(FAV);localStorage.tfav=JSON.stringify(TFAV);localStorage.hid=JSON.stringify(HID);localStorage.dns=JSON.stringify(DNS);localStorage.hidGenre=JSON.stringify(hidGenre)}
+if(localStorage.fav===void 0){
+    var TFAV={},FAV={},HID={},hidGenre=['dota'],DNS={};localStorage.fav=JSON.stringify(FAV);
+    localStorage.tfav=JSON.stringify(TFAV);localStorage.hid=JSON.stringify(HID);localStorage.dns=JSON.stringify(DNS);localStorage.hidGenre=JSON.stringify(hidGenre)
+}
 else{var TFAV=JSON.parse(localStorage.tfav),FAV=JSON.parse(localStorage.fav),HID=JSON.parse(localStorage.hid),DNS=JSON.parse(localStorage.dns),hidGenre=JSON.parse(localStorage.hidGenre)}
 if(localStorage.smile===void 0){var SMILE={}}
 else{var SMILE=JSON.parse(localStorage.smile)}
