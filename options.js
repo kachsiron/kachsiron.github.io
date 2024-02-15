@@ -444,9 +444,9 @@ var cMan={
 	'rTime':null,
 	'rTimes':null,
 	'rTime0':null,
-	'hr':C('HR'),
+	//'hr':C('HR'),
 	'hr2':C('HR'),
-	'hr3':C('HR'),
+	//'hr3':C('HR'),
 	'sock':null,
 	'enabled':true,
 	'twitchListRequest':'',
@@ -1201,9 +1201,9 @@ var cMan={
 		let cnt=(this.checkbox.checked?this.chanCount:0);
 		for(let j=4,n=3,z;--j>-1;){
 			z=this.chnls[j];
-			if(j===0)this.hr.style.order=n++;
-			else if(j===1)this.hr2.style.order=n++;
-			else if(j===2)this.hr3.style.order=n++;
+			//if(j===0)this.hr.style.order=n++;
+			if(j===1)this.hr2.style.order=n++;
+			//else if(j===2)this.hr3.style.order=n++;
 			if(this.checkbox.checked){
 				for(let i=z.length,c;--i>-1;){
 					c=z[i];
@@ -1436,16 +1436,16 @@ var cMan={
 		setInterval(saveHid,599999);
 		//this.addMainChan('main');
 		this.makeMySpan();
-		with(this.hr.style){width='99%';color='pink';margin='2px 0';order=3}
+		//with(this.hr.style){width='99%';color='pink';margin='2px 0';order=3}
 		with(this.hr2.style){width='99%';color='olive';margin='2px 0';order=4}
-		with(this.hr3.style){width='99%';color='indigo';margin='2px 0';order=5}
+		//with(this.hr3.style){width='99%';color='indigo';margin='2px 0';order=5}
 		with(this.checkbox.style){position='absolute';left='385px';top='-2px';width='9px';height='9px'}
 
 		this.div1.style.marginBottom='23px';
 
 		with(this.div1h.style){display='flex';flexDirection='column';flexWrap='nowrap';alignContent='stretch'}
 		let h=this.div1h.appendChild.bind(this.div1h);
-		h(this.myspan.span);h(FORMELA.div);h(this.hr);h(this.hr2);//h(this.hr3);
+		h(this.myspan.span);h(FORMELA.div);h(this.hr2);//h(this.hr3);h(this.hr);
 
 		this.checkbox.type='checkbox';
 		B(this.checkbox);
