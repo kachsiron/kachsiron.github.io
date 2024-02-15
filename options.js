@@ -1149,7 +1149,7 @@ var cMan={
 		},
 		()=>{OPOV.serv('Таймаут при запросе FUN контента',null);this.checkReady('fun')},
 		()=>{OPOV.serv('Ошибка при запросе FUN контента',null);this.checkReady('fun')});
-		/*GMX({timeout:5000,method:'GET',url:'https://goodgame.ru/api/getggchannelstatus?id=Miker,Tey,boni,ilyamaddyson&fmt=json',onload:requ=>{
+		GMX({timeout:5000,method:'GET',url:'https://goodgame.ru/api/getggchannelstatus?id=Miker,Tey,boni,ilyamaddyson&fmt=json',onload:requ=>{
 			requ=JSON.parse(requ.responseText);
 			let miker;
 			for(let i in this.gg_streams){
@@ -1157,8 +1157,9 @@ var cMan={
 				if(!this.gg_streams[i][0]&&miker)OPOV.serv(i+' стартанул <a href="https://goodgame.ru/channel/'+i+'/" target="_blank">link</a>',0);
 				this.gg_streams[i][0]=miker
 			}
-		}})*/
-	},*/
+		}})
+	},
+    */
 	'checkReady':function(t){
 		this.contentReady[t]++;
 		this.nadDiv.div.textContent=++this.nadDiv.dig;
