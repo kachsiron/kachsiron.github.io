@@ -3882,7 +3882,7 @@ with(divLog2.style){overflowX='hidden';width='125px';position='absolute';top=0;r
 //А Т Р И Б У Т Ы  И  Т Е К С Т
 divLog.innerHTML='<div></div>';
 grBut.textContent='on';
-makeCnvSize('400 200');
+//makeCnvSize('400 200');
 zvuk[0].src=MF[0];
 zvuk[1].setAttribute('preload','preload');zvuk[1].type='audio/ogg';
 //vasya.ctx.font='8px Verdana';
@@ -4201,3 +4201,33 @@ document.addEventListener('DOMContentLoaded',()=>{
 	//window.open('http://www.acapela-group.com/','');
 	//ACAPELA.init()
 });
+
+
+	/*'incoming':function(){
+		//this.api('bulk',{command:[['/api/content',{content:'stream',type:'all',category:{slug:'top'}}]]},requ=>{
+		this.api('content',{content:'stream',type:'all',category:{slug:'top'}},requ=>{
+			let content;
+			try{content=JSON.parse(requ.target.responseText).content}
+			catch(e){
+				console.log(requ.target.responseText);
+				OPOV.serv('Ошибка при обработке запроса FUN контента',null);
+				this.contents.fun=[];
+				this.checkReady('fun');
+				return
+			}
+			this.contents.fun=content!==void 0?content:null;
+			this.checkReady('fun')
+		},
+		()=>{OPOV.serv('Таймаут при запросе FUN контента',null);this.checkReady('fun')},
+		()=>{OPOV.serv('Ошибка при запросе FUN контента',null);this.checkReady('fun')});
+		GMX({timeout:5000,method:'GET',url:'https://goodgame.ru/api/getggchannelstatus?id=Miker,Tey,boni,ilyamaddyson&fmt=json',onload:requ=>{
+			requ=JSON.parse(requ.responseText);
+			let miker;
+			for(let i in this.gg_streams){
+				if(requ.hasOwnProperty(this.gg_streams[i][1]))miker=(requ[this.gg_streams[i][1]].status==='Dead'?false:true);
+				if(!this.gg_streams[i][0]&&miker)OPOV.serv(i+' стартанул <a href="https://goodgame.ru/channel/'+i+'/" target="_blank">link</a>',0);
+				this.gg_streams[i][0]=miker
+			}
+		}})
+	},
+    */
