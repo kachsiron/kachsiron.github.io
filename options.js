@@ -437,7 +437,7 @@ var cMan={
 	'ALLP':{},
 	'ALLPl':0,
 	'T_VALUE':-1,
-	'chanMessNum':0,
+	//'chanMessNum':0,
 	'chn':{},
 	'chnls':[[],[],[],[]],
 	'chanCount':0,
@@ -1074,7 +1074,7 @@ var cMan={
 		this.all();
 		//this.calc();
 		if(this.enabled)this.makeTable();
-		this.chanMessNum=0;
+		//this.chanMessNum=0;
 		this.resetContent()
 	},
 	'incomintw':function(){
@@ -1172,8 +1172,8 @@ var cMan={
 		let dta=[this.rTime.getHours(),this.rTime.getMinutes(),this.rTimes];
 		this.myspan.el.time.textContent=dta[0].totwo()+':'+dta[1].totwo();
 		this.myspan.el.usrs.textContent=this.ALLPl;
-		this.myspan.el.msgs.textContent=this.chanMessNum;
-		this.myspan.el.msgs.style.color=(this.chanMessNum>=200?'red':this.chanMessNum<100?'green':'yellow');
+		//this.myspan.el.msgs.textContent=this.chanMessNum;
+		//this.myspan.el.msgs.style.color=(this.chanMessNum>=200?'red':this.chanMessNum<100?'green':'yellow');
 		this.myspan.el.tvalue.textContent='['+this.T_VALUE+']';
 
 		for(let j=4,z;--j>-1;){
@@ -1216,6 +1216,7 @@ var cMan={
 					c=z[i];
 					c.div.style.order=n++;
 					if(c.service===1){
+                        if(c.count<61)c.span.count.style.color=kpacka(c.count,60)
 						if(c.un[0]>1||FAV.hasOwnProperty(c.name)){c.div.style.display='flex';cnt++}
 						else c.div.style.display='none'
 					}
@@ -1345,7 +1346,7 @@ var cMan={
 				chn.mvalue=s.time;
 				//chn.count++;
 				chn.dcount++;
-				this.chanMessNum++;
+				//this.chanMessNum++;
 				if(!this.ALLP.hasOwnProperty(name)){
 					this.ALLPl++;
 					this.ALLP[name]=[[], [], 0]
