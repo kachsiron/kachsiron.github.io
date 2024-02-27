@@ -1217,7 +1217,7 @@ var cMan={
 					c.div.style.order=n++;
 					if(c.service===1){
                         if(c.count<61)c.span.count.style.color=kpacka(c.count,60)
-						if(c.un[0]>0||FAV.hasOwnProperty(c.name)){c.div.style.display='flex';cnt++}
+						if(c.un[0]>1||FAV.hasOwnProperty(c.name)){c.div.style.display='flex';cnt++}
 						else c.div.style.display='none'
 					}
 					else if(c.service===0){
