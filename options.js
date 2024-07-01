@@ -699,8 +699,9 @@ var cMan={
 		o.div.classList.add('tablespan');
 		if(b){
 			if(o.service===1){
-				o.span.title.href='mailto:'+o.link+':best';
+				//o.span.title.href='mailto:'+o.link+':best';
 				o.span.title2.href='mailto:'+o.link+':540p';
+				o.span.title.href=o.link;
 				o.span.title2.innerHTML=' 540p';
 				o.span.title2.title=o.title2;
 				o.span.title2.target='_blank';
